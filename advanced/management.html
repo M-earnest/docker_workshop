@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Management of software containers &#8212; Software containers in neurosciene research</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'advanced/management';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Software containers &amp; data" href="data.html" />
+    <link rel="prev" title="Advanced aspects" href="../advanced.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Software containers in neurosciene research</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dei.html">Diversity, Equity and Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Workshop overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup for the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outline.html">Outline</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_shell.html">Introduction to the (unix) command line: bash</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_git_and_github.html">Introduction to git and github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_jupyter.html">Introduction to the jupyter ecosystem &amp; notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/installation_trouble_shooting.html">Installation &amp; trouble shooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/quickstart.html">Quickstarting your container expertise</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../advanced.html">Advanced aspects</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Management of software containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Software containers &amp; data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating.html">Creating software containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_your_own.html">Creating your own software container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../break.html">Yoga and/or dance break</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop/edit/main/workshop/advanced/management.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop/issues/new?title=Issue%20on%20page%20%2Fadvanced/management.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/advanced/management.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Management of software containers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-configuration-slide-18">!! Docker configuration Slide 18 !!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-mnagment-summary">Docker Mnagment summary:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="management-of-software-containers">
+<h1>Management of software containers<a class="headerlink" href="#management-of-software-containers" title="Link to this heading">#</a></h1>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>basic docker management</p></li>
+<li><p>docker commands</p></li>
+<li><p>resource management</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
+<li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
+<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#link"><span class="xref myst">link</span></a> to catch up!)</p></li>
+</ul>
+<section id="how-s-docker-configured">
+<h3>How’s docker configured?<a class="headerlink" href="#how-s-docker-configured" title="Link to this heading">#</a></h3>
+<p>The setup and configuration of a given docker installation is rather complex and characterized by a myriad of factors and settings: storage, RAM, swap, CPU, proxy, etc. …</p>
+<p>You should be aware of how the docker installation you’re using is setup and configured at any given time, as otherwise perfectly working docker containers fail to function properly
+as usual, consider the readme and/or docs of a given docker container before using it</p>
+<p>We can get a comprehensive overview of our docker setup and configuration via the docker command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker info`
+</pre></div>
+</div>
+<p>Which should produce something like the followin output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MBP:Desktop me$ docker info
+Client:
+ Version:    24.0.6
+ Context:    desktop-linux
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.11.2-desktop.5
+    Path:     /Users/me/.docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v2.23.0-desktop.1
+    Path:     /Users/me/.docker/cli-plugins/docker-compose
+  dev: Docker Dev Environments (Docker Inc.)
+    Version:  v0.1.0
+    Path:     /Users/me/.docker/cli-plugins/docker-dev
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.20
+    Path:     /Users/me/.docker/cli-plugins/docker-extension
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v0.1.0-beta.9
+    Path:     /Users/me/.docker/cli-plugins/docker-init
+  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+    Version:  0.6.0
+    Path:     /Users/me/.docker/cli-plugins/docker-sbom
+  scan: Docker Scan (Docker Inc.)
+    Version:  v0.26.0
+    Path:     /Users/me/.docker/cli-plugins/docker-scan
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.0.9
+    Path:     /Users/me/.docker/cli-plugins/docker-scout
+
+Server:
+ Containers: 14
+  Running: 0
+  Paused: 0
+  Stopped: 14
+ Images: 9
+ Server Version: 24.0.6
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Using metacopy: false
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 8165feabfdfe38c65b599c4993d227328c231fca
+ runc version: v1.1.8-0-g82f18fe
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: unconfined
+  cgroupns
+ Kernel Version: 6.4.16-linuxkit
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: aarch64
+ CPUs: 10
+ Total Memory: 7.661GiB
+ Name: linuxkit-9a0b4d61aa6b
+ ID: 601c4efb-57ee-48fc-a551-5f501a24c3cf
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: daemon is not using the default seccomp profile
+</pre></div>
+</div>
+<p>Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.</p>
+<ul>
+<li><p>all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,</p></li>
+<li><p>e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags –memory RAM in mb or gb, e.g. –memory 4gb</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">ubuntu</span></code></p>
+</li>
+<li><p>set swap using –memory-swap in mb ir gb, e.g. –memory-swap 5gb</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">--memory-swap</span> <span class="pre">5gb</span> <span class="pre">ubuntu</span></code></p>
+</li>
+<li><p>set CPUs using –cpus CPUs as int, e.g. –cpus 2</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">--memory-swap</span> <span class="pre">5gb</span> <span class="pre">--cpus</span> <span class="pre">2</span> <span class="pre">ubuntu</span></code></p>
+</li>
+<li><p>Configuration of your Docker installation and specific containers can also be achived via the Docker Desktop GUI</p>
+<ul class="simple">
+<li><p>see under settings -&gt;  Resources or Advanced</p></li>
+<li><p>find OS specific instructions on the <a class="reference external" href="https://docs.docker.com/desktop/settings/mac/">Docker Website</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="docker-configuration-slide-18">
+<h3>!! Docker configuration Slide 18 !!<a class="headerlink" href="#docker-configuration-slide-18" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>have to check what Docker-machine is for this part</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+    <span class="ow">or</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="p">(</span><span class="ow">in</span> <span class="n">every</span> <span class="n">OS</span><span class="p">)</span>
+
+    <span class="n">completey</span> <span class="n">reset</span> <span class="ow">and</span> <span class="n">create</span> <span class="n">new</span> <span class="n">default</span>
+
+    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">stop</span> <span class="n">default</span>
+    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">rm</span> <span class="n">default</span>
+    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">create</span> <span class="o">-</span><span class="n">d</span> <span class="n">virtualbox</span> <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">memory</span><span class="o">=</span><span class="mi">4096</span> \
+    <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">count</span><span class="o">=</span><span class="mi">2</span> <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">disk</span><span class="o">-</span><span class="n">size</span><span class="o">=</span><span class="mi">50000</span> <span class="n">default</span>
+
+    <span class="n">modify</span> <span class="n">existing</span> <span class="n">default</span>
+
+    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">stop</span> <span class="n">default</span>
+    <span class="n">VBoxManage</span> <span class="n">modifyvm</span> <span class="n">default</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">4096</span>
+    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">start</span> <span class="n">default</span>
+</pre></div>
+</div>
+<br>
+</section>
+<section id="resource-management">
+<h3>Resource management<a class="headerlink" href="#resource-management" title="Link to this heading">#</a></h3>
+<p>To get a list of available docker containers using docker images</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker images``
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MBP:Desktop me$ docker images
+REPOSITORY             TAG       IMAGE ID       CREATED        SIZE
+mycondaenv             latest    9b5e5d553c14   2 days ago     2.07GB
+ubuntu                 latest    a50ab9f16797   5 days ago     69.2MB
+repronim/neurodocker   latest    1107707d9d51   9 months ago   79.7MB
+hello-world            latest    ee301c921b8a   9 months ago   9.14kB
+</pre></div>
+</div>
+<br>
+<br>
+<p>The docker <code class="docutils literal notranslate"><span class="pre">ps</span></code> command lists all <em>running</em> containers</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps`
+</pre></div>
+</div>
+<p>This is worth checking, if you notice a drop in performance during computation, can’t connect to certain ports when using jupyter notebooks, get a memory related error, etc.</p>
+<p>To get a list of <em>all</em> containers use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps -a`
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MBP:Desktop me$ docker ps -a
+CONTAINER ID   IMAGE                         COMMAND                  CREATED        STATUS                    PORTS     NAMES
+92ba07352f3a   ubuntu                        &quot;echo &#39;hello from yo…&quot;   42 hours ago   Exited (0) 42 hours ago             agitated_ride
+eaa9ac8ecad1   ubuntu                        &quot;/bin/bash&quot;              42 hours ago   Exited (0) 42 hours ago             unruffled_galileo
+f0e40b0a0568   mycondaenv                    &quot;jupyter lab --ip=&#39;0…&quot;   2 days ago     Exited (0) 2 days ago               sad_elion
+bd55e08682e5   3a7473239b05                  &quot;jupyter lab --ip=&#39;0…&quot;   2 days ago     Exited (0) 2 days ago               ecstatic_hermann
+16350378187e   repronim/neurodocker:latest   &quot;neurodocker generat…&quot;   4 weeks ago    Exited (1) 4 weeks ago              frosty_fermat
+0228440b6b2f   repronim/neurodocker:latest   &quot;neurodocker generat…&quot;   4 weeks ago    Exited (1) 4 weeks ago              charming_ganguly
+eba0b7f9580e   hello-world                   &quot;/hello&quot;                 4 weeks ago    Exited (0) 4 weeks ago              romantic_galois
+
+</pre></div>
+</div>
+<br>
+<br>
+<p>Docker containers can also be stopped manually using the docker stop command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">image-id</span></code></p>
+<br>
+<p>We can remove a given docker container using docker the remove command <code class="docutils literal notranslate"><span class="pre">rm</span></code> and providing a <code class="docutils literal notranslate"><span class="pre">container-id</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker rm container-id`
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MBP:Desktop me$ docker rm 92ba07352f3a
+92ba07352f3a
+
+</pre></div>
+</div>
+<p>As we can see the output isn’t overly verbose, it just mirrors the provided Container ID as confirmation. So let’s check if we’ve actuially managed to remove the respective ubuntu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MBP:Desktop me$ docker ps -a
+CONTAINER ID   IMAGE                         COMMAND                  CREATED        STATUS                    PORTS     NAMES
+eaa9ac8ecad1   ubuntu                        &quot;/bin/bash&quot;              42 hours ago   Exited (0) 42 hours ago             unruffled_galileo
+684e37f2c347   hello-world                   &quot;/hello&quot;                 42 hours ago   Exited (0) 42 hours ago             jolly_villani
+f0e40b0a0568   mycondaenv                    &quot;jupyter lab --ip=&#39;0…&quot;   2 days ago     Exited (0) 2 days ago               sad_elion
+bd55e08682e5   3a7473239b05                  &quot;jupyter lab --ip=&#39;0…&quot;   2 days ago     Exited (0) 2 days ago               ecstatic_hermann
+16350378187e   repronim/neurodocker:latest   &quot;neurodocker generat…&quot;   4 weeks ago    Exited (1) 4 weeks ago              frosty_fermat
+0228440b6b2f   repronim/neurodocker:latest   &quot;neurodocker generat…&quot;   4 weeks ago    Exited (1) 4 weeks ago              charming_ganguly
+eba0b7f9580e   hello-world                   &quot;/hello&quot;                 4 weeks ago    Exited (0) 4 weeks ago              romantic_galois
+
+</pre></div>
+</div>
+<p>Using the the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> flag when running a container should prevent that a container keeps running in the background after exectuing the relevant commands or exiting the environment, however some containers may rely on different implementation and keep running in the background.</p>
+<p><code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">now</span> <span class="pre">our</span> <span class="pre">evergreen:</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">readme</span> <span class="pre">and/or</span> <span class="pre">docs</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">given</span> <span class="pre">docker</span> <span class="pre">container!</span></code></p>
+<p>We can further use the associated tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems wrt version control using the tag command</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">tag</span> <span class="pre">old-container-name/container-id:tag</span> <span class="pre">new-container-name/container-id:tag</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Output</span>
+
+</pre></div>
+</div>
+</section>
+<section id="import-export">
+<h3>Import/Export<a class="headerlink" href="#import-export" title="Link to this heading">#</a></h3>
+<p>Besides using Docker Hub to share and download docker containers, it’s also possible to export and import them locally using the docker commands save &amp; load</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker save -o my_cool_image.tar`
+
+`docker load --input my_cool_image.tar`
+</pre></div>
+</div>
+</section>
+<section id="docker-management-101-exercises">
+<h3>Docker Management 101 - exercises<a class="headerlink" href="#docker-management-101-exercises" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;rename&quot; our Ubuntu container, changing the tag from latest to image_42
+
+export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
+
+remove the existing Ubuntu containers
+
+import/load a_container_at_the_end_of_the_universe.tar
+
+run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
+</pre></div>
+</div>
+</section>
+<section id="docker-mnagment-summary">
+<h3>Docker Mnagment summary:<a class="headerlink" href="#docker-mnagment-summary" title="Link to this heading">#</a></h3>
+<p>Basic image commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Set RAM, swap and CPUs for a given *docker container*</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">2</span><span class="n">gb</span> <span class="o">--</span><span class="n">memory</span><span class="o">-</span><span class="n">swap</span> <span class="mi">3</span><span class="n">gb</span> <span class="o">--</span><span class="n">cpus</span> <span class="mi">1</span> <span class="n">container</span><span class="o">-</span><span class="n">name</span>
+    <span class="c1"># Get list of currently available *docker containers*</span>
+    <span class="n">docker</span> <span class="n">images</span>
+    <span class="c1"># Get list of currently running *docker containers*</span>
+    <span class="n">docker</span> <span class="n">ps</span>
+    <span class="c1"># Stop a given running *docker container*</span>
+    <span class="n">docker</span> <span class="n">stop</span> <span class="n">image</span><span class="o">-</span><span class="nb">id</span>
+    <span class="c1"># Rename/change tag of a given *docker container*</span>
+    <span class="n">docker</span> <span class="n">tag</span> <span class="n">old</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">/-</span><span class="nb">id</span> <span class="n">new</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="nb">id</span>
+    <span class="c1"># Export/save a given *docker container*</span>
+    <span class="n">docker</span> <span class="n">save</span> <span class="o">-</span><span class="n">o</span> <span class="n">path</span><span class="o">/</span><span class="n">my_cool_image</span><span class="o">.</span><span class="n">tar</span> <span class="n">image</span><span class="o">-</span><span class="n">name</span>
+    <span class="c1"># Import/load a given *docker container*</span>
+    <span class="n">docker</span> <span class="n">load</span> <span class="o">--</span><span class="nb">input</span> <span class="n">path</span><span class="o">/</span><span class="n">my_cool_image</span><span class="o">.</span><span class="n">tar</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../advanced.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Advanced aspects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Software containers &amp; data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-configuration-slide-18">!! Docker configuration Slide 18 !!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-mnagment-summary">Docker Mnagment summary:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peer Herholz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2018.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quickstarting your container expertise &#8212; Software containers in neurosciene research</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'basics/quickstart';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced aspects" href="../advanced.html" />
+    <link rel="prev" title="Installation &amp; trouble shooting" href="installation_trouble_shooting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Software containers in neurosciene research</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dei.html">Diversity, Equity and Inclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Workshop overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup for the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outline.html">Outline</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_shell.html">Introduction to the (unix) command line: bash</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_git_and_github.html">Introduction to git and github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_jupyter.html">Introduction to the jupyter ecosystem &amp; notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../basics.html">Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_trouble_shooting.html">Installation &amp; trouble shooting</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quickstarting your container expertise</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced.html">Advanced aspects</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/management.html">Management of software containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/data.html">Software containers &amp; data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/creating.html">Creating software containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/creating_your_own.html">Creating your own software container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../break.html">Yoga and/or dance break</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop/edit/main/workshop/basics/quickstart.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PeerHerholz/docker_workshop/issues/new?title=Issue%20on%20page%20%2Fbasics/quickstart.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/basics/quickstart.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quickstarting your container expertise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-is-docker">Where is Docker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The RUN command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="quickstarting-your-container-expertise">
+<h1>Quickstarting your container expertise<a class="headerlink" href="#quickstarting-your-container-expertise" title="Link to this heading">#</a></h1>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>basic docker usage</p></li>
+<li><p>docker commands</p></li>
+<li><p>mounting paths</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
+<li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
+<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#link"><span class="xref myst">link</span></a> to catch up!)</p></li>
+</ul>
+</section>
+<section id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Quickstart</p></li>
+</ol>
+<section id="where-is-docker">
+<h3>Where is Docker?<a class="headerlink" href="#where-is-docker" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>either start <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a> GUI (Graphical User Interface)</p></li>
+<li><p>or simply via Command-line Interface aka the UNIX Shell.</p>
+<ul>
+<li><p>this is also what we’ll be focussing on in this workshop</p></li>
+</ul>
+</li>
+</ul>
+<p>– export path?</p>
+<section id="getting-started">
+<h4>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>on unix based OS (e.g., Ubuntu, Mac OSX) open a terminal, type <code class="docutils literal notranslate"><span class="pre">docker</span></code> (hit enter)</p></li>
+<li><p>on ?windows? open docker toolbox or engine (depending on your specific OS) and type <code class="docutils literal notranslate"><span class="pre">docker</span></code> (hit enter)</p>
+<ul>
+<li><p>you should be presented with the the following docker manual, providing information on how to use docker</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:~ me$ docker
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Log in to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  checkpoint  Manage checkpoints
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Swarm Commands:
+  config      Manage Swarm configs
+  node        Manage Swarm nodes
+  secret      Manage Swarm secrets
+  service     Manage Swarm services
+  stack       Manage Swarm stacks
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container&#39;s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container&#39;s filesystem
+  events      Get real time events from the server
+  export      Export a container&#39;s filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Invalid Plugins:
+  buildx      failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-buildx: no such file or directory
+  compose     failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-compose: no such file or directory
+  dev         failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-dev: no such file or directory
+  extension   failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-extension: no such file or directory
+  init        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-init: no such file or directory
+  sbom        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-sbom: no such file or directory
+  scan        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scan: no such file or directory
+  scout       failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scout: no such file or directory
+
+Global Options:
+      --config string      Location of client config files (default &quot;/Users/me/.docker&quot;)
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with &quot;docker context use&quot;)
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level (&quot;debug&quot;, &quot;info&quot;, &quot;warn&quot;, &quot;error&quot;, &quot;fatal&quot;) (default &quot;info&quot;)
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default &quot;/Users/me/.docker/ca.pem&quot;)
+      --tlscert string     Path to TLS certificate file (default &quot;/Users/me/.docker/cert.pem&quot;)
+      --tlskey string      Path to TLS key file (default &quot;/Users/me/.docker/key.pem&quot;)
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run &#39;docker COMMAND --help&#39; for more information on a command.
+
+For more help on how to use Docker, head to https://docs.docker.com/go/guides/
+
+</pre></div>
+</div>
+<p>You can test if your Docker installation was successful by running:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
+<p>If you get the following output you’re good to go:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:~ me$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="so-what-did-we-just-do-the-run-command">
+<h3>So what did we just do? The RUN command<a class="headerlink" href="#so-what-did-we-just-do-the-run-command" title="Link to this heading">#</a></h3>
+<p>the command: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
+<ol class="arabic simple">
+<li><p>tells docker to run or execute the <em>container</em> or <em>image</em> <code class="docutils literal notranslate"><span class="pre">hello-world</span></code></p></li>
+<li><p>if the wanted container is not already on your machine, docker automatically searches for and downloads it</p></li>
+<li><p>docker run then runs or executes the given container doing whatever the container is supposed to do</p></li>
+</ol>
+</section>
+<section id="where-do-docker-containers-come-from">
+<h3>Where do docker containers come from ?<a class="headerlink" href="#where-do-docker-containers-come-from" title="Link to this heading">#</a></h3>
+<p>In most cases, docker containers are stored online on and downloaded from <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>, an extensive online repository, where On folks can upload and store as many docker containers as they want for free, only requirement: a <a class="reference external" href="https://docs.docker.com/docker-id/">Docker ID</a></p>
+<ul class="simple">
+<li><p>your Docker ID is the Username that you choose when signing up for Docker Hub, if you want to connect your local Docker to Docker Hub you can run:
+<code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">login</span></code></p>
+<ul>
+<li><p>following you will be asked to provide your username and password</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don&#39;t have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: your_username
+Password: 
+Login Succeeded
+
+</pre></div>
+</div>
+<p>Once you’re logged in your build and tagged docker images can be pushed to the docker hub via the command line:
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">your-cool-image</span></code></p>
+<ul class="simple">
+<li><p>additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (note: both methods will be covered during the afternoon sessions)</p></li>
+<li><p>image????</p></li>
+</ul>
+</section>
+<section id="docker-commands-101-in-depth">
+<h3>Docker commands 101 - in depth<a class="headerlink" href="#docker-commands-101-in-depth" title="Link to this heading">#</a></h3>
+<p>Now let’s further explore docker commands within a typical workflow.</p>
+<p>At first, we want to download a certain docker container to work with, for the sake of simplicity and time we’re going to use the classic Ubuntu container (also alwyas a great way to start, when designing a new container that is dependent on it’s own OS).</p>
+<section id="docker-commands-101-pull">
+<h4>Docker commands 101 - pull<a class="headerlink" href="#docker-commands-101-pull" title="Link to this heading">#</a></h4>
+<p>Instead of automatically downloading the container via docker run, we use the respective docker command docker pull image name, hence</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">default</span> <span class="n">tag</span><span class="p">:</span> <span class="n">latest</span>
+<span class="n">latest</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">library</span><span class="o">/</span><span class="n">ubuntu</span>
+<span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="n">f9d633ff6640178c2d0525017174a688e2c1aef28f0a0130b26bd5554491f0da</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Image</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">for</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">docker</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">library</span><span class="o">/</span><span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+  
+</pre></div>
+</div>
+<p>As you can see, we downloaded all <em>layers</em> that are needed to build the classic Ubuntu docker container, with the message Status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloaded</span> <span class="n">newer</span> <span class="n">image</span> <span class="k">for</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span> <span class="n">showing</span> <span class="n">you</span> <span class="n">that</span> <span class="n">everything</span> <span class="n">worked</span>
+</pre></div>
+</div>
+<p>Super important: by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:</p>
+</section>
+<section id="docker-commands-101-run">
+<h4>Docker commands 101 - run<a class="headerlink" href="#docker-commands-101-run" title="Link to this heading">#</a></h4>
+<p>Now if we want to work with our newly downloaded docker container, we can simply run/execute it via:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span></code></p>
+<p>Which should result in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run ubuntu
+(base) Michaels-MacBook-Pro:~ me$ 
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>docker used run, nothing happend? all the fuzz for that?</p></li>
+</ul>
+<p>Correct, as each docker container is build for reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.</p>
+<p>The Ubuntu docker container may contain a complete Ubuntu installation, but has not no defined <code class="docutils literal notranslate"><span class="pre">magic</span></code>, that is functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the readme or docs of a given docker container before using it.</p>
+<p>Let’s say we consulted the Ubuntu container documentation and found out that it is possible to make use of the <code class="docutils literal notranslate"><span class="pre">contained</span> <span class="pre">Bash</span> <span class="pre">Shell</span></code> by simply integrating Bash commands into our <code class="docutils literal notranslate"><span class="pre">run</span></code> command. Try the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span> <span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container&quot;</span></code></p>
+<p>Which should give you the output message: <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container</span></code></p>
+<p>This is neat (although redundant), but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:</p>
+<p>We can utilizes a given docker container in an <em>interactive</em> fashion by including the <code class="docutils literal notranslate"><span class="pre">--it</span></code> flag in the the docker run command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>Here, we also tell the ubuntu docker container to start/enter the bash shell.</p>
+<p>Now we can explore the interactive Ubuntu environment, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run -it ubuntu bash
+root@806c74068242:/# echo $SHELL 
+/bin/bash
+root@806c74068242:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@806c74068242:/# 
+
+</pre></div>
+</div>
+<p>As we can see the container is in fact simulating a complete Ubuntu file system.</p>
+<p>Inside the ubuntu docker container we can utilize the functionality from the ubuntu OS and exit the container by typing <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@806c74068242:/# exit
+exit
+(base) Michaels-MacBook-Pro:~ me$ 
+
+</pre></div>
+</div>
+<p>Depending on a given container’s architecture and definition, it should remove itself from running instances when exiting.
+However it’s worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).</p>
+<p>This can easily be done by:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></p>
+<p>Or by checking under <code class="docutils literal notranslate"><span class="pre">containers</span></code> in the Docker Dekstop GUI.</p>
+<p>In order to ensure that a given docker container is removed from running instances after exiting, the –rm flag can be included in the docker run command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>It’s important to note that unless explicitly specified, creating, modifying and deleting files in a container reuslts in neither permanent nor saved changes, as this is against the encapsulation and reproducibility idea.</p>
+<p>We can verify this by running the following commands in our container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm ubuntu bash
+root@3efa79a80611:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@3efa79a80611:/# mkdir test
+root@3efa79a80611:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  test  tmp  usr  var
+root@3efa79a80611:/# exit
+exit
+
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm ubuntu bash
+root@9bc5ba4cf999:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+</pre></div>
+</div>
+<p>Furthermore, we cannot interact with data stored on our host or somewhere outside the docker container.</p>
+<p>In order to address both problems, we need to <code class="docutils literal notranslate"><span class="pre">mount</span></code> paths</p>
+</section>
+<section id="docker-commands-101-mount">
+<h4>Docker commands 101 - mount<a class="headerlink" href="#docker-commands-101-mount" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Mounting</span></code> describes a mapping from paths outside the docker container to paths inside the docker container.</p>
+<p>This is achieved through the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command and utilized as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container</span></code></p>
+<p>So to make our systems /Desktop available inside the docker container as a folder called <code class="docutils literal notranslate"><span class="pre">/data</span></code> within the ubuntu container we run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">/Users/peerherholz/Desktop:/data</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>Which gives us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm -v /Users/me/Desktop:/data ubuntu bash
+root@8f5c051b6904:/# ls
+bin  boot  data  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@8f5c051b6904:/# cd data
+root@8f5c051b6904:/data# ls
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05
+root@8f5c051b6904:/data# mkdir test_object_permanence
+root@8f5c051b6904:/data# ls
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
+
+</pre></div>
+</div>
+<p>And to verify that we actually created a <em>permanent</em> folder  (let’s call it <code class="docutils literal notranslate"><span class="pre">test_object_permanence</span></code>) on our system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@8f5c051b6904:/data# exit 
+exit
+(base) Michaels-MacBook-Pro:~ me$ cd Desktop/
+(base) Michaels-MacBook-Pro:Desktop me$ ls
+docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_permanence
+
+</pre></div>
+</div>
+<p>Great, at least we created something permanent for once!</p>
+<p>Most of the time, it’s a good idea to indicate absolute paths on the host system. In our example the directory <code class="docutils literal notranslate"><span class="pre">/data</span></code> didn’t exist in the Ubunutu container before mounting it, hence it was created automatically, however this is also depends on the docker container and it’s setup/definition at hand as e.g. within automated functionality a certain directory is expected.</p>
+<p><code class="docutils literal notranslate"><span class="pre">As</span> <span class="pre">per</span> <span class="pre">usual</span></code>: check the readme and/or docs of a given docker container!</p>
+<p>Further, we can mount as many directories and files as you want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:</p>
+<p>docker run -it –rm
+-v /Users/me/Desktop:/input:ro
+-v /Users/me/Desktop/analyses:/output
+ubuntu bash</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm -v /Users/me/Desktop:/input:ro -v /Users/me/Desktop/analyses:/output ubuntu bash
+
+
+root@97917588b533:/# 
+root@97917588b533:/# ls
+bin  boot  dev  etc  home  input  lib  media  mnt  opt  output  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@97917588b533:/# ls input
+analyses  docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
+
+</pre></div>
+</div>
+<p>And again to verify:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+root@97917588b533:/# exit
+exit
+(base) Michaels-MacBook-Pro:Desktop me$ ls
+analyses		rand			sub-02			sub-04			test_object_permanence
+docker_mne		sub-01			sub-03			sub-05
+
+</pre></div>
+</div>
+<p>Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.</p>
+</section>
+</section>
+<section id="docker-commands-101-excerices">
+<h3>Docker commands 101 - excerices<a class="headerlink" href="#docker-commands-101-excerices" title="Link to this heading">#</a></h3>
+<p>To solidfy what we’ve learned in this session, please try the following excercises:</p>
+<ul class="simple">
+<li><p>pull the neurodebian docker container in its nd-non-free version</p></li>
+<li><p>mount your Desktop to data and create a directory namend docker_is_fun</p></li>
+<li><p>within it, create a .txt named i_like_docker.txt</p></li>
+<li><p>exit the container</p></li>
+<li><p>run the container again, this time mounting the newly created docker_is_fun as read-only to /input, as well as an directory docker_is_love as output within the same host directory</p></li>
+<li><p>copy the i_like_docker.txt from the input to the output directory</p></li>
+</ul>
+</section>
+<section id="summary-docker-101">
+<h3>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../basics.html"><span class="doc std std-doc">Docker Hub</span></a> – repositories to share Docker images</p></li>
+<li><p>basic image usage:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+    <span class="c1"># Download docker container &#39;ubuntu&#39;</span>
+    <span class="n">docker</span> <span class="n">pull</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively, removing it after exiting</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively, removing it after exiting,</span>
+    <span class="c1"># mounting paths</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">host</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">within</span><span class="o">/</span><span class="n">container</span> <span class="n">ubuntu</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="installation_trouble_shooting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation &amp; trouble shooting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../advanced.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced aspects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-is-docker">Where is Docker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The RUN command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peer Herholz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2018.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
