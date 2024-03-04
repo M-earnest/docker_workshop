@@ -32,7 +32,7 @@
 - on unix based OS (e.g., Ubuntu, Mac OSX) open a terminal, type `docker` (hit enter)
 - on ?windows? open docker toolbox or engine (depending on your specific OS) and type `docker` (hit enter)
 
-    - you should be presented with the the following docker manual, providing information on how to use docker
+    - you should be presented with the the following docker manual, providing information on common Docker commands
 
 
 ```

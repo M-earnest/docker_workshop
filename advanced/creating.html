@@ -398,7 +398,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -414,6 +416,25 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-there-and-back-again">Docker - there and back again</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-the-creation">Docker containers - the creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dockerfiles">Dockerfiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-dockerfile">Building a Dockerfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -425,6 +446,231 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-software-containers">
 <h1>Creating software containers<a class="headerlink" href="#creating-software-containers" title="Link to this heading">#</a></h1>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>basic docker management</p></li>
+<li><p>docker commands</p></li>
+<li><p>resource management</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
+<li><p>a Docker Hub and GitHub account</p></li>
+<li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
+<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#link"><span class="xref myst">link</span></a> to catch up!)</p></li>
+</ul>
+</section>
+<section id="docker-there-and-back-again">
+<h2>Docker - there and back again<a class="headerlink" href="#docker-there-and-back-again" title="Link to this heading">#</a></h2>
+<p>So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we’ll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible.</p>
+</section>
+<section id="docker-containers-the-creation">
+<h2>Docker containers - the creation<a class="headerlink" href="#docker-containers-the-creation" title="Link to this heading">#</a></h2>
+<p>When it comes to creating docker containers, two essential parts are relevant:</p>
+<ul class="simple">
+<li><p>a Dockerfile</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> command</p></li>
+</ul>
+</section>
+<section id="dockerfiles">
+<h2>Dockerfiles<a class="headerlink" href="#dockerfiles" title="Link to this heading">#</a></h2>
+<p>At the beginning there was a Dockerfile…</p>
+<p>A Dockerfile is, in essence, a machine-readable instruction on how to build a docker container. It can be considered the source code of a docker image.</p>
+<p>The Dockerfile usually includes a mixture of <code class="docutils literal notranslate"><span class="pre">bash</span></code> commands, that you would also normally use on your machine to e.g. setup a <a class="reference internal" href="../advanced.html"><span class="doc std std-doc">Conda enviornment</span></a> or to install specific software, and docker specific commands (called instructions). Below you’ll find a list of acceptable Docker instructions are, if the terminology is condusing or you want to dive deeper into what the different commands are and how they are used check out the <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Docker build documentation</a>. We’ll only make use of a few relevant commands for this tutorial that we will explain in detail below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Instruction</span>
+
+<span class="n">ADD</span> <span class="o">-</span> <span class="n">Add</span> <span class="n">local</span> <span class="ow">or</span> <span class="n">remote</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span><span class="o">.</span>
+<span class="n">ARG</span> <span class="o">-</span> <span class="n">Use</span> <span class="n">build</span><span class="o">-</span><span class="n">time</span> <span class="n">variables</span><span class="o">.</span>
+<span class="n">CMD</span> <span class="o">-</span> <span class="n">Specify</span> <span class="n">default</span> <span class="n">commands</span><span class="o">.</span>
+<span class="n">COPY</span> <span class="o">-</span> <span class="n">Copy</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span><span class="o">.</span>
+<span class="n">ENTRYPOINT</span> <span class="o">-</span> <span class="n">Specify</span> <span class="n">default</span> <span class="n">executable</span><span class="o">.</span>
+<span class="n">ENV</span> <span class="o">-</span> <span class="n">Set</span> <span class="n">environment</span> <span class="n">variables</span><span class="o">.</span>
+<span class="n">EXPOSE</span> <span class="o">-</span> <span class="n">Describe</span> <span class="n">which</span> <span class="n">ports</span> <span class="n">your</span> <span class="n">application</span> <span class="ow">is</span> <span class="n">listening</span> <span class="n">on</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">for</span> <span class="n">interactions</span> <span class="k">with</span> <span class="n">the</span> <span class="n">users</span> <span class="n">filesystem</span><span class="o">.</span>
+<span class="n">FROM</span> <span class="o">-</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">build</span> <span class="n">stage</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">base</span> <span class="n">image</span><span class="o">.</span>
+<span class="n">HEALTHCHECK</span> <span class="o">-</span> <span class="n">Check</span> <span class="n">a</span> <span class="n">container</span><span class="s1">&#39;s health on startup.</span>
+<span class="n">LABEL</span> <span class="o">-</span> <span class="n">Add</span> <span class="n">metadata</span> <span class="n">to</span> <span class="n">an</span> <span class="n">image</span><span class="o">.</span>
+<span class="n">MAINTAINER</span> <span class="o">-</span> <span class="n">Specify</span> <span class="n">the</span> <span class="n">author</span> <span class="n">of</span> <span class="n">an</span> <span class="n">image</span><span class="o">.</span>
+<span class="n">ONBUILD</span> <span class="o">-</span> <span class="n">Specify</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">when</span> <span class="n">the</span> <span class="n">image</span> <span class="ow">is</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">build</span><span class="o">.</span>
+<span class="n">RUN</span> <span class="o">-</span> <span class="n">Execute</span> <span class="n">build</span> <span class="n">commands</span><span class="o">.</span>
+<span class="n">USER</span>	<span class="n">Set</span> <span class="n">user</span> <span class="ow">and</span> <span class="n">group</span> <span class="n">ID</span><span class="o">.</span>
+<span class="n">VOLUME</span>	<span class="n">Create</span> <span class="n">volume</span> <span class="n">mounts</span><span class="o">.</span>
+<span class="n">WORKDIR</span>	<span class="n">Change</span> <span class="n">working</span> <span class="n">directory</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="building-a-dockerfile">
+<h2>Building a Dockerfile<a class="headerlink" href="#building-a-dockerfile" title="Link to this heading">#</a></h2>
+<p>The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a “layer”. Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.</p>
+<p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
+<ol class="arabic">
+<li><p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p>
+<p>mkdir ~/Desktop/my_first_docker &amp;&amp; touch ~/Desktop/my_first_docker/Dockerfile</p>
+</li>
+<li><p>Open your Dockerfile either with a text-editor of your choice (again VScode is recommended)</p></li>
+<li><p>FROM</p>
+<ul class="simple">
+<li><p>the “From” command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the “base” or “baseimage” of a container. At times we will also use the ‘From’ command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the ‘from’ command points to, e.g when calling ‘FROM continuumio/miniconda3’, the minconda3 image will have a specific OS defined.</p></li>
+</ul>
+<p>It is also possible to use the ‘From’ command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds <a class="reference external" href="https://docs.docker.com/build/building/multi-stage/">here</a>.</p>
+</li>
+<li><p>Entrypoint and CMD</p>
+<ul class="simple">
+<li><p>To make a docker image executable you’ll need to include either an ‘ENTRYPOINT’, an ‘CMD’ or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container.</p></li>
+</ul>
+<p>The ENTRYPOINT specifies a command that will always be executed when the container starts, while CMD defines the default arguments of the container, e.g.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> ENTRYPOINT [&quot;echo&quot;, &quot;Hello, World!&quot;]
+
+ or 
+
+ &#39;CMD [&quot;echo&quot;, &quot;Hello, World!&quot;]&#39;
+</pre></div>
+</div>
+<p>Given no further arguments when the container is run (after we’ve build it, of course), both of these will simply print “Hello World!”, but the behavior of the ‘CMD’ command can be overriden when the container is run with specific instruction, e.g. ‘docker run myimage Hello, Docker!’ prints “Hello, Docker!” instead of “Hello World!”.</p>
+<p>A practical use case can be to combine bothe instructions, so that the entrypoint provides a command that is always exectued, while CMD provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument “python” as our ENTRYPOINT and use CMD to specify a default name of the script.</p>
+<p>‘’’
+FROM python:3.10
+ENTRYPOINT [“python”]
+CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
+‘’’
+If we now simply run this conatiner using ‘docker run myimage’ it will try to locate and execute “<a class="reference external" href="http://script.py">script.py</a>”, if the user instead wants to run his python script called “my_script.py”, he can simply add this info to the run instruction, i.e. ‘docker run myimage “my_script.py”’.</p>
+</li>
+<li><p>Set Installations instruction</p>
+<ul class="simple">
+<li><p>In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers ‘pip’ and ‘apt-get’ in the same way we would use them in our bash shell.</p></li>
+<li><p>Modify for our example</p></li>
+<li><p>what programms etc.</p></li>
+</ul>
+</li>
+<li><p>Docker build</p>
+<p>Now that we’ve composed our Dockerfile, we can build our image via the ‘docker build’ command in the terminal.</p>
+<p>For this we provide a name for our image via the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">flag</span></code> and specify the path to our Dockerfile, resulting in e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+    `docker build -t myfirstdocker ~/Desktop/my_first_docker`
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Output</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>As you can see from the output, the steps we defined in our Dockerfile are executed step by step, comparable to docker pull. And we can check if our image was actually created successfully by using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+
+Output
+
+```
+</pre></div>
+</div>
+</section>
+<section id="virtualizing-a-workflow">
+<h2>Virtualizing a workflow<a class="headerlink" href="#virtualizing-a-workflow" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>More complex example of a docker container</p></li>
+<li><p>e.g. create eviornment via conda with specific packages, provide input and output path, do a simple task (e.g. mne report, create BIDS folder structure etc.)</p></li>
+</ul>
+</section>
+<section id="neurodocker">
+<h2>Neurodocker?<a class="headerlink" href="#neurodocker" title="Link to this heading">#</a></h2>
+<p>You might wonder: Isn’t there a sufficient, faster and easier way of composing Dockerfiles?
+Well, say no more and meet <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>, a Docker container that targets the creation of Docker containers - Dockerception.</p>
+<p>Even though Neurodocker was designed for (you might’ve guessed it already) Docker containers to utilize in the realm of neuroscience, it’s also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.</p>
+<ul class="simple">
+<li><p>example</p></li>
+</ul>
+<p>So using Neurodocker can save you a lot of time and stress. It’s especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.</p>
+</section>
+<section id="docker-push">
+<h2>Docker push<a class="headerlink" href="#docker-push" title="Link to this heading">#</a></h2>
+<p>Now this is where we could stop if we just want to make a quick reproducible solution for our basic workflows. But we, of course, want to additionally enable open and community-driven science, by getting our containerized workflows out there, but how do we do that?</p>
+<p>In general, we can simply share our Dockerfile or created image (use the export/import functionality - Docker save/load) via e.g. USB or email.
+But our preferred solution should be to make use of this thing called “internet” and share our Docker container on Docker Hub, making it available to everyone. Just make sure that nothing sensitive is contained in your container.</p>
+<p>This is again rather straightforward and can be achieved in a few simple steps.</p>
+<ol class="arabic">
+<li><p>Create and login to your Docker Hub account</p>
+<p>Before you can push an image, you need to log in to Docker Hub. Simply create an account online, run  <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code> from your command line and enter your Docker Hub username and password.</p>
+</li>
+<li><p>Tag your image
+After building our image, we need to <code class="docutils literal notranslate"><span class="pre">tag</span></code> it, in order to make it identifiable online. Tags can be anything, but should be meaningful file and version names (1.0 etc. or “latest” are common). The general form of the tag command is e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">docker</span> <span class="n">tag</span> <span class="n">image</span><span class="o">-</span><span class="nb">id</span> <span class="n">username</span><span class="o">/</span><span class="n">repository</span><span class="p">:</span><span class="n">tag</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">image-id</span></code> is the name provided when building your image, <code class="docutils literal notranslate"><span class="pre">username</span></code> is your Docker Hub username, <code class="docutils literal notranslate"><span class="pre">repository</span></code> is the repository or folder on your Docker Hub where your container is supposed to be stored and <code class="docutils literal notranslate"><span class="pre">tag</span></code> is of course the specific version name. So this could look like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">docker</span> <span class="n">tag</span> <span class="n">myworkflowimage</span> <span class="n">mernst</span><span class="o">/</span><span class="n">workflow</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+</li>
+<li><p>Docker push
+Next we simply use the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span></code> command to send our freshly tagged Docker container to Docker Hub, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">docker</span> <span class="n">push</span> <span class="n">yourhubusername</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="n">tag</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">OUTPUT</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="automating-builds-using-github">
+<h2>Automating builds using Github<a class="headerlink" href="#automating-builds-using-github" title="Link to this heading">#</a></h2>
+<p>there’s an even easier way to integrate Docker in reproducible, in terms of version-controlled, scientific practice.</p>
+<p>We’ll make use of the integrated automatic build function of Docker, which builds and pushes your Docker container directly and automatically from a GitHub repository every time a pull request is processed.</p>
+<p>The respective process is highly customizable so let’s walk through an example.</p>
+<ol class="arabic simple">
+<li><p>Set up
+The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfile:</p>
+<ul class="simple">
+<li><p>create a new Github repository called docker_workshop</p></li>
+<li><p>upload your Dockerfile to this repository</p></li>
+</ul>
+</li>
+<li><p>Specify the automated build process</p></li>
+</ol>
+<p>On Docker Hub, go to the Docker container we’ve uploaded in the previous step and within that, click on builds</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```
+    img
+    ```
+</pre></div>
+</div>
+<p>Next, click on <code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">automated</span> <span class="pre">builds</span></code>. We’re now asked to indicate the <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">repository</span></code> on GitHub and indicate some <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">rules</span></code>, including automated tests, branch to build from, tag that should be applied, etc.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```
+    img
+    ```
+</pre></div>
+</div>
+<p>Now, after clicking on save and build, our Docker container will be build automatically from our corresponding GitHub repository. Depending on the size of your Docker container and the current traffic on Docker Hub, it might take a while</p>
+<p>Every consecutive push or commit to this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.</p>
+</section>
+<section id="docker-containers-creating-and-pushing-a-recap">
+<h2>Docker containers - creating and pushing - a recap<a class="headerlink" href="#docker-containers-creating-and-pushing-a-recap" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Creating and sharing Docker containers is achieved through three parts: a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, the <code class="docutils literal notranslate"><span class="pre">build</span></code> and the <code class="docutils literal notranslate"><span class="pre">push</span></code> command.</p></li>
+<li><p>Dockerfiles can either be created completely manually or supported by neurodocker</p></li>
+<li><p>using docker build, the Docker container is created following the information in the Dockerfile</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">myfirstdocker</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">containing</span><span class="o">/</span><span class="n">Dockerfile</span>
+</pre></div>
+</div>
+</li>
+<li><p>once build, the Docker container should be tagged and subsequently pushed to Docker Hub</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">docker</span> <span class="n">tag</span> <span class="n">image</span><span class="o">-</span><span class="nb">id</span> <span class="n">yourhubusername</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="n">tag</span>
+<span class="n">docker</span> <span class="n">push</span> <span class="n">yourhubusername</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="n">tag</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>the build and push process can be automatized using a combination of Docker Hub and GitHub</p></li>
+</ul>
+</section>
+<section id="excercise">
+<h2>Excercise<a class="headerlink" href="#excercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>???</p></li>
+<li><p>as this is an interactive session might not be necessary, but for the general audience we could have them go to the whole process for a simple python project?</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -482,7 +728,31 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-there-and-back-again">Docker - there and back again</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-the-creation">Docker containers - the creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dockerfiles">Dockerfiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-dockerfile">Building a Dockerfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -6,7 +6,7 @@
 ### Learning objectives
 
 - Why do we use containers?
-- What are the various types of container based environments?
+- What are the various types virtualization based solutions?
 - How to use Docker?
 - How to use Conda?
 

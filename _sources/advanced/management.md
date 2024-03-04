@@ -276,7 +276,7 @@ Besides using Docker Hub to share and download docker containers, it's also poss
 
 
 
-#### Docker Mnagment summary: 
+#### Docker Management summary: 
 
 Basic image commands:
 
