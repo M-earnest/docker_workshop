@@ -24,6 +24,8 @@ There are a few computing requirements for the course that are absolutely necess
 1. You must have administrator access to your computer (i.e., you must be able to install things yourself without requesting IT approval).
 2. You must have at least `20 GB` of free disk space on your computer (but we would recommend more, to be safe).
 3. If you are using Windows you must be using Windows 10/11; Windows 7 and 8 will not be sufficient for this course.
+4. Some parts of this course will make use of GitHub, so creating a GitHub account is recommended
+5. For easier communication we've created a Discord Server for this programm, if you're interested install Discord and follow this link ---
 
 If you foresee any of these being a problem please reach out to one of the instructors too see what steps you can take to ensure you are ready for the course start.
 
@@ -69,7 +71,19 @@ From this point on whenever the instructions specify to "open a terminal" please
 
 **Docker**
 
-Unfortunately, Docker for Windows is again a bit trickier. 
+Unfortunately, getting Docker to work on Windows is a tad more complicated. 
+
+   1. Download the installer using the download button at the top of the page, or from the release notes. 
+   2. Double-click Docker Desktop Installer.exe to run the installer. By default, Docker Desktop is installed at C:\Program Files\Docker\Docker. 
+   3. When prompted, ensure that "Use WSL 2" instead of Hyper-V option on the Configuration page is selected. 
+   4. If your system only supports one of the two options, you will not be able to select which backend to use. 
+   5. Follow the instructions on the installation wizard to authorize the installer and proceed with the install. 
+   6. When the installation is successful, select Close to complete the installation process. 
+   7. Open Docker Dektop, agree to the the terms of service and login using your Dockerhub user credentials. Now, the Docker engine should start (if starting of the Docker engine takes more than 5 minutes, restart your computer.
+
+`If your admin account is different to your user account, you must add the user to the docker-users group:`
+   8. Run Computer Management as an administrator. 
+   9. Navigate to Local Users and Groups > Groups > docker-users. 3)Right-click to add the user to the group. 4)Sign out and sign back in for the changes to take effect.
 ```
 
 ```{tab-item} Linux
@@ -156,20 +170,8 @@ You will be invited to the course channel via e-mail.
 
 Install Firefox or Chrome.
 (Safari will also work.)
-Mic-rosoft Edge is not modern, despite what Microsoft might try and otherwise tell you.
+Microsoft Edge is not modern, despite what Microsoft might try and otherwise tell you.
 
-### Checking your install
-
-Now that you've installed everything it's time to check that everything works as expected!
-Type the following into your terminal:
-
-    bash <( curl -s https://raw.githubusercontent.com/PeerHerholz/docker_workshop/main/check_install.sh)
-
-If you installed everything correctly you should see a message informing you as such.
-If any problems were detected you should receive some brief instructions on what is wrong with potential suggestions on how to remedy it.
-If you followed these instructions step-by-step and cannot resolve the issue please contact one of the course instructors for more help.
-
-Yeah, you did! Great job!
 
 
 ### Getting the workshop content
