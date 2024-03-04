@@ -110,14 +110,14 @@ Server:
 
 WARNING: daemon is not using the default seccomp profile
 ```
-
+<br>
 
 Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.
+
 - all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,
+  - e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags --memory RAM in mb or gb, e.g. --memory 4gb
 
-- e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags --memory RAM in mb or gb, e.g. --memory 4gb
-
-    `docker run -it --rm --memory 4gb ubuntu`
+      `docker run -it --rm --memory 4gb ubuntu`
 
 - set swap using --memory-swap in mb ir gb, e.g. --memory-swap 5gb
 
@@ -156,11 +156,9 @@ Among this barrage of information, we can see that docker uses a default amount 
 
 <br>
 
-
-
 #### Resource management
 
-To get a list of available docker containers using docker images
+To get a list of available docker containers using docker `images` use:
 
     `docker images``
 
@@ -175,15 +173,13 @@ hello-world            latest    ee301c921b8a   9 months ago   9.14kB
 <br>
 <br>
 
-The docker `ps` command lists all _running_ containers
+The docker `ps` command comparatively lists all _running_ `containers`
 
     `docker ps`
 
 This is worth checking, if you notice a drop in performance during computation, can't connect to certain ports when using jupyter notebooks, get a memory related error, etc.
 
-
-
-To get a list of _all_ containers use the `-a` flag
+To get a list of _all_ `containers` use the `-a` flag
 
     `docker ps -a`
 
@@ -202,15 +198,16 @@ eba0b7f9580e   hello-world                   "/hello"                 4 weeks ag
 ```
 
 <br>
-<br>
 
-Docker containers can also be stopped manually using the docker stop command:
+#### Stop/Delete/Rename Containers
+
+Docker containers can also be stopped manually using the docker `stop` command:
 
 `docker stop image-id`
 
-<br>
 
-We can remove a given docker container using docker the remove command `rm` and providing a `container-id`
+
+And to delete a given docker container use the `remove` command `rm` and provide a `container-id`
 
     `docker rm container-id`
 
@@ -220,11 +217,12 @@ We can remove a given docker container using docker the remove command `rm` and 
 
 ```
 
-As we can see the output isn't overly verbose, it just mirrors the provided Container ID as confirmation. So let's check if we've actuially managed to remove the respective ubuntu
+As we can see the output isn't very informative, it just mirrors the provided Container ID as confirmation. So let's check if we've actually managed to remove the respective Ubuntu Container:
 
 ```
 
 (base) Michaels-MBP:Desktop me$ docker ps -a
+
 CONTAINER ID   IMAGE                         COMMAND                  CREATED        STATUS                    PORTS     NAMES
 eaa9ac8ecad1   ubuntu                        "/bin/bash"              42 hours ago   Exited (0) 42 hours ago             unruffled_galileo
 684e37f2c347   hello-world                   "/hello"                 42 hours ago   Exited (0) 42 hours ago             jolly_villani
@@ -237,12 +235,11 @@ eba0b7f9580e   hello-world                   "/hello"                 4 weeks ag
 ```
 
 
-Using the the `--rm` flag when running a container should prevent that a container keeps running in the background after exectuing the relevant commands or exiting the environment, however some containers may rely on different implementation and keep running in the background.
+Using the the `--rm` flag when running a container should prevent that a container keeps running in the background after executing the relevant commands or exiting the environment however, some containers may rely on different implementations and keep running in the background.
 
 `By now our evergreen: check the readme and/or docs of a given docker container!`
 
-
-We can further use the associated tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems wrt version control using the tag command
+We can further use the associated tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control using the tag command:
 
 `docker tag old-container-name/container-id:tag new-container-name/container-id:tag`
 
@@ -253,6 +250,7 @@ Output
 
 ```
 
+
 #### Import/Export
 
 Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load
@@ -260,19 +258,6 @@ Besides using Docker Hub to share and download docker containers, it's also poss
     `docker save -o my_cool_image.tar`
 
     `docker load --input my_cool_image.tar`
-
-#### Docker Management 101 - exercises
-
-    "rename" our Ubuntu container, changing the tag from latest to image_42
-
-    export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
-
-    remove the existing Ubuntu containers
-
-    import/load a_container_at_the_end_of_the_universe.tar
-
-    run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
-
 
 
 
@@ -296,4 +281,16 @@ Basic image commands:
     # Import/load a given *docker container*
     docker load --input path/my_cool_image.tar
 ```
+
+#### Docker Management 101 - exercises
+
+   1. "rename" our Ubuntu container, changing the tag from latest to image_42
+
+   2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
+
+   3. remove the existing Ubuntu containers
+
+   4. import/load a_container_at_the_end_of_the_universe.tar
+
+   5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
 

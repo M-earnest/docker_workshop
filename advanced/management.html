@@ -426,9 +426,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-configuration-slide-18">!! Docker configuration Slide 18 !!</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-delete-rename-containers">Stop/Delete/Rename Containers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-summary">Docker Management summary:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -554,11 +555,15 @@ Server:
 WARNING: daemon is not using the default seccomp profile
 </pre></div>
 </div>
+<br>
 <p>Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.</p>
 <ul>
-<li><p>all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,</p></li>
+<li><p>all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,</p>
+<ul>
 <li><p>e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags –memory RAM in mb or gb, e.g. –memory 4gb</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">ubuntu</span></code></p>
+</li>
+</ul>
 </li>
 <li><p>set swap using –memory-swap in mb ir gb, e.g. –memory-swap 5gb</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">--memory-swap</span> <span class="pre">5gb</span> <span class="pre">ubuntu</span></code></p>
@@ -601,7 +606,7 @@ WARNING: daemon is not using the default seccomp profile
 </section>
 <section id="resource-management">
 <h3>Resource management<a class="headerlink" href="#resource-management" title="Link to this heading">#</a></h3>
-<p>To get a list of available docker containers using docker images</p>
+<p>To get a list of available docker containers using docker <code class="docutils literal notranslate"><span class="pre">images</span></code> use:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker images``
 </pre></div>
 </div>
@@ -615,12 +620,12 @@ hello-world            latest    ee301c921b8a   9 months ago   9.14kB
 </div>
 <br>
 <br>
-<p>The docker <code class="docutils literal notranslate"><span class="pre">ps</span></code> command lists all <em>running</em> containers</p>
+<p>The docker <code class="docutils literal notranslate"><span class="pre">ps</span></code> command comparatively lists all <em>running</em> <code class="docutils literal notranslate"><span class="pre">containers</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps`
 </pre></div>
 </div>
 <p>This is worth checking, if you notice a drop in performance during computation, can’t connect to certain ports when using jupyter notebooks, get a memory related error, etc.</p>
-<p>To get a list of <em>all</em> containers use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag</p>
+<p>To get a list of <em>all</em> <code class="docutils literal notranslate"><span class="pre">containers</span></code> use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps -a`
 </pre></div>
 </div>
@@ -638,11 +643,12 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </pre></div>
 </div>
 <br>
-<br>
-<p>Docker containers can also be stopped manually using the docker stop command:</p>
+</section>
+<section id="stop-delete-rename-containers">
+<h3>Stop/Delete/Rename Containers<a class="headerlink" href="#stop-delete-rename-containers" title="Link to this heading">#</a></h3>
+<p>Docker containers can also be stopped manually using the docker <code class="docutils literal notranslate"><span class="pre">stop</span></code> command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">image-id</span></code></p>
-<br>
-<p>We can remove a given docker container using docker the remove command <code class="docutils literal notranslate"><span class="pre">rm</span></code> and providing a <code class="docutils literal notranslate"><span class="pre">container-id</span></code></p>
+<p>And to delete a given docker container use the <code class="docutils literal notranslate"><span class="pre">remove</span></code> command <code class="docutils literal notranslate"><span class="pre">rm</span></code> and provide a <code class="docutils literal notranslate"><span class="pre">container-id</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker rm container-id`
 </pre></div>
 </div>
@@ -651,9 +657,10 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 
 </pre></div>
 </div>
-<p>As we can see the output isn’t overly verbose, it just mirrors the provided Container ID as confirmation. So let’s check if we’ve actuially managed to remove the respective ubuntu</p>
+<p>As we can see the output isn’t very informative, it just mirrors the provided Container ID as confirmation. So let’s check if we’ve actually managed to remove the respective Ubuntu Container:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 (base) Michaels-MBP:Desktop me$ docker ps -a
+
 CONTAINER ID   IMAGE                         COMMAND                  CREATED        STATUS                    PORTS     NAMES
 eaa9ac8ecad1   ubuntu                        &quot;/bin/bash&quot;              42 hours ago   Exited (0) 42 hours ago             unruffled_galileo
 684e37f2c347   hello-world                   &quot;/hello&quot;                 42 hours ago   Exited (0) 42 hours ago             jolly_villani
@@ -665,9 +672,9 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 
 </pre></div>
 </div>
-<p>Using the the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> flag when running a container should prevent that a container keeps running in the background after exectuing the relevant commands or exiting the environment, however some containers may rely on different implementation and keep running in the background.</p>
+<p>Using the the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> flag when running a container should prevent that a container keeps running in the background after executing the relevant commands or exiting the environment however, some containers may rely on different implementations and keep running in the background.</p>
 <p><code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">now</span> <span class="pre">our</span> <span class="pre">evergreen:</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">readme</span> <span class="pre">and/or</span> <span class="pre">docs</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">given</span> <span class="pre">docker</span> <span class="pre">container!</span></code></p>
-<p>We can further use the associated tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems wrt version control using the tag command</p>
+<p>We can further use the associated tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems with regard to version control using the tag command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">tag</span> <span class="pre">old-container-name/container-id:tag</span> <span class="pre">new-container-name/container-id:tag</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">Output</span>
@@ -681,20 +688,6 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker save -o my_cool_image.tar`
 
 `docker load --input my_cool_image.tar`
-</pre></div>
-</div>
-</section>
-<section id="docker-management-101-exercises">
-<h3>Docker Management 101 - exercises<a class="headerlink" href="#docker-management-101-exercises" title="Link to this heading">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;rename&quot; our Ubuntu container, changing the tag from latest to image_42
-
-export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
-
-remove the existing Ubuntu containers
-
-import/load a_container_at_the_end_of_the_universe.tar
-
-run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
 </pre></div>
 </div>
 </section>
@@ -717,6 +710,16 @@ run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
     <span class="n">docker</span> <span class="n">load</span> <span class="o">--</span><span class="nb">input</span> <span class="n">path</span><span class="o">/</span><span class="n">my_cool_image</span><span class="o">.</span><span class="n">tar</span>
 </pre></div>
 </div>
+</section>
+<section id="docker-management-101-exercises">
+<h3>Docker Management 101 - exercises<a class="headerlink" href="#docker-management-101-exercises" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>“rename” our Ubuntu container, changing the tag from latest to image_42</p></li>
+<li><p>export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop</p></li>
+<li><p>remove the existing Ubuntu containers</p></li>
+<li><p>import/load a_container_at_the_end_of_the_universe.tar</p></li>
+<li><p>run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU</p></li>
+</ol>
 </section>
 </section>
 </section>
@@ -790,9 +793,10 @@ run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-configuration-slide-18">!! Docker configuration Slide 18 !!</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-delete-rename-containers">Stop/Delete/Rename Containers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-summary">Docker Management summary:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-management-101-exercises">Docker Management 101 - exercises</a></li>
 </ul>
 </li>
 </ul>

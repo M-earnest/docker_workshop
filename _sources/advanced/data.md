@@ -12,6 +12,17 @@
 From time to time, it might be advised or even necessary to provide some data that comes with your Docker container, e.g. for reproducible purposes, tutorials, etc.
 But how do we get data into our Docker containers?
 
+``
+what else?
+....
+....
+....
+
+``
+
+
+### Getting Data into a container
+
 Let's say we want to put a picture of whale into our Docker container because we're such docker fans and whales are nothing but awesome, but we've learned that the state of a given container cannot be changed from the mounting part of this workshop.
 
 We can achieve this by copying the datan(i.e. our .png file) into our Docker container during its build, hence must include respective instruction in our Dockerfile.
@@ -42,12 +53,9 @@ Michaels-MBP:~ me$ docker run -it --rm myfirstdocker
 
 ```
 
+### Practical application
 
-With that, we can include almost any kind of data of almost any size
-
-As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let's include a small respective tutorial in the form of a `jupyter notebook`, as well as a small `sample dataset`.
-
-
+With that, we can include almost any kind of data of almost any size. As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let's include a small respective tutorial in the form of a `jupyter notebook`, as well as a small `sample dataset`. In this way you could also include demogrpahic data, READMEs or any additional data necessary for a processing pipeline.
 
 To this end, we again simply copy the respective files from the examples folder to out my_first_docker folder
 
@@ -62,19 +70,20 @@ And subsequently, we again add some lines of code that do the respective copying
         COPY ./beers.csv /home/notebooks/data
     ```
 
+- rebuild the container and as expected, everything is there and in place!
 
-rebuild the container and as expected, everything is there and in place!
 
     ``` 
         output
     ```
 
+### Incorporating online data
 
-In case you don't have or don't want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash commadn `curl`.
+In case you don't have or don't want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash command `curl`. This can be very helpful when pulling data from an online repository.
 
-Add the respective command to the Dockerfile:
+Simply add the respective command to the Dockerfile:
+
 ```
-
     RUN curl --output /home/images/happy_whale_2.jpg  https://cdn.pixabay.com/photo/2017/01/01/20/11/humpback-whale-1945416_960_720.jpg
 ```
 
@@ -85,13 +94,14 @@ And checking the outcome, everything worked like a charm!
 ```
 
 
+
 ### Datalad?
 
 - might be too much time investment or too confusing if kept too short, instead replace by a scientific example??
 
 
-Docker & data - going nuts
+### Docker & data - discussion
 
 - What would you like to have in your Docker containers?
 - What type of data are you planning on working with?
-- Let us know and will go through the respective steps!
+- Let us know and we'll go through the respective steps!

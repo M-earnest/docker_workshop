@@ -423,7 +423,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-into-a-container">Getting Data into a container</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-application">Practical application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-online-data">Incorporating online data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datalad">Datalad?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-data-discussion">Docker &amp; data - discussion</a></li>
 </ul>
             </nav>
         </div>
@@ -449,6 +453,15 @@ document.write(`
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>From time to time, it might be advised or even necessary to provide some data that comes with your Docker container, e.g. for reproducible purposes, tutorials, etc.
 But how do we get data into our Docker containers?</p>
+<p>``
+what else?
+….
+….
+….</p>
+<p>``</p>
+</section>
+<section id="getting-data-into-a-container">
+<h2>Getting Data into a container<a class="headerlink" href="#getting-data-into-a-container" title="Link to this heading">#</a></h2>
 <p>Let’s say we want to put a picture of whale into our Docker container because we’re such docker fans and whales are nothing but awesome, but we’ve learned that the state of a given container cannot be changed from the mounting part of this workshop.</p>
 <p>We can achieve this by copying the datan(i.e. our .png file) into our Docker container during its build, hence must include respective instruction in our Dockerfile.
 The easiest way is to store the data you want to include in the same directory as the Dockerfile, e.g.</p>
@@ -476,8 +489,10 @@ The easiest way is to store the data you want to include in the same directory a
 
 </pre></div>
 </div>
-<p>With that, we can include almost any kind of data of almost any size</p>
-<p>As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let’s include a small respective tutorial in the form of a <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>, as well as a small <code class="docutils literal notranslate"><span class="pre">sample</span> <span class="pre">dataset</span></code>.</p>
+</section>
+<section id="practical-application">
+<h2>Practical application<a class="headerlink" href="#practical-application" title="Link to this heading">#</a></h2>
+<p>With that, we can include almost any kind of data of almost any size. As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let’s include a small respective tutorial in the form of a <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>, as well as a small <code class="docutils literal notranslate"><span class="pre">sample</span> <span class="pre">dataset</span></code>. In this way you could also include demogrpahic data, READMEs or any additional data necessary for a processing pipeline.</p>
 <p>To this end, we again simply copy the respective files from the examples folder to out my_first_docker folder</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
     mv Desktop/examples/* Desktop/my_first_docker
@@ -491,16 +506,19 @@ The easiest way is to store the data you want to include in the same directory a
 ```
 </pre></div>
 </div>
-<p>rebuild the container and as expected, everything is there and in place!</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>``` 
-    output
-```
+<ul>
+<li><p>rebuild the container and as expected, everything is there and in place!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">output</span>
 </pre></div>
 </div>
-<p>In case you don’t have or don’t want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash commadn <code class="docutils literal notranslate"><span class="pre">curl</span></code>.</p>
-<p>Add the respective command to the Dockerfile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-    <span class="n">RUN</span> <span class="n">curl</span> <span class="o">--</span><span class="n">output</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">happy_whale_2</span><span class="o">.</span><span class="n">jpg</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cdn</span><span class="o">.</span><span class="n">pixabay</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">photo</span><span class="o">/</span><span class="mi">2017</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="n">humpback</span><span class="o">-</span><span class="n">whale</span><span class="o">-</span><span class="mf">1945416_960_720.</span><span class="n">jpg</span>
+</li>
+</ul>
+</section>
+<section id="incorporating-online-data">
+<h2>Incorporating online data<a class="headerlink" href="#incorporating-online-data" title="Link to this heading">#</a></h2>
+<p>In case you don’t have or don’t want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash command <code class="docutils literal notranslate"><span class="pre">curl</span></code>. This can be very helpful when pulling data from an online repository.</p>
+<p>Simply add the respective command to the Dockerfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">curl</span> <span class="o">--</span><span class="n">output</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">happy_whale_2</span><span class="o">.</span><span class="n">jpg</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cdn</span><span class="o">.</span><span class="n">pixabay</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">photo</span><span class="o">/</span><span class="mi">2017</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">20</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="n">humpback</span><span class="o">-</span><span class="n">whale</span><span class="o">-</span><span class="mf">1945416_960_720.</span><span class="n">jpg</span>
 </pre></div>
 </div>
 <p>And checking the outcome, everything worked like a charm!</p>
@@ -513,11 +531,13 @@ The easiest way is to store the data you want to include in the same directory a
 <ul class="simple">
 <li><p>might be too much time investment or too confusing if kept too short, instead replace by a scientific example??</p></li>
 </ul>
-<p>Docker &amp; data - going nuts</p>
+</section>
+<section id="docker-data-discussion">
+<h2>Docker &amp; data - discussion<a class="headerlink" href="#docker-data-discussion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>What would you like to have in your Docker containers?</p></li>
 <li><p>What type of data are you planning on working with?</p></li>
-<li><p>Let us know and will go through the respective steps!</p></li>
+<li><p>Let us know and we’ll go through the respective steps!</p></li>
 </ul>
 </section>
 </section>
@@ -588,7 +608,11 @@ The easiest way is to store the data you want to include in the same directory a
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-into-a-container">Getting Data into a container</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-application">Practical application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-online-data">Incorporating online data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datalad">Datalad?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-data-discussion">Docker &amp; data - discussion</a></li>
 </ul>
   </nav></div>
 
