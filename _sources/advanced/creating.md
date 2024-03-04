@@ -104,7 +104,11 @@ We will be relying on the `command line` and `bash` from here on out, if this se
     - what programms etc.
 
 
-5. Docker build
+6. Copy relevant files
+    - 
+
+
+6. Docker build
 
     Now that we've composed our Dockerfile, we can build our image via the 'docker build' command in the terminal. 
 
@@ -127,6 +131,9 @@ As you can see from the output, the steps we defined in our Dockerfile are execu
 
     ```
 
+7. Run the file including mount path
+
+
 ### Virtualizing a workflow
 
 - More complex example of a docker container
@@ -141,6 +148,7 @@ Well, say no more and meet `Neurodocker`, a Docker container that targets the cr
 Even though Neurodocker was designed for (you might've guessed it already) Docker containers to utilize in the realm of neuroscience, it's also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.
 
 - example
+
 
 
 

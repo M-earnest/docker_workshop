@@ -63,6 +63,8 @@ Windows doesn't come with a preinstalled bash shell. To remedy this we will rely
 
 From this point on whenever the instructions specify to "open a terminal" please assume you are supposed to open the Ubuntu application.
 
+! This will create a virtual Ubuntu application on your system. The terminal will alwyays start in your Ubuntu home directory, to access your windos file system you'll have to use the following path `/mnt/c/Users/yourusername`
+
 **VSCode**
 
 1. Go to https://code.visualstudio.com/ and click the download button, then run the `.exe` file.
@@ -104,6 +106,7 @@ To check whether this is necessary, follow these steps:
 1. Double-click the downloaded file to install VSCode.
    (You may be prompted to type your administrator password during the install).
 
+-- explanation on how to acess wsl
 
 **Docker**
 

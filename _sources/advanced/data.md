@@ -94,6 +94,10 @@ And checking the outcome, everything worked like a charm!
 ```
 
 
+### Input/Output - administrator rights
+
+- notes re folder structures here
+- input
 
 ### Datalad?
 
