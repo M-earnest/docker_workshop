@@ -63,13 +63,16 @@ Windows doesn't come with a preinstalled bash shell. To remedy this we will rely
 
 From this point on whenever the instructions specify to "open a terminal" please assume you are supposed to open the Ubuntu application.
 
-! This will create a virtual Ubuntu application on your system. The terminal will alwyays start in your Ubuntu home directory, to access your windos file system you'll have to use the following path `/mnt/c/Users/yourusername`
+! This will create a virtual Ubuntu application on your system. The terminal will alwyays start in your Ubuntu home directory, to access your windows file system you'll have to use the following path `/mnt/c/Users/yourusername`
 
 **VSCode**
 
 1. Go to https://code.visualstudio.com/ and click the download button, then run the `.exe` file.
-1. Leave all the defaults during the installation with the following exception:
+2. Leave all the defaults during the installation with the following exception:
       - Please make sure the box labelled "Register Code as an editor for supported file types" is selected
+3. When working with Linux under Windows using WSL you will have two different filesystems/drives since WSL will create a distinct filestystem for every Linux distribution you have installed. VSCode automatically detects WSL distributions and you can connect to them via the remote connection button (Blue button at the bottom left corner of your VSCode window). This is what it should look like:
+
+!add screenshots here
 
 **Docker**
 

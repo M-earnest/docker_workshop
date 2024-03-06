@@ -520,7 +520,7 @@ Select <code class="docutils literal notranslate"><span class="pre">Yes</span></
 </li>
 </ol>
 <p>From this point on whenever the instructions specify to “open a terminal” please assume you are supposed to open the Ubuntu application.</p>
-<p>! This will create a virtual Ubuntu application on your system. The terminal will alwyays start in your Ubuntu home directory, to access your windos file system you’ll have to use the following path <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/yourusername</span></code></p>
+<p>! This will create a virtual Ubuntu application on your system. The terminal will alwyays start in your Ubuntu home directory, to access your windows file system you’ll have to use the following path <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/yourusername</span></code></p>
 <p><strong>VSCode</strong></p>
 <ol class="arabic simple">
 <li><p>Go to <a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> and click the download button, then run the <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file.</p></li>
@@ -529,7 +529,9 @@ Select <code class="docutils literal notranslate"><span class="pre">Yes</span></
 <li><p>Please make sure the box labelled “Register Code as an editor for supported file types” is selected</p></li>
 </ul>
 </li>
+<li><p>When working with Linux under Windows using WSL you will have two different filesystems/drives since WSL will create a distinct filestystem for every Linux distribution you have installed. VSCode automatically detects WSL distributions and you can connect to them via the remote connection button (Blue button at the bottom left corner of your VSCode window). This is what it should look like:</p></li>
 </ol>
+<p>!add screenshots here</p>
 <p><strong>Docker</strong></p>
 <p>Unfortunately, getting Docker to work on Windows is a tad more complicated.</p>
 <ol class="arabic simple">
