@@ -25,14 +25,14 @@ There are a few computing requirements for the course that are absolutely necess
 2. You must have at least `20 GB` of free disk space on your computer (but we would recommend more, to be safe).
 3. If you are using Windows you must be using Windows 10/11; Windows 7 and 8 will not be sufficient for this course.
 4. Some parts of this course will make use of GitHub, so creating a GitHub account is recommended
-5. For easier communication we've created a Discord Server for this programm, if you're interested install Discord and follow this link ---
+5. For easier communication we've created a Discord Server for this programm, if you're interested install Discord and follow this [link](https://discord.gg/BEX7XRb8)
 
 If you foresee any of these being a problem please reach out to one of the instructors too see what steps you can take to ensure you are ready for the course start.
 
 ## Some quick general notes on instructions
 
-- If you already have some of these things installed on your computer already that should (theoretically) be okay.
-  However, you need to make sure that you are able to complete the steps described in `checking your install` section below without issue.
+- If you have some of these things installed on your computer already that should (theoretically) be okay.
+  However, you need to make sure that you are able to complete the steps described in `checking your install` (not there yet) section below without issue.
   - This is mainly to see if your Docker installation is actually working!
 
 ## OS-specific installation instructions
@@ -81,11 +81,13 @@ Unfortunately, getting Docker to work on Windows is a tad more complicated.
    4. If your system only supports one of the two options, you will not be able to select which backend to use. 
    5. Follow the instructions on the installation wizard to authorize the installer and proceed with the install. 
    6. When the installation is successful, select Close to complete the installation process. 
-   7. Open Docker Dektop, agree to the the terms of service and login using your Dockerhub user credentials. Now, the Docker engine should start (if starting of the Docker engine takes more than 5 minutes, restart your computer.
+   7. Open Docker Dektop, agree to the the terms of service and login using your Dockerhub user credentials. Now, the Docker engine should start (if starting of the Docker engine takes more than 5 minutes, restart your computer).
 
 `If your admin account is different to your user account, you must add the user to the docker-users group:`
-   8. Run Computer Management as an administrator. 
-   9. Navigate to Local Users and Groups > Groups > docker-users. 3)Right-click to add the user to the group. 4)Sign out and sign back in for the changes to take effect.
+   1. Run Computer Management as an administrator. 
+   2. Navigate to Local Users and Groups > Groups > docker-users. 
+   3. Right-click to add the user to the group. 
+   4. Sign out and sign back in for the changes to take effect.
 ```
 
 ```{tab-item} Linux
