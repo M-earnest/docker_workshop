@@ -192,6 +192,7 @@ This is again rather straightforward and can be achieved in a few simple steps.
     ```
 
 ### Automating builds using Github
+!Important: It seems to me that you nowadays need a paid Dockerhub subscription of you want to make use of the automated builds (hence we might want to exclude them here)
 
 there's an even easier way to integrate Docker in reproducible, in terms of version-controlled, scientific practice.
 
