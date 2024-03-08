@@ -217,7 +217,7 @@ And to delete a given docker container use the `remove` command `rm` and provide
 
 ```
 
-As we can see the output isn't very informative, it just mirrors the provided Container ID as confirmation. So let's check if we've actually managed to remove the respective Ubuntu Container:
+As we can see the output isn't very informative, it just mirrors the provided Container ID as confirmation. So let's check if we've managed to remove the respective Ubuntu Container:
 
 ```
 

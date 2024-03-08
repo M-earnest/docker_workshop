@@ -1,12 +1,9 @@
 # Setup for the workshop
 
-ToDo:
-- dumb it down, remove extra dependencies
 
+Most of the materials for this workshop can be found on this website, if you'd like to give input, leave comments or highlight relevant parts (publicly or privately) we encourage you to make use of the [`hypothes.is`](https://web.hypothes.is/) plugin via the annotation sidebar on the right side of the page. If you'd rather download all of the materials as a zip file, you can do so through the associated [Github repo]() via this [link](). You can open the respective lessons (.md files) via an IDE (e.g. VScode, Atom) or via Jupyter Notebooks/Lab.
 
-Most of the materials for this workshop you can find on this website, if you'd like to give input, leave comments or highlight relevant parts (publicly or privately) we encourage you to make use of the [`hypothes.is`](https://web.hypothes.is/) plugin via the anotation sidebar on the right side of the page. If you'd rather download all of the materials as a zip file, you can do so throug the associated [Github repo]() via this [link](). You can open the respective lessons (.md files) via an IDE (e.g. VScode, Atom) or via Jupyter Notebooks/Lab.
-
-The only software you will necessarily have to install will be [Docker](). We'll come to the actual setup for this shortly, but there are a few other requirements that will need to be satisfied. 
+The only software you will necessarily have to install will be [Docker](). We'll come to the actual setup for this shortly, but there are a few other requirements that will need to be satisfied. Please read the whole document and follow the instructions closely.
 
 ## Required software
 
@@ -16,23 +13,22 @@ The only software you will necessarily have to install will be [Docker](). We'll
 
 Mac and Linux distributions automatically provide a command line shell, simply search for `terminal` and you should be good to go. Windows users will have to complete a few additional steps, see the OS-specific installation instructions down below.
 
-
 ## General things
 
 There are a few computing requirements for the course that are absolutely necessary:
 
 1. You must have administrator access to your computer (i.e., you must be able to install things yourself without requesting IT approval).
-2. You must have at least `20 GB` of free disk space on your computer (but we would recommend more, to be safe).
+2. You should have at least `20 GB` of free disk space on your computer (but we would recommend more, to be safe).
 3. If you are using Windows you must be using Windows 10/11; Windows 7 and 8 will not be sufficient for this course.
 4. Some parts of this course will make use of GitHub, so creating a GitHub account is recommended
 5. For easier communication we've created a Discord Server for this programm, if you're interested install Discord and follow this [link](https://discord.gg/BEX7XRb8)
 
-If you foresee any of these being a problem please reach out to one of the instructors too see what steps you can take to ensure you are ready for the course start.
+If you foresee any of these being a problem please reach out to one of the instructors to see what steps you can take to ensure you are ready for the course start.
 
 ## Some quick general notes on instructions
 
 - If you have some of these things installed on your computer already that should (theoretically) be okay.
-  However, you need to make sure that you are able to complete the steps described in `checking your install` (not there yet) section below without issue.
+  However, you need to make sure that you are able to complete the steps described in `checking your install` section below without issue.
   - This is mainly to see if your Docker installation is actually working!
 
 ## OS-specific installation instructions
@@ -100,26 +96,44 @@ You already have it!
 Depending on which version of Linux you’re running you may need to type `bash` inside the terminal to access it (and hit enter).
 To check whether this is necessary, follow these steps:
 
-1. Open a terminal and type `echo $SHELL`.
-   If it reads `/bin/bash` then you are all set!
-   If not, whenever the instructions read "open a terminal," please assume you are to open a terminal, type `bash`, and the proceed with the instructions as specified.
+Open a terminal and type `echo $SHELL`.
+
+   If it reads `/bin/bash` then you are all set, this should be the standard.
+   If not go through these following steps:
+
+   1. To check which shell you're using open a terminal and type `echo $SHELL`.
+   - If it reads `/bin/bash` then you are all set!
+   - If it read `/bin/zsh we will need to make the following adjustments
+   2. Type `cat /etc/shells` and hit enter
+      - under the list of accaeptable shells you should find `/bin/bash`, note down this path (in most cases it should just read /bin/bash)
+   3. Type `chsh -s /bin/bash` and hit enter (Note. `chsh` stands simply for "change shell", this process is harmless and reversible, no worries. For more info see the official [documentation](https://linux.die.net/man/1/chsh)))
+   4. Close and reopen your terminal
+   5. Verify that you're now using the bash shell via `echo $SHELL`
 
 
 **VSCode**
 
 1. Go to https://code.visualstudio.com/ and click the download button for either the .deb (Ubuntu, Debian) or the .rpm (Fedora, CentOS) file.
 1. Double-click the downloaded file to install VSCode.
-   (You may be prompted to type your administrator password during the install).
-
--- explanation on how to acess wsl
 
 **Docker**
 
-1. You will be following different instructions depending on your distro ([Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Debian](https://docs.docker.com/engine/install/debian/), [Fedora](https://docs.docker.com/engine/install/fedora/), [CentOS](https://docs.docker.com/engine/install/centos/)).
-   Make sure to follow the “Install using the repository” method!
-1. Once you’ve installed Docker make sure to follow the [post-install instructions](https://docs.docker.com/engine/install/linux-postinstall/) as well.
-   You only need to do the “Manage Docker as a non-root user” and “Configure Docker to start on boot” steps.
-1. Open a new terminal and type `docker run hello-world`.
+Installing Docker Desktop is the recommended approach for all systems. You'll need administraror (sudo) rights to follow this process.
+
+1. Install Docker Desktop by following the official [installation guide](https://docs.docker.com/desktop/install/linux-install/) for your specific distro.
+
+   1. Set up Docker's package repository. See `step one` of [Install using the apt repository](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository).
+   2. Download latest DEB package
+   3. Open a terminal and install the package with apt following
+
+2. To Launch Docker Desktop run:
+      `systemctl --user start docker-desktop``
+
+   - alternatively to enable Docker Desktop to start at sign-in run:
+      `systemctl --user enable docker-desktop`
+
+3. Close and Re-open a new terminal and type 
+   `docker run hello-world`.
    A brief introductory message should be printed to the screen.
 ```
 
@@ -141,28 +155,33 @@ Newer versions of Mac OS will rely on a differnt standard, i.e. `zsh`, so we mig
 **VSCode**
 
 1. Go to https://code.visualstudio.com/ and click the download button.
-1. Unzip the downloaded file (e.g., `VSCode-darwin-stable.zip`) and moving the resulting `Visual Studio Code` file to your Applications directory.
+2. Unzip the downloaded file (e.g., `VSCode-darwin-stable.zip`) and moving the resulting `Visual Studio Code` file to your Applications directory.
 
 
 **Docker**
 
 1. Go to https://hub.docker.com/editions/community/docker-ce-desktop-mac/ and press “Get Docker”.
-1. Open the “Docker.dmg” file that is downloaded and drag and drop the icon to the Applications folder
-1. Open the Docker application and enter your password.
+2. Open the “Docker.dmg” file that is downloaded and drag and drop the icon to the Applications folder
+3. Open the Docker application and enter your password.
    An icon will appear in the status bar in the top-left of the screen.
    Wait until it reads “Docker Desktop is now up and running!”
-1. Open a new terminal and type `docker run hello-world`.
+4. Open a new terminal and type `docker run hello-world`.
    A brief introductory message should be printed to the screen.
 
 (The above step-by-step Docker instructions are distilled from [here](https://docs.docker.com/docker-for-mac/install/).
 If you have questions during the installation procedure please check that link for potential answers!)
 ```
+
 ````
 
-**Note**: If the instructions aren't working and you have spent more than 15-20 minutes troubleshooting on your own, reach out on the #help-installation channel on the Discord channel with the exact problems you're having.
+**Note**: If the instructions aren't working and you have spent more than 15-20 minutes troubleshooting on your own, reach out on the #help-installation channel on the Discord server with the exact problems you're having.
 One of the instructors will try and get back to you quickly to help resolve the situation.
 If they're unable to help via Discord, you may be directed to attend one of the installation office hours.
 
+## Checking your install
+
+Simply open a new terminal and type `docker run hello-world`.
+   - A brief introductory message should be printed to the screen.
 
 ## GitHub account
 
@@ -176,43 +195,21 @@ You will be invited to the course channel via e-mail.
 
 ## Modern web browser
 
-Install Firefox or Chrome.
-(Safari will also work.)
+Install Firefox or Chrome (Safari will also work.)
 Microsoft Edge is not modern, despite what Microsoft might try and otherwise tell you.
-
 
 
 ### Getting the workshop content
 
+- remove for now???
+
 Now that you have installed the required software (or not) to follow the workshop, it's time to gather the respective
-materials. Please use the `tab` matching your setup.
+materials. To do so either clone the [Course Github repo]() for download the zipped content via this [link]()
 
-```{tabbed} Conda
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" alt="conda logo" width="300"/>\
-<sub><sup><sub><sup>https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg</sup></sub></sup></sub>
-
-By installing `Python` on your system (i.e. specifically `Conda`) and setting up the appropriate environment, you will be able to open all the `Jupyter Notebooks` and go through the whole content of the course locally. 
-
-To get things up and running, please follow these steps:
-
-1. Download the [`environment.yml`](https://raw.githubusercontent.com/peerherholz/docker_workshop/master/environment.yml) file (e.g. with right mouse click -> Save As). Make sure that the file ends with `.yml` and not `.txt`.
-2. Open up a conda terminal (or any other terminal), and create a new conda environment with the following command: `conda env create -f /path/to/file/environment.yml` - For example ``conda env create -f ~/Downloads/environment.yml`
-3. Download the notebooks in this repository via [this link](https://github.com/peerherholz/docker_workshop/archive/master.zip)) and unzip them to your preferred location, e.g. `Desktop/Python_for_Psychologists_Winter2021`.
-4. Next, open up a `conda terminal` (or any other `terminal`), activate the `conda environment` with `conda activate pfp_2021` (or on older `conda environment` with `source activate pfp_2021` for `mac` and `linux` and `activate pfp_2021` for `windows`).
-5. Finally, via the `terminal`, move to the folder where you've put all the unzipped content of this workshop, e.g. with the command `cd ~/Desktop/docker_workshop` and run the command `jupyter notebook`. If the `notebook server` isn't automatically opened in a new browser window, please copy-paste either the `http://127.0.0.1:8888/...` or the `http://localhost:8888/...` path into a new browser window and press `Enter`. You should now see the `jupyter notebook server` (looking like a file browser and displaying the content of the directory). 
-```
-
-```{tabbed} Jupyter NBViewer
-<img src="https://nbviewer.jupyter.org/static/img/nav_logo.svg" alt="conda logo" width="300"/>\
-<sub><sup><sub><sup>https://nbviewer.jupyter.org/static/img/nav_logo.svg</sup></sub></sup></sub>
-
-
-If you want to go through the content of this workshop without installing anything on your machine, you should chose this approach. To see all the notebooks and slides from this workshop, please use this [Jupyter NBviewer link](https://nbviewer.jupyter.org/github/peerherholz/workshop_weizmann/blob/main/workshop/workshop_weizmann_overview.ipynb).
-```
 
 ### Enter the matrix
 
-Once you reached this point, you should be ready the enter the matrix and follow the workshop in your preferred way. Congrats, fantastic work!
+Once you have reached this point, you should be ready the enter the matrix and follow the workshop in your preferred way. Congrats, fantastic work!
 
 ![logo](https://media1.tenor.com/images/e5c21d98f56c4af119b4e14b6a9df893/tenor.gif?itemid=4011236)\
 <sub><sup><sub><sup>https://media1.tenor.com/images/e5c21d98f56c4af119b4e14b6a9df893/tenor.gif?itemid=4011236</sup></sub></sup></sub>
