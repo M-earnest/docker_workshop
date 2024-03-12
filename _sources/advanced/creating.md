@@ -148,40 +148,40 @@ Well, say no more and meet `Neurodocker`, a Docker container that targets the cr
 Even though Neurodocker was designed for (you might've guessed it already) Docker containers to utilize in the realm of neuroscience, it's also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.
 
 So, let's see how we can create our Dockerfiles using `Neurodocker`. At first we have to get the Neurodocker image using the `docker pull command`
-<br>
+
 
 ![pull Neurodocker image](/static/Neurodocker_pull_image.png)
 
-<br>
+
 
 all we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use `neurodebian:bullseye` as a base and apt as package manager:
-<br>
+
 
 ![Neurodocker: select base-image and package manager](/static/Neurodocker_generate_docker_base.png)
 
-<br>
+
 
 Next, we specify all the Linux packages that we want to have installed in our image:
-<br>
+
 
 ![Neurodocker: Linux installations ](/static/Neurodocker_generate_docker_linux_installations.png)
 
-<br>
+
 
 Now, we are only missing the python part...
 
-<br>
+
 
 ![Neurodocker: setting up python](/static/Neurodocker_generate_docker_python.png)
 
-<br>
+
 
 Great! We have all the information that we need. Hence, let's run the `Neurodocker` container parsing the output to a file called 'Dockerfile'. We can do so using the `>-operator` :
-<br>
+
 
 ![Neurodocker: run container and parse output to Dockerfile](/static/Neurodocker_generate_docker_python_toDockerfile.png)
 
-<br>
+
 
 
 So using Neurodocker can save you a lot of time and stress. It's especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.

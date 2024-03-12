@@ -582,26 +582,16 @@ Output
 <p>You might wonder: Isn’t there a sufficient, faster and easier way of composing Dockerfiles?
 Well, say no more and meet <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>, a Docker container that targets the creation of Docker containers - Dockerception.</p>
 <p>Even though Neurodocker was designed for (you might’ve guessed it already) Docker containers to utilize in the realm of neuroscience, it’s also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.</p>
-<p>So, let’s see how we can create our Dockerfiles using <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>. At first we have to get the Neurodocker image using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">command</span></code>
-<br></p>
+<p>So, let’s see how we can create our Dockerfiles using <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>. At first we have to get the Neurodocker image using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">command</span></code></p>
 <p><img alt="pull Neurodocker image" src="../_images/Neurodocker_pull_image.png" /></p>
-<br>
-<p>all we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use <code class="docutils literal notranslate"><span class="pre">neurodebian:bullseye</span></code> as a base and apt as package manager:
-<br></p>
+<p>all we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use <code class="docutils literal notranslate"><span class="pre">neurodebian:bullseye</span></code> as a base and apt as package manager:</p>
 <p><img alt="Neurodocker: select base-image and package manager" src="../_images/Neurodocker_generate_docker_base.png" /></p>
-<br>
-<p>Next, we specify all the Linux packages that we want to have installed in our image:
-<br></p>
+<p>Next, we specify all the Linux packages that we want to have installed in our image:</p>
 <p><img alt="Neurodocker: Linux installations " src="../_images/Neurodocker_generate_docker_linux_installations.png" /></p>
-<br>
 <p>Now, we are only missing the python part…</p>
-<br>
 <p><img alt="Neurodocker: setting up python" src="../_images/Neurodocker_generate_docker_python.png" /></p>
-<br>
-<p>Great! We have all the information that we need. Hence, let’s run the <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code> container parsing the output to a file called ‘Dockerfile’. We can do so using the <code class="docutils literal notranslate"><span class="pre">&gt;-operator</span></code> :
-<br></p>
+<p>Great! We have all the information that we need. Hence, let’s run the <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code> container parsing the output to a file called ‘Dockerfile’. We can do so using the <code class="docutils literal notranslate"><span class="pre">&gt;-operator</span></code> :</p>
 <p><img alt="Neurodocker: run container and parse output to Dockerfile" src="../_images/Neurodocker_generate_docker_python_toDockerfile.png" /></p>
-<br>
 <p>So using Neurodocker can save you a lot of time and stress. It’s especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.</p>
 </section>
 <section id="docker-push">
