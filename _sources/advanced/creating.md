@@ -64,12 +64,12 @@ We will be relying on the `command line` and `bash` from here on out, if this se
 
 Here are the relevant layers we're going to build:
 
-1. FROM
+1. FROM - Baseimage
     - the "From" command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the "base" or "baseimage" of a container. At times we will also use the 'From' command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the 'from' command points to, e.g when calling 'FROM continuumio/miniconda3', the minconda3 image will have a specific OS defined.
 
     It is also possible to use the 'From' command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds [here](https://docs.docker.com/build/building/multi-stage/). 
 
-2. WORKDIR
+2. WORKDIR - working directory
     - The WORKDIR instruction sets the working directory for any of the other instructions that follow it in the Dockerfile (e.g. RUN, CMD, ENTRYPOINT, COPY, etc.)
     - it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host (If the specified directory does not exist on your system, Docker will create it automatically)
     - the only argument we provide is a concise, descriptive name for the folder/folder structure, e.g.
@@ -78,7 +78,7 @@ Here are the relevant layers we're going to build:
 
     Note!: be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
 
-3. Set Installations instruction
+3. RUN - install software, execute commands
     - In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers 'pip' and 'apt-get' in the same way we would use them in our bash shell.
 
     - We'll further make use of the `RUN` instruction, which will execute any specified command to create a new layer.
@@ -90,14 +90,14 @@ Here are the relevant layers we're going to build:
 
     Note!: You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
 
-4. Copy relevant files
+4. COPY - add files to image
     - Using the COPY instruction we can add files from our local system to our Docker Image
     - simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image
     - e.g. if i want to add a script "print_info.py" from the curent working directory into the project folder of the image
 
         `COPY print_info.py /project/`
 
-5. Entrypoint and CMD
+5. Entrypoint and CMD - make the image exectuable
     - To make a docker image executable you'll need to include either an 'ENTRYPOINT', an 'CMD' or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container. 
 
     The ENTRYPOINT specifies a command that will always be executed when the container starts (i.e. this should be the "main" command), while CMD defines the default arguments of the container, e.g.
@@ -120,7 +120,7 @@ Here are the relevant layers we're going to build:
 
     If we now simply run this conatiner using 'docker run myimage' it will try to locate and execute "script.py", if the user instead wants to run his python script called "my_script.py", he can simply add this info to the run instruction, i.e. 'docker run myimage "my_script.py"'.
 
-    If you want to go even more complex (which sometimes will be necessary) you can provide e.g. a bash script as your ENTRYPOINT like so
+    If you have more complex commands that should initally be run you can further provide bash scripts as your ENTRYPOINT like so:
    
     ```
         COPY ./docker-entrypoint.sh /
@@ -131,10 +131,7 @@ Here are the relevant layers we're going to build:
 
 ### Practical example
 
-Let's try this all together! The following docker image will simply run a python script called print_info.py()
-
-
-DONT EVEN NEED FUCKING COPY IN THIS SCRIPT: FIGURE THIS SHIT OUT WTF
+Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
 
 
 1. Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
@@ -253,10 +250,10 @@ DONT EVEN NEED FUCKING COPY IN THIS SCRIPT: FIGURE THIS SHIT OUT WTF
     `docker run my_first_docker python3 /info/print_info.py`
     ```
         Date: 2024-03-13
-        Welcome to the Docker image for Your Study Title Here. You'll find all relevant information in the README file located in this folder.
+        Welcome to the Docker image for Your Study Title Here. Youll find all relevant information in the README file located in this folder.
     ```
 
-    No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we will modify the `docker run` command by providing a "mount" path, i.e. a pointer for which directories of the host system should be made accessible to the container. We do this by providing a `v -flag` (volume) and a local file path and the working directory in our container, separated by `:`. If we want to mount our current working directory (pwd in bash) to the projects folder in our container and run a local python script we can do:
+    No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the `docker run` command by providing a `mount path`, i.e. a pointer for which directories of the host system should be made accessible to the container. We do this by providing a `v -flag` (volume), a local file path and the working directory in our container, separated by `:`. If we want to mount our current working directory (`pwd` in bash) to the `/projects` folder in our container and run a local python script we can do:
 
      `docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py`
 
@@ -267,10 +264,11 @@ DONT EVEN NEED FUCKING COPY IN THIS SCRIPT: FIGURE THIS SHIT OUT WTF
             python3 = executable 
             print_info_copy.py = filename
     
+    Output:
     ```
         (base) Michaels-MBP:my_first_docker me$ docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py
         Date: 2024-03-13
-        Welcome to the Docker image for Your Study Title Here (Imported script via CMD). You'll find all relevant information in the README file located in this folder.
+        Welcome to the Docker image for Your Study Title Here (Imported script via CMD). Youll find all relevant information in the README file located in this folder.
 
     ```
 

@@ -508,13 +508,13 @@ document.write(`
 <p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
 <p>Here are the relevant layers we’re going to build:</p>
 <ol class="arabic">
-<li><p>FROM</p>
+<li><p>FROM - Baseimage</p>
 <ul class="simple">
 <li><p>the “From” command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the “base” or “baseimage” of a container. At times we will also use the ‘From’ command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the ‘from’ command points to, e.g when calling ‘FROM continuumio/miniconda3’, the minconda3 image will have a specific OS defined.</p></li>
 </ul>
 <p>It is also possible to use the ‘From’ command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds <a class="reference external" href="https://docs.docker.com/build/building/multi-stage/">here</a>.</p>
 </li>
-<li><p>WORKDIR</p>
+<li><p>WORKDIR - working directory</p>
 <ul>
 <li><p>The WORKDIR instruction sets the working directory for any of the other instructions that follow it in the Dockerfile (e.g. RUN, CMD, ENTRYPOINT, COPY, etc.)</p></li>
 <li><p>it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host (If the specified directory does not exist on your system, Docker will create it automatically)</p></li>
@@ -524,7 +524,7 @@ document.write(`
 </ul>
 <p>Note!: be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
 </li>
-<li><p>Set Installations instruction</p>
+<li><p>RUN - install software, execute commands</p>
 <ul>
 <li><p>In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers ‘pip’ and ‘apt-get’ in the same way we would use them in our bash shell.</p></li>
 <li><p>We’ll further make use of the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> instruction, which will execute any specified command to create a new layer.</p></li>
@@ -536,7 +536,7 @@ document.write(`
 </ul>
 <p>Note!: You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
 </li>
-<li><p>Copy relevant files</p>
+<li><p>COPY - add files to image</p>
 <ul>
 <li><p>Using the COPY instruction we can add files from our local system to our Docker Image</p></li>
 <li><p>simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image</p></li>
@@ -545,7 +545,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p>Entrypoint and CMD</p>
+<li><p>Entrypoint and CMD - make the image exectuable</p>
 <ul class="simple">
 <li><p>To make a docker image executable you’ll need to include either an ‘ENTRYPOINT’, an ‘CMD’ or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container.</p></li>
 </ul>
@@ -565,7 +565,7 @@ ENTRYPOINT [“python”]
 CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 ‘’’</p>
 <p>If we now simply run this conatiner using ‘docker run myimage’ it will try to locate and execute “<a class="reference external" href="http://script.py">script.py</a>”, if the user instead wants to run his python script called “my_script.py”, he can simply add this info to the run instruction, i.e. ‘docker run myimage “my_script.py”’.</p>
-<p>If you want to go even more complex (which sometimes will be necessary) you can provide e.g. a bash script as your ENTRYPOINT like so</p>
+<p>If you have more complex commands that should initally be run you can further provide bash scripts as your ENTRYPOINT like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span>
     <span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;/docker-entrypoint.sh&quot;</span><span class="p">]</span>
 </pre></div>
@@ -575,8 +575,7 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 </section>
 <section id="practical-example">
 <h2>Practical example<a class="headerlink" href="#practical-example" title="Link to this heading">#</a></h2>
-<p>Let’s try this all together! The following docker image will simply run a python script called print_info.py()</p>
-<p>DONT EVEN NEED FUCKING COPY IN THIS SCRIPT: FIGURE THIS SHIT OUT WTF</p>
+<p>Let’s try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.</p>
 <ol class="arabic">
 <li><p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p>
 <p>mkdir ~/Desktop/my_first_docker &amp;&amp; touch ~/Desktop/my_first_docker/Dockerfile</p>
@@ -681,10 +680,10 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 <p>If Instead we want to run the python script in our info folder we replace the default command, by including instructions in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code>, like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">my_first_docker</span> <span class="pre">python3</span> <span class="pre">/info/print_info.py</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">13</span>
-    <span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">image</span> <span class="k">for</span> <span class="n">Your</span> <span class="n">Study</span> <span class="n">Title</span> <span class="n">Here</span><span class="o">.</span> <span class="n">You</span><span class="s1">&#39;ll find all relevant information in the README file located in this folder.</span>
+    <span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">image</span> <span class="k">for</span> <span class="n">Your</span> <span class="n">Study</span> <span class="n">Title</span> <span class="n">Here</span><span class="o">.</span> <span class="n">Youll</span> <span class="n">find</span> <span class="nb">all</span> <span class="n">relevant</span> <span class="n">information</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">README</span> <span class="n">file</span> <span class="n">located</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">folder</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we will modify the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command by providing a “mount” path, i.e. a pointer for which directories of the host system should be made accessible to the container. We do this by providing a <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">-flag</span></code> (volume) and a local file path and the working directory in our container, separated by <code class="docutils literal notranslate"><span class="pre">:</span></code>. If we want to mount our current working directory (pwd in bash) to the projects folder in our container and run a local python script we can do:</p>
+<p>No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command by providing a <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">path</span></code>, i.e. a pointer for which directories of the host system should be made accessible to the container. We do this by providing a <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">-flag</span></code> (volume), a local file path and the working directory in our container, separated by <code class="docutils literal notranslate"><span class="pre">:</span></code>. If we want to mount our current working directory (<code class="docutils literal notranslate"><span class="pre">pwd</span></code> in bash) to the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder in our container and run a local python script we can do:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">$(pwd):/project</span> <span class="pre">my_first_docker</span> <span class="pre">python3</span> <span class="pre">print_info_copy.py</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> where:   
      $(pwd) = local machine :
@@ -694,9 +693,10 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
      print_info_copy.py = filename
 </pre></div>
 </div>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    (base) Michaels-MBP:my_first_docker me$ docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py
     Date: 2024-03-13
-    Welcome to the Docker image for Your Study Title Here (Imported script via CMD). You&#39;ll find all relevant information in the README file located in this folder.
+    Welcome to the Docker image for Your Study Title Here (Imported script via CMD). Youll find all relevant information in the README file located in this folder.
 
 </pre></div>
 </div>
