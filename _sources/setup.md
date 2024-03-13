@@ -179,7 +179,7 @@ If you have questions during the installation procedure please check that link f
 
 ````
 
-**Note**: If the instructions aren't working and you have spent more than 15-20 minutes troubleshooting on your own, reach out on the #help-installation channel on the Discord server with the exact problems you're having.
+**Note**: If the instructions aren't working and you have spent more than 15-20 minutes troubleshooting on your own, reach out on the #help-installation channel on the Discord server (info below) with the exact problems you're having.
 One of the instructors will try and get back to you quickly to help resolve the situation.
 If they're unable to help via Discord, you may be directed to attend one of the installation office hours.
 
@@ -196,7 +196,7 @@ It is a good idea to associate this with your university e-mail (if you have one
 ## Discord
 
 Go to https://discord.com/ and download and install Discord. Please note, that you can also use Discord through your browser if you don't want to download it.
-You will be invited to the course channel via e-mail.
+To join the workshop server follow this [invite link](https://discord.gg/ehN5haXS).
 
 ## Modern web browser
 
