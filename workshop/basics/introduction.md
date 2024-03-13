@@ -88,6 +88,9 @@ Interesting tutorials and blog posts:
 
 - collect new ressoruces here !!!!!!
 
+![example workflow using containerization](/static/Container_workflow.png)
+
+
 
 #### Docker vs Singularity
 
