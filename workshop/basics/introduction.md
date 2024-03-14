@@ -20,7 +20,7 @@
 
 ### Container technologies
 
-- Isolate the computing environments
+- Isolate the computing environments from the host system
 - Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere
 
 <br>
@@ -33,6 +33,13 @@
 Your colleague tells you to run the script via navigating to the respective folder and type:**
 <br> 
 `fancy_analysis.py` 
+<br>
+Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …
+<br>
+maybe add image here?
+...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything. 
+<br>
+Why does this happen?! 
 
 `Reproducibility!`
 
