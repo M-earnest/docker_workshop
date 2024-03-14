@@ -27,6 +27,15 @@
 
 #### Motivation - Why do we need containers?
 
+To motivate why the benefits of using containerization (or any kind of virtualization techniques for that matter) let's imagine the following scenario:
+
+`Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
+
+Your colleague tells you to run the script via navigating to the respective folder and type:
+
+python fancy_analyzes.py
+`
+
 `Reproducibility!`
 
 - Each project in a lab depends on complex software environments
@@ -53,8 +62,9 @@
     - "it works on my computer..."
     - etc.
 
+![it works on my machine](/static/It_works_on_my_machine.png)
 
-#### Virtual Machines and Containers
+#### Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)
 
 `Two main types`
 
@@ -62,11 +72,23 @@
     - Virtualbox
     - VMware
     - AWS, Google Compute Engine, ...
+        - emulate whole computer system (software+hardware)
+        - run on top of a physical machine using a hypervisor
+        - hypervisor shares and manages hardware of the host and executes the guest operating system
+        - guest machines are completely isolated and have dedicated resources
+    
 
 - Containers:
     - Docker
-    - Singularity  
+    - Singularity 
+        - share the host system’s kernel with other containers
+            → kernel level virtualization
+        - each container gets its own isolated user space
+        - only bins and libs are created from scratch
+        - containers are very lightweight and fast to start up
 
+![Virtual machines vs. Container](/static/VM_vs_Container.png)
+        
 
 Share the same main idea
 

@@ -425,7 +425,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers">Virtual Machines and Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-vs-singularity">Docker vs Singularity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
@@ -473,6 +473,11 @@ document.write(`
 <br>
 <section id="motivation-why-do-we-need-containers">
 <h3>Motivation - Why do we need containers?<a class="headerlink" href="#motivation-why-do-we-need-containers" title="Link to this heading">#</a></h3>
+<p>To motivate why the benefits of using containerization (or any kind of virtualization techniques for that matter) let’s imagine the following scenario:</p>
+<p>`Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.</p>
+<p>Your colleague tells you to run the script via navigating to the respective folder and type:</p>
+<p>python fancy_analyzes.py
+`</p>
 <p><code class="docutils literal notranslate"><span class="pre">Reproducibility!</span></code></p>
 <ul class="simple">
 <li><p>Each project in a lab depends on complex software environments</p>
@@ -503,25 +508,42 @@ document.write(`
 </ul>
 </li>
 </ul>
+<p><img alt="it works on my machine" src="../_images/It_works_on_my_machine.png" /></p>
 </section>
-<section id="virtual-machines-and-containers">
-<h3>Virtual Machines and Containers<a class="headerlink" href="#virtual-machines-and-containers" title="Link to this heading">#</a></h3>
+<section id="virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">
+<h3>Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)<a class="headerlink" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">main</span> <span class="pre">types</span></code></p>
 <ul class="simple">
 <li><p>Virtual Machines:</p>
 <ul>
 <li><p>Virtualbox</p></li>
 <li><p>VMware</p></li>
-<li><p>AWS, Google Compute Engine, …</p></li>
+<li><p>AWS, Google Compute Engine, …</p>
+<ul>
+<li><p>emulate whole computer system (software+hardware)</p></li>
+<li><p>run on top of a physical machine using a hypervisor</p></li>
+<li><p>hypervisor shares and manages hardware of the host and executes the guest operating system</p></li>
+<li><p>guest machines are completely isolated and have dedicated resources</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Containers:</p>
 <ul>
 <li><p>Docker</p></li>
-<li><p>Singularity</p></li>
+<li><p>Singularity</p>
+<ul>
+<li><p>share the host system’s kernel with other containers
+→ kernel level virtualization</p></li>
+<li><p>each container gets its own isolated user space</p></li>
+<li><p>only bins and libs are created from scratch</p></li>
+<li><p>containers are very lightweight and fast to start up</p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p><img alt="Virtual machines vs. Container" src="../_images/VM_vs_Container.png" /></p>
 <p>Share the same main idea</p>
 <ul class="simple">
 <li><p>Isolate the computing environment</p></li>
@@ -676,7 +698,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers">Virtual Machines and Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-vs-singularity">Docker vs Singularity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
