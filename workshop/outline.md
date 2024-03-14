@@ -5,14 +5,15 @@ The [overview]() already specified it, but just to be sure: the workshop will be
 | Time slot         | Topic | 
 |--------------|:-----:|
 | 9 AM - 9:30 AM |  [Welcome and introduction]() |
-| 9:30 AM - 10 AM |  [Software containers: a super short introduction]() |
-| 10 AM - 10:30 PM |  [Installation & Trouble shooting]() |
-| 10:30 PM - 12 PM |  [Quickstarting your software container expertise]() |
+| 9:30 AM - 10 AM |  [Installation & Trouble shooting]() | 
+| 10 AM - 10:30 PM | [Software containers and virtualization: a super short introduction]() |
+| 10:30 AM - 11:00 AM | [Quickstarting your software container expertise (Part1)]() |
+| 11:00 AM - 11:15 AM | [Coffee break]() |
+| 11:15 AM - 12:15 PM | [Quickstarting your software container expertise (Part2)]() |
+| 12:15 PM - 1 PM | [Management of software containers]() |
 |  |  |
-| 12 PM - 1 PM |  [Lunch break]() |
+| 1 PM - 2 PM |  [Lunch break]() |
 |  |  |
-| 1 PM - 1:30 PM |  [Management of software containers]() |
-| 1:30 PM - 2:30 PM |  [Creating software containers]() |
-| 2:30 AM - 3:15 PM |  [Software containers & data]() |
-| 3:15 PM - 4 PM |  [Automating software containers]() |
+| 2 PM - 3:30 PM |  [Creating software containers]() |
+| 3:30 AM - 4 PM |  [Software containers & data]() |
 | 4 PM - 5 PM |  [Creating your own software container]() |
