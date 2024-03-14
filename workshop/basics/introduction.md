@@ -31,13 +31,19 @@
 <br>
 **Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
 Your colleague tells you to run the script via navigating to the respective folder and type:**
+<br>
 <br> 
 `fancy_analysis.py` 
 <br>
+<br>
 Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …
 <br>
+<br>
 maybe add image here?
+<br>
+<br>
 ...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything. 
+<br>
 <br>
 Why does this happen?! 
 
