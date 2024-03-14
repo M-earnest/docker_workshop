@@ -20,7 +20,7 @@ Please visit this page again in the next few weeks for further information.
 
 You can checkout the respective sections:
 
-* [An overview]()
+* [An overview](overview.md)
 
    What's this workshop about and how is it organized?
 
@@ -28,16 +28,16 @@ You can checkout the respective sections:
 
    How are things implemented and supposed to work?
 
-* [General outline]()
+* [General outline](outline.md)
 
    What are the specific topics and aspects taught?
 
-* [Prerequisites]()
+* [Prerequisites](prerequisites.md)
 
    All things gotta start somewhere and using software containers in neuroscience research are of course no exceptions to that, especially since a certain amount of digital literacy, programming, etc. is required. 
    Here, we gathered some resources folks can check out in preparation for the course or just for fun.
 
-* [Software containers - a super short introduction]()
+* [Software containers - a super short introduction](introduction.md)
 
 
 * [Installation & Trouble shooting]()
@@ -63,10 +63,10 @@ You can checkout the respective sections:
 
 In case you have any questions or difficulties going through the workshop, please don’t hesitate a single second to get in touch with
 us. A great way to do this is to
-[open an issue](https://github.com/PeerHerholz/docker_workshop/issue) on the
-[GitHub site of the Workshop](https://github.com/PeerHerholz/docker_workshop) (also possible via the GitHub button at the top of the pages).
+[open an issue](https://github.com/M-earnest/docker_workshop/issue) on the
+[GitHub site of the Workshop](https://github.com/M-earnest/docker_workshop) (also possible via the GitHub button at the top of the pages).
 We would also highly appreciate and value every feedback or idea or you
-might have (via [issues](https://github.com/PeerHerholz/docker_workshop) or [hypothes.is annotation feature](https://web.hypothes.is/) on the right).
+might have (via [issues](https://github.com/M-earnest/docker_workshop) or [hypothes.is annotation feature](https://web.hypothes.is/) on the right).
 
 ## Acknowledgements
 

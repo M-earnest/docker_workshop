@@ -5,7 +5,7 @@
 
 - get local data into containers
 - get online data into containers
-- Datalad?
+- learn different ways of getting data into containers (e.g. store them in container or mount them into container during runtime)
 
 ### Motivation
 
@@ -92,7 +92,9 @@ And checking the outcome, everything worked like a charm!
 ```
     output
 ```
+### Mounting data inside and outside of your container
 
+Add info here
 
 ### Input/Output - administrator rights
 
