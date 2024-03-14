@@ -62,7 +62,7 @@ python fancy_analyzes.py
     - "it works on my computer..."
     - etc.
 
-![it works on my machine](/static/It_works_on_my_machine.png){ width="800" height="600" style="display: block; margin: 0 auto" }
+![it works on my machine](/static/It_works_on_my_machine.png)
 
 #### Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)
 
