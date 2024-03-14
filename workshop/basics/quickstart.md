@@ -10,7 +10,7 @@
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
 - access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
-- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](link) to catch up!)
+- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](intro_to_shell.ipynb) to catch up!)
 
 
 ## Outline
