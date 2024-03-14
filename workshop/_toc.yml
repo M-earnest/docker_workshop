@@ -13,7 +13,6 @@ chapters:
 - file: basics
   sections:
     - file: basics/introduction
-    - file: basics/installation_trouble_shooting
     - file: basics/quickstart
 - file: advanced
   sections:
