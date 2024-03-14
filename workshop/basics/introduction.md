@@ -32,7 +32,8 @@ To motivate why the benefits of using containerization (or any kind of virtualiz
 `
 Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
 Your colleague tells you to run the script via navigating to the respective folder and type:`
-<code> fancy_analysis.py </code>
+<br> 
+`fancy_analysis.py` 
 
 `Reproducibility!`
 
