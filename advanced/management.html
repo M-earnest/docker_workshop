@@ -576,24 +576,6 @@ WARNING: daemon is not using the default seccomp profile
 </ul>
 </li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-    <span class="ow">or</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="p">(</span><span class="ow">in</span> <span class="n">every</span> <span class="n">OS</span><span class="p">)</span>
-
-    <span class="n">completey</span> <span class="n">reset</span> <span class="ow">and</span> <span class="n">create</span> <span class="n">new</span> <span class="n">default</span>
-
-    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">stop</span> <span class="n">default</span>
-    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">rm</span> <span class="n">default</span>
-    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">create</span> <span class="o">-</span><span class="n">d</span> <span class="n">virtualbox</span> <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">memory</span><span class="o">=</span><span class="mi">4096</span> \
-    <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">count</span><span class="o">=</span><span class="mi">2</span> <span class="o">--</span><span class="n">virtualbox</span><span class="o">-</span><span class="n">disk</span><span class="o">-</span><span class="n">size</span><span class="o">=</span><span class="mi">50000</span> <span class="n">default</span>
-
-    <span class="n">modify</span> <span class="n">existing</span> <span class="n">default</span>
-
-    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">stop</span> <span class="n">default</span>
-    <span class="n">VBoxManage</span> <span class="n">modifyvm</span> <span class="n">default</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">4096</span>
-    <span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">start</span> <span class="n">default</span>
-</pre></div>
-</div>
 <br>
 </section>
 <section id="resource-management">
