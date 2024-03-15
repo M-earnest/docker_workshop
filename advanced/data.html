@@ -539,7 +539,7 @@ The easiest way is to store the data you want to include in the same directory a
 Now, who remembers the flag we have to use within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to enable <strong>mounting</strong> ? …
 <br>
 …correct, you have to use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to specify the mounted directories. This flag can be untilized as follows <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container</span></code> .
-You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a <code class="docutils literal notranslate"><span class="pre">:ro</span></code> or <code class="docutils literal notranslate"><span class="pre">:wo</span></code> for write-only after your mount argument. It should look something like this:
+You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a <code class="docutils literal notranslate"><span class="pre">:ro</span></code>. It should look something like this:
 <br>
 <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container:ro</span></code></p>
 <br>
