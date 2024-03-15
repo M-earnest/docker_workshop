@@ -133,25 +133,6 @@ Among this barrage of information, we can see that docker uses a default amount 
 
 
 
-```
-
-
-    or the command line (in every OS)
-
-    completey reset and create new default
-
-    docker-machine stop default
-    docker-machine rm default
-    docker-machine create -d virtualbox --virtualbox-memory=4096 \
-    --virtualbox-cpu-count=2 --virtualbox-disk-size=50000 default
-
-    modify existing default
-
-    docker-machine stop default
-    VBoxManage modifyvm default --memory 4096
-    docker-machine start default
-```
-
 <br>
 
 #### Resource management
