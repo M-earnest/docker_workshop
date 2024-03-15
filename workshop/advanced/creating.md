@@ -64,12 +64,12 @@ We will be relying on the `command line` and `bash` from here on out, if this se
 
 Here are the relevant layers we're going to build:
 
-1. FROM - Baseimage
+### 1. FROM - Baseimage
     - the "From" command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the "base" or "baseimage" of a container. At times we will also use the 'From' command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the 'from' command points to, e.g when calling 'FROM continuumio/miniconda3', the minconda3 image will have a specific OS defined.
 
     It is also possible to use the 'From' command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds [here](https://docs.docker.com/build/building/multi-stage/). 
 
-2. WORKDIR - working directory
+### 2. WORKDIR - working directory
     - The WORKDIR instruction sets the working directory for any of the other instructions that follow it in the Dockerfile (e.g. RUN, CMD, ENTRYPOINT, COPY, etc.)
     - it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host (If the specified directory does not exist on your system, Docker will create it automatically)
     - the only argument we provide is a concise, descriptive name for the folder/folder structure, e.g.
@@ -78,7 +78,7 @@ Here are the relevant layers we're going to build:
 
     Note!: be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
 
-3. RUN - install software, execute commands
+### 3. RUN - install software, execute commands
     - In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers 'pip' and 'apt-get' in the same way we would use them in our bash shell.
 
     - We'll further make use of the `RUN` instruction, which will execute any specified command to create a new layer.
@@ -90,14 +90,14 @@ Here are the relevant layers we're going to build:
 
     Note!: You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
 
-4. COPY - add files to image
+### 4. COPY - add files to image
     - Using the COPY instruction we can add files from our local system to our Docker Image
     - simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image
     - e.g. if i want to add a script "print_info.py" from the curent working directory into the project folder of the image
 
         `COPY print_info.py /project/`
 
-5. Entrypoint and CMD - make the image exectuable
+### 5. Entrypoint and CMD - make the image exectuable
     - To make a docker image executable you'll need to include either an 'ENTRYPOINT', an 'CMD' or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container. 
 
     The ENTRYPOINT specifies a command that will always be executed when the container starts (i.e. this should be the "main" command), while CMD defines the default arguments of the container, e.g.
@@ -143,7 +143,7 @@ Let's try this all together! The following docker image will simply print some i
     `cp /resources/README.md /Users/me/Desktop/my_first_docker`
 
 
-2. Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
+3. Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
 
     ```
         # Step 1: Use the newest Ubuntu version as a base image
@@ -168,7 +168,7 @@ Let's try this all together! The following docker image will simply print some i
         CMD ["cat", "/info/README.md"]
     ```
 
-4. Docker build
+**4. Docker build**
 
     Now that we've composed our Dockerfile, we can build our image via the 'docker build' command in the terminal. 
 
@@ -211,7 +211,7 @@ Let's try this all together! The following docker image will simply print some i
             my_first_docker        latest    c1891eb763de   23 minutes ago   614MB
         ```
 
-5. Run the container
+**5. Docker run**
 
     The most basic way to run a container from the terminal is simply `docker run imagename`, e.g. in :
 
