@@ -132,8 +132,6 @@ Among this barrage of information, we can see that docker uses a default amount 
     - find OS specific instructions on the [Docker Website](https://docs.docker.com/desktop/settings/mac/)
 
 
-#### !! Docker configuration Slide 18 !!
-- have to check what Docker-machine is for this part
 
 ```
 
