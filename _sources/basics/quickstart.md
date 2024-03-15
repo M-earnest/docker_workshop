@@ -203,7 +203,7 @@ Login Succeeded
 Once you're logged in your build and tagged docker images can be pushed to the docker hub via the command line:
   `docker push your-cool-image`
   
-- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (note: both methods will be covered during the afternoon sessions)
+- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (note: both methods will be covered during the afternoon sessions)(delete due to neccessity of paid subscription?)
 
 - image????
 
