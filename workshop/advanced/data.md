@@ -105,7 +105,7 @@ Well, all of you should have heard about mounting before in our * [quickstart](b
 Now, who remembers the flag we have to use within the `docker run` command to enable **mounting** ? ...
 <br>
 ...correct, you have to use the `-v` flag within the `docker run` command to specify the mounted directories. This flag can be untilized as follows `-v path/outside/container:/path/inside/container` . 
-You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a `:ro` or `:wo` for write-only after your mount argument. It should look something like this: 
+You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a `:ro`. It should look something like this: 
 <br> 
 `-v path/outside/container:/path/inside/container:ro`
 
