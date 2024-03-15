@@ -111,6 +111,7 @@ You can also restrict the rights of mounted paths, e.g. read-only in case any mo
 
 <br>
 <br>
+**Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue is the  user flag :`-u` .
 Add practical example here?
 
 
