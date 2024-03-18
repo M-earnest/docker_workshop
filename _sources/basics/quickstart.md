@@ -15,17 +15,26 @@
 
 ## Outline
 
-1. Introduction
+1. General Introduction
 2. Quickstart
 
 ### Where is Docker?
 
+- !! DOCKER DESKTOP START INFO!!
 
-- either start [Docker Desktop](https://docs.docker.com/desktop/use-desktop/) GUI (Graphical User Interface)
-- or simply via Command-line Interface aka the UNIX Shell.
-    -  this is also what we'll be focussing on in this workshop
+- start [Docker Desktop](https://docs.docker.com/desktop/use-desktop/) GUI (Graphical User Interface)
+- open a terminal (the Command-line Interface aka the UNIX Shell)
+    -  this is also what we'll be mostly be working with in this workshop
+- test if docker is working by tying `docker info` into your terminal and hit enter
+    - if you get an output that looks somewhat like the one below, you're good to go
+        ```
+          Client:
+              Version:    24.0.6
+              Context:    desktop-linux
+              Debug Mode: false
+              Plugins:
+        ```
 
--- export path?
 
 #### Getting started
 
@@ -169,7 +178,7 @@ For more examples and ideas, visit:
 ````
 
 
-### So what did we just do? The RUN command
+### So what did we just do? The `run` command
 
 the command: `docker run hello-world`
 
@@ -419,6 +428,11 @@ To solidfy what we've learned in this session, please try the following excercis
 
 
 - pull the neurodebian docker container in its nd-non-free version
+<details>
+<summary>Solution</summary>
+Test dropdpown!
+</details>
+
 - mount your Desktop to data and create a directory namend docker_is_fun
 - within it, create a .txt named i_like_docker.txt
 - exit the container
@@ -448,6 +462,13 @@ To solidfy what we've learned in this session, please try the following excercis
 ```
 
 
+TEST scrollable content
+
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula, elit in consequat elementum, neque purus ultrices quam, a convallis libero dolor id urna. Sed ultrices, diam eget ullamcorper sodales, nisl erat convallis eros, non viverra libero dui quis neque. Suspendisse potenti. Mauris auctor, diam id auctor aliquet, nunc nulla aliquam nisi, vitae interdum nisl sapien quis justo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum vitae eros ex. Duis at velit maximus, molestie est a, tempor magna.</p>
+    <p>Integer nec odio nec lorem fringilla elementum. Proin sed libero nec mauris aliquam sollicitudin. Proin vulputate vulputate eros, a fringilla dui porttitor in. Vivamus fermentum tortor quam, at aliquam mi blandit a. Donec sed fermentum orci, auctor consequat lorem. Aliquam erat volutpat. Vestibulum et scelerisque ante, dapibus convallis nisi.</p>
+    <!-- Add more paragraphs as needed -->
+</div>
 
 
 

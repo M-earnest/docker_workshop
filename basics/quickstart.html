@@ -427,7 +427,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The RUN command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
@@ -471,20 +471,33 @@ document.write(`
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Introduction</p></li>
+<li><p>General Introduction</p></li>
 <li><p>Quickstart</p></li>
 </ol>
 <section id="where-is-docker">
 <h3>Where is Docker?<a class="headerlink" href="#where-is-docker" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>either start <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a> GUI (Graphical User Interface)</p></li>
-<li><p>or simply via Command-line Interface aka the UNIX Shell.</p>
 <ul>
-<li><p>this is also what we’ll be focussing on in this workshop</p></li>
+<li><p>!! DOCKER DESKTOP START INFO!!</p></li>
+<li><p>start <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a> GUI (Graphical User Interface)</p></li>
+<li><p>open a terminal (the Command-line Interface aka the UNIX Shell)</p>
+<ul class="simple">
+<li><p>this is also what we’ll be mostly be working with in this workshop</p></li>
+</ul>
+</li>
+<li><p>test if docker is working by tying <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">info</span></code> into your terminal and hit enter</p>
+<ul>
+<li><p>if you get an output that looks somewhat like the one below, you’re good to go</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Client</span><span class="p">:</span>
+      <span class="n">Version</span><span class="p">:</span>    <span class="mf">24.0.6</span>
+      <span class="n">Context</span><span class="p">:</span>    <span class="n">desktop</span><span class="o">-</span><span class="n">linux</span>
+      <span class="n">Debug</span> <span class="n">Mode</span><span class="p">:</span> <span class="n">false</span>
+      <span class="n">Plugins</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </li>
 </ul>
-<p>– export path?</p>
 <section id="getting-started">
 <h4>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h4>
 <ul class="simple">
@@ -626,7 +639,7 @@ For more examples and ideas, visit:
 </section>
 </section>
 <section id="so-what-did-we-just-do-the-run-command">
-<h3>So what did we just do? The RUN command<a class="headerlink" href="#so-what-did-we-just-do-the-run-command" title="Link to this heading">#</a></h3>
+<h3>So what did we just do? The <code class="docutils literal notranslate"><span class="pre">run</span></code> command<a class="headerlink" href="#so-what-did-we-just-do-the-run-command" title="Link to this heading">#</a></h3>
 <p>the command: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
 <ol class="arabic simple">
 <li><p>tells docker to run or execute the <em>container</em> or <em>image</em> <code class="docutils literal notranslate"><span class="pre">hello-world</span></code></p></li>
@@ -822,6 +835,12 @@ docker_mne		sub-01			sub-03			sub-05
 <p>To solidfy what we’ve learned in this session, please try the following excercises:</p>
 <ul class="simple">
 <li><p>pull the neurodebian docker container in its nd-non-free version</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+Test dropdpown!
+</details>
+<ul class="simple">
 <li><p>mount your Desktop to data and create a directory namend docker_is_fun</p></li>
 <li><p>within it, create a .txt named i_like_docker.txt</p></li>
 <li><p>exit the container</p></li>
@@ -848,6 +867,12 @@ docker_mne		sub-01			sub-03			sub-05
     <span class="c1"># mounting paths</span>
     <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">host</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">within</span><span class="o">/</span><span class="n">container</span> <span class="n">ubuntu</span>
 </pre></div>
+</div>
+<p>TEST scrollable content</p>
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula, elit in consequat elementum, neque purus ultrices quam, a convallis libero dolor id urna. Sed ultrices, diam eget ullamcorper sodales, nisl erat convallis eros, non viverra libero dui quis neque. Suspendisse potenti. Mauris auctor, diam id auctor aliquet, nunc nulla aliquam nisi, vitae interdum nisl sapien quis justo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum vitae eros ex. Duis at velit maximus, molestie est a, tempor magna.</p>
+    <p>Integer nec odio nec lorem fringilla elementum. Proin sed libero nec mauris aliquam sollicitudin. Proin vulputate vulputate eros, a fringilla dui porttitor in. Vivamus fermentum tortor quam, at aliquam mi blandit a. Donec sed fermentum orci, auctor consequat lorem. Aliquam erat volutpat. Vestibulum et scelerisque ante, dapibus convallis nisi.</p>
+    <!-- Add more paragraphs as needed -->
 </div>
 </section>
 </section>
@@ -924,7 +949,7 @@ docker_mne		sub-01			sub-03			sub-05
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The RUN command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-did-we-just-do-the-run-command">So what did we just do? The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
