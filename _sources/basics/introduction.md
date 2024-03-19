@@ -48,7 +48,7 @@ Amazing, you can relax and let the script do the work as it will just run on you
 <br>
 <br>
 
-![Thumbs up computer meme]([https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3FzeHRyOTkzOHF0MHZ5bHVlamRscmxyOTB2bmhia3RxdXc2dTFqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XreQmk7ETCak0/giphy.gif))
+![Thumbs up computer meme](https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0)
 
 <br>
 <br>
@@ -147,16 +147,17 @@ Popular choices for the management and creation of virtual environments are:
 - Containers:
   - Emulate a whole operation system, which is isolated from the host system (including file system etc.)
   - Provide a mechanism to encapsulate environments and virtualized OS in a self-contained unit that can run anywhere, independant of the host OS
-  - containers are very lightweight and fast to start up or modify
+  - containers are very lightweight and fast to start up, modify or transfer
   - each container gets its own isolated user space (Docker containers)
   
 <br>
        
-- Virtual Machines:
+- Virtual Machines (VM's):
     - emulate whole computer system (software+hardware)
     - run on top of a physical machine using a hypervisor
     - hypervisor shares and manages hardware of the host and executes the guest operating system
     - guest machines are completely isolated and have dedicated resources
+    - VM's are very heavy, difficult to transfer
 
 <br>
 
