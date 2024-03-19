@@ -6,15 +6,16 @@ This will not only make your life easier, but integrate Docker in reproducible, 
 
 ### Automating builds using Github
 
-Github workflows allow ...
+GitHub workflows allow Users to define processes that automatically run when certain actions (push, pull, commits etc.) are performed on a repository. This has many application such as automatically building apps or e.g. creating and updating this website. We will make use of GitHub workflows to automatically generate and update Docker images and push them to DockerHub. A GitHub workflow is specified in a YAML file (.yml), like the one you'll find under point [4.](https://m-earnest.github.io/docker_workshop/advanced/automating.html#setup-the-github-workflow), which will have to be included in the `.github/workflows` directory in a repository. 
+
+Find more info on GitHub workflows in the [official documentation](https://docs.github.com/en/actions/using-workflows).
 
 ### 1. Set-up
-The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image (i.e. we recreate the local build context in a GitHub repo):
+The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image, i.e. we recreate the local build context in a GitHub repository:
 
    - create a new Github repository called docker_workshop (or substitute your project name)
    - set it up with your usual directory structure etc
-   - upload your [Dockerfile]() to this repository
-
+   - upload your Dockerfile to this repository (alternatively download the contents from our [examples folder](https://github.com/M-earnest/docker_workshop/tree/main/workshop/examples) and upload the files to your repository)
 
 So far, so simple, but to automate the build process we'll need to add a few things to our repository!
 
@@ -53,7 +54,8 @@ Now it's time to create our GitHub workflow file. For this we will create a .yml
 
     - go to your GitHub repo, create a new file called  `.github/workflows/container_build_publish.yml`
 
-    - copy and paste the following code into the file, make sure to replace the following part with your docker image name. Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your DockerHub username, the name of your image and a relevant tag after the `:`.
+    - copy and paste the following code into the file, make sure to replace the following part with your docker image name. 
+       - Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your username name of your image and a relevant tag after the `:`
 
 <br>
 <br>
@@ -132,7 +134,7 @@ Now we make sure that the settings of our GitHub repository allow for our workfl
         - under `Workflow permissions` you've selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 
 
-![workflows_permissions](/static/workflows_permissions.png)
+![workflow_permissions](/static/workflows_permissions.png)
 
 ### 6. Start the actions workflow
 
@@ -153,8 +155,11 @@ Every consecutive push or commit to this GitHub repository will now trigger a ne
     - If you check back on DockerHub, you should now see your updated Docker image
 
 
-
 ![docker_image_uploaded](/static/docker_image_uploaded.png)
+
+
+<br>
+<br>
 
 ### 7. Celebrate
 
