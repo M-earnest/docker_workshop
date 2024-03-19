@@ -27,7 +27,7 @@ So far, so simple, but to automate the build process we'll need to add a few thi
         - grant read, write and delete permissions and click on generate
     - a new dialogue box will pop-up, copy the displayed access token (we'll make use of this in the next section)
 
-!!! screenshot
+[new_access_token](static/new_access_token.png)
 
 3. Setup GitHub secrets
     - head to your Github repository
@@ -39,7 +39,10 @@ So far, so simple, but to automate the build process we'll need to add a few thi
             - under the `secret` heading add the `DockerHub access token` we've copied in the previous step
 
 
-!!! screenshot
+!!! actions_secrets
+
+[actions_secrets](static/actions_secrets.png)
+
 
 4. Setup the Github workflow
     - go to your GitHub repo, create a new file called  `.GitHub/workflows/container_build_publish.yml`
@@ -112,11 +115,14 @@ So far, so simple, but to automate the build process we'll need to add a few thi
     - make sure that 
         - under `Action permissions` you've selected `Allow all actions and reusable workflows`
 
-!!! screenshot
+
+[actions_permissions](static/actions_permissions.png)
+
 
         - under `Workflow permissions` you've selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 
-!!! screenshot
+
+[workflows_permissions](static/workflows_permissions.png)
 
 6. Start the actions workflow
 
@@ -131,12 +137,14 @@ Every consecutive push or commit to this GitHub repository will now trigger a ne
             - a green checkmark indicated that your workflow has run successfully, a red cross that the worklfow failed
             - in either case you can click on the workflow in question to get more info (e.g. to check what went wrong)
 
-!!! screenshot
+[workflows](static/workflows.png)
 
 
     - If you check back on DockerHub, you should now see your updated Docker image
 
-!!! screnshot
+
+
+[docker_image_uploaded](static/docker_image_uploaded.png)
 
 
 
