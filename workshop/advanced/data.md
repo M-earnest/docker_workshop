@@ -256,6 +256,8 @@ The probabaly most common use-case for mounts in the domain of neuroscientific r
 
 </div>
 
+![mounted directory after docker run](/static/mounted_directory_after_docker_run.png)
+
 ### Input/Output - administrator rights
 
 - notes re folder structures here
