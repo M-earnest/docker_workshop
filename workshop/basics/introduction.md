@@ -6,9 +6,12 @@
 ### Learning objectives
 
 - Why do we use containers?
-- What are the various types virtualization based solutions?
-- How to use Docker?
-- How to use Conda?
+- What are the various types of virtualization based solutions?
+- How to use Docker (maybe call it benefits of using Docker)?
+
+<br>
+
+*formulate objectives as questions or statements, e.g. motivation for virtualization?
 
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
@@ -18,10 +21,6 @@
 <br>
 
 
-### Container technologies
-
-- Isolate the computing environments from the host system
-- Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere
 
 <br>
 
@@ -157,6 +156,9 @@ Interesting tutorials and blog posts:
 
 - simple command-line implementation
 
+<details>
+<summary>Conda options</summary>
+
 ```
 
   # Updating conda
@@ -179,10 +181,23 @@ Interesting tutorials and blog posts:
   conda remove --name python3.6_test --all
 
 ```
+</details>
+
+
 
 `python venv` - (python module for the creation of virtual environments)
 
+<details>
+<summary>python venv options</summary>
 ![python venv manual](/static/python_venv.png)
+</details>
+
+
+### Container technologies
+
+- Isolate the computing environments from the host system
+- Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere
+
 
 
 

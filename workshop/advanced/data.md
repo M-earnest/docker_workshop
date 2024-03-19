@@ -114,7 +114,9 @@ You can also restrict the rights of mounted paths, e.g. read-only in case any mo
 **Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag :`-u` which can be utilized within the `docker run` command as follows: `docker run -u <userid>`. How do I get my <userid>?
 Well, thats easy! Simply type `id -u <yourusername>` into your terminal and your <userid> should appear.
 <br>
+
 ![how to get user id](/static/how_to_get_user_id.png)
+
 <br>
 Add practical example here?
 
