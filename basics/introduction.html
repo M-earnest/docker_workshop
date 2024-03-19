@@ -421,8 +421,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
@@ -430,6 +429,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a></li>
 </ul>
             </nav>
         </div>
@@ -449,10 +449,11 @@ document.write(`
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Why do we use containers?</p></li>
-<li><p>What are the various types virtualization based solutions?</p></li>
-<li><p>How to use Docker?</p></li>
-<li><p>How to use Conda?</p></li>
+<li><p>What are the various types of virtualization based solutions?</p></li>
+<li><p>How to use Docker (maybe call it benefits of using Docker)?</p></li>
 </ul>
+<br>
+<p>*formulate objectives as questions or statements, e.g. motivation for virtualization?</p>
 </section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
@@ -462,13 +463,6 @@ document.write(`
 </ul>
 <br>
 <br>
-</section>
-<section id="container-technologies">
-<h2>Container technologies<a class="headerlink" href="#container-technologies" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Isolate the computing environments from the host system</p></li>
-<li><p>Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere</p></li>
-</ul>
 <br>
 <section id="motivation-why-do-we-need-containers">
 <h3>Motivation - Why do we need containers?<a class="headerlink" href="#motivation-why-do-we-need-containers" title="Link to this heading">#</a></h3>
@@ -618,6 +612,8 @@ Why does this happen?!</p>
 <li><p>full suite of most relevant python packages and integrated development enviornments through the <a class="reference external" href="https://www.anaconda.com/">Anaconda</a> project</p></li>
 <li><p>simple command-line implementation</p></li>
 </ul>
+<details>
+<summary>Conda options</summary>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
   <span class="c1"># Updating conda</span>
   <span class="n">conda</span> <span class="n">update</span> <span class="n">conda</span>
@@ -640,9 +636,20 @@ Why does this happen?!</p>
 
 </pre></div>
 </div>
+</details>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">venv</span></code> - (python module for the creation of virtual environments)</p>
-<p><img alt="python venv manual" src="../_images/python_venv.png" /></p>
+<details>
+<summary>python venv options</summary>
+![python venv manual](/static/python_venv.png)
+</details>
 </section>
+</section>
+<section id="container-technologies">
+<h2>Container technologies<a class="headerlink" href="#container-technologies" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Isolate the computing environments from the host system</p></li>
+<li><p>Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere</p></li>
+</ul>
 </section>
 </section>
 
@@ -711,8 +718,7 @@ Why does this happen?!</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
@@ -720,6 +726,7 @@ Why does this happen?!</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a></li>
 </ul>
   </nav></div>
 
