@@ -47,7 +47,9 @@ Your colleague tells you to run the script via navigating to the respective fold
 Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …
 <br>
 <br>
-maybe add image here?
+
+![Thumbs up computer meme](https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0)
+
 <br>
 <br>
 ...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything. 
@@ -172,9 +174,6 @@ Popular choices for the management and creation of virtual environments are:
 
 ![example workflow using containerization](/static/Container_workflow.png)
 
-Interesting tutorials and blog posts:
-
-- collect new ressoruces here !!!!!!
 
 
 #### Docker vs Singularity
@@ -197,3 +196,6 @@ Interesting tutorials and blog posts:
 
 
 
+Interesting tutorials and blog posts:
+
+- collect new ressoruces here !!!!!!
