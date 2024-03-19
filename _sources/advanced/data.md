@@ -166,6 +166,7 @@ For our container to run the conversion properly, we need to mount the directory
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 
     ```
+    
         # list all docker images
         aaronreer@FK6P-1158240:~/data$ docker images
         REPOSITORY                  TAG        IMAGE ID       CREATED         SIZE
@@ -266,6 +267,7 @@ For our container to run the conversion properly, we need to mount the directory
         |------------ sub-emptyroom_ses-20021206_task-noise_meg.fif
         |------------ sub-emptyroom_ses-20021206_task-noise_meg.json
         aaronreer@FK6P-1158240:~/data$
+
     ```
 
 </div>
