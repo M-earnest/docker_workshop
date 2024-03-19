@@ -55,6 +55,10 @@ Now it's time to create our GitHub workflow file. For this we will create a .yml
 
     - copy and paste the following code into the file, make sure to replace the following part with your docker image name. Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your DockerHub username, the name of your image and a relevant tag after the `:`.
 
+<br>
+<br>
+
+
     ```
 
         name: Build and Publish Container
