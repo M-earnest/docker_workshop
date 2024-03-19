@@ -27,7 +27,7 @@ So far, so simple, but to automate the build process we'll need to add a few thi
         - grant read, write and delete permissions and click on generate
     - a new dialogue box will pop-up, copy the displayed access token (we'll make use of this in the next section)
 
-[new_access_token](static/new_access_token.png)
+![new_access_token](/static/new_access_token.png)
 
 3. Setup GitHub secrets
     - head to your Github repository
