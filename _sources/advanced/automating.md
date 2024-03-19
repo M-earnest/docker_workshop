@@ -146,11 +146,13 @@ Every consecutive push or commit to the main branch of this GitHub repository wi
 
  - Following go to the `actions` section of your GitHub repository
      - under workflow runs you should see either the current workflow still running or see the previous runs
-         - a green checkmark indicated that your workflow has run successfully, a red cross that the worklfow failed
+         - a green checkmark indicates that your workflow has run successfully, a red cross that the workflow failed
          - in either case you can click on the workflow in question to get more info (e.g. to check what went wrong)
 
 ![workflows](/static/workflows.png)
 
+<br>
+<br>
 
  - If you check back on DockerHub, you should now see your updated Docker image
 
@@ -158,8 +160,6 @@ Every consecutive push or commit to the main branch of this GitHub repository wi
 ![docker_image_uploaded](/static/docker_image_uploaded.png)
 
 
-<br>
-<br>
 
 ### 7. Celebrate
 
