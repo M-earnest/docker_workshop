@@ -397,7 +397,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -413,6 +415,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -424,6 +434,162 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="automating-software-containers">
 <h1>Automating software containers<a class="headerlink" href="#automating-software-containers" title="Link to this heading">#</a></h1>
+<p>If you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. Fortunately, there is a way to automate this process using GitHub, more specifically GitHub Workflows. The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push.</p>
+<p>This will not only make your life easier, but integrate Docker in reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?</p>
+<section id="automating-builds-using-github">
+<h2>Automating builds using Github<a class="headerlink" href="#automating-builds-using-github" title="Link to this heading">#</a></h2>
+<p>Github workflow explanation …</p>
+<ol class="arabic simple">
+<li><p>Set up
+The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfile:</p>
+<ul class="simple">
+<li><p>create a new Github repository called docker_workshop</p></li>
+<li><p>set it up with your usual directory structure etc</p></li>
+<li><p>upload your Dockerfile to this repository</p></li>
+</ul>
+</li>
+</ol>
+<p>So far, so simple, but to automate the build process we’ll need to add a few things to our repository</p>
+<ol class="arabic simple" start="2">
+<li><p>Generate a DockerHub access token</p>
+<ul class="simple">
+<li><p>head to DockerHub</p></li>
+<li><p>click on your profile in the top right and select my account</p></li>
+<li><p>under <code class="docutils literal notranslate"><span class="pre">security</span></code> click <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">new</span> <span class="pre">acces</span> <span class="pre">token</span></code></p>
+<ul>
+<li><p>the name of the access token should match the name of your Github repository</p></li>
+<li><p>grant read, write and delete permissions and click on generate</p></li>
+</ul>
+</li>
+<li><p>a new dialogue box will pop-up, copy the displayed access token (we’ll make use of this in the next section)</p></li>
+</ul>
+</li>
+</ol>
+<p>!!! screenshot</p>
+<ol class="arabic simple" start="3">
+<li><p>Setup GitHub secrets</p>
+<ul class="simple">
+<li><p>head to your Github repository</p></li>
+<li><p>click on <code class="docutils literal notranslate"><span class="pre">settings</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">and</span> <span class="pre">variables</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">actions</span></code></p></li>
+<li><p>next we will create two new GitHub “secrets”</p>
+<ul>
+<li><p>click on <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">repository</span> <span class="pre">secret</span></code> and enter the name <code class="docutils literal notranslate"><span class="pre">DOCKERHUB_USERNAME</span></code></p>
+<ul>
+<li><p>under the <code class="docutils literal notranslate"><span class="pre">secret</span></code> heading add your DockerHub Username</p></li>
+</ul>
+</li>
+<li><p>click on <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">repository</span> <span class="pre">secret</span></code> and enter the name <code class="docutils literal notranslate"><span class="pre">DOCKERHUB_TOKEN</span></code></p>
+<ul>
+<li><p>under the <code class="docutils literal notranslate"><span class="pre">secret</span></code> heading add the <code class="docutils literal notranslate"><span class="pre">DockerHub</span> <span class="pre">access</span> <span class="pre">token</span></code> we’ve copied in the previous step</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>!!! screenshot</p>
+<ol class="arabic" start="4">
+<li><p>Setup the Github workflow</p>
+<ul class="simple">
+<li><p>go to your GitHub repo, create a new folder called <code class="docutils literal notranslate"><span class="pre">.GitHub/workflows</span></code></p></li>
+<li><p>download the <a class="reference external" href="https://github.com/M-earnest/docker_workshop/blob/main/.github/workflows/container_build_publish.yml">workflow file</a> and add it to your newly created workflows folder</p></li>
+<li><p>alternatively create a file called <code class="docutils literal notranslate"><span class="pre">container_build_publish.yml</span></code> and add the following code to it</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+    name: Build and Publish Container
+
+    on:
+    # run it on push to the default repository branch
+    push:
+        branches: [main]
+    # run it during pull request
+    pull_request:
+
+    jobs:
+    # define job to build and publish docker image
+    build-and-push-docker-image:
+        name: Build Docker image and push to repositories
+        # run only when code is compiling and tests are passing
+        runs-on: ubuntu-latest
+
+        # steps to perform in job
+        steps:
+        - name: Checkout code
+            uses: actions/checkout@v3
+
+        # setup Docker buld action
+        - name: Set up Docker Buildx
+            id: buildx
+            uses: docker/setup-buildx-action@v2
+
+        - name: Login to DockerHub
+            uses: docker/login-action@v2
+            with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: Login to Github Packages
+            uses: docker/login-action@v2
+            with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+        
+        - name: Build image and push to Docker Hub and GitHub Container Registry
+            uses: docker/build-push-action@v2
+            with:
+            # relative path to the place where source code with Dockerfile is located
+            context: ./
+            # Note: tags has to be all lower-case
+            tags: |
+                peerherholz/bids_atlas:latest 
+                ghcr.io/peerherholz/bids_atlas:latest
+            # build on feature branches, push only on main branch
+            push: ${{ github.ref == &#39;refs/heads/main&#39; }}
+
+        - name: Image digest
+            run: echo ${{ steps.docker_build.outputs.digest }}
+
+    ```
+
+
+</pre></div>
+</div>
+</li>
+<li><p>Check your GitHub action settings</p>
+<ul class="simple">
+<li><p>in your GitHub repo, click <code class="docutils literal notranslate"><span class="pre">settings</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">actions</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">general</span></code></p></li>
+<li><p>make sure that</p>
+<ul>
+<li><p>under <code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">permissions</span></code> you’ve selected <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">all</span> <span class="pre">actions</span> <span class="pre">and</span> <span class="pre">reusable</span> <span class="pre">workflows</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>!!! screenshot</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    - under `Workflow permissions` you&#39;ve selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
+</pre></div>
+</div>
+<p>!!! screenshot</p>
+<ol class="arabic simple" start="6">
+<li><p>Start the actions workflow</p></li>
+</ol>
+<p>Every consecutive push or commit to this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- to test if your workflow works we therefore can simply commit or push a change, i.e.
+    - update a file online, e.g. you could add or update the `README` file of your repo
+    - push a change from your local machine to your online repo
+
+- Following go to the `actions` section of your GitHub repository
+    - under workflow runs you should see either the current workflow still running or see the previous runs
+        - a green checkmark indicated that your workflow has run successfully, a red cross that the worklfow failed
+        - in either case you can click on the workflow in question to get more info (e.g. to check what went wrong)
+
+- If you check back on DockerHub, you should now see your updated Docker image
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -463,7 +629,20 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
