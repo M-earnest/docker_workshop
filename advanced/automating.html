@@ -446,15 +446,16 @@ document.write(`
 <p>This will not only make your life easier, but integrate Docker in reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?</p>
 <section id="automating-builds-using-github">
 <h2>Automating builds using Github<a class="headerlink" href="#automating-builds-using-github" title="Link to this heading">#</a></h2>
-<p>Github workflows allow …</p>
+<p>GitHub workflows allow Users to define processes that automatically run when certain actions (push, pull, commits etc.) are performed on a repository. This has many application such as automatically building apps or e.g. creating and updating this website. We will make use of GitHub workflows to automatically generate and update Docker images and push them to DockerHub. A GitHub workflow is specified in a YAML file (.yml), like the one you’ll find under point <a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/automating.html#setup-the-github-workflow">4.</a>, which will have to be included in the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> directory in a repository.</p>
+<p>Find more info on GitHub workflows in the <a class="reference external" href="https://docs.github.com/en/actions/using-workflows">official documentation</a>.</p>
 </section>
 <section id="set-up">
 <h2>1. Set-up<a class="headerlink" href="#set-up" title="Link to this heading">#</a></h2>
-<p>The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image (i.e. we recreate the local build context in a GitHub repo):</p>
+<p>The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image, i.e. we recreate the local build context in a GitHub repository:</p>
 <ul class="simple">
 <li><p>create a new Github repository called docker_workshop (or substitute your project name)</p></li>
 <li><p>set it up with your usual directory structure etc</p></li>
-<li><p>upload your <a class="reference internal" href="../advanced.html"><span class="doc std std-doc">Dockerfile</span></a> to this repository</p></li>
+<li><p>upload your Dockerfile to this repository (alternatively download the contents from our <a class="reference external" href="https://github.com/M-earnest/docker_workshop/tree/main/workshop/examples">examples folder</a> and upload the files to your repository)</p></li>
 </ul>
 <p>So far, so simple, but to automate the build process we’ll need to add a few things to our repository!</p>
 </section>
@@ -490,7 +491,8 @@ document.write(`
 <p>Now it’s time to create our GitHub workflow file. For this we will create a .yml file that contains all the necessary instructions to build our image and to transfer it to our DockerHub registry.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- go to your GitHub repo, create a new file called  `.github/workflows/container_build_publish.yml`
 
-- copy and paste the following code into the file, make sure to replace the following part with your docker image name. Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your DockerHub username, the name of your image and a relevant tag after the `:`.
+- copy and paste the following code into the file, make sure to replace the following part with your docker image name. 
+   - Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your username name of your image and a relevant tag after the `:`
 </pre></div>
 </div>
 <br>
@@ -566,7 +568,7 @@ document.write(`
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    - under `Workflow permissions` you&#39;ve selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 </pre></div>
 </div>
-<p><img alt="workflows_permissions" src="static/workflows_permissions.png" /></p>
+<p><img alt="workflow_permissions" src="static/workflows_permissions.png" /></p>
 </section>
 <section id="start-the-actions-workflow">
 <h2>6. Start the actions workflow<a class="headerlink" href="#start-the-actions-workflow" title="Link to this heading">#</a></h2>
@@ -586,6 +588,8 @@ document.write(`
 </pre></div>
 </div>
 <p><img alt="docker_image_uploaded" src="../_images/docker_image_uploaded.png" /></p>
+<br>
+<br>
 </section>
 <section id="celebrate">
 <h2>7. Celebrate<a class="headerlink" href="#celebrate" title="Link to this heading">#</a></h2>
