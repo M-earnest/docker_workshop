@@ -148,13 +148,15 @@ Popular choices for the management and creation of virtual environments are:
   - containers are very lightweight and fast to start up or modify
   - each container gets its own isolated user space (Docker containers)
   
- 
+<br>
        
 - Virtual Machines:
     - emulate whole computer system (software+hardware)
     - run on top of a physical machine using a hypervisor
     - hypervisor shares and manages hardware of the host and executes the guest operating system
     - guest machines are completely isolated and have dedicated resources
+
+<br>
 
 ![Virtual machines vs. Container](/static/VM_vs_Container.png)
         

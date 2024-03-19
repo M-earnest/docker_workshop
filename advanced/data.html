@@ -460,12 +460,6 @@ But how do we get data into our Docker containers? Well, there are two different
 <br></p></li>
 </ol>
 <p>In the following sections, we will go over both ways of getting data inside your conatiner and provide some practical examples.</p>
-<p>``
-what else?
-….
-….
-….</p>
-<p>``</p>
 </section>
 <section id="getting-data-into-a-container-permanently">
 <h2>Getting Data into a container permanently<a class="headerlink" href="#getting-data-into-a-container-permanently" title="Link to this heading">#</a></h2>
@@ -535,19 +529,33 @@ The easiest way is to store the data you want to include in the same directory a
 </section>
 <section id="mounting-data-inside-and-outside-of-your-container">
 <h2>Mounting data inside and outside of your container<a class="headerlink" href="#mounting-data-inside-and-outside-of-your-container" title="Link to this heading">#</a></h2>
-<p>Well, all of you should have heard about mounting before in our * <a class="reference internal" href="#basics/quickstart.md"><span class="xref myst">quickstart</span></a> section. Once again, <strong>mounting</strong> describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
+<p>Well, all of you should have heard about mounting before in our <a class="reference internal" href="#basics/quickstart.md"><span class="xref myst">quickstart</span></a> section. Once again, <strong>mounting</strong> describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
 <br>
-Now, who remembers the flag we have to use within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to enable <strong>mounting</strong> ? …
+Now, who remembers the flag we have to use within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to enable <strong>mounting</strong> ? …</p>
 <br>
-…correct, you have to use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to specify the mounted directories. This flag can be untilized as follows <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container</span></code> .
-You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a <code class="docutils literal notranslate"><span class="pre">:ro</span></code>. It should look something like this:
+<details>
+<summary>flag for mounting</summary>
+<p>…correct, you have to use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to specify the mounted directories. This flag can be untilized as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">v</span> <span class="n">path</span><span class="o">/</span><span class="n">outside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">inside</span><span class="o">/</span><span class="n">container</span> <span class="n">name_of_container</span>
+</pre></div>
+</div>
+</details>
 <br>
-<code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container:ro</span></code></p>
+<p>You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a <code class="docutils literal notranslate"><span class="pre">:ro</span></code>. It should look something like this:
+<br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span> <span class="n">path</span><span class="o">/</span><span class="n">outside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">inside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="n">ro</span>
+</pre></div>
+</div>
 <br>
 <br>
-**Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag :`-u` which can be utilized within the `docker run` command as follows: `docker run -u <userid>`. How do I get my <userid>?
-Well, thats easy! Simply type `id -u <yourusername>` into your terminal and your <userid> should appear.
+<p><strong>Note:</strong> If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: <code class="docutils literal notranslate"><span class="pre">-u</span></code> which can be utilized within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userid</span><span class="o">&gt;</span> <span class="n">the_rest_of_the_command</span>
+</pre></div>
+</div>
 <br>
+<p>How do I get my <userid>?
+Well, thats easy! Simply type <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">-u</span> <span class="pre">&lt;yourusername&gt;</span></code> into your terminal and your <userid> should appear.
+<br></p>
 <p><img alt="how to get user id" src="../_images/how_to_get_user_id.png" /></p>
 <br>
 Add practical example here?

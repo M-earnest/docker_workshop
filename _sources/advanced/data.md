@@ -18,13 +18,6 @@ But how do we get data into our Docker containers? Well, there are two different
 
 In the following sections, we will go over both ways of getting data inside your conatiner and provide some practical examples.
 
-``
-what else?
-....
-....
-....
-
-``
 
 
 ### Getting Data into a container permanently
@@ -100,18 +93,43 @@ And checking the outcome, everything worked like a charm!
 ```
 ### Mounting data inside and outside of your container
 
-Well, all of you should have heard about mounting before in our * [quickstart](basics/quickstart.md) section. Once again, **mounting** describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
+Well, all of you should have heard about mounting before in our [quickstart](basics/quickstart.md) section. Once again, **mounting** describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
 <br>
 Now, who remembers the flag we have to use within the `docker run` command to enable **mounting** ? ...
+
 <br>
-...correct, you have to use the `-v` flag within the `docker run` command to specify the mounted directories. This flag can be untilized as follows `-v path/outside/container:/path/inside/container` . 
+
+<details>
+<summary>flag for mounting</summary>
+
+...correct, you have to use the `-v` flag within the `docker run` command to specify the mounted directories. This flag can be untilized as follows:
+
+```
+docker run -v path/outside/container:/path/inside/container name_of_container
+```
+
+</details>
+
+<br>
+
 You can also restrict the rights of mounted paths, e.g. read-only in case any modification on your local system should be prevented. This ca be done by adding a `:ro`. It should look something like this: 
 <br> 
-`-v path/outside/container:/path/inside/container:ro`
+
+```
+-v path/outside/container:/path/inside/container:ro
+``` 
 
 <br>
 <br>
-**Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag :`-u` which can be utilized within the `docker run` command as follows: `docker run -u <userid>`. How do I get my <userid>?
+
+**Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: `-u` which can be utilized within the `docker run` command as follows: 
+```
+docker run -u <userid> the_rest_of_the_command
+```
+
+<br>
+
+How do I get my <userid>?
 Well, thats easy! Simply type `id -u <yourusername>` into your terminal and your <userid> should appear.
 <br>
 
