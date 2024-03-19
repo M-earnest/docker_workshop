@@ -6,20 +6,22 @@ This will not only make your life easier, but integrate Docker in reproducible, 
 
 ### Automating builds using Github
 
-Github workflow explanation ...
+Github workflows allow ...
 
-1. Set up
-The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfile:
+### 1. Set-up
+The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image (i.e. we recreate the local build context in a GitHub repo):
 
-   - create a new Github repository called docker_workshop
+   - create a new Github repository called docker_workshop (or substitute your project name)
    - set it up with your usual directory structure etc
-   - upload your Dockerfile to this repository
+   - upload your [Dockerfile]() to this repository
 
 
-So far, so simple, but to automate the build process we'll need to add a few things to our repository
+So far, so simple, but to automate the build process we'll need to add a few things to our repository!
 
+### 2. Generate a DockerHub access token
 
-2. Generate a DockerHub access token
+Next, we need a Docker access token, this is necessary so that the GitHub workflow can push data to our DockerHub registry.
+
     - head to DockerHub
     - click on your profile in the top right and select my account
     - under `security` click `create new acces token`
@@ -29,28 +31,29 @@ So far, so simple, but to automate the build process we'll need to add a few thi
 
 ![new_access_token](/static/new_access_token.png)
 
-3. Setup GitHub secrets
-    - head to your Github repository
+### 3. Setup GitHub secrets
+
+For authentification purposes, i.e. to connect our DockerHub and GitHub, we will need to store our newly generated `access token`, as well as our DockerHub `username` using GitHub Secrets. These allow us to store sensitive information (API keys, passwords etc.) necessary to enable automatization without exposing that information to the public. 
+
+    - head to your GitHub repository
     - click on `settings` -> `secrets and variables` -> `actions`
-    - next we will create two new GitHub "secrets" 
+    - next, we will create two new GitHub "secrets" 
         - click on `new repository secret` and enter the name `DOCKERHUB_USERNAME`
             - under the `secret` heading add your DockerHub Username
         - click on `new repository secret` and enter the name `DOCKERHUB_TOKEN`
             - under the `secret` heading add the `DockerHub access token` we've copied in the previous step
 
 
-!!! actions_secrets
-
 ![actions_secrets](/static/actions_secrets.png)
 
 
-4. Setup the Github workflow
-    - go to your GitHub repo, create a new file called  `.GitHub/workflows/container_build_publish.yml`
+### 4. Setup the Github workflow
 
-    - copy and paste the following code into the file, make sure to replace the following part with your docker image name
-        -       tags: |
-                    yourhubusername/yourimagename:latest 
+Now it's time to create our GitHub workflow file. For this we will create a .yml file that contains all the necessary instructions to build our image and to transfer it to our DockerHub registry. 
 
+    - go to your GitHub repo, create a new file called  `.github/workflows/container_build_publish.yml`
+
+    - copy and paste the following code into the file, make sure to replace the following part with your docker image name. Make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your DockerHub username, the name of your image and a relevant tag after the `:`.
 
     ```
 
@@ -75,7 +78,7 @@ So far, so simple, but to automate the build process we'll need to add a few thi
             - name: Checkout code
                 uses: actions/checkout@v3
 
-            # setup Docker buld action
+            # setup Docker build action
             - name: Set up Docker Buildx
                 id: buildx
                 uses: docker/setup-buildx-action@v2
@@ -100,31 +103,34 @@ So far, so simple, but to automate the build process we'll need to add a few thi
                 context: ./
                 # Note: tags has to be all lower-case
                 tags: |
-                    yourhubusername/yourimagename:latest 
+                    `yourhubusername/yourimagename:latest` 
                 # build on feature branches, push only on main branch
                 push: ${{ github.ref == 'refs/heads/main' }}
 
             - name: Image digest
                 run: echo ${{ steps.docker_build.outputs.digest }}
 
-        ```
+    ```
     
 
-5. Check your GitHub action settings
+### 5. Check your GitHub action settings
+
+Now we make sure that the settings of our GitHub repository allow for our workflows to read/write and push files to our DockerHub.
+
     - in your GitHub repo, click `settings` -> `actions` -> `general`
     - make sure that 
         - under `Action permissions` you've selected `Allow all actions and reusable workflows`
 
 
-[actions_permissions](static/actions_permissions.png)
+![actions_permissions](/static/actions_permissions.png)
 
 
         - under `Workflow permissions` you've selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 
 
-[workflows_permissions](static/workflows_permissions.png)
+![workflows_permissions](/static/workflows_permissions.png)
 
-6. Start the actions workflow
+### 6. Start the actions workflow
 
 Every consecutive push or commit to this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.
 
@@ -137,14 +143,18 @@ Every consecutive push or commit to this GitHub repository will now trigger a ne
             - a green checkmark indicated that your workflow has run successfully, a red cross that the worklfow failed
             - in either case you can click on the workflow in question to get more info (e.g. to check what went wrong)
 
-[workflows](static/workflows.png)
+![workflows](/static/workflows.png)
 
 
     - If you check back on DockerHub, you should now see your updated Docker image
 
 
 
-[docker_image_uploaded](static/docker_image_uploaded.png)
+![docker_image_uploaded]((static/docker_image_uploaded.png)
+
+### 7. Celebrate
+
+![Lord of the rings It's done! Gif](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2d2aXZ2dTlzaHpmdjN5ZjA1NWZtMTFtMXRla2w1Zm90cTA2NTdvMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPf3C7HqqYBVcCk/giphy.gif)
 
 
 
