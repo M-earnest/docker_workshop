@@ -150,7 +150,7 @@ Every consecutive push or commit to this GitHub repository will now trigger a ne
 
 
 
-![docker_image_uploaded]((static/docker_image_uploaded.png)
+![docker_image_uploaded](/static/docker_image_uploaded.png)
 
 ### 7. Celebrate
 
