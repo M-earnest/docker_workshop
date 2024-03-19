@@ -55,7 +55,13 @@ Amazing, you can relax and let the script do the work as it will just run on you
 ...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything. 
 <br>
 <br>
-Why does this happen?! 
+
+![Evil laugh](https://c.tenor.com/oKay8GcV660AAAAC/ted-dancon-evil-laugh.gif)
+
+<br>
+<br>
+
+Why did this happen?! 
 <br>
 
 <details>
