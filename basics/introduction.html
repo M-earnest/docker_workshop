@@ -422,15 +422,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers-virtualization">Motivation - Why do we need containers/virtualization?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-statement">The problem statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-virtualization-techniques">The solution - virtualization techniques</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-vs-singularity">Docker vs Singularity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a></li>
 </ul>
             </nav>
         </div>
@@ -465,9 +464,15 @@ document.write(`
 <br>
 <br>
 <br>
-<section id="motivation-why-do-we-need-containers">
-<h3>Motivation - Why do we need containers?<a class="headerlink" href="#motivation-why-do-we-need-containers" title="Link to this heading">#</a></h3>
-<p><em>To motivate why the benefits of using containerization (or any kind of virtualization techniques for that matter) let’s imagine the following scenario:</em>
+</section>
+<section id="motivation-why-do-we-need-containers-virtualization">
+<h2>Motivation - Why do we need containers/virtualization?<a class="headerlink" href="#motivation-why-do-we-need-containers-virtualization" title="Link to this heading">#</a></h2>
+<br>
+<p>Virtualization techniques are means to ensure <code class="docutils literal notranslate"><span class="pre">reproducibility</span></code> of scietific findings/workflows as well as the facilitation of <code class="docutils literal notranslate"><span class="pre">collaborative</span> <span class="pre">research</span></code>.</p>
+<br>
+<section id="the-problem-statement">
+<h3>The problem statement<a class="headerlink" href="#the-problem-statement" title="Link to this heading">#</a></h3>
+<p><em>To motivate why utilizing containerization (or any kind of virtualization techniques for that matter) can be beneficial, let’s imagine the following scenario:</em>
 <br>
 <br>
 <strong>Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
@@ -486,135 +491,59 @@ maybe add image here?
 …Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything.
 <br>
 <br>
-Why does this happen?!</p>
-<p><code class="docutils literal notranslate"><span class="pre">Reproducibility!</span></code></p>
+Why does this happen?!
+<br></p>
+<details>
+<summary>Any ideas?</summary>
+<br>
+<p>Each project in a lab depends on complex software environments</p>
 <ul class="simple">
-<li><p>Each project in a lab depends on complex software environments</p>
+<li><p>Operating system</p></li>
+<li><p>Drivers</p></li>
+<li><p>Software dependencies: Python/MATLAB/R + libraries</p>
 <ul>
-<li><p>operating system</p></li>
-<li><p>drivers</p></li>
-<li><p>software dependencies: Python/MATLAB/R + libraries</p></li>
+<li><p><strong>Backwards incompatibility</strong> is a major problem in the python ecosystem</p></li>
 </ul>
 </li>
-<li><p>We try to avoid</p>
-<ul>
+<li><p>Adherence to lab-intern standards with regard to data and code organization</p></li>
+</ul>
+<p>Thus, sharing your code or using a repository might not be sufficient to ensure <code class="docutils literal notranslate"><span class="pre">reproducibility</span></code> and enable <code class="docutils literal notranslate"><span class="pre">collaboration</span></code>, i.e. because of software version or OS specific conflicts.</p>
+</details>
+<br>
+<p>We try to avoid</p>
+<ul class="simple">
 <li><p>“the computer I used was shut down a year ago, can’t rerun the results from my publication…”</p></li>
-<li><p>“the analysis were run by my student, have no idea where and how…”</p></li>
-<li><p>etc.</p></li>
-</ul>
-</li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">Collaboration!</span></code></p>
-<ul class="simple">
-<li><p>Sharing your code or using a repository might not be enough, i.e. because of software version or OS specific conflicts</p></li>
-<li><p>Data code might not adhere to the same standards or structure (e.g. <a class="reference external" href="https://bids.neuroimaging.io/">BIDS</a>)</p></li>
-<li><p>We try to avoid</p>
-<ul>
+<li><p>“the analyses were run by my student, have no idea where and how…”</p></li>
 <li><p>“well, I forgot to mention that you have to use Clang, gcc never worked for me…”</p></li>
 <li><p>“don’t see any reason why it shouldn’t work on Windows…(I actually have no idea about Windows, but won’t say it…)”</p></li>
-<li><p>“it works on my computer…”</p></li>
-<li><p>etc.</p></li>
-</ul>
-</li>
+<li><p>“it works on my machine…”</p></li>
+<li><p>etc.
+<br></p></li>
 </ul>
 <p><img alt="it works on my machine" src="../_images/It_works_on_my_machine.png" /></p>
+<br>
 </section>
-<section id="virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">
-<h3>Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)<a class="headerlink" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">main</span> <span class="pre">types</span></code></p>
+<section id="the-solution-virtualization-techniques">
+<h3>The solution - virtualization techniques<a class="headerlink" href="#the-solution-virtualization-techniques" title="Link to this heading">#</a></h3>
+<p>Well, how can we avoid aforementioned scenarios? This is the point where virtualization comes to the rescue. <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> is the process in which a system singular resource like RAM, CPU, Disk, or Networking can be ‘virtualized’ and represented as multiple resources. Thus, one can isolate/encapsulate computing environments or even whole operation systems, while still using the local hardware/resources.
+<br>
+There are <code class="docutils literal notranslate"><span class="pre">Three</span> <span class="pre">main</span> <span class="pre">types</span></code> of <code class="docutils literal notranslate"><span class="pre">virtualization</span></code>, which mainly differ in their level/depth of isolation:</p>
+<p><img alt="depth of isolation" src="../_images/level_of_isolation.png" /></p>
 <ul class="simple">
-<li><p>Virtual Machines:</p>
+<li><p>Virtual environments:</p>
 <ul>
-<li><p>Virtualbox</p></li>
-<li><p>VMware</p></li>
-<li><p>AWS, Google Compute Engine, …</p>
-<ul>
-<li><p>emulate whole computer system (software+hardware)</p></li>
-<li><p>run on top of a physical machine using a hypervisor</p></li>
-<li><p>hypervisor shares and manages hardware of the host and executes the guest operating system</p></li>
-<li><p>guest machines are completely isolated and have dedicated resources</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Containers:</p>
-<ul>
-<li><p>Docker</p></li>
-<li><p>Singularity</p>
-<ul>
-<li><p>share the host system’s kernel with other containers
-→ kernel level virtualization</p></li>
-<li><p>each container gets its own isolated user space</p></li>
-<li><p>only bins and libs are created from scratch</p></li>
-<li><p>containers are very lightweight and fast to start up</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img alt="Virtual machines vs. Container" src="../_images/VM_vs_Container.png" /></p>
-<p>Share the same main idea</p>
-<ul class="simple">
-<li><p>Isolate the computing environment</p></li>
-<li><p>Allows faithful reconstruction of computing environments</p></li>
-<li><p>Allows for easy sharing of computing environments, between different OS and systems</p></li>
-</ul>
-</section>
-<section id="docker">
-<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Docker is an open-source platform that allows for <code class="docutils literal notranslate"><span class="pre">building,</span> <span class="pre">deploying,</span> <span class="pre">and</span> <span class="pre">managing</span> <span class="pre">applications/research</span> <span class="pre">workflows</span></code> in self-sufficient, portable <code class="docutils literal notranslate"><span class="pre">containers</span></code></p></li>
-<li><p>Recent additions to Docker include a straightforward GUI (Graphical User Interface) called <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a>, but Docker is most powerful when making use of the Command-line aka the UNIX Shell.</p>
-<ul>
-<li><p>this is also what we’ll be focussing on in this workshop</p></li>
-</ul>
-</li>
-<li><p>runs on all of the most common OS (i.e. Linux, Mac OS X and Windows)</p></li>
-</ul>
-<p>Interesting tutorials and blog posts:</p>
-<ul class="simple">
-<li><p>collect new ressoruces here !!!!!!</p></li>
-</ul>
-<p><img alt="example workflow using containerization" src="../_images/Container_workflow.png" /></p>
-</section>
-<section id="docker-vs-singularity">
-<h3>Docker vs Singularity<a class="headerlink" href="#docker-vs-singularity" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Docker</span></code>:</p>
-<ul class="simple">
-<li><p>docker can escalate privileges, so you can be effectively treated as a root on the host system</p>
-<ul>
-<li><p>this is usually not supported or viewed in a positive light by administrators from HPC centers</p></li>
-</ul>
-</li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">Singularity</span></code>:</p>
-<ul class="simple">
-<li><p>a container solution created for scientific and application driven workloads</p></li>
-<li><p>supports existing and traditional HPC resources</p></li>
-<li><p>a user inside a Singularity container is the same user as outside the container</p>
-<ul>
-<li><p>but you can use Vagrant to create a container (you have root privileges on your VM!)</p></li>
-</ul>
-</li>
-<li><p>can run (and modify!) existing Docker containers</p></li>
-</ul>
-</section>
-<section id="virtual-environment-managers">
-<h3>Virtual environment managers:<a class="headerlink" href="#virtual-environment-managers" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>environment keeps dependencies, i.e. specific versions of libraries/apps isolated from others or the system-wide installation</p></li>
-<li><p>allows one to simply summarize and share a list of required by different projects in separate places (often in the form of an  “environemnt.yml” file)</p></li>
+<li><p>Virtual environment keeps dependencies, i.e. specific versions of libraries/apps isolated from the system-wide installation</p></li>
 <li><p>allows one to work with specific versions of libraries or Python itself without affecting other projects</p></li>
+<li><p>limited to isolate python binaries and libraries but not the OS itself
+<br></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> - (Docker “alternative” for Python)</p>
-<ul class="simple">
-<li><p>most prominent package and environment manager for python</p></li>
-<li><p>minimal, quick installation via <a class="reference external" href="https://docs.anaconda.com/free/miniconda/index.html">Miniconda</a></p></li>
-<li><p>full suite of most relevant python packages and integrated development enviornments through the <a class="reference external" href="https://www.anaconda.com/">Anaconda</a> project</p></li>
-<li><p>simple command-line implementation</p></li>
+</li>
 </ul>
+<p>Popular choices for the management and creation of virtual environments are:
+<br></p>
+<p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> or <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">venv</span></code></p>
 <details>
-<summary>Conda options</summary>
+<summary>Conda manual</summary>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
   <span class="c1"># Updating conda</span>
   <span class="n">conda</span> <span class="n">update</span> <span class="n">conda</span>
@@ -638,19 +567,66 @@ Why does this happen?!</p>
 </pre></div>
 </div>
 </details>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">venv</span></code> - (python module for the creation of virtual environments)</p>
 <details>
-<summary>python venv options</summary>
+<summary>python venv manual</summary>
 <p><img alt="python venv manual" src="../_images/python_venv.png" /></p>
 </details>
-</section>
-</section>
-<section id="container-technologies">
-<h2>Container technologies<a class="headerlink" href="#container-technologies" title="Link to this heading">#</a></h2>
+<br>
 <ul class="simple">
-<li><p>Isolate the computing environments from the host system</p></li>
-<li><p>Provide a mechanism to encapsulate environments in a self-contained unit that can run anywhere</p></li>
+<li><p>Containers:</p>
+<ul>
+<li><p>Emulate a whole operation system, which is isolated from the host system (including file system etc.)</p></li>
+<li><p>Provide a mechanism to encapsulate environments and virtualized OS in a self-contained unit that can run anywhere, independant of the host OS</p></li>
+<li><p>containers are very lightweight and fast to start up or modify</p></li>
+<li><p>each container gets its own isolated user space (Docker containers)</p></li>
 </ul>
+</li>
+<li><p>Virtual Machines:</p>
+<ul>
+<li><p>emulate whole computer system (software+hardware)</p></li>
+<li><p>run on top of a physical machine using a hypervisor</p></li>
+<li><p>hypervisor shares and manages hardware of the host and executes the guest operating system</p></li>
+<li><p>guest machines are completely isolated and have dedicated resources</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Virtual machines vs. Container" src="../_images/VM_vs_Container.png" /></p>
+</section>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Docker is an open-source platform that allows for <code class="docutils literal notranslate"><span class="pre">building,</span> <span class="pre">deploying,</span> <span class="pre">and</span> <span class="pre">managing</span> <span class="pre">applications/research</span> <span class="pre">workflows</span></code> in self-sufficient, portable <code class="docutils literal notranslate"><span class="pre">containers</span></code></p></li>
+<li><p>Recent additions to Docker include a straightforward GUI (Graphical User Interface) called <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a>, but Docker is most powerful when making use of the Command-line aka the UNIX Shell.</p>
+<ul>
+<li><p>this is also what we’ll be focussing on in this workshop</p></li>
+</ul>
+</li>
+<li><p>runs on all of the most common OS (i.e. Linux, Mac OS X and Windows)</p></li>
+</ul>
+<p><img alt="example workflow using containerization" src="../_images/Container_workflow.png" /></p>
+<p>Interesting tutorials and blog posts:</p>
+<ul class="simple">
+<li><p>collect new ressoruces here !!!!!!</p></li>
+</ul>
+</section>
+<section id="docker-vs-singularity">
+<h3>Docker vs Singularity<a class="headerlink" href="#docker-vs-singularity" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Docker</span></code>:</p>
+<ul class="simple">
+<li><p>docker can escalate privileges, so you can be effectively treated as a root on the host system</p></li>
+<li><p>this is usually not supported or viewed in a positive light by administrators from HPC centers</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Singularity</span></code>:</p>
+<ul class="simple">
+<li><p>a container solution created for scientific and application driven workloads</p></li>
+<li><p>supports existing and traditional HPC resources</p></li>
+<li><p>a user inside a Singularity container is the same user as outside the container</p>
+<ul>
+<li><p>but you can use <a class="reference external" href="https://www.vagrantup.com/">Vagrant</a> to create a container (you have root privileges on your VM!)</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -719,15 +695,14 @@ Why does this happen?!</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers">Motivation - Why do we need containers?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-machines-and-containers-maybe-call-this-virtualization-techniques-and-include-virtual-environments-here">Virtual Machines and Containers (maybe call this virtualization techniques and include virtual environments here?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-why-do-we-need-containers-virtualization">Motivation - Why do we need containers/virtualization?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-statement">The problem statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-virtualization-techniques">The solution - virtualization techniques</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-vs-singularity">Docker vs Singularity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-managers">Virtual environment managers:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-technologies">Container technologies</a></li>
 </ul>
   </nav></div>
 
