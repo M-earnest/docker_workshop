@@ -189,7 +189,9 @@ Interesting tutorials and blog posts:
 
 <details>
 <summary>python venv options</summary>
+
 ![python venv manual](/static/python_venv.png)
+
 </details>
 
 
