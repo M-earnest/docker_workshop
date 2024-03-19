@@ -48,7 +48,7 @@ Amazing, you can relax and let the script do the work as it will just run on you
 <br>
 <br>
 
-![Thumbs up computer meme](https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0)
+![Thumbs up computer meme](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3FzeHRyOTkzOHF0MHZ5bHVlamRscmxyOTB2bmhia3RxdXc2dTFqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XreQmk7ETCak0/giphy.gif)
 
 <br>
 <br>
