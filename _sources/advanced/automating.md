@@ -41,7 +41,7 @@ So far, so simple, but to automate the build process we'll need to add a few thi
 
 !!! actions_secrets
 
-[actions_secrets](static/actions_secrets.png)
+![actions_secrets](/static/actions_secrets.png)
 
 
 4. Setup the Github workflow
