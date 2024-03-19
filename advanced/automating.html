@@ -466,7 +466,7 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
 </ul>
 </li>
 </ol>
-<p>!!! screenshot</p>
+<p><a class="reference internal" href="#static/new_access_token.png"><span class="xref myst">new_access_token</span></a></p>
 <ol class="arabic simple" start="3">
 <li><p>Setup GitHub secrets</p>
 <ul class="simple">
@@ -489,13 +489,21 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
 </ul>
 </li>
 </ol>
-<p>!!! screenshot</p>
+<p>!!! actions_secrets</p>
+<p><a class="reference internal" href="#static/actions_secrets.png"><span class="xref myst">actions_secrets</span></a></p>
 <ol class="arabic" start="4">
 <li><p>Setup the Github workflow</p>
-<ul class="simple">
-<li><p>go to your GitHub repo, create a new folder called <code class="docutils literal notranslate"><span class="pre">.GitHub/workflows</span></code></p></li>
-<li><p>download the <a class="reference external" href="https://github.com/M-earnest/docker_workshop/blob/main/.github/workflows/container_build_publish.yml">workflow file</a> and add it to your newly created workflows folder</p></li>
-<li><p>alternatively create a file called <code class="docutils literal notranslate"><span class="pre">container_build_publish.yml</span></code> and add the following code to it</p></li>
+<ul>
+<li><p>go to your GitHub repo, create a new file called  <code class="docutils literal notranslate"><span class="pre">.GitHub/workflows/container_build_publish.yml</span></code></p></li>
+<li><p>copy and paste the following code into the file, make sure to replace the following part with your docker image name</p>
+<ul>
+<li><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  tags: |
+      yourhubusername/yourimagename:latest 
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
     name: Build and Publish Container
@@ -544,8 +552,7 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
             context: ./
             # Note: tags has to be all lower-case
             tags: |
-                peerherholz/bids_atlas:latest 
-                ghcr.io/peerherholz/bids_atlas:latest
+                yourhubusername/yourimagename:latest 
             # build on feature branches, push only on main branch
             push: ${{ github.ref == &#39;refs/heads/main&#39; }}
 
@@ -569,11 +576,11 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
 </ul>
 </li>
 </ol>
-<p>!!! screenshot</p>
+<p><a class="reference internal" href="#static/actions_permissions.png"><span class="xref myst">actions_permissions</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    - under `Workflow permissions` you&#39;ve selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 </pre></div>
 </div>
-<p>!!! screenshot</p>
+<p><a class="reference internal" href="#static/workflows_permissions.png"><span class="xref myst">workflows_permissions</span></a></p>
 <ol class="arabic simple" start="6">
 <li><p>Start the actions workflow</p></li>
 </ol>
@@ -586,10 +593,13 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
     - under workflow runs you should see either the current workflow still running or see the previous runs
         - a green checkmark indicated that your workflow has run successfully, a red cross that the worklfow failed
         - in either case you can click on the workflow in question to get more info (e.g. to check what went wrong)
-
-- If you check back on DockerHub, you should now see your updated Docker image
 </pre></div>
 </div>
+<p><a class="reference internal" href="#static/workflows.png"><span class="xref myst">workflows</span></a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- If you check back on DockerHub, you should now see your updated Docker image
+</pre></div>
+</div>
+<p><a class="reference internal" href="#static/docker_image_uploaded.png"><span class="xref myst">docker_image_uploaded</span></a></p>
 </section>
 </section>
 
