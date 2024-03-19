@@ -573,20 +573,29 @@ Add practical example here?
 <p>The probabaly most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container.</p>
 <ul class="simple">
 <li><p>better option than permanetly copying data into container since neuroimaging data is often heavy</p></li>
+<li><p>additionally helpful to create permanent outputs, e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)</p></li>
 </ul>
+<br>
+<p>For demonstration purposes we have created an image that can be utilized to convert the <code class="docutils literal notranslate"><span class="pre">MNE-sample-dataset</span></code>, a test dataset provided by the <a class="reference external" href="https://mne.tools/stable/index.html">MNE community</a>. MNE is a tool for MEEG data processing and visualisation.</p>
+<p>We have stored the <code class="docutils literal notranslate"><span class="pre">MNE-sample-dataset</span></code> in the following location <code class="docutils literal notranslate"><span class="pre">~/data</span></code>. Let’s check if its stored where its supposed to be:</p>
+<br>
 <p><img alt="mounted directory before docker run" src="../_images/mounted_directory_before_docker_run.png" /></p>
-<p><img alt="docker_run_mount" src="../_images/docker_run_command_mount.png" /></p>
+<br>
+<p>For our container to run the conversion properly, we need to mount the directory from our local system, which containing our data to the <code class="docutils literal notranslate"><span class="pre">/input</span></code> directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder of the container:</p>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+    # list all docker images
     aaronreer@FK6P-1158240:~/data$ docker images
     REPOSITORY                  TAG        IMAGE ID       CREATED         SIZE
     copy_to_host                local      8fac75a4f1f9   4 days ago      144MB
     aaronreer1/mne_conversion   firsttry   e5607c07ff2a   3 weeks ago     1.43GB
     repronim/neurodocker        0.9.5      1107707d9d51   10 months ago   79.7MB
+    # docker run command using the -v flag for mounting the &#39;MNE-sample-dataset&#39; directory to the &#39;input&#39; location of the container and mounting the &#39;data&#39; directory to the &#39;output&#39; directory of the container
     aaronreer@FK6P-1158240:~/data$ docker run 
     -v /home/aaronreer/data/MNE-sample-data/:/input/ 
     -v /home/aaronreer/data/:/output 
     aaronreer1/mne_conversion:firsttry
+    # output:
     Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
     Read a total of 3 projection items:
         PCA-v1 (1 x 102)  idle
@@ -680,6 +689,8 @@ Add practical example here?
 </div>
 </div>
 <p><img alt="mounted directory after docker run" src="../_images/mounted_directory_after_docker_run.png" /></p>
+<br>
+<p>When checking our filesystem using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command we can observe that a new directory called <code class="docutils literal notranslate"><span class="pre">MNE-sample-data-bids1</span></code> has appeared.</p>
 </section>
 </section>
 <section id="input-output-administrator-rights">

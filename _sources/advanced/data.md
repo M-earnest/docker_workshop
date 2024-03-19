@@ -146,24 +146,38 @@ Add practical example here?
 
 The probabaly most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container. 
 - better option than permanetly copying data into container since neuroimaging data is often heavy
+- additionally helpful to create permanent outputs, e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)
+  
+<br>
+
+For demonstration purposes we have created an image that can be utilized to convert the `MNE-sample-dataset`, a test dataset provided by the [MNE community](https://mne.tools/stable/index.html). MNE is a tool for MEEG data processing and visualisation.
+
+We have stored the `MNE-sample-dataset` in the following location `~/data`. Let's check if its stored where its supposed to be:
+
+<br>
 
 ![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
 
-![docker_run_mount](/static/docker_run_command_mount.png)
+<br>
+
+For our container to run the conversion properly, we need to mount the directory from our local system, which containing our data to the `/input` directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the `output` folder of the container:
 
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 
     ```
+        # list all docker images
         aaronreer@FK6P-1158240:~/data$ docker images
         REPOSITORY                  TAG        IMAGE ID       CREATED         SIZE
         copy_to_host                local      8fac75a4f1f9   4 days ago      144MB
         aaronreer1/mne_conversion   firsttry   e5607c07ff2a   3 weeks ago     1.43GB
         repronim/neurodocker        0.9.5      1107707d9d51   10 months ago   79.7MB
+        # docker run command using the -v flag for mounting the 'MNE-sample-dataset' directory to the 'input' location of the container and mounting the 'data' directory to the 'output' directory of the container
         aaronreer@FK6P-1158240:~/data$ docker run 
         -v /home/aaronreer/data/MNE-sample-data/:/input/ 
         -v /home/aaronreer/data/:/output 
         aaronreer1/mne_conversion:firsttry
+        # output:
         Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
         Read a total of 3 projection items:
             PCA-v1 (1 x 102)  idle
@@ -257,6 +271,10 @@ The probabaly most common use-case for mounts in the domain of neuroscientific r
 </div>
 
 ![mounted directory after docker run](/static/mounted_directory_after_docker_run.png)
+
+<br>
+
+When checking our filesystem using the `ls` command we can observe that a new directory called `MNE-sample-data-bids1` has appeared.
 
 ### Input/Output - administrator rights
 
