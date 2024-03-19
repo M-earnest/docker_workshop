@@ -52,7 +52,7 @@ Michaels-MBP:~ me$ docker run -it --rm myfirstdocker
 
 ```
 
-### Practical application
+#### Practical application
 
 With that, we can include almost any kind of data of almost any size. As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let's include a small respective tutorial in the form of a `jupyter notebook`, as well as a small `sample dataset`. In this way you could also include demogrpahic data, READMEs or any additional data necessary for a processing pipeline.
 
@@ -142,99 +142,104 @@ into your terminal and your `userid` should appear.
 <br>
 Add practical example here?
 
+#### Practical application
+
 ![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
+
+![docker_run_mount](/static/docker_run_command_mount.png)
 
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+
     ```
-    Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
-    Read a total of 3 projection items:
-        PCA-v1 (1 x 102)  idle
-        PCA-v2 (1 x 102)  idle
-        PCA-v3 (1 x 102)  idle
-    Range : 25800 ... 192599 =     42.956 ...   320.670 secs
-    Ready.
-    Opening raw data file /input/MEG/sample/ernoise_raw.fif...
-    Isotrak not found
-    Read a total of 3 projection items:
-        PCA-v1 (1 x 102)  idle
-        PCA-v2 (1 x 102)  idle
-        PCA-v3 (1 x 102)  idle
-    Range : 19800 ... 85867 =     32.966 ...   142.965 secs
-    Ready.
-    Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
-    Read a total of 3 projection items:
-        PCA-v1 (1 x 102)  idle
-        PCA-v2 (1 x 102)  idle
-        PCA-v3 (1 x 102)  idle
-    Range : 25800 ... 192599 =     42.956 ...   320.670 secs
-    Ready.
-    Opening raw data file /input/MEG/sample/ernoise_raw.fif...
-    Isotrak not found
-    Read a total of 3 projection items:
-        PCA-v1 (1 x 102)  idle
-        PCA-v2 (1 x 102)  idle
-        PCA-v3 (1 x 102)  idle
-    Range : 19800 ... 85867 =     32.966 ...   142.965 secs
-    Ready.
-    Writing '/output/MNE-sample-data-bids1/README'...
-    Writing '/output/MNE-sample-data-bids1/participants.tsv'...
-    Writing '/output/MNE-sample-data-bids1/participants.json'...
-    Writing of electrodes.tsv is not supported for data type "meg". Skipping ...
-    Writing '/output/MNE-sample-data-bids1/dataset_description.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_channels.tsv'...
-    Copying data files to sub-emptyroom_ses-20021206_task-noise_meg.fif
-    Reserving possible split file sub-emptyroom_ses-20021206_task-noise_split-01_meg.fif
-    Writing /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.fif
-    Closing /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.fif
-    [done]
-    Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/sub-emptyroom_ses-20021206_scans.tsv'...
-    Wrote /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/sub-emptyroom_ses-20021206_scans.tsv entry with meg/sub-emptyroom_ses-20021206_task-noise_meg.fif.
-    Writing '/output/MNE-sample-data-bids1/participants.tsv'...
-    Writing '/output/MNE-sample-data-bids1/participants.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_coordsystem.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_coordsystem.json'...
-    Used Annotations descriptions: ['Auditory/Left', 'Auditory/Right', 'Button', 'Smiley', 'Visual/Left', 'Visual/Right']
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_events.tsv'...
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_events.json'...
-    Writing '/output/MNE-sample-data-bids1/dataset_description.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.json'...
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_channels.tsv'...
-    Copying data files to sub-01_ses-01_task-audiovisual_run-1_meg.fif
-    Reserving possible split file sub-01_ses-01_task-audiovisual_run-1_split-01_meg.fif
-    Writing /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif
-    Closing /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif
-    [done]
-    Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/sub-01_ses-01_scans.tsv'...
-    Wrote /output/MNE-sample-data-bids1/sub-01/ses-01/sub-01_ses-01_scans.tsv entry with meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif.
-    Writing fine-calibration file to /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_acq-calibration_meg.dat
-    Writing crosstalk file to /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_acq-crosstalk_meg.fif
-    |MNE-sample-data-bids1/
-    |--- README
-    |--- dataset_description.json
-    |--- participants.json
-    |--- participants.tsv
-    |--- sub-01/
-    |------ ses-01/
-    |--------- sub-01_ses-01_scans.tsv
-    |--------- meg/
-    |------------ sub-01_ses-01_acq-calibration_meg.dat
-    |------------ sub-01_ses-01_acq-crosstalk_meg.fif
-    |------------ sub-01_ses-01_coordsystem.json
-    |------------ sub-01_ses-01_task-audiovisual_run-1_channels.tsv
-    |------------ sub-01_ses-01_task-audiovisual_run-1_events.json
-    |------------ sub-01_ses-01_task-audiovisual_run-1_events.tsv
-    |------------ sub-01_ses-01_task-audiovisual_run-1_meg.fif
-    |------------ sub-01_ses-01_task-audiovisual_run-1_meg.json
-    |--- sub-emptyroom/
-    |------ ses-20021206/
-    |--------- sub-emptyroom_ses-20021206_scans.tsv
-    |--------- meg/
-    |------------ sub-emptyroom_ses-20021206_task-noise_channels.tsv
-    |------------ sub-emptyroom_ses-20021206_task-noise_meg.fif
-    |------------ sub-emptyroom_ses-20021206_task-noise_meg.json
-    aaronreer@FK6P-1158240:~/data$
+        Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
+        Read a total of 3 projection items:
+            PCA-v1 (1 x 102)  idle
+            PCA-v2 (1 x 102)  idle
+            PCA-v3 (1 x 102)  idle
+        Range : 25800 ... 192599 =     42.956 ...   320.670 secs
+        Ready.
+        Opening raw data file /input/MEG/sample/ernoise_raw.fif...
+        Isotrak not found
+        Read a total of 3 projection items:
+            PCA-v1 (1 x 102)  idle
+            PCA-v2 (1 x 102)  idle
+            PCA-v3 (1 x 102)  idle
+        Range : 19800 ... 85867 =     32.966 ...   142.965 secs
+        Ready.
+        Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
+        Read a total of 3 projection items:
+            PCA-v1 (1 x 102)  idle
+            PCA-v2 (1 x 102)  idle
+            PCA-v3 (1 x 102)  idle
+        Range : 25800 ... 192599 =     42.956 ...   320.670 secs
+        Ready.
+        Opening raw data file /input/MEG/sample/ernoise_raw.fif...
+        Isotrak not found
+        Read a total of 3 projection items:
+            PCA-v1 (1 x 102)  idle
+            PCA-v2 (1 x 102)  idle
+            PCA-v3 (1 x 102)  idle
+        Range : 19800 ... 85867 =     32.966 ...   142.965 secs
+        Ready.
+        Writing '/output/MNE-sample-data-bids1/README'...
+        Writing '/output/MNE-sample-data-bids1/participants.tsv'...
+        Writing '/output/MNE-sample-data-bids1/participants.json'...
+        Writing of electrodes.tsv is not supported for data type "meg". Skipping ...
+        Writing '/output/MNE-sample-data-bids1/dataset_description.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_channels.tsv'...
+        Copying data files to sub-emptyroom_ses-20021206_task-noise_meg.fif
+        Reserving possible split file sub-emptyroom_ses-20021206_task-noise_split-01_meg.fif
+        Writing /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.fif
+        Closing /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/meg/sub-emptyroom_ses-20021206_task-noise_meg.fif
+        [done]
+        Writing '/output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/sub-emptyroom_ses-20021206_scans.tsv'...
+        Wrote /output/MNE-sample-data-bids1/sub-emptyroom/ses-20021206/sub-emptyroom_ses-20021206_scans.tsv entry with meg/sub-emptyroom_ses-20021206_task-noise_meg.fif.
+        Writing '/output/MNE-sample-data-bids1/participants.tsv'...
+        Writing '/output/MNE-sample-data-bids1/participants.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_coordsystem.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_coordsystem.json'...
+        Used Annotations descriptions: ['Auditory/Left', 'Auditory/Right', 'Button', 'Smiley', 'Visual/Left', 'Visual/Right']
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_events.tsv'...
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_events.json'...
+        Writing '/output/MNE-sample-data-bids1/dataset_description.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.json'...
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_channels.tsv'...
+        Copying data files to sub-01_ses-01_task-audiovisual_run-1_meg.fif
+        Reserving possible split file sub-01_ses-01_task-audiovisual_run-1_split-01_meg.fif
+        Writing /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif
+        Closing /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif
+        [done]
+        Writing '/output/MNE-sample-data-bids1/sub-01/ses-01/sub-01_ses-01_scans.tsv'...
+        Wrote /output/MNE-sample-data-bids1/sub-01/ses-01/sub-01_ses-01_scans.tsv entry with meg/sub-01_ses-01_task-audiovisual_run-1_meg.fif.
+        Writing fine-calibration file to /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_acq-calibration_meg.dat
+        Writing crosstalk file to /output/MNE-sample-data-bids1/sub-01/ses-01/meg/sub-01_ses-01_acq-crosstalk_meg.fif
+        |MNE-sample-data-bids1/
+        |--- README
+        |--- dataset_description.json
+        |--- participants.json
+        |--- participants.tsv
+        |--- sub-01/
+        |------ ses-01/
+        |--------- sub-01_ses-01_scans.tsv
+        |--------- meg/
+        |------------ sub-01_ses-01_acq-calibration_meg.dat
+        |------------ sub-01_ses-01_acq-crosstalk_meg.fif
+        |------------ sub-01_ses-01_coordsystem.json
+        |------------ sub-01_ses-01_task-audiovisual_run-1_channels.tsv
+        |------------ sub-01_ses-01_task-audiovisual_run-1_events.json
+        |------------ sub-01_ses-01_task-audiovisual_run-1_events.tsv
+        |------------ sub-01_ses-01_task-audiovisual_run-1_meg.fif
+        |------------ sub-01_ses-01_task-audiovisual_run-1_meg.json
+        |--- sub-emptyroom/
+        |------ ses-20021206/
+        |--------- sub-emptyroom_ses-20021206_scans.tsv
+        |--------- meg/
+        |------------ sub-emptyroom_ses-20021206_task-noise_channels.tsv
+        |------------ sub-emptyroom_ses-20021206_task-noise_meg.fif
+        |------------ sub-emptyroom_ses-20021206_task-noise_meg.json
+        aaronreer@FK6P-1158240:~/data$
     ```
 
 </div>
