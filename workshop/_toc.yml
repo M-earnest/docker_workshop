@@ -20,5 +20,6 @@ chapters:
     - file: advanced/data
     - file: advanced/creating
     - file: advanced/creating_your_own
+    - file: advanced/automating
 - file: break
 - file: CoC
