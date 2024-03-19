@@ -142,6 +142,7 @@ into your terminal and your `userid` should appear.
 <br>
 Add practical example here?
 
+![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
 
 ### Input/Output - administrator rights
 
