@@ -144,6 +144,9 @@ Add practical example here?
 
 #### Practical application
 
+The probabaly most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container. 
+- better option than permanetly copying data into container since neuroimaging data is often heavy
+
 ![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
 
 ![docker_run_mount](/static/docker_run_command_mount.png)
@@ -152,6 +155,15 @@ Add practical example here?
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 
     ```
+        aaronreer@FK6P-1158240:~/data$ docker images
+        REPOSITORY                  TAG        IMAGE ID       CREATED         SIZE
+        copy_to_host                local      8fac75a4f1f9   4 days ago      144MB
+        aaronreer1/mne_conversion   firsttry   e5607c07ff2a   3 weeks ago     1.43GB
+        repronim/neurodocker        0.9.5      1107707d9d51   10 months ago   79.7MB
+        aaronreer@FK6P-1158240:~/data$ docker run 
+        -v /home/aaronreer/data/MNE-sample-data/:/input/ 
+        -v /home/aaronreer/data/:/output 
+        aaronreer1/mne_conversion:firsttry
         Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
         Read a total of 3 projection items:
             PCA-v1 (1 x 102)  idle
