@@ -43,7 +43,7 @@
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
-```
+
 (base) Michaels-MacBook-Pro:~ me$ docker
 
 Usage:  docker [OPTIONS] COMMAND
@@ -174,7 +174,6 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-```
   </p>
 </div>
 
