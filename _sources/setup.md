@@ -1,7 +1,7 @@
 # Setup for the workshop
 
 
-Most of the materials for this workshop can be found on this website, if you'd like to give input, leave comments or highlight relevant parts (publicly or privately) we encourage you to make use of the [`hypothes.is`](https://web.hypothes.is/) plugin via the annotation sidebar on the right side of the page. If you'd rather download these materials, you can do via the !download symbol! at the top of the respective page. You can open the respective content (.md files) via an IDE (e.g. VScode, Atom) or via Jupyter Notebooks/Lab.
+Most of the materials for this workshop can be found on this website, if you'd like to give input, leave comments or highlight relevant parts (publicly or privately) we encourage you to make use of the [`hypothes.is`](https://web.hypothes.is/) plugin via the annotation sidebar on the right side of the page. If you'd rather download these materials, you can do so via the {download} symbol! at the top of the respective page. You can open the respective content (.md files) via an IDE (e.g. VScode, Atom) or via Jupyter Notebooks/Lab.
 
 We'll come to actual installation instructions shortly, but there are a few other requirements that will need to be satisfied. Please read the whole document and follow the instructions closely.
 
@@ -21,7 +21,7 @@ There are a few computing requirements for the course that are necessary:
 2. You should have at least `20 GB` of free disk space on your computer (but we would recommend more, to be safe).
 3. If you are using Windows you must be using Windows 10/11; Windows 7 and 8 will not be sufficient for this course.
 4. Some parts of this course will make use of GitHub, so creating a GitHub account is recommended
-5. For easier communication we've created a Discord Server for this program, if you're interested install Discord and follow this link ---
+5. For easier communication, we've created a Discord Server for this program. If you're interested install Discord and follow this [invite link](https://discord.gg/ehN5haXS).
 
 If you foresee any of these being a problem please reach out to one of the instructors to see what steps you can take to ensure you are ready for the course start.
 

@@ -9,6 +9,9 @@ Hello everyone and welcome to the "Software containers in neuroscience research"
 
 Within these pages, we provide information on how to follow the workshop, as well as respective materials. This [jupyter book](https://jupyterbook.org/intro.html) will include the used slides and code in a way that they can be explored in an interactive manner. You can navigate through the respective sections via the TOC on the left side and within sections via the TOC on the right side. The three symbols in the top allow to enable full screen mode, link to the underlying [Github repository](https://github.com/PeerHerholz/docker_workshop) and allow you to download the contents as a pdf or jupyter notebook respectively. Some sections will additionally have a little rocket in that row which will allow you to interactively rerun certain analyses via cloud computing. Additionally, we support public reviews and comments through an [hypothes.is plugin](https://web.hypothes.is/) with which you can interact on the right side. All of this awesomeness (talking about the infrastructure and resource) is possible through the dedicated and second to none work of the [Jupyter community](https://jupyter.org/community), specifically, the [Executable/Jupyter Book](https://executablebooks.org/en/latest/).
 
+Here we would also extend special thanks to [Dr. Peer Herholz](https://peerherholz.github.io/) for the general idea and his central contributions to this workshop!
+
+
 ````{margin}
 ```{warning}
 These pages are currently under construction and will be updated continuously.

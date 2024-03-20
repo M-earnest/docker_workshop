@@ -177,7 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup for the workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../outline.html">Outline</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_shell.html">Introduction to the (unix) command line: bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_shell.html">Prerequisite - the (unix) command line: bash</a></li>
 
 
 
@@ -187,11 +187,6 @@
 
 
 
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_to_git_and_github.html">Introduction to git and github</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../prerequisites/intro_jupyter.html">Introduction to the jupyter ecosystem &amp; notebooks</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../basics.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -425,11 +420,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-your-own-software-container">
 <h1>Creating your own software container<a class="headerlink" href="#creating-your-own-software-container" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>What do they want to do? maybe have some idead prepared and have people work in teams?</p></li>
-<li><p>Maybe provide image templates to make set up easier/faster</p></li>
-<li><p>what should we restrict for times sake?</p></li>
-</ul>
+<p>Now it’s time to build your own image. Ideally you can already start thinking about the needs/dependencies of your already existing projects and build a proxy-file containing all the neccesary instructions, so that later on you’ll only have to exchange the necessary file and pathnames according to your needs. For this you can feel free to create a new Dockerfile by hand, adapt one of our examples or use neurodocker for the heavy lifting.</p>
+<p>Here are also a few more things you should consider (special thanks to Peer Herholz)</p>
+<p><img alt="depiction of what to consider when creating a project, i.e. software-, os-, data-dependencies" src="../_images/software_container_considerations.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">
