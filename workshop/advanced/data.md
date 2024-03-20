@@ -26,37 +26,37 @@ Let's say we want to put a picture of whale in our Docker container, because we'
 
 So as we've already seen we can use the `COPY instruction` to add the data (i.e. our .png file) into our Docker container during its build.
 
-So let's first build  a new build context + Dockerfile
+So let's first build  a new build context + Dockerfile:
 
 ```
  mkdir docker_data_container
  touch docker_data_container/Dockerfile
+
 ```
 
-Open the file with VScode and add the following line:
+Open the file with `VScode` and add the following line:
 
 ```
     FROM ubuntu:latest
-
 ```
 
-Now we add the relevant file to our build context, i.e. we move the data you want to include in the same directory as the Dockerfile, e.g.
+Now we add the relevant file to our `build context`, i.e. we move the data you want to include in the same directory as the Dockerfile, e.g.
 
 ```
-    mv Desktop/happy_whale.jpg Desktop/docker_data_container
+mv Desktop/happy_whale.jpg Desktop/docker_data_container
 ```
 
 Now, we add a line to our Dockerfile that indicates that this image should be copied to a specific location inside our Docker container, e.g. /home/images
 
-    ```
-        COPY ./happy_whale.jpg /home/images/happy_whale.jpg
-    ```
+```
+COPY ./happy_whale.jpg /home/images/happy_whale.jpg
+```
 
 And you guessed it: time to build!
 
-    ```
-        docker build -t whale_container Desktop/docker_data_container
-    ```
+```
+docker build -t whale_container Desktop/docker_data_container
+```
 
 If we now `run` our freshly build Docker container and check the contents of /home, we find the folder images and in it our happy_whale.jpg
 
@@ -69,10 +69,10 @@ root@8e2a056bed3a:/home# ls
 images
 root@8e2a056bed3a:/home# cd images/
 root@8e2a056bed3a:/home/images# ls
-happy_whale.jpg
+'happy_whale.jpg'
 ```
 
-If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the local directory where the docker build command is run, replace the above code with:
+If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the current working directory where the `docker build` command is run, replace the above code with:
 
 ```
     COPY . /home/images
