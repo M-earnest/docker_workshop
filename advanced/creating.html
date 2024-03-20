@@ -189,20 +189,13 @@
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../basics.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../basics/introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/quickstart.html">Quickstarting your container expertise</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../advanced.html">Advanced aspects</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="management.html">Management of software containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Software containers &amp; data</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Creating software containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="creating_your_own.html">Creating your own software container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automating.html">Automating software containers</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../break.html">Yoga and/or dance break</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/quickstart.html">Quickstarting your container expertise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="management.html">Management of software containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Software containers &amp; data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating software containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_your_own.html">Creating your own software container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="automating.html">Automating software containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
 </ul>
 
@@ -478,7 +471,7 @@ document.write(`
 <section id="dockerfiles">
 <h2>Dockerfiles<a class="headerlink" href="#dockerfiles" title="Link to this heading">#</a></h2>
 <p>At the beginning there was a Dockerfile…</p>
-<p>A Dockerfile is, in essence, a machine-readable instruction on how to build a docker container. It can be considered the source code of a docker image.</p>
+<p>A Dockerfile is, in essence, a machine-readable instruction on how to build a docker iamge. It can be considered as the “source code” of a docker container.</p>
 <p>The Dockerfile usually includes a mixture of <code class="docutils literal notranslate"><span class="pre">bash</span></code> commands, that you would also normally use on your machine to e.g. setup a <a class="reference internal" href="../advanced.html"><span class="doc std std-doc">Conda enviornment</span></a> or to install specific software, and docker specific commands (called instructions). Below you’ll find a list of acceptable Docker instructions are, if the terminology is condusing or you want to dive deeper into what the different commands are and how they are used check out the <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Docker build documentation</a>. We’ll only make use of a few relevant commands for this tutorial that we will explain in detail below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Instruction</span>
 
@@ -505,55 +498,78 @@ document.write(`
 <h2>Building a Dockerfile<a class="headerlink" href="#building-a-dockerfile" title="Link to this heading">#</a></h2>
 <p>The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a “layer”. Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.</p>
 <p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
-<p>Here are the relevant layers we’re going to build:</p>
+<p>Here are the relevant layers we’re going to build, i.e how our Dockerfile is going to look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+    <span class="n">WORKDIR</span> <span class="o">/</span><span class="n">project</span>
+    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> \
+        <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">&amp;&amp;</span> \
+        <span class="n">pip3</span> <span class="n">install</span> <span class="n">pandas</span>
+
+    <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">info</span>
+
+    <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
+    <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+    <span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;/info/README.md&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>So, let’s explain this step-by-step and bring it all together with a practical example.</p>
 </section>
 <section id="from-baseimage">
 <h2>1. FROM - Baseimage<a class="headerlink" href="#from-baseimage" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">ubuntu:latest</span></code></p>
 <p>The “From” command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the “base” or “baseimage” of a container. At times we will also use the ‘From’ command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the ‘from’ command points to, e.g when calling ‘FROM continuumio/miniconda3’, the minconda3 image will have a specific OS defined.</p>
 <p>It is also possible to use the ‘From’ command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds <a class="reference external" href="https://docs.docker.com/build/building/multi-stage/">here</a>.</p>
 </section>
 <section id="workdir-working-directory">
 <h2>2. WORKDIR - working directory<a class="headerlink" href="#workdir-working-directory" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">WORKDIR</span> <span class="pre">/project</span></code></p>
 <p>The WORKDIR instruction sets the working directory for any of the other instructions that follow it in the Dockerfile (e.g. RUN, CMD, ENTRYPOINT, COPY, etc.)</p>
 <ul>
 <li><p>it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host (If the specified directory does not exist on your system, Docker will create it automatically)</p>
 <ul>
 <li><p>the only argument we provide is a concise, descriptive name for the folder/folder structure, e.g.</p>
-<p><code class="docutils literal notranslate"><span class="pre">WORKDIR</span> <span class="pre">/project</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">/project</span></code></p>
 </li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<div><p>[!NOTE]<br />
-Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
-</div></blockquote>
+<p><strong>note</strong> Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
 </section>
 <section id="run-install-software-execute-commands">
 <h2>3. RUN - install software, execute commands<a class="headerlink" href="#run-install-software-execute-commands" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> \
+        <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">&amp;&amp;</span> \
+        <span class="n">pip3</span> <span class="n">install</span> <span class="n">pandas</span>
+
+    <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">info</span>
+</pre></div>
+</div>
 <p>In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers ‘pip’ and ‘apt-get’ in the same way we would use them in our bash shell.</p>
 <p>For this we’ll make use of the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> instruction, which will execute any specified command to create a new layer.</p>
-<p>So to install e.g. Python using the Ubuntu baseimage and apt package manager we would write</p>
+<p>So to install e.g. Python using the Ubuntu baseimage and apt package manager we would write:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>[!NOTE]<br />
-You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
-</div></blockquote>
+<p><strong>note</strong> You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
 </section>
 <section id="copy-add-files-to-image">
 <h2>4. COPY - add files to image<a class="headerlink" href="#copy-add-files-to-image" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
+    <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
 <p>Using the COPY instruction we can permanently add files from our local system to our Docker Image.</p>
 <ul>
 <li><p>simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image</p></li>
-<li><p>e.g. if i want to add a script “print_info.py” from the curent working directory into the project folder of the image</p>
+<li><p>e.g. if i want to add a script “print_info.py” from the curent working directory into the project folder of the image:</p>
 <p><code class="docutils literal notranslate"><span class="pre">COPY</span> <span class="pre">print_info.py</span> <span class="pre">/project/</span></code></p>
 </li>
 </ul>
 </section>
 <section id="entrypoint-and-cmd-make-the-image-exectuable">
 <h2>5. Entrypoint and CMD - make the image exectuable<a class="headerlink" href="#entrypoint-and-cmd-make-the-image-exectuable" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CMD</span> <span class="pre">[&quot;cat&quot;,</span> <span class="pre">&quot;/info/README.md&quot;]</span></code></p>
 <p>To make a docker image executable you’ll need to include either an ‘ENTRYPOINT’, an ‘CMD’ or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container.</p>
 <p>The ENTRYPOINT specifies a command that will always be executed when the container starts (i.e. this should be the “main” command), while CMD defines the default arguments of the container, e.g.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span> <span class="pre">[&quot;echo&quot;,</span> <span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;]</span></code></p>
@@ -587,7 +603,7 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/resources/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
 <ol class="arabic simple" start="3">
-<li><p>Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p></li>
+<li><p>Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
     <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
@@ -617,31 +633,34 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker build -t myfirstdocker .`
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    (base) Michaels-MacBook-Pro:my_first_docker me$ sudo docker build -t my_first_docker .
-    [+] Building 1484.8s (9/9) FINISHED                  docker:desktop-linux  
-    =&gt; [internal] load .dockerignore		                                                                  0.0s 
-    =&gt; =&gt; transferring context: 2B 				                                                           	  0.0s 
-    =&gt; [internal] load build definition from Dockerfile		 	                                              0.0s
-    =&gt; =&gt; transferring dockerfile: 597B 				 	                                                  0.0s
-    =&gt; [internal] load metadata for docker.io/library/ubuntu:latest 	                                      0.0s
-    =&gt; [1/4] FROM docker.io/library/ubuntu:latest 			                                                  0.0s
-    =&gt; [internal] load build context 					                                                      0.0s
-    =&gt; =&gt; transferring context: 138B					                                                      0.0s
-    =&gt; CACHED [2/4] WORKDIR /project  				                                                          0.0s
-    =&gt; [3/4] RUN apt-get update &amp;&amp;     apt-get install -y python3.10 python3-pip &amp;&amp; pip3 install pandas    1483.5s
-    =&gt; [4/4] COPY print_info.py  /project/ 			                                                          0.0s
-    =&gt; [4/6] RUN mkdir /info                                                                                  0.1s
-    =&gt; [5/6] COPY print_info.py /info/                                                                        0.0s
-    =&gt; [6/6] COPY README.md /info/README.md                                                                   0.0s
-    =&gt; exporting to image						                                                              1.2s
-    =&gt; =&gt; exporting layers						                                                              1.2s
-    =&gt; =&gt; writing image sha256:c1891eb763de4c8432eae0d7239f7acd2f0d02782a5a4d87ec3f558f5c033ad6 	          0.0s 
-    =&gt; =&gt; naming to docker.io/library/my_first_docker			                                              0.0s 
-                                                                                                                
-    What&#39;s Next?
-    View a summary of image vulnerabilities and recommendations → docker scout quickview
-
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+  <p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:my_first_docker me$ sudo docker build -t my_first_docker .
+[+] Building 1484.8s (9/9) FINISHED                  docker:desktop-linux  
+=&gt; [internal] load .dockerignore		                                                                  0.0s 
+=&gt; =&gt; transferring context: 2B 				                                                           	  0.0s 
+=&gt; [internal] load build definition from Dockerfile		 	                                              0.0s
+=&gt; =&gt; transferring dockerfile: 597B 				 	                                                  0.0s
+=&gt; [internal] load metadata for docker.io/library/ubuntu:latest 	                                      0.0s
+=&gt; [1/4] FROM docker.io/library/ubuntu:latest 			                                                  0.0s
+=&gt; [internal] load build context 					                                                      0.0s
+=&gt; =&gt; transferring context: 138B					                                                      0.0s
+=&gt; CACHED [2/4] WORKDIR /project  				                                                          0.0s
+=&gt; [3/4] RUN apt-get update &amp;&amp;     apt-get install -y python3.10 python3-pip &amp;&amp; pip3 install pandas    1483.5s
+=&gt; [4/4] COPY print_info.py  /project/ 			                                                          0.0s
+=&gt; [4/6] RUN mkdir /info                                                                                  0.1s
+=&gt; [5/6] COPY print_info.py /info/                                                                        0.0s
+=&gt; [6/6] COPY README.md /info/README.md                                                                   0.0s
+=&gt; exporting to image						                                                              1.2s
+=&gt; =&gt; exporting layers						                                                              1.2s
+=&gt; =&gt; writing image sha256:c1891eb763de4c8432eae0d7239f7acd2f0d02782a5a4d87ec3f558f5c033ad6 	          0.0s 
+=&gt; =&gt; naming to docker.io/library/my_first_docker			                                              0.0s 
+                                                                                                            
+What&#39;s Next?
+View a summary of image vulnerabilities and recommendations → docker scout quickview
 </pre></div>
+</div>
+  </p>
 </div>
 <p>As you can see from the output, the steps we defined in our Dockerfile are executed step by step, comparable to docker pull. And we can check if our image was actually created successfully by using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    (base) Michaels-MacBook-Pro:my_first_docker me$ docker images
@@ -652,7 +671,7 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 <p><strong>5. Docker run</strong></p>
 <p>The most basic way to run a container from the terminal is simply <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">imagename</span></code>, e.g. in :</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">my_first_docker</span></code></p>
-<p>This will result in our default behaviour (CMD [“cat”, “/info/README.md”]). The output looks like this:</p>
+<p>This will result in our defined default behaviour (CMD [“cat”, “/info/README.md”]). The output looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    (base) Michaels-MBP:my_first_docker me$ docker run my_first_docker
     # EEG Demographics Dataset
 
@@ -679,16 +698,15 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 
 </pre></div>
 </div>
-<p>If Instead we want to run the python script in our info folder we replace the default command, by including instructions in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code>, like so:</p>
+<p>If Instead we want to run the python script in our containers <code class="docutils literal notranslate"><span class="pre">info</span> <span class="pre">folder</span></code> we replace the default command, by including instructions in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code>, like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">my_first_docker</span> <span class="pre">python3</span> <span class="pre">/info/print_info.py</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">13</span>
     <span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">image</span> <span class="k">for</span> <span class="n">Your</span> <span class="n">Study</span> <span class="n">Title</span> <span class="n">Here</span><span class="o">.</span> <span class="n">Youll</span> <span class="n">find</span> <span class="nb">all</span> <span class="n">relevant</span> <span class="n">information</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">README</span> <span class="n">file</span> <span class="n">located</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">folder</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command by providing a <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">path</span></code>, i.e. a pointer for which directories of the host system should be made accessible to the container. We do this by providing a <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">-flag</span></code> (volume), a local file path and the working directory in our container, separated by <code class="docutils literal notranslate"><span class="pre">:</span></code>. If we want to mount our current working directory (<code class="docutils literal notranslate"><span class="pre">pwd</span></code> in bash) to the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder in our container and run a local python script we can do:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py`
-
-where:   
+<p>No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command by providing a <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">path</span></code>, i.e. a pointer for which directories of the host system should be made accessible to the container. Again, we do this by providing a <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">-flag</span></code> (volume), a local file path and the working directory in our container, separated by <code class="docutils literal notranslate"><span class="pre">:</span></code>. If we want to mount our current working directory (<code class="docutils literal notranslate"><span class="pre">pwd</span></code> in bash) to the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder in our container and run a local python script we can do:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">$(pwd):/project</span> <span class="pre">my_first_docker</span> <span class="pre">python3</span> <span class="pre">print_info_copy.py</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>where:   
     $(pwd) = local machine :
     /project = docker container  
     my_first_docker = imagename 
@@ -696,7 +714,7 @@ where:
     print_info_copy.py = filename
 </pre></div>
 </div>
-<p>Output:</p>
+<p>Resulting in:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    (base) Michaels-MBP:my_first_docker me$ docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py
     Date: 2024-03-13
     Welcome to the Docker image for Your Study Title Here (Imported script via CMD). Youll find all relevant information in the README file located in this folder.

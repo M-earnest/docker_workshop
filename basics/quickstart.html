@@ -58,12 +58,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'basics/quickstart';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Advanced aspects" href="../advanced.html" />
+    <link rel="next" title="Management of software containers" href="../advanced/management.html" />
     <link rel="prev" title="A super short introduction - Container &amp; Virtualization" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,20 +189,13 @@
 
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../basics.html">Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quickstarting your container expertise</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced.html">Advanced aspects</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/management.html">Management of software containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/data.html">Software containers &amp; data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/creating.html">Creating software containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/creating_your_own.html">Creating your own software container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/automating.html">Automating software containers</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../break.html">Yoga and/or dance break</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quickstarting your container expertise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/management.html">Management of software containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/data.html">Software containers &amp; data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/creating.html">Creating software containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/creating_your_own.html">Creating your own software container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/automating.html">Automating software containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
 </ul>
 
@@ -425,6 +416,17 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
 </ul>
 </li>
 </ul>
@@ -496,8 +498,7 @@ document.write(`
 </ul>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
-```
-(base) Michaels-MacBook-Pro:~ me$ docker
+<p>(base) Michaels-MacBook-Pro:~ me$ docker</p>
 <p>Usage:  docker [OPTIONS] COMMAND</p>
 <p>A self-sufficient runtime for containers</p>
 <p>Common Commands:
@@ -612,368 +613,316 @@ $ docker run -it ubuntu bash</p>
 <a class="reference external" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
 <p>For more examples and ideas, visit:
 <a class="reference external" href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;/p&gt;
-&lt;/div&gt;
+  </p>
+</div>
+</section>
+</section>
+<section id="the-run-command">
+<h3>The <code class="docutils literal notranslate"><span class="pre">run</span></code> command<a class="headerlink" href="#the-run-command" title="Link to this heading">#</a></h3>
+<p>Next, let’s try to run a container!</p>
+<p>Simply type <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> and hit enter</p>
+<ol class="arabic simple">
+<li><p>tells docker to run or execute the <em>container</em> or <em>image</em> <code class="docutils literal notranslate"><span class="pre">hello-world</span></code></p></li>
+<li><p>if the wanted container is not already on your machine, docker automatically searches for and downloads it</p></li>
+<li><p>docker run then runs or executes the given container doing whatever the container is supposed to do</p></li>
+</ol>
+</section>
+<section id="but-what-is-a-container">
+<h3>But what is a container?<a class="headerlink" href="#but-what-is-a-container" title="Link to this heading">#</a></h3>
+<p>A container is simply an <code class="docutils literal notranslate"><span class="pre">active</span></code> or <code class="docutils literal notranslate"><span class="pre">running</span></code> instance of an Docker image.
+And what is an image?</p>
+<ul class="simple">
+<li><p>An image is a mixture of instructions and data that contains all the necessary information to run a virtual workflow on a system (given computational limits and that Docker is installed)</p></li>
+</ul>
+<p>These lie at the heart of Docker and are what is usually shared to create reusable workflows or apps.</p>
+</section>
+<section id="where-do-docker-containers-come-from">
+<h3>Where do docker containers come from ?<a class="headerlink" href="#where-do-docker-containers-come-from" title="Link to this heading">#</a></h3>
+<p>In most cases, docker containers are stored online on and downloaded from <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>, an extensive online repository, where On folks can upload and store as many docker containers as they want for free, only requirement: a <a class="reference external" href="https://docs.docker.com/docker-id/">Docker ID</a></p>
+<ul class="simple">
+<li><p>your Docker ID is the Username that you choose when signing up for Docker Hub, if you want to connect your local Docker to Docker Hub you can run:
+<code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">login</span></code></p>
+<ul>
+<li><p>following you will be asked to provide your username and password</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don&#39;t have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
 
-
-### The `run` command
-
-Next, let&#39;s try to run a container! 
-
-Simply type `docker run hello-world` and hit enter
-
-1. tells docker to run or execute the _container_ or _image_ `hello-world`
-2. if the wanted container is not already on your machine, docker automatically searches for and downloads it
-3. docker run then runs or executes the given container doing whatever the container is supposed to do
-
-### But what is a container?
-
-A container is simply an `active` or `running` instance of an Docker image.
-And what is an image? 
-- An image is a mixture of instructions and data that contains all the necessary information to run a virtual workflow on a system (given computational limits and that Docker is installed)
-
-These lie at the heart of Docker and are what is usually shared to create reusable workflows or apps.
-
-### Where do docker containers come from ?
-
-In most cases, docker containers are stored online on and downloaded from [Docker Hub](https://hub.docker.com/), an extensive online repository, where On folks can upload and store as many docker containers as they want for free, only requirement: a [Docker ID](https://docs.docker.com/docker-id/)
-
-- your Docker ID is the Username that you choose when signing up for Docker Hub, if you want to connect your local Docker to Docker Hub you can run:
-  `Docker login`
-
-  - following you will be asked to provide your username and password
+Username: your_username
+Password: 
+Login Succeeded
 
 </pre></div>
 </div>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker login
-Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don’t have a Docker ID, head over to <a class="reference external" href="https://hub.docker.com/">https://hub.docker.com/</a> to create one.
-You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at <a class="reference external" href="https://docs.docker.com/go/access-tokens/">https://docs.docker.com/go/access-tokens/</a></p>
-<p>Username: your_username
-Password:
-Login Succeeded</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Once you&#39;re logged in your build and tagged docker images can be pushed to the docker hub via the command line:
-  `docker push your-cool-image`
+<p>Once you’re logged in your build and tagged docker images can be pushed to the docker hub via the command line:
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">your-cool-image</span></code></p>
+<ul class="simple">
+<li><p>additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (check the automatization lesson for more info)</p></li>
+</ul>
+</section>
+<section id="docker-commands-101-in-depth">
+<h3>Docker commands 101 - in depth<a class="headerlink" href="#docker-commands-101-in-depth" title="Link to this heading">#</a></h3>
+<p>Now let’s further explore docker commands within a typical workflow.</p>
+<p>At first, we want to download a certain docker container to work with, for the sake of simplicity and time we’re going to use the classic Ubuntu container (also alwyas a great way to start, when designing a new container that is dependent on it’s own OS).</p>
+<section id="docker-commands-101-pull">
+<h4>Docker commands 101 - pull<a class="headerlink" href="#docker-commands-101-pull" title="Link to this heading">#</a></h4>
+<p>Instead of automatically downloading the container via docker run, we use the respective docker command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">image_name</span></code>, hence</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">default</span> <span class="n">tag</span><span class="p">:</span> <span class="n">latest</span>
+<span class="n">latest</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">library</span><span class="o">/</span><span class="n">ubuntu</span>
+<span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="n">f9d633ff6640178c2d0525017174a688e2c1aef28f0a0130b26bd5554491f0da</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Image</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">for</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">docker</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">library</span><span class="o">/</span><span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
   
-- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (check the automatization lesson for more info)
-
-
-### Docker commands 101 - in depth
-
-Now let&#39;s further explore docker commands within a typical workflow.
-
-At first, we want to download a certain docker container to work with, for the sake of simplicity and time we&#39;re going to use the classic Ubuntu container (also alwyas a great way to start, when designing a new container that is dependent on it&#39;s own OS).
-
-#### Docker commands 101 - pull
-
-Instead of automatically downloading the container via docker run, we use the respective docker command `docker pull image_name`, hence
-
-`docker pull ubuntu`
-
 </pre></div>
 </div>
-<p>Using default tag: latest
-latest: Pulling from library/ubuntu
-Digest: sha256:f9d633ff6640178c2d0525017174a688e2c1aef28f0a0130b26bd5554491f0da
-Status: Image is up to date for ubuntu:latest
-<a class="reference external" href="http://docker.io/library/ubuntu:latest">docker.io/library/ubuntu:latest</a></p>
+<p>As you can see, we downloaded all <em>layers</em> that are needed to build the classic Ubuntu docker container, with the message Status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloaded</span> <span class="n">newer</span> <span class="n">image</span> <span class="k">for</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>Super important: by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:</p>
+</section>
+<section id="docker-commands-101-run">
+<h4>Docker commands 101 - run<a class="headerlink" href="#docker-commands-101-run" title="Link to this heading">#</a></h4>
+<p>Now if we want to work with our newly downloaded docker container, we can simply run/execute it via:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span></code></p>
+<p>Which should result in:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">As</span> <span class="n">you</span> <span class="n">can</span> <span class="n">see</span><span class="p">,</span> <span class="n">we</span> <span class="n">downloaded</span> <span class="nb">all</span> <span class="n">_layers_</span> <span class="n">that</span> <span class="n">are</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">build</span> <span class="n">the</span> <span class="n">classic</span> <span class="n">Ubuntu</span> <span class="n">docker</span> <span class="n">container</span><span class="p">,</span> <span class="k">with</span> <span class="n">the</span> <span class="n">message</span> <span class="n">Status</span><span class="p">:</span> 
+(base) Michaels-MacBook-Pro:~ me$ docker run ubuntu
+(base) Michaels-MacBook-Pro:~ me$ 
 
 </pre></div>
 </div>
-<p>Downloaded newer image for ubuntu:latest</p>
+<ul class="simple">
+<li><p>docker used run, nothing happend? all the fuzz for that?</p></li>
+</ul>
+<p>Correct, as each docker container is build for a specific reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.</p>
+<p>The Ubuntu docker container may contain a complete Ubuntu installation, but has not no predefined functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the <code class="docutils literal notranslate"><span class="pre">readme</span></code> or <code class="docutils literal notranslate"><span class="pre">docs</span></code> of a given docker container before using it.</p>
+<p>Let’s say we consulted the Ubuntu container documentation and found out that it is possible to make use of the contained <code class="docutils literal notranslate"><span class="pre">Bash</span> <span class="pre">Shell</span></code> by simply integrating Bash commands into our <code class="docutils literal notranslate"><span class="pre">run</span></code> command. Try the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span> <span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container&quot;</span></code></p>
+<p>Which should give you the output message: <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container</span></code></p>
+<p>This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:</p>
+<p>We can utilizes a given docker container in an <em>interactive</em> fashion by including the <code class="docutils literal notranslate"><span class="pre">--it</span></code> flag in the the docker run command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>Here, we also tell the ubuntu docker container to start/enter the bash shell.</p>
+<p>Now we can explore the interactive Ubuntu environment, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Super important: by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:
-
-#### Docker commands 101 - run
-
-Now if we want to work with our newly downloaded docker container, we can simply run/execute it via:
-
-`docker run ubuntu`
-
-Which should result in:
-
-</pre></div>
-</div>
-<p>(base) Michaels-MacBook-Pro:~ me<span class="math notranslate nohighlight">\( docker run ubuntu
-(base) Michaels-MacBook-Pro:~ me\)</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-- docker used run, nothing happend? all the fuzz for that?
-
-Correct, as each docker container is build for a specific reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.
-
-The Ubuntu docker container may contain a complete Ubuntu installation, but has not no predefined functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the `readme` or `docs` of a given docker container before using it.
-
-Let&#39;s say we consulted the Ubuntu container documentation and found out that it is possible to make use of the contained `Bash Shell` by simply integrating Bash commands into our `run` command. Try the following:
-
-  `docker run ubuntu echo &quot;hello from your container&quot;`
-
-Which should give you the output message: `hello from your container`
-
-This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:
-
-We can utilizes a given docker container in an _interactive_ fashion by including the `--it` flag in the the docker run command:
-
-`docker run -it ubuntu bash`
-
-Here, we also tell the ubuntu docker container to start/enter the bash shell.
-
-Now we can explore the interactive Ubuntu environment, e.g.:
-
-</pre></div>
-</div>
-<p>(base) Michaels-MacBook-Pro:~ me<span class="math notranslate nohighlight">\( docker run -it ubuntu bash
-root&#64;806c74068242:/# echo \)</span>SHELL
+(base) Michaels-MacBook-Pro:~ me$ docker run -it ubuntu bash
+root@806c74068242:/# echo $SHELL 
 /bin/bash
-root&#64;806c74068242:/# ls
+root@806c74068242:/# ls
 bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-root&#64;806c74068242:/#</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-As we can see the container is in fact simulating a complete Ubuntu file system.
-
-Inside the ubuntu docker container we can utilize the functionality of the ubuntu OS and we exit the container by typing `exit`
+root@806c74068242:/# 
 
 </pre></div>
 </div>
-<p>root&#64;806c74068242:/# exit
+<p>As we can see the container is in fact simulating a complete Ubuntu file system.</p>
+<p>Inside the ubuntu docker container we can utilize the functionality of the ubuntu OS and we exit the container by typing <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@806c74068242:/# exit
 exit
-(base) Michaels-MacBook-Pro:~ me$</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Depending on a given container&#39;s architecture and definition, it should automatically be removed from your running instances when exiting. 
-However it&#39;s worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).
-
-This can easily be done by:
-
-`docker ps`
-
-Or by checking under `containers` in the Docker Dekstop GUI.
-
-In order to ensure that a given docker container is removed from running instances after exiting, the --rm flag can be included in the docker run command:
-
-`docker run -it --rm ubuntu bash`
-
-It&#39;s important to note that unless explicitly specified, creating, modifying and deleting files in a container reuslts in neither permanent nor saved changes, as this is against the encapsulation and reproducibility idea.
-
-We can verify this by running the following commands in our container:
+(base) Michaels-MacBook-Pro:~ me$ 
 
 </pre></div>
 </div>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker run -it –rm ubuntu bash
-root&#64;3efa79a80611:/# ls
+<p>Depending on a given container’s architecture and definition, it should automatically be removed from your running instances when exiting.
+However it’s worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).</p>
+<p>This can easily be done by:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></p>
+<p>Or by checking under <code class="docutils literal notranslate"><span class="pre">containers</span></code> in the Docker Dekstop GUI.</p>
+<p>In order to ensure that a given docker container is removed from running instances after exiting, the –rm flag can be included in the docker run command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>It’s important to note that unless explicitly specified, creating, modifying and deleting files in a container reuslts in neither permanent nor saved changes, as this is against the encapsulation and reproducibility idea.</p>
+<p>We can verify this by running the following commands in our container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm ubuntu bash
+root@3efa79a80611:/# ls
 bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-root&#64;3efa79a80611:/# mkdir test
-root&#64;3efa79a80611:/# ls
+root@3efa79a80611:/# mkdir test
+root@3efa79a80611:/# ls
 bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  test  tmp  usr  var
-root&#64;3efa79a80611:/# exit
-exit</p>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker run -it –rm ubuntu bash
-root&#64;9bc5ba4cf999:/# ls
-bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Furthermore, we cannot interact with data stored on our host machine, i.e. outside the docker container.
-
-In order to address both problems, we need to `mount` our host system to the container.
-
-#### Docker commands 101 - mount
-
-`Mounting` describes a mapping from paths outside the docker container to paths inside the docker container.
-
-This is achieved through the `-v` flag within the `docker run` command and utilized as follows: 
-
-`-v path/outside/container:/path/inside/container`
-
-So to make our systems /Desktop available inside the docker container as a folder called `/data` within the ubuntu container we run:
-
-`docker run -it --rm -v /Users/me/Desktop:/data ubuntu bash`
-
-Which gives us:
-
-</pre></div>
-</div>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker run -it –rm -v /Users/me/Desktop:/data ubuntu bash
-root&#64;8f5c051b6904:/# ls
-bin  boot  data  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-root&#64;8f5c051b6904:/# cd data
-root&#64;8f5c051b6904:/data# ls
-docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05
-root&#64;8f5c051b6904:/data# mkdir test_object_permanence
-root&#64;8f5c051b6904:/data# ls
-docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">And</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">we</span> <span class="n">actually</span> <span class="n">created</span> <span class="n">a</span> <span class="n">_permanent_</span> <span class="n">folder</span>  <span class="p">(</span><span class="n">let</span><span class="s1">&#39;s call it `test_object_permanence`) on our system:</span>
-
-</pre></div>
-</div>
-<p>root&#64;8f5c051b6904:/data# exit
+root@3efa79a80611:/# exit
 exit
-(base) Michaels-MacBook-Pro:~ me<span class="math notranslate nohighlight">\( cd Desktop/
-(base) Michaels-MacBook-Pro:Desktop me\)</span> ls
-docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_permanence</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Great, at least we created something permanent for once!
 
-Most of the time, it&#39;s a good idea to indicate absolute paths on the host system. In our example the directory `/data` didn&#39;t exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it&#39;s setup/definition at hand as e.g. within automated functionality a certain directory is expected.
-
-`As per usual`: check the readme and/or docs of a given docker container!
-
-Further, we can mount as many directories and files as we want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm ubuntu bash
+root@9bc5ba4cf999:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 
 </pre></div>
 </div>
-<p>docker run -it –rm
--v /Users/me/Desktop:/input:ro
--v /Users/me/Desktop/analyses:/output
-ubuntu bash</p>
+<p>Furthermore, we cannot interact with data stored on our host machine, i.e. outside the docker container.</p>
+<p>In order to address both problems, we need to <code class="docutils literal notranslate"><span class="pre">mount</span></code> our host system to the container.</p>
+</section>
+<section id="docker-commands-101-mount">
+<h4>Docker commands 101 - mount<a class="headerlink" href="#docker-commands-101-mount" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Mounting</span></code> describes a mapping from paths outside the docker container to paths inside the docker container.</p>
+<p>This is achieved through the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command and utilized as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container</span></code></p>
+<p>So to make our systems /Desktop available inside the docker container as a folder called <code class="docutils literal notranslate"><span class="pre">/data</span></code> within the ubuntu container we run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">/Users/me/Desktop:/data</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+<p>Which gives us:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(base) Michaels-MacBook-Pro:~ me$ docker run -it --rm -v /Users/me/Desktop:/data ubuntu bash
+root@8f5c051b6904:/# ls
+bin  boot  data  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@8f5c051b6904:/# cd data
+root@8f5c051b6904:/data# ls
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05
+root@8f5c051b6904:/data# mkdir test_object_permanence
+root@8f5c051b6904:/data# ls
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
+
 </pre></div>
 </div>
-<p>(base) Michaels-MacBook-Pro:Desktop me$ docker run -it –rm -v /Users/me/Desktop:/input:ro -v /Users/me/Desktop/analyses:/output ubuntu bash</p>
-<p>root&#64;97917588b533:/#
-root&#64;97917588b533:/# ls
+<p>And to verify that we actually created a <em>permanent</em> folder  (let’s call it <code class="docutils literal notranslate"><span class="pre">test_object_permanence</span></code>) on our system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@8f5c051b6904:/data# exit 
+exit
+(base) Michaels-MacBook-Pro:~ me$ cd Desktop/
+(base) Michaels-MacBook-Pro:Desktop me$ ls
+docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_permanence
+
+</pre></div>
+</div>
+<p>Great, at least we created something permanent for once!</p>
+<p>Most of the time, it’s a good idea to indicate absolute paths on the host system. In our example the directory <code class="docutils literal notranslate"><span class="pre">/data</span></code> didn’t exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it’s setup/definition at hand as e.g. within automated functionality a certain directory is expected.</p>
+<p><code class="docutils literal notranslate"><span class="pre">As</span> <span class="pre">per</span> <span class="pre">usual</span></code>: check the readme and/or docs of a given docker container!</p>
+<p>Further, we can mount as many directories and files as we want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> 
+<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="p">:</span><span class="o">/</span><span class="nb">input</span><span class="p">:</span><span class="n">ro</span> 
+<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">analyses</span><span class="p">:</span><span class="o">/</span><span class="n">output</span> 
+<span class="n">ubuntu</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm -v /Users/me/Desktop:/input:ro -v /Users/me/Desktop/analyses:/output ubuntu bash
+
+root@97917588b533:/# 
+root@97917588b533:/# ls
 bin  boot  dev  etc  home  input  lib  media  mnt  opt  output  proc  root  run  sbin  srv  sys  tmp  usr  var
-root&#64;97917588b533:/# ls input
-analyses  docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">And</span> <span class="n">again</span> <span class="n">to</span> <span class="n">verify</span><span class="p">:</span>
+root@97917588b533:/# ls input
+analyses  docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
 
 </pre></div>
 </div>
-<p>root&#64;97917588b533:/# exit
+<p>And again to verify:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+root@97917588b533:/# exit
 exit
 (base) Michaels-MacBook-Pro:Desktop me$ ls
 analyses		rand			sub-02			sub-04			test_object_permanence
-docker_mne		sub-01			sub-03			sub-05</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-!Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.
-
-
-### Docker commands 101 - excerices
-
-To solidfy what we&#39;ve learned in this session, please try the following excercises:
-
-
-- pull the neurodebian docker container in its nd-non-free version (tag)
-&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+docker_mne		sub-01			sub-03			sub-05
 
 </pre></div>
 </div>
-<p>docker pull neurodebian:nd-non-free</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>docker pull neurodebian:nd-non-free
-nd-non-free: Pulling from library/neurodebian
-490d250d3b27: Downloading  42.92MB/51.51MB
-a6023d7647e9: Downloading  7.988MB/12.62MB
-4cb219c41d8a: Download complete
-58b04c616174: Download complete
-87ebf6eb132f: Download complete
-20f10bbb8ef3: Download complete</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-&lt;/details&gt;
-
-&lt;br&gt;
-
-- run the `bash` shell of our freshly pulled neurodebian image in an interactive fashion. Use the mount ability during the run command to mount your `Desktop` or `home directory`, if you are working with WSL, to a directory called `/data` in the container. &lt;br&gt;
-
-&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
-
-</pre></div>
-</div>
-<p>aaronreer&#64;FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash</p>
-<p>#You should end up seeing the ‘terminal’ of your container, the command line or bash shell.</p>
-<p>root&#64;46d4421e9ae1:/#</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-&lt;/details&gt; 
-
-&lt;br&gt;
-
-- navigate into the `/data` directory within your container and check its content. Then, create a directory called docker_is_fun. Check the contents again to see if it worked.
-
-&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
-
-</pre></div>
-</div>
-<p>root&#64;46d4421e9ae1:/# cd data
-root&#64;46d4421e9ae1:/data# ls
-Dockerfile  data  files_for_workshop  <a class="reference external" href="http://get-pip.py">get-pip.py</a>  projects  test1  test_env
-root&#64;46d4421e9ae1:/data# mkdir docker_is_fun
-root&#64;46d4421e9ae1:/data# ls
-Dockerfile  docker_is_fun       <a class="reference external" href="http://get-pip.py">get-pip.py</a>  test1
-data        files_for_workshop  projects    test_env
-root&#64;46d4421e9ae1:/data#</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span> 
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">within</span> <span class="n">the</span> <span class="n">newly</span> <span class="n">created</span> <span class="n">directory</span><span class="p">,</span> <span class="n">create</span> <span class="n">a</span> <span class="o">.</span><span class="n">txt</span> <span class="n">named</span> <span class="n">i_like_docker</span><span class="o">.</span><span class="n">txt</span> <span class="ow">and</span> <span class="n">exit</span> <span class="n">the</span> <span class="n">container</span>
-
-<span class="o">&lt;</span><span class="n">details</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">summary</span><span class="o">&gt;</span><span class="n">Solution</span><span class="o">&lt;/</span><span class="n">summary</span><span class="o">&gt;</span>
-
-</pre></div>
-</div>
-<p>root&#64;46d4421e9ae1:/data# cd docker_is_fun/
-root&#64;46d4421e9ae1:/data/docker_is_fun# touch i_like_docker.txt
-root&#64;46d4421e9ae1:/data/docker_is_fun# exit
-exit
-aaronreer&#64;FK6P-1158240:~$</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-&lt;/details&gt;
-
-&lt;br&gt;
-
-- run the container again interactively using bash, this time mounting the newly created `docker_is_fun` as **read-only** to `/input`, as well as an directory called `docker_is_love`, which is inside the docker_is_fun directory, to the  `/output`. Now, copy the i_like_docker.txt from the input to the output directory
-
-&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
-
-</pre></div>
-</div>
-<p>aaronreer&#64;FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
-root&#64;e4d716b82877:/# cd /input/
-root&#64;e4d716b82877:/input# ls
-docker_is_love  i_like_docker.txt
-root&#64;e4d716b82877:/input# cp i_like_docker.txt /output/
-root&#64;e4d716b82877:/input#</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
-
-
-<span class="c1">### Summary - Docker 101</span>
-
-<span class="o">-</span> <span class="p">[</span><span class="n">Docker</span> <span class="n">Hub</span><span class="p">]()</span> <span class="o">--</span> <span class="n">repositories</span> <span class="n">to</span> <span class="n">share</span> <span class="n">Docker</span> <span class="n">images</span>
-
-<span class="o">-</span> <span class="n">basic</span> <span class="n">image</span> <span class="n">usage</span><span class="p">:</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Download docker container &#39;ubuntu&#39;
-docker pull ubuntu
-# Run installed docker container
-docker run ubuntu
-# Run installed docker container interactively
-docker run -it ubuntu
-# Run installed docker container interactively, removing it after exiting
-docker run -it --rm ubuntu
-# Run installed docker container interactively, removing it after exiting,
-# mounting paths
-docker run -it --rm -v /path/on/host:/path/within/container ubuntu
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-
-
-
-
-</pre></div>
-</div>
+<p>!Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.</p>
 </section>
+</section>
+<section id="docker-commands-101-excerices">
+<h3>Docker commands 101 - excerices<a class="headerlink" href="#docker-commands-101-excerices" title="Link to this heading">#</a></h3>
+<p>To solidfy what we’ve learned in this session, please try the following excercises:</p>
+<ul class="simple">
+<li><p>pull the neurodebian docker container in its nd-non-free version (tag)</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span>
+<span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">library</span><span class="o">/</span><span class="n">neurodebian</span>
+<span class="mi">490</span><span class="n">d250d3b27</span><span class="p">:</span> <span class="n">Downloading</span>  <span class="mf">42.92</span><span class="n">MB</span><span class="o">/</span><span class="mf">51.51</span><span class="n">MB</span>
+<span class="n">a6023d7647e9</span><span class="p">:</span> <span class="n">Downloading</span>  <span class="mf">7.988</span><span class="n">MB</span><span class="o">/</span><span class="mf">12.62</span><span class="n">MB</span>
+<span class="mi">4</span><span class="n">cb219c41d8a</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">58</span><span class="n">b04c616174</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">87</span><span class="n">ebf6eb132f</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">20</span><span class="n">f10bbb8ef3</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+</pre></div>
+</div>
+</details>
+<br>
+<ul class="simple">
+<li><p>run the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell of our freshly pulled neurodebian image in an interactive fashion. Use the mount ability during the run command to mount your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">home</span> <span class="pre">directory</span></code>, if you are working with WSL, to a directory called <code class="docutils literal notranslate"><span class="pre">/data</span></code> in the container. <br></p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash
+
+#You should end up seeing the &#39;terminal&#39; of your container, the command line or bash shell.
+
+root@46d4421e9ae1:/# 
+</pre></div>
+</div>
+</details> 
+<br>
+<ul class="simple">
+<li><p>navigate into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory within your container and check its content. Then, create a directory called docker_is_fun. Check the contents again to see if it worked.</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="c1"># cd data</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># ls</span>
+<span class="n">Dockerfile</span>  <span class="n">data</span>  <span class="n">files_for_workshop</span>  <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>  <span class="n">projects</span>  <span class="n">test1</span>  <span class="n">test_env</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># mkdir docker_is_fun</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># ls</span>
+<span class="n">Dockerfile</span>  <span class="n">docker_is_fun</span>       <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>  <span class="n">test1</span>
+<span class="n">data</span>        <span class="n">files_for_workshop</span>  <span class="n">projects</span>    <span class="n">test_env</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1">#</span>
+</pre></div>
+</div>
+</details> 
+<br>
+<ul class="simple">
+<li><p>within the newly created directory, create a .txt named i_like_docker.txt and exit the container</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@46d4421e9ae1:/data# cd docker_is_fun/
+root@46d4421e9ae1:/data/docker_is_fun# touch i_like_docker.txt
+root@46d4421e9ae1:/data/docker_is_fun# exit
+exit
+aaronreer@FK6P-1158240:~$
+</pre></div>
+</div>
+</details>
+<br>
+<ul class="simple">
+<li><p>run the container again interactively using bash, this time mounting the newly created <code class="docutils literal notranslate"><span class="pre">docker_is_fun</span></code> as <strong>read-only</strong> to <code class="docutils literal notranslate"><span class="pre">/input</span></code>, as well as an directory called <code class="docutils literal notranslate"><span class="pre">docker_is_love</span></code>, which is inside the docker_is_fun directory, to the  <code class="docutils literal notranslate"><span class="pre">/output</span></code>. Now, copy the i_like_docker.txt from the input to the output directory</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
+root@e4d716b82877:/# cd /input/
+root@e4d716b82877:/input# ls
+docker_is_love  i_like_docker.txt
+root@e4d716b82877:/input# cp i_like_docker.txt /output/
+root@e4d716b82877:/input#
+
+</pre></div>
+</div>
+</details>
+</section>
+<section id="summary-docker-101">
+<h3>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../basics.html"><span class="doc std std-doc">Docker Hub</span></a> – repositories to share Docker images</p></li>
+<li><p>basic image usage:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+    <span class="c1"># Download docker container &#39;ubuntu&#39;</span>
+    <span class="n">docker</span> <span class="n">pull</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively, removing it after exiting</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="n">ubuntu</span>
+    <span class="c1"># Run installed docker container interactively, removing it after exiting,</span>
+    <span class="c1"># mounting paths</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">host</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">within</span><span class="o">/</span><span class="n">container</span> <span class="n">ubuntu</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -1018,11 +967,11 @@ docker run -it --rm -v /path/on/host:/path/within/container ubuntu
       </div>
     </a>
     <a class="right-next"
-       href="../advanced.html"
+       href="../advanced/management.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Advanced aspects</p>
+        <p class="prev-next-title">Management of software containers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1049,6 +998,17 @@ docker run -it --rm -v /path/on/host:/path/within/container ubuntu
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
 </ul>
 </li>
 </ul>
