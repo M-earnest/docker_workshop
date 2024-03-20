@@ -297,7 +297,7 @@ So, let's see how we can create our Dockerfiles using `Neurodocker`. At first we
 ![pull Neurodocker image](/static/Neurodocker_pull_image.png)
 
 ```
-aaronreer@FK6P-1158240:~/data$ docker pull repronim/neurodocker:0.9.5
+aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
 0.9.5: Pulling from repronim/neurodocker
 8a49fdb3b6a5: Already exists
 0357922e53aa: Already exists
@@ -318,7 +318,7 @@ All we have to do now is run Neurodocker, providing the necessay input arguments
 ![Neurodocker: select base-image and package manager](/static/Neurodocker_generate_docker_base.png)
 
 ```
-aaronreer@FK6P-1158240:~/data$ docker run repronim/neurodocker:0.9.5 generate docker \
+aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
 --pkg-manager apt \
 
@@ -333,7 +333,7 @@ Next, we specify all the Linux packages that we want to have installed in our im
 
 
 ```
-aaronreer@FK6P-1158240:~/data$ docker run repronim/neurodocker:0.9.5 generate docker \
+aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
 --pkg-manager apt \
 --install git nano \
