@@ -371,9 +371,9 @@ bin  boot  data  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  sr
 root@8f5c051b6904:/# cd data
 root@8f5c051b6904:/data# ls
 docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05
-root@8f5c051b6904:/data# mkdir test_object_permanence
+root@8f5c051b6904:/data# `mkdir test_object_permanence`
 root@8f5c051b6904:/data# ls
-docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  `test_object_permanence`
 
 ```
 
@@ -384,7 +384,7 @@ root@8f5c051b6904:/data# exit
 exit
 (base) Michaels-MacBook-Pro:~ me$ cd Desktop/
 (base) Michaels-MacBook-Pro:Desktop me$ ls
-docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_permanence
+docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			`test_object_permanence`
 
 ```
 
@@ -398,9 +398,9 @@ Further, we can mount as many directories and files as we want, indicating each 
 
 ```
 docker run -it --rm 
--v /Users/me/Desktop:/input:ro 
--v /Users/me/Desktop/analyses:/output 
-ubuntu bash
+  -v /Users/me/Desktop:/input:ro 
+  -v /Users/me/Desktop/analyses:/output 
+  ubuntu bash
 ```
 
 ```

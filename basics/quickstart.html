@@ -771,9 +771,9 @@ bin  boot  data  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  sr
 root@8f5c051b6904:/# cd data
 root@8f5c051b6904:/data# ls
 docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05
-root@8f5c051b6904:/data# mkdir test_object_permanence
+root@8f5c051b6904:/data# `mkdir test_object_permanence`
 root@8f5c051b6904:/data# ls
-docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
+docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  `test_object_permanence`
 
 </pre></div>
 </div>
@@ -782,7 +782,7 @@ docker_mne  rand  sub-01  sub-02  sub-03  sub-04  sub-05  test_object_permanence
 exit
 (base) Michaels-MacBook-Pro:~ me$ cd Desktop/
 (base) Michaels-MacBook-Pro:Desktop me$ ls
-docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_permanence
+docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			`test_object_permanence`
 
 </pre></div>
 </div>
@@ -791,9 +791,9 @@ docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_perm
 <p><code class="docutils literal notranslate"><span class="pre">As</span> <span class="pre">per</span> <span class="pre">usual</span></code>: check the readme and/or docs of a given docker container!</p>
 <p>Further, we can mount as many directories and files as we want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> 
-<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="p">:</span><span class="o">/</span><span class="nb">input</span><span class="p">:</span><span class="n">ro</span> 
-<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">analyses</span><span class="p">:</span><span class="o">/</span><span class="n">output</span> 
-<span class="n">ubuntu</span> <span class="n">bash</span>
+  <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="p">:</span><span class="o">/</span><span class="nb">input</span><span class="p">:</span><span class="n">ro</span> 
+  <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">me</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">analyses</span><span class="p">:</span><span class="o">/</span><span class="n">output</span> 
+  <span class="n">ubuntu</span> <span class="n">bash</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm -v /Users/me/Desktop:/input:ro -v /Users/me/Desktop/analyses:/output ubuntu bash

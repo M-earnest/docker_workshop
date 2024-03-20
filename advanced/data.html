@@ -455,30 +455,26 @@ But how do we get data into our Docker containers? Well, there are two different
 <h2>Getting Data into a container permanently<a class="headerlink" href="#getting-data-into-a-container-permanently" title="Link to this heading">#</a></h2>
 <p>Let’s say we want to put a picture of whale in our Docker container, because we’re such docker fans and whales are nothing but awesome, but we’ve learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.</p>
 <p>So as we’ve already seen we can use the <code class="docutils literal notranslate"><span class="pre">COPY</span> <span class="pre">instruction</span></code> to add the data (i.e. our .png file) into our Docker container during its build.</p>
-<p>So let’s first build  a new build context + Dockerfile</p>
+<p>So let’s first build  a new build context + Dockerfile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">mkdir</span> <span class="n">docker_data_container</span>
  <span class="n">touch</span> <span class="n">docker_data_container</span><span class="o">/</span><span class="n">Dockerfile</span>
-</pre></div>
-</div>
-<p>Open the file with VScode and add the following line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
 
 </pre></div>
 </div>
-<p>Now we add the relevant file to our build context, i.e. we move the data you want to include in the same directory as the Dockerfile, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">mv</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">happy_whale</span><span class="o">.</span><span class="n">jpg</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">docker_data_container</span>
+<p>Open the file with <code class="docutils literal notranslate"><span class="pre">VScode</span></code> and add the following line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>Now we add the relevant file to our <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">context</span></code>, i.e. we move the data you want to include in the same directory as the Dockerfile, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">happy_whale</span><span class="o">.</span><span class="n">jpg</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">docker_data_container</span>
 </pre></div>
 </div>
 <p>Now, we add a line to our Dockerfile that indicates that this image should be copied to a specific location inside our Docker container, e.g. /home/images</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-    COPY ./happy_whale.jpg /home/images/happy_whale.jpg
-```
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="o">./</span><span class="n">happy_whale</span><span class="o">.</span><span class="n">jpg</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">happy_whale</span><span class="o">.</span><span class="n">jpg</span>
 </pre></div>
 </div>
 <p>And you guessed it: time to build!</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-    docker build -t whale_container Desktop/docker_data_container
-```
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">whale_container</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">docker_data_container</span>
 </pre></div>
 </div>
 <p>If we now <code class="docutils literal notranslate"><span class="pre">run</span></code> our freshly build Docker container and check the contents of /home, we find the folder images and in it our happy_whale.jpg</p>
@@ -490,10 +486,10 @@ root@8e2a056bed3a:/home# ls
 images
 root@8e2a056bed3a:/home# cd images/
 root@8e2a056bed3a:/home/images# ls
-happy_whale.jpg
+&#39;happy_whale.jpg&#39;
 </pre></div>
 </div>
-<p>If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the local directory where the docker build command is run, replace the above code with:</p>
+<p>If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the current working directory where the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> command is run, replace the above code with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="o">.</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">images</span>
 </pre></div>
 </div>
