@@ -472,7 +472,7 @@ as usual, consider the readme and/or docs of a given docker container before usi
 <p>Which should produce something like the followin output:</p>
 <br>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
-    <p>
+  <p>
       (base) Michaels-MBP:Desktop me$ docker info
       Client:
       Version:    24.0.6
@@ -690,6 +690,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <summary>Solution</summary>
 `docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
 </details>
+<br>
 <ol class="arabic simple" start="2">
 <li><p>export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop</p></li>
 </ol>
@@ -697,6 +698,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <summary>Solution</summary>
 `docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
 </details>
+<br>
 <ol class="arabic simple" start="3">
 <li><p>remove the existing neurodocker containers</p></li>
 </ol>
@@ -704,6 +706,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <summary>Solution</summary>
 `docker rm container-id`
 </details>
+<br>
 <ol class="arabic simple" start="4">
 <li><p>import/load a_container_at_the_end_of_the_universe.tar</p></li>
 </ol>
@@ -711,6 +714,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <summary>Solution</summary>
 `docker load --input a_container_at_the_end_of_the_universe.tar`
 </details>
+<br>
 <ol class="arabic simple" start="5">
 <li><p>run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU</p></li>
 </ol>
