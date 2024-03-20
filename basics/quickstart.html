@@ -839,15 +839,76 @@ docker_mne		sub-01			sub-03			sub-05
 </ul>
 <details>
 <summary>Solution</summary>
-Test dropdpown!
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span>
+<span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">library</span><span class="o">/</span><span class="n">neurodebian</span>
+<span class="mi">490</span><span class="n">d250d3b27</span><span class="p">:</span> <span class="n">Downloading</span>  <span class="mf">42.92</span><span class="n">MB</span><span class="o">/</span><span class="mf">51.51</span><span class="n">MB</span>
+<span class="n">a6023d7647e9</span><span class="p">:</span> <span class="n">Downloading</span>  <span class="mf">7.988</span><span class="n">MB</span><span class="o">/</span><span class="mf">12.62</span><span class="n">MB</span>
+<span class="mi">4</span><span class="n">cb219c41d8a</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">58</span><span class="n">b04c616174</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">87</span><span class="n">ebf6eb132f</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+<span class="mi">20</span><span class="n">f10bbb8ef3</span><span class="p">:</span> <span class="n">Download</span> <span class="n">complete</span>
+</pre></div>
+</div>
 </details>
 <ul class="simple">
-<li><p>mount your Desktop to data and create a directory namend docker_is_fun</p></li>
-<li><p>within it, create a .txt named i_like_docker.txt</p></li>
-<li><p>exit the container</p></li>
-<li><p>run the container again, this time mounting the newly created docker_is_fun as read-only to /input, as well as an directory docker_is_love as output within the same host directory</p></li>
+<li><p>run the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell of our freshly pulled neurodebian image in an interactive fashion. Use the mount ability during the run command to mount your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">home</span> <span class="pre">directory</span></code>, if you are working with WSL, to a directory called <code class="docutils literal notranslate"><span class="pre">/data</span></code> in the container. <br></p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash
+
+#You should end up seeing the &#39;terminal&#39; of your container, the command line or bash shell.
+
+root@46d4421e9ae1:/# 
+</pre></div>
+</div>
+</details> 
+<ul class="simple">
+<li><p>navigate into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory within your container and check its content. Then, create a directory called docker_is_fun. Check the contents again to see if it worked.</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="c1"># cd data</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># ls</span>
+<span class="n">Dockerfile</span>  <span class="n">data</span>  <span class="n">files_for_workshop</span>  <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>  <span class="n">projects</span>  <span class="n">test1</span>  <span class="n">test_env</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># mkdir docker_is_fun</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1"># ls</span>
+<span class="n">Dockerfile</span>  <span class="n">docker_is_fun</span>       <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>  <span class="n">test1</span>
+<span class="n">data</span>        <span class="n">files_for_workshop</span>  <span class="n">projects</span>    <span class="n">test_env</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="c1">#</span>
+</pre></div>
+</div>
+</details> 
+<ul class="simple">
+<li><p>within the newly created directory, create a .txt named i_like_docker.txt and exit the container</p></li>
+</ul>
+<details>
+<summary>Solution</summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@46d4421e9ae1:/data# cd docker_is_fun/
+root@46d4421e9ae1:/data/docker_is_fun# touch i_like_docker.txt
+root@46d4421e9ae1:/data/docker_is_fun# exit
+exit
+aaronreer@FK6P-1158240:~$
+</pre></div>
+</div>
+</details>
+<ul class="simple">
+<li><p>run the container again, this time mounting the newly created <code class="docutils literal notranslate"><span class="pre">docker_is_fun</span></code> as <strong>read-only</strong> to <code class="docutils literal notranslate"><span class="pre">/input</span></code>, as well as an directory docker_is_love as output within the same host directory</p></li>
 <li><p>copy the i_like_docker.txt from the input to the output directory</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
+root@e4d716b82877:/# cd /input/
+root@e4d716b82877:/input# ls
+docker_is_love  i_like_docker.txt
+root@e4d716b82877:/input# cp i_like_docker.txt /output/
+root@e4d716b82877:/input#
+
+
+</pre></div>
+</div>
 </section>
 <section id="summary-docker-101">
 <h3>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h3>
