@@ -473,36 +473,36 @@ as usual, consider the readme and/or docs of a given docker container before usi
 <br>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
     <p>
-    (base) Michaels-MBP:Desktop me$ docker info
-    Client:
-    Version:    24.0.6
-    Context:    desktop-linux
-    Debug Mode: false
-    Plugins:
-      buildx: Docker Buildx (Docker Inc.)
-        Version:  v0.11.2-desktop.5
-        Path:     /Users/me/.docker/cli-plugins/docker-buildx
-      compose: Docker Compose (Docker Inc.)
-        Version:  v2.23.0-desktop.1
-        Path:     /Users/me/.docker/cli-plugins/docker-compose
-      dev: Docker Dev Environments (Docker Inc.)
-        Version:  v0.1.0
-        Path:     /Users/me/.docker/cli-plugins/docker-dev
-      extension: Manages Docker extensions (Docker Inc.)
-        Version:  v0.2.20
-        Path:     /Users/me/.docker/cli-plugins/docker-extension
-      init: Creates Docker-related starter files for your project (Docker Inc.)
-        Version:  v0.1.0-beta.9
-        Path:     /Users/me/.docker/cli-plugins/docker-init
-      sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
-        Version:  0.6.0
-        Path:     /Users/me/.docker/cli-plugins/docker-sbom
-      scan: Docker Scan (Docker Inc.)
-        Version:  v0.26.0
-        Path:     /Users/me/.docker/cli-plugins/docker-scan
-      scout: Docker Scout (Docker Inc.)
-        Version:  v1.0.9
-        Path:     /Users/me/.docker/cli-plugins/docker-scout
+      (base) Michaels-MBP:Desktop me$ docker info
+      Client:
+      Version:    24.0.6
+      Context:    desktop-linux
+      Debug Mode: false
+      Plugins:
+        buildx: Docker Buildx (Docker Inc.)
+          Version:  v0.11.2-desktop.5
+          Path:     /Users/me/.docker/cli-plugins/docker-buildx
+        compose: Docker Compose (Docker Inc.)
+          Version:  v2.23.0-desktop.1
+          Path:     /Users/me/.docker/cli-plugins/docker-compose
+        dev: Docker Dev Environments (Docker Inc.)
+          Version:  v0.1.0
+          Path:     /Users/me/.docker/cli-plugins/docker-dev
+        extension: Manages Docker extensions (Docker Inc.)
+          Version:  v0.2.20
+          Path:     /Users/me/.docker/cli-plugins/docker-extension
+        init: Creates Docker-related starter files for your project (Docker Inc.)
+          Version:  v0.1.0-beta.9
+          Path:     /Users/me/.docker/cli-plugins/docker-init
+        sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+          Version:  0.6.0
+          Path:     /Users/me/.docker/cli-plugins/docker-sbom
+        scan: Docker Scan (Docker Inc.)
+          Version:  v0.26.0
+          Path:     /Users/me/.docker/cli-plugins/docker-scan
+        scout: Docker Scout (Docker Inc.)
+          Version:  v1.0.9
+          Path:     /Users/me/.docker/cli-plugins/docker-scout
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Server:
 Containers: 14
   Running: 0
@@ -552,9 +552,11 @@ Insecure Registries:
   hubproxy.docker.internal:5555
   127.0.0.0/8
 Live Restore Enabled: false
+
+WARNING: daemon is not using the default seccomp profile 
 </pre></div>
 </div>
-<p>WARNING: daemon is not using the default seccomp profile </p></p>
+  </p>
 </div>
 <p>Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.</p>
 <ul>
@@ -618,7 +620,6 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 
 </pre></div>
 </div>
-<br>
 </section>
 <section id="stop-delete-rename-containers">
 <h3>Stop/Delete/Rename Containers<a class="headerlink" href="#stop-delete-rename-containers" title="Link to this heading">#</a></h3>
@@ -685,48 +686,38 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <ol class="arabic simple">
 <li><p>“rename” the Neurodocker container from the previous tutorial, changing the tag from latest to image_42</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+<details>
+<summary>Solution</summary>
 `docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
-&lt;/details&gt;
-</pre></div>
-</div>
+</details>
 <ol class="arabic simple" start="2">
 <li><p>export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+<details>
+<summary>Solution</summary>
 `docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
-&lt;/details&gt;
-</pre></div>
-</div>
+</details>
 <ol class="arabic simple" start="3">
 <li><p>remove the existing neurodocker containers</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+<details>
+<summary>Solution</summary>
 `docker rm container-id`
-&lt;/details&gt;
-</pre></div>
-</div>
+</details>
 <ol class="arabic simple" start="4">
 <li><p>import/load a_container_at_the_end_of_the_universe.tar</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+<details>
+<summary>Solution</summary>
 `docker load --input a_container_at_the_end_of_the_universe.tar`
-&lt;/details&gt;
-</pre></div>
-</div>
+</details>
 <ol class="arabic simple" start="5">
 <li><p>run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
-&lt;summary&gt;Solution&lt;/summary&gt;
+<details>
+<summary>Solution</summary>
 `docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
-&lt;/details&gt;
-</pre></div>
-</div>
+</details>
 </section>
 </section>
 </section>
