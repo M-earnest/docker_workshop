@@ -133,7 +133,7 @@ Now we make sure that the settings of our GitHub repository allow for our workfl
   - under `Workflow permissions` you've selected `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests`
 
 
-![workflow_permissions](/static/workflows_permissions.png)
+![workflow_permissions](/static/workflow_permissions.png)
 
 ### 6. Start the actions workflow
 
