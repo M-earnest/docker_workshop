@@ -364,42 +364,6 @@ This is again rather straightforward and can be achieved in a few simple steps.
         OUTPUT
     ```
 
-### Automating builds using Github
-!Important: It seems to me that you nowadays need a paid Dockerhub subscription of you want to make use of the automated builds (hence we might want to exclude them here)
-
-there's an even easier way to integrate Docker in reproducible, in terms of version-controlled, scientific practice.
-
- We'll make use of the integrated automatic build function of Docker, which builds and pushes your Docker container directly and automatically from a GitHub repository every time a pull request is processed.
-
-The respective process is highly customizable so let's walk through an example.
-
-
-
-1. Set up
-The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfile:
-
-   - create a new Github repository called docker_workshop
-   - upload your Dockerfile to this repository
-
-
-2. Specify the automated build process
-
- On Docker Hub, go to the Docker container we've uploaded in the previous step and within that, click on builds
-
-        ```
-        img
-        ```
-
-Next, click on `Configure automated builds`. We're now asked to indicate the `source repository` on GitHub and indicate some `build rules`, including automated tests, branch to build from, tag that should be applied, etc. 
-
-        ```
-        img
-        ```
-
-
-Now, after clicking on save and build, our Docker container will be build automatically from our corresponding GitHub repository. Depending on the size of your Docker container and the current traffic on Docker Hub, it might take a while
-
-Every consecutive push or commit to this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.
 
 
 ### Docker containers - creating and pushing - a recap
