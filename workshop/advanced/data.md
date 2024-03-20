@@ -72,6 +72,12 @@ root@8e2a056bed3a:/home/images# ls
 happy_whale.jpg
 ```
 
+If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the local directory where the docker build command is run, replace the above code with:
+
+```
+    COPY . /home/images
+```
+
 ### Incorporating online data
 
 In case you don't have or don't want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash command `curl`. This can be very helpful when pulling data from an online repository.
