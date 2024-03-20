@@ -30,36 +30,36 @@ Which should produce something like the followin output:
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
     <p>
-    (base) Michaels-MBP:Desktop me$ docker info
-    Client:
-    Version:    24.0.6
-    Context:    desktop-linux
-    Debug Mode: false
-    Plugins:
-      buildx: Docker Buildx (Docker Inc.)
-        Version:  v0.11.2-desktop.5
-        Path:     /Users/me/.docker/cli-plugins/docker-buildx
-      compose: Docker Compose (Docker Inc.)
-        Version:  v2.23.0-desktop.1
-        Path:     /Users/me/.docker/cli-plugins/docker-compose
-      dev: Docker Dev Environments (Docker Inc.)
-        Version:  v0.1.0
-        Path:     /Users/me/.docker/cli-plugins/docker-dev
-      extension: Manages Docker extensions (Docker Inc.)
-        Version:  v0.2.20
-        Path:     /Users/me/.docker/cli-plugins/docker-extension
-      init: Creates Docker-related starter files for your project (Docker Inc.)
-        Version:  v0.1.0-beta.9
-        Path:     /Users/me/.docker/cli-plugins/docker-init
-      sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
-        Version:  0.6.0
-        Path:     /Users/me/.docker/cli-plugins/docker-sbom
-      scan: Docker Scan (Docker Inc.)
-        Version:  v0.26.0
-        Path:     /Users/me/.docker/cli-plugins/docker-scan
-      scout: Docker Scout (Docker Inc.)
-        Version:  v1.0.9
-        Path:     /Users/me/.docker/cli-plugins/docker-scout
+      (base) Michaels-MBP:Desktop me$ docker info
+      Client:
+      Version:    24.0.6
+      Context:    desktop-linux
+      Debug Mode: false
+      Plugins:
+        buildx: Docker Buildx (Docker Inc.)
+          Version:  v0.11.2-desktop.5
+          Path:     /Users/me/.docker/cli-plugins/docker-buildx
+        compose: Docker Compose (Docker Inc.)
+          Version:  v2.23.0-desktop.1
+          Path:     /Users/me/.docker/cli-plugins/docker-compose
+        dev: Docker Dev Environments (Docker Inc.)
+          Version:  v0.1.0
+          Path:     /Users/me/.docker/cli-plugins/docker-dev
+        extension: Manages Docker extensions (Docker Inc.)
+          Version:  v0.2.20
+          Path:     /Users/me/.docker/cli-plugins/docker-extension
+        init: Creates Docker-related starter files for your project (Docker Inc.)
+          Version:  v0.1.0-beta.9
+          Path:     /Users/me/.docker/cli-plugins/docker-init
+        sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+          Version:  0.6.0
+          Path:     /Users/me/.docker/cli-plugins/docker-sbom
+        scan: Docker Scan (Docker Inc.)
+          Version:  v0.26.0
+          Path:     /Users/me/.docker/cli-plugins/docker-scan
+        scout: Docker Scout (Docker Inc.)
+          Version:  v1.0.9
+          Path:     /Users/me/.docker/cli-plugins/docker-scout
 
     Server:
     Containers: 14
@@ -111,7 +111,8 @@ Which should produce something like the followin output:
       127.0.0.0/8
     Live Restore Enabled: false
 
-  WARNING: daemon is not using the default seccomp profile </p>
+    WARNING: daemon is not using the default seccomp profile 
+  </p>
 </div>
 
 Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.
@@ -176,8 +177,6 @@ eba0b7f9580e   hello-world                   "/hello"                 4 weeks ag
 
 ```
 
-<br>
-
 #### Stop/Delete/Rename Containers
 
 Docker containers can also be stopped manually using the docker `stop` command:
@@ -221,7 +220,6 @@ We can further use the associated tag related behavior to "rename" a given docke
 `docker tag old-container-name/container-id:tag new-container-name/container-id:tag`
 
 
-
 #### Import/Export
 
 Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load
@@ -255,35 +253,35 @@ Basic image commands:
 
 #### Docker Management 101 - exercises
 
-   1. "rename" the Neurodocker container from the previous tutorial, changing the tag from latest to image_42
+1. "rename" the Neurodocker container from the previous tutorial, changing the tag from latest to image_42
 
-    <details>
-    <summary>Solution</summary>
-    `docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
-    </details>
+<details>
+<summary>Solution</summary>
+`docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
+</details>
 
-   2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
-    <details>
-    <summary>Solution</summary>
-    `docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
-    </details>
+2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
+<details>
+<summary>Solution</summary>
+`docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
+</details>
 
-   3. remove the existing neurodocker containers
-    <details>
-    <summary>Solution</summary>
-    `docker rm container-id`
-    </details>
+3. remove the existing neurodocker containers
+<details>
+<summary>Solution</summary>
+`docker rm container-id`
+</details>
 
-   4. import/load a_container_at_the_end_of_the_universe.tar
-    <details>
-    <summary>Solution</summary>
-    `docker load --input a_container_at_the_end_of_the_universe.tar`
-    </details>
+4. import/load a_container_at_the_end_of_the_universe.tar
+<details>
+<summary>Solution</summary>
+`docker load --input a_container_at_the_end_of_the_universe.tar`
+</details>
 
-   5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
-    <details>
-    <summary>Solution</summary>
-    `docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
-    </details>
+5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
+<details>
+<summary>Solution</summary>
+`docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
+</details>
 
 
