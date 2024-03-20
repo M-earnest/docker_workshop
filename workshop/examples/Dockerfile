@@ -13,7 +13,7 @@ RUN apt-get update && \
 RUN mkdir /info
 
 # Step 4: Copy our Python script into the container
-COPY print_info.py /info/
+COPY print_info_container.py /info/
 COPY README.md /info/README.md
 
 # Step 5: Specify the command to run the Python script
