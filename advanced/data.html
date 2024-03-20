@@ -539,7 +539,7 @@ The easiest way is to store the data you want to include in the same directory a
 Now, who remembers the flag we have to use within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to enable <strong>mounting</strong> ? …</p>
 <br>
 <details>
-<summary>flag for mounting</summary>
+<summary>Solution</summary>
 <p>…correct, you have to use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to specify the mounted directories. This flag can be untilized as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">v</span> <span class="n">path</span><span class="o">/</span><span class="n">outside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">inside</span><span class="o">/</span><span class="n">container</span> <span class="n">name_of_image</span>
 </pre></div>
