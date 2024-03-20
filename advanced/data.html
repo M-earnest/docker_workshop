@@ -493,6 +493,10 @@ root@8e2a056bed3a:/home/images# ls
 happy_whale.jpg
 </pre></div>
 </div>
+<p>If this seems tedious or you have to copy a lot of files you can also directly add a number of files, i.e. from the local directory where the docker build command is run, replace the above code with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="o">.</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">images</span>
+</pre></div>
+</div>
 </section>
 <section id="incorporating-online-data">
 <h2>Incorporating online data<a class="headerlink" href="#incorporating-online-data" title="Link to this heading">#</a></h2>
