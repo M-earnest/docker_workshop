@@ -891,9 +891,10 @@ aaronreer@FK6P-1158240:~$
 </div>
 </details>
 <ul class="simple">
-<li><p>run the container again, this time mounting the newly created <code class="docutils literal notranslate"><span class="pre">docker_is_fun</span></code> as <strong>read-only</strong> to <code class="docutils literal notranslate"><span class="pre">/input</span></code>, as well as an directory docker_is_love as output within the same host directory</p></li>
-<li><p>copy the i_like_docker.txt from the input to the output directory</p></li>
+<li><p>run the container again interactively using bash, this time mounting the newly created <code class="docutils literal notranslate"><span class="pre">docker_is_fun</span></code> as <strong>read-only</strong> to <code class="docutils literal notranslate"><span class="pre">/input</span></code>, as well as an directory called <code class="docutils literal notranslate"><span class="pre">docker_is_love</span></code>, which is inside the docker_is_fun directory, to the  <code class="docutils literal notranslate"><span class="pre">/output</span></code>. Now, copy the i_like_docker.txt from the input to the output directory</p></li>
 </ul>
+<details>
+<summary>Solution</summary>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
 root@e4d716b82877:/# cd /input/
 root@e4d716b82877:/input# ls
@@ -901,9 +902,9 @@ docker_is_love  i_like_docker.txt
 root@e4d716b82877:/input# cp i_like_docker.txt /output/
 root@e4d716b82877:/input#
 
-
 </pre></div>
 </div>
+</details>
 </section>
 <section id="summary-docker-101">
 <h3>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h3>
