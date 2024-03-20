@@ -29,7 +29,7 @@ Which should produce something like the followin output:
 <br>
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
-    <p>
+  <p>
       (base) Michaels-MBP:Desktop me$ docker info
       Client:
       Version:    24.0.6
@@ -260,11 +260,15 @@ Basic image commands:
 `docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
 </details>
 
+<br>
+
 2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
 <details>
 <summary>Solution</summary>
 `docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
 </details>
+
+<br>
 
 3. remove the existing neurodocker containers
 <details>
@@ -272,11 +276,15 @@ Basic image commands:
 `docker rm container-id`
 </details>
 
+<br>
+
 4. import/load a_container_at_the_end_of_the_universe.tar
 <details>
 <summary>Solution</summary>
 `docker load --input a_container_at_the_end_of_the_universe.tar`
 </details>
+
+<br>
 
 5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
 <details>
