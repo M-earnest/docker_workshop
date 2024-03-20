@@ -496,9 +496,10 @@ aaronreer@FK6P-1158240:~$
 
 </details>
 
-- run the container again, this time mounting the newly created `docker_is_fun` as **read-only** to `/input`, as well as an directory docker_is_love as output within the same host directory
-- copy the i_like_docker.txt from the input to the output directory
+- run the container again interactively using bash, this time mounting the newly created `docker_is_fun` as **read-only** to `/input`, as well as an directory called `docker_is_love`, which is inside the docker_is_fun directory, to the  `/output`. Now, copy the i_like_docker.txt from the input to the output directory
 
+<details>
+<summary>Solution</summary>
 
 ```
 aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
@@ -508,8 +509,9 @@ docker_is_love  i_like_docker.txt
 root@e4d716b82877:/input# cp i_like_docker.txt /output/
 root@e4d716b82877:/input#
 
-
 ```
+
+</details>
 
 
 ### Summary - Docker 101
