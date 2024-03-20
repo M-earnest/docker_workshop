@@ -430,15 +430,86 @@ To solidfy what we've learned in this session, please try the following excercis
 - pull the neurodebian docker container in its nd-non-free version
 <details>
 <summary>Solution</summary>
-Test dropdpown!
+
+```
+docker pull neurodebian:nd-non-free
+```
+
+```
+docker pull neurodebian:nd-non-free
+nd-non-free: Pulling from library/neurodebian
+490d250d3b27: Downloading  42.92MB/51.51MB
+a6023d7647e9: Downloading  7.988MB/12.62MB
+4cb219c41d8a: Download complete
+58b04c616174: Download complete
+87ebf6eb132f: Download complete
+20f10bbb8ef3: Download complete
+```
+
 </details>
 
-- mount your Desktop to data and create a directory namend docker_is_fun
-- within it, create a .txt named i_like_docker.txt
-- exit the container
-- run the container again, this time mounting the newly created docker_is_fun as read-only to /input, as well as an directory docker_is_love as output within the same host directory
+- run the `bash` shell of our freshly pulled neurodebian image in an interactive fashion. Use the mount ability during the run command to mount your `Desktop` or `home directory`, if you are working with WSL, to a directory called `/data` in the container. <br>
+
+<details>
+<summary>Solution</summary>
+
+```
+aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash
+
+#You should end up seeing the 'terminal' of your container, the command line or bash shell.
+
+root@46d4421e9ae1:/# 
+```
+
+</details> 
+
+- navigate into the `/data` directory within your container and check its content. Then, create a directory called docker_is_fun. Check the contents again to see if it worked.
+
+<details>
+<summary>Solution</summary>
+
+```
+root@46d4421e9ae1:/# cd data
+root@46d4421e9ae1:/data# ls
+Dockerfile  data  files_for_workshop  get-pip.py  projects  test1  test_env
+root@46d4421e9ae1:/data# mkdir docker_is_fun
+root@46d4421e9ae1:/data# ls
+Dockerfile  docker_is_fun       get-pip.py  test1
+data        files_for_workshop  projects    test_env
+root@46d4421e9ae1:/data#
+```
+
+</details> 
+
+- within the newly created directory, create a .txt named i_like_docker.txt and exit the container
+
+<details>
+<summary>Solution</summary>
+
+```
+root@46d4421e9ae1:/data# cd docker_is_fun/
+root@46d4421e9ae1:/data/docker_is_fun# touch i_like_docker.txt
+root@46d4421e9ae1:/data/docker_is_fun# exit
+exit
+aaronreer@FK6P-1158240:~$
+```
+
+</details>
+
+- run the container again, this time mounting the newly created `docker_is_fun` as **read-only** to `/input`, as well as an directory docker_is_love as output within the same host directory
 - copy the i_like_docker.txt from the input to the output directory
 
+
+```
+aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/docker_is_fun/:/input:ro -v /home/aaronreer/docker_is_fun/docker_is_love:/output neurodebian:nd-non-free bash
+root@e4d716b82877:/# cd /input/
+root@e4d716b82877:/input# ls
+docker_is_love  i_like_docker.txt
+root@e4d716b82877:/input# cp i_like_docker.txt /output/
+root@e4d716b82877:/input#
+
+
+```
 
 
 ### Summary - Docker 101

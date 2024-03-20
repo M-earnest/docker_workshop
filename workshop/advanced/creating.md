@@ -77,7 +77,8 @@ The WORKDIR instruction sets the working directory for any of the other instruct
 
         `WORKDIR /project`
 
-**Note** Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
+> [!NOTE]  
+> Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
 
 ### 3. RUN - install software, execute commands
 In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers 'pip' and 'apt-get' in the same way we would use them in our bash shell.
@@ -90,7 +91,8 @@ So to install e.g. Python using the Ubuntu baseimage and apt package manager we 
     RUN apt-get update && apt-get install -y python3.10
 ```
 
-**Note** You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
+> [!NOTE]  
+> You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
 
 ### 4. COPY - add files to image
 Using the COPY instruction we can permanently add files from our local system to our Docker Image.
@@ -135,21 +137,16 @@ If you have more complex commands that should initally be run you can further pr
 Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
 
 
-**1. Create the build context**
-
-Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
+1. Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
 
 `mkdir ~/Desktop/my_first_docker && touch ~/Desktop/my_first_docker/Dockerfile`
 
-**2. Add files to your build context**
-Download the course materials and copy the print_info.py script from the resources folder into `my_first_docker folder`
+2. Download the course materials and copy the print_info.py script from the resources folder into `my_first_docker folder`
 
 `cp /resources/README.md /Users/me/Desktop/my_first_docker`
 
 
-**3. Create the Dockerfile**
-
-Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
+3. Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
 
 ```
     # Step 1: Use the newest Ubuntu version as a base image
@@ -299,11 +296,33 @@ So, let's see how we can create our Dockerfiles using `Neurodocker`. At first we
 
 ![pull Neurodocker image](/static/Neurodocker_pull_image.png)
 
+```
+aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
+0.9.5: Pulling from repronim/neurodocker
+8a49fdb3b6a5: Already exists
+0357922e53aa: Already exists
+9a0b2b81bdd7: Already exists
+1bed10bb162b: Already exists
+61479f8dd1a7: Already exists
+5fca58cb4537: Already exists
+76b5b227fa86: Already exists
+Digest: sha256:3d4ae0b3e6f0767ad2ea3dc401b4a011c354a682eb9db4a9c18bcee2cbd7cddb
+Status: Downloaded newer image for repronim/neurodocker:0.9.5
+docker.io/repronim/neurodocker:0.9.5
+```
+
 
 All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use `neurodebian:bullseye` as a base and apt as package manager:
 
 
 ![Neurodocker: select base-image and package manager](/static/Neurodocker_generate_docker_base.png)
+
+```
+aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
+--base-image ubuntu:latest \
+--pkg-manager apt \
+
+```
 
 
 
@@ -313,6 +332,13 @@ Next, we specify all the Linux packages that we want to have installed in our im
 ![Neurodocker: Linux installations ](/static/Neurodocker_generate_docker_linux_installations.png)
 
 
+```
+aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
+--base-image ubuntu:latest \
+--pkg-manager apt \
+--install git nano \
+
+```
 
 Now, we are only missing the python part...
 
@@ -320,12 +346,30 @@ Now, we are only missing the python part...
 
 ![Neurodocker: setting up python](/static/Neurodocker_generate_docker_python.png)
 
-
+```
+aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
+--base-image ubuntu:latest \
+--pkg-manager apt \
+--install git nano \
+--miniconda version=latest env_name=myenvironmentname \
+conda_install="python=3.11 numpy pandas" \
+pip_install="mne"
+```
 
 Great! We have all the information that we need. Hence, let's run the `Neurodocker` container parsing the output to a file called 'Dockerfile'. We can do so using the `>-operator` :
 
 
 ![Neurodocker: run container and parse output to Dockerfile](/static/Neurodocker_generate_docker_python_toDockerfile.png)
+
+```
+aaronreer@FK6P-1158240:~/data$ docker run repronim/neurodocker:0.9.5 generate docker \
+--base-image ubuntu:latest \
+--pkg-manager apt \
+--install git nano \
+--miniconda version=latest env_name=myenvironmentname \
+conda_install="python=3.11 numpy pandas" \
+pip_install="mne" > Dockerfile
+```
 
 
 
