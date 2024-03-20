@@ -168,6 +168,7 @@ For our container to run the conversion properly, we need to mount the directory
 
     ```
         # Step 1: Use the newest Ubuntu version as a base image
+        <span style="color:blue"># test1</span>
         FROM ubuntu:latest
 
         # Step 2: Set the working directory
@@ -195,6 +196,7 @@ For our container to run the conversion properly, we need to mount the directory
 
 ```
     # Output:
+    <span style="color:blue"># test1 :</span>
     Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
         Read a total of 3 projection items:
             PCA-v1 (1 x 102)  idle
