@@ -18,15 +18,14 @@
 1. General Introduction
 2. Quickstart
 
-### Where is Docker?
+### How do we get Docker to run?
 
-- !! DOCKER DESKTOP START INFO!!
-
-- start [Docker Desktop](https://docs.docker.com/desktop/use-desktop/) GUI (Graphical User Interface)
+- start [Docker Desktop](https://docs.docker.com/desktop/use-desktop/), this will start the necessary background process to get things running
 - open a terminal (the Command-line Interface aka the UNIX Shell)
     -  this is also what we'll be mostly be working with in this workshop
 - test if docker is working by tying `docker info` into your terminal and hit enter
     - if you get an output that looks somewhat like the one below, you're good to go
+
         ```
           Client:
               Version:    24.0.6
@@ -38,12 +37,12 @@
 
 #### Getting started
 
-- on unix based OS (e.g., Ubuntu, Mac OSX) open a terminal, type `docker` (hit enter)
-- on ?windows? open docker toolbox or engine (depending on your specific OS) and type `docker` (hit enter)
+- now if you want to know all the possible commands that you can run, type `docker` and hit enter
 
-    - you should be presented with the the following docker manual, providing information on common Docker commands
+    - you should be presented with the the following docker manual
 
-
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+  <p>
 ```
 (base) Michaels-MacBook-Pro:~ me$ docker
 
@@ -175,18 +174,28 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-````
+```
+  </p>
+</div>
 
 
-### So what did we just do? The `run` command
+### The `run` command
 
-the command: `docker run hello-world`
+Next, let's try to run a container! 
+
+Simply type `docker run hello-world` and hit enter
 
 1. tells docker to run or execute the _container_ or _image_ `hello-world`
 2. if the wanted container is not already on your machine, docker automatically searches for and downloads it
 3. docker run then runs or executes the given container doing whatever the container is supposed to do
 
+### But what is a container?
 
+A container is simply an `active` or `running` instance of an Docker image.
+And what is an image? 
+- An image is a mixture of instructions and data that contains all the necessary information to run a virtual workflow on a system (given computational limits and that Docker is installed)
+
+These lie at the heart of Docker and are what is usually shared to create reusable workflows or apps.
 
 ### Where do docker containers come from ?
 
@@ -212,9 +221,7 @@ Login Succeeded
 Once you're logged in your build and tagged docker images can be pushed to the docker hub via the command line:
   `docker push your-cool-image`
   
-- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (note: both methods will be covered during the afternoon sessions)(delete due to neccessity of paid subscription?)
-
-- image????
+- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (check the automatization lesson for more info)
 
 
 ### Docker commands 101 - in depth
@@ -225,7 +232,7 @@ At first, we want to download a certain docker container to work with, for the s
 
 #### Docker commands 101 - pull
 
-Instead of automatically downloading the container via docker run, we use the respective docker command docker pull image name, hence
+Instead of automatically downloading the container via docker run, we use the respective docker command `docker pull image_name`, hence
 
 `docker pull ubuntu`
 
@@ -241,7 +248,7 @@ docker.io/library/ubuntu:latest
 As you can see, we downloaded all _layers_ that are needed to build the classic Ubuntu docker container, with the message Status: 
 
 ```
-Downloaded newer image for ubuntu:latest showing you that everything worked
+Downloaded newer image for ubuntu:latest
 ```
 
 Super important: by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:
@@ -263,17 +270,17 @@ Which should result in:
 
 - docker used run, nothing happend? all the fuzz for that?
 
-Correct, as each docker container is build for reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.
+Correct, as each docker container is build for a specific reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.
 
-The Ubuntu docker container may contain a complete Ubuntu installation, but has not no defined `magic`, that is functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the readme or docs of a given docker container before using it.
+The Ubuntu docker container may contain a complete Ubuntu installation, but has not no predefined functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the `readme` or `docs` of a given docker container before using it.
 
-Let's say we consulted the Ubuntu container documentation and found out that it is possible to make use of the `contained Bash Shell` by simply integrating Bash commands into our `run` command. Try the following:
+Let's say we consulted the Ubuntu container documentation and found out that it is possible to make use of the contained `Bash Shell` by simply integrating Bash commands into our `run` command. Try the following:
 
   `docker run ubuntu echo "hello from your container"`
 
 Which should give you the output message: `hello from your container`
 
-This is neat (although redundant), but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:
+This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:
 
 We can utilizes a given docker container in an _interactive_ fashion by including the `--it` flag in the the docker run command:
 
@@ -296,7 +303,7 @@ root@806c74068242:/#
 
 As we can see the container is in fact simulating a complete Ubuntu file system.
 
-Inside the ubuntu docker container we can utilize the functionality from the ubuntu OS and exit the container by typing `exit`
+Inside the ubuntu docker container we can utilize the functionality of the ubuntu OS and we exit the container by typing `exit`
 
 ```
 root@806c74068242:/# exit
@@ -305,7 +312,7 @@ exit
 
 ```
 
-Depending on a given container's architecture and definition, it should remove itself from running instances when exiting. 
+Depending on a given container's architecture and definition, it should automatically be removed from your running instances when exiting. 
 However it's worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).
 
 This can easily be done by:
@@ -339,9 +346,9 @@ bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys
 
 ```
 
-Furthermore, we cannot interact with data stored on our host or somewhere outside the docker container.
+Furthermore, we cannot interact with data stored on our host machine, i.e. outside the docker container.
 
-In order to address both problems, we need to `mount` paths
+In order to address both problems, we need to `mount` our host system to the container.
 
 #### Docker commands 101 - mount
 
@@ -353,7 +360,7 @@ This is achieved through the `-v` flag within the `docker run` command and utili
 
 So to make our systems /Desktop available inside the docker container as a folder called `/data` within the ubuntu container we run:
 
-`docker run -it --rm -v /Users/peerherholz/Desktop:/data ubuntu bash`
+`docker run -it --rm -v /Users/me/Desktop:/data ubuntu bash`
 
 Which gives us:
 
@@ -384,20 +391,21 @@ docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			test_object_perm
 
 Great, at least we created something permanent for once!
 
-Most of the time, it's a good idea to indicate absolute paths on the host system. In our example the directory `/data` didn't exist in the Ubunutu container before mounting it, hence it was created automatically, however this is also depends on the docker container and it's setup/definition at hand as e.g. within automated functionality a certain directory is expected.
+Most of the time, it's a good idea to indicate absolute paths on the host system. In our example the directory `/data` didn't exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it's setup/definition at hand as e.g. within automated functionality a certain directory is expected.
 
 `As per usual`: check the readme and/or docs of a given docker container!
 
-Further, we can mount as many directories and files as you want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:
+Further, we can mount as many directories and files as we want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:
 
+```
 docker run -it --rm 
 -v /Users/me/Desktop:/input:ro 
 -v /Users/me/Desktop/analyses:/output 
 ubuntu bash
+```
 
 ```
 (base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm -v /Users/me/Desktop:/input:ro -v /Users/me/Desktop/analyses:/output ubuntu bash
-
 
 root@97917588b533:/# 
 root@97917588b533:/# ls
@@ -419,7 +427,7 @@ docker_mne		sub-01			sub-03			sub-05
 
 ```
 
-Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.
+!Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.
 
 
 ### Docker commands 101 - excerices
@@ -427,7 +435,7 @@ Again, check the readme and/or docs of the docker container at hand if some path
 To solidfy what we've learned in this session, please try the following excercises:
 
 
-- pull the neurodebian docker container in its nd-non-free version
+- pull the neurodebian docker container in its nd-non-free version (tag)
 <details>
 <summary>Solution</summary>
 
@@ -448,6 +456,8 @@ a6023d7647e9: Downloading  7.988MB/12.62MB
 
 </details>
 
+<br>
+
 - run the `bash` shell of our freshly pulled neurodebian image in an interactive fashion. Use the mount ability during the run command to mount your `Desktop` or `home directory`, if you are working with WSL, to a directory called `/data` in the container. <br>
 
 <details>
@@ -462,6 +472,8 @@ root@46d4421e9ae1:/#
 ```
 
 </details> 
+
+<br>
 
 - navigate into the `/data` directory within your container and check its content. Then, create a directory called docker_is_fun. Check the contents again to see if it worked.
 
@@ -481,6 +493,8 @@ root@46d4421e9ae1:/data#
 
 </details> 
 
+<br>
+
 - within the newly created directory, create a .txt named i_like_docker.txt and exit the container
 
 <details>
@@ -495,6 +509,8 @@ aaronreer@FK6P-1158240:~$
 ```
 
 </details>
+
+<br>
 
 - run the container again interactively using bash, this time mounting the newly created `docker_is_fun` as **read-only** to `/input`, as well as an directory called `docker_is_love`, which is inside the docker_is_fun directory, to the  `/output`. Now, copy the i_like_docker.txt from the input to the output directory
 
@@ -537,10 +553,18 @@ root@e4d716b82877:/input#
 
 TEST scrollable content
 
+
+Hidden content:
+
+<details>
+<summary>Solution</summary>
+Test dropdpown!
+</details>
+
+Scrollable content:
+
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula, elit in consequat elementum, neque purus ultrices quam, a convallis libero dolor id urna. Sed ultrices, diam eget ullamcorper sodales, nisl erat convallis eros, non viverra libero dui quis neque. Suspendisse potenti. Mauris auctor, diam id auctor aliquet, nunc nulla aliquam nisi, vitae interdum nisl sapien quis justo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum vitae eros ex. Duis at velit maximus, molestie est a, tempor magna.</p>
-    <p>Integer nec odio nec lorem fringilla elementum. Proin sed libero nec mauris aliquam sollicitudin. Proin vulputate vulputate eros, a fringilla dui porttitor in. Vivamus fermentum tortor quam, at aliquam mi blandit a. Donec sed fermentum orci, auctor consequat lorem. Aliquam erat volutpat. Vestibulum et scelerisque ante, dapibus convallis nisi.</p>
-    <!-- Add more paragraphs as needed -->
 </div>
 
 
