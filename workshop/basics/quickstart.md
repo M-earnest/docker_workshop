@@ -551,22 +551,6 @@ root@e4d716b82877:/input#
 ```
 
 
-TEST scrollable content
-
-
-Hidden content:
-
-<details>
-<summary>Solution</summary>
-Test dropdpown!
-</details>
-
-Scrollable content:
-
-<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula, elit in consequat elementum, neque purus ultrices quam, a convallis libero dolor id urna. Sed ultrices, diam eget ullamcorper sodales, nisl erat convallis eros, non viverra libero dui quis neque. Suspendisse potenti. Mauris auctor, diam id auctor aliquet, nunc nulla aliquam nisi, vitae interdum nisl sapien quis justo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum vitae eros ex. Duis at velit maximus, molestie est a, tempor magna.</p>
-</div>
-
 
 
 

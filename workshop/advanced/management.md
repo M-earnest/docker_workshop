@@ -2,7 +2,7 @@
 
 ### Learning objectives
 
-- how to manage the access writes of a docker container?
+- how to manage the access righta of a docker container?
 - how to assign computational resources to a docker container?
 - what are the most common docker commands?
 - how do i delete, rename, save etc. docker images?
@@ -30,36 +30,37 @@ Which should produce something like the followin output:
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
-  (base) Michaels-MBP:Desktop me$ docker info
-    Client:
-    Version:    24.0.6
-    Context:    desktop-linux
-    Debug Mode: false
-    Plugins:
-    buildx: Docker Buildx (Docker Inc.)
-      Version:  v0.11.2-desktop.5
-      Path:     /Users/me/.docker/cli-plugins/docker-buildx
-    compose: Docker Compose (Docker Inc.)
-      Version:  v2.23.0-desktop.1
-      Path:     /Users/me/.docker/cli-plugins/docker-compose
-    dev: Docker Dev Environments (Docker Inc.)
-      Version:  v0.1.0
-      Path:     /Users/me/.docker/cli-plugins/docker-dev
-    extension: Manages Docker extensions (Docker Inc.)
-      Version:  v0.2.20
-      Path:     /Users/me/.docker/cli-plugins/docker-extension
-    init: Creates Docker-related starter files for your project (Docker Inc.)
-      Version:  v0.1.0-beta.9
-      Path:     /Users/me/.docker/cli-plugins/docker-init
-    sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
-      Version:  0.6.0
-      Path:     /Users/me/.docker/cli-plugins/docker-sbom
-    scan: Docker Scan (Docker Inc.)
-      Version:  v0.26.0
-      Path:     /Users/me/.docker/cli-plugins/docker-scan
-    scout: Docker Scout (Docker Inc.)
-      Version:  v1.0.9
-      Path:     /Users/me/.docker/cli-plugins/docker-scout
+
+    (base) Michaels-MBP:Desktop me$ docker info
+      Client:
+      Version:    24.0.6
+      Context:    desktop-linux
+      Debug Mode: false
+      Plugins:
+      buildx: Docker Buildx (Docker Inc.)
+        Version:  v0.11.2-desktop.5
+        Path:     /Users/me/.docker/cli-plugins/docker-buildx
+      compose: Docker Compose (Docker Inc.)
+        Version:  v2.23.0-desktop.1
+        Path:     /Users/me/.docker/cli-plugins/docker-compose
+      dev: Docker Dev Environments (Docker Inc.)
+        Version:  v0.1.0
+        Path:     /Users/me/.docker/cli-plugins/docker-dev
+      extension: Manages Docker extensions (Docker Inc.)
+        Version:  v0.2.20
+        Path:     /Users/me/.docker/cli-plugins/docker-extension
+      init: Creates Docker-related starter files for your project (Docker Inc.)
+        Version:  v0.1.0-beta.9
+        Path:     /Users/me/.docker/cli-plugins/docker-init
+      sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+        Version:  0.6.0
+        Path:     /Users/me/.docker/cli-plugins/docker-sbom
+      scan: Docker Scan (Docker Inc.)
+        Version:  v0.26.0
+        Path:     /Users/me/.docker/cli-plugins/docker-scan
+      scout: Docker Scout (Docker Inc.)
+        Version:  v1.0.9
+        Path:     /Users/me/.docker/cli-plugins/docker-scout
 
     Server:
     Containers: 14
@@ -181,7 +182,7 @@ eba0b7f9580e   hello-world                   "/hello"                 4 weeks ag
 
 Docker containers can also be stopped manually using the docker `stop` command:
 
-`docker stop image-id`
+`docker stop container-id`
 
 And to delete a given docker container use the `remove` command `rm` and provide a `container-id`
 
@@ -215,14 +216,15 @@ Using the the `--rm` flag when running a container should prevent that a contain
 
 `By now our evergreen: check the readme and/or docs of a given docker container!`
 
-We can further use the associated tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control using the tag command:
+
+We can further use tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control :
 
 `docker tag old-container-name/container-id:tag new-container-name/container-id:tag`
 
 
 #### Import/Export
 
-Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load
+Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load. This behavior may be prefered for local sharing or if you incorporate data/info that shouldn't be publicly accessible.
 
     `docker save -o name_of_saved_image.tar imagename`
 
@@ -236,7 +238,7 @@ Basic image commands:
 
 ```
     # Set RAM, swap and CPUs for a given *docker container*
-    docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 container-name
+    docker run -it --rm --memory 5gb --memory-swap 2gb --cpus 4 container-name
     # Get list of currently available *docker containers*
     docker images
     # Get list of currently running *docker containers*
