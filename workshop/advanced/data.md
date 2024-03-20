@@ -12,24 +12,39 @@
 From time to time, it might be advised or even necessary to provide some data that comes with your Docker container, e.g. for reproducible purposes, tutorials, etc.
 But how do we get data into our Docker containers? Well, there are two different ways of equipping your container with additional data:
 
-1. One can either copy the data inside the container during its build. This way the respective data is permanently stored inside our image. As mentioned above, this functionality can come in handy if you want to provide tutorials or user-manuals to the end-user of your container or some test data to make sure the containers behaviour matches the expected behaviour. 
+1. One can either copy the data inside the container during its build. This way the respective data is permanently stored inside our image. As mentioned above, this functionality can come in handy if you want to provide tutorials or user-manuals to the end-user of your container or some test data to make sure the containers behaviour matches the expected behaviour.
+
 2. However, sometimes it is required to get data into our container in a more generic way during runtime, e.g. if we have set-up an automated analysis workflow within our container and want the user to provide their own data, such that the analysis can be run on that data inside the container. To achieve this, we can **mount** a directory from our local computer to a directory within the container. This way we can give the container access to specific directories on our local computer, e.g. to load data from our machine into the container. Since mounting is a bidirectional process we can also allow the container to write outputs to sepcific directories on our local machine.
 <br>
 
 In the following sections, we will go over both ways of getting data inside your conatiner and provide some practical examples.
 
 
-
 ### Getting Data into a container permanently
 
-Let's say we want to put a picture of whale into our Docker container because we're such docker fans and whales are nothing but awesome, but we've learned that the state of a given container cannot be changed from the mounting part of this workshop.
+Let's say we want to put a picture of whale in our Docker container, because we're such docker fans and whales are nothing but awesome, but we've learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.
 
-We can achieve this by copying the data (i.e. our .png file) into our Docker container during its build, hence must include respective instruction in our Dockerfile.
-The easiest way is to store the data you want to include in the same directory as the Dockerfile, e.g.
+So as we've already seen we can use the `COPY instruction` to add the data (i.e. our .png file) into our Docker container during its build.
 
-    ```
-        mv Desktop/happy_whale.jpg Desktop/my_first_docker
-    ```
+So let's first build  a new build context + Dockerfile
+
+```
+ mkdir docker_data_container
+ touch docker_data_container/Dockerfile
+```
+
+Open the file with VScode and add the following line:
+
+```
+    FROM ubuntu:latest
+
+```
+
+Now we add the relevant file to our build context, i.e. we move the data you want to include in the same directory as the Dockerfile, e.g.
+
+```
+    mv Desktop/happy_whale.jpg Desktop/docker_data_container
+```
 
 Now, we add a line to our Dockerfile that indicates that this image should be copied to a specific location inside our Docker container, e.g. /home/images
 
@@ -37,60 +52,50 @@ Now, we add a line to our Dockerfile that indicates that this image should be co
         COPY ./happy_whale.jpg /home/images/happy_whale.jpg
     ```
 
-And you guessed it: time to rebuild!
+And you guessed it: time to build!
 
     ```
-        docker build -t myfirstdocker Desktop/my_first_docker
+        docker build -t whale_container Desktop/docker_data_container
     ```
 
-If we now run our freshly build Docker container and check the contents of /home, we find the folder images and in it our happy_whale.jpg
+If we now `run` our freshly build Docker container and check the contents of /home, we find the folder images and in it our happy_whale.jpg
 
 ```
-Michaels-MBP:~ me$ docker run -it --rm myfirstdocker
-
-- ls
-
+(base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm whale_container bash
+root@8e2a056bed3a:/# ls
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@8e2a056bed3a:/# cd home/
+root@8e2a056bed3a:/home# ls
+images
+root@8e2a056bed3a:/home# cd images/
+root@8e2a056bed3a:/home/images# ls
+happy_whale.jpg
 ```
-
-#### Practical application
-
-With that, we can include almost any kind of data of almost any size. As we not only like Docker, but also data processing using e.g., pandas and sharing our knowledge about it, let's include a small respective tutorial in the form of a `jupyter notebook`, as well as a small `sample dataset`. In this way you could also include demogrpahic data, READMEs or any additional data necessary for a processing pipeline.
-
-To this end, we again simply copy the respective files from the examples folder to our my_first_docker folder
-
-    ```
-        mv Desktop/examples/* Desktop/my_first_docker
-    ```
-
-And subsequently, we again add some lines of code that do the respective copying, creating a nice structure:
-
-    ```
-        COPY ./python_pandas.ipynb /home/notebooks/
-        COPY ./beers.csv /home/notebooks/data
-    ```
-
-- rebuild the container and as expected, everything is there and in place!
-
-
-    ``` 
-        output
-    ```
 
 ### Incorporating online data
 
 In case you don't have or don't want everything that should go into the Docker container stored locally, you can also use command line functionality to download data, e.g., using the bash command `curl`. This can be very helpful when pulling data from an online repository.
 
-Simply add the respective command to the Dockerfile:
+Simply add the respective lines to the Dockerfile:
 
 ```
-    RUN curl --output /home/images/happy_whale_2.jpg  https://cdn.pixabay.com/photo/2017/01/01/20/11/humpback-whale-1945416_960_720.jpg
-```
-
-And checking the outcome, everything worked like a charm!
+    RUN apt-get update && apt-get install curl -y
+    RUN curl --output /home/images/happy_whale_2.jpg  https://cdn.pixabay.com/photo/2023/09/25/06/48/whale-8274342_1280.jpg
 
 ```
-    output
+
+Rebuild and checking the outcome, everything worked like a charm!
+
 ```
+    (base) Michaels-MacBook-Pro:Desktop me$ docker run -it --rm whale_container bash
+    root@b41d20e42fbb:/# ls
+    bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+    root@b41d20e42fbb:/# cd home/
+    root@b41d20e42fbb:/home# cd images/
+    root@b41d20e42fbb:/home/images# ls
+    happy_whale.jpg  happy_whale_2.jpg
+```
+
 ### Mounting data inside and outside of your container
 
 Well, all of you should have heard about mounting before in our [quickstart](basics/quickstart.md) section. Once again, **mounting** describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
