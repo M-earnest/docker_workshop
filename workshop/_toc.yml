@@ -6,6 +6,7 @@ chapters:
 - file: setup
 - file: outline
 - file: prerequisites
+  sections:
     - file: prerequisites/intro_to_shell
 - file: basics/introduction
 - file: basics/quickstart
