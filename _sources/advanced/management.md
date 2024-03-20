@@ -2,9 +2,10 @@
 
 ### Learning objectives
 
-- basic docker management
-- docker commands
-- resource management
+- how to manage the access writes of a docker container?
+- how to assign computational resources to a docker container?
+- what are the most common docker commands?
+- how do i delete, rename, save etc. docker images?
 
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
@@ -25,92 +26,93 @@ We can get a comprehensive overview of our docker setup and configuration via th
 
 Which should produce something like the followin output:
 
-```
-
-(base) Michaels-MBP:Desktop me$ docker info
-Client:
- Version:    24.0.6
- Context:    desktop-linux
- Debug Mode: false
- Plugins:
-  buildx: Docker Buildx (Docker Inc.)
-    Version:  v0.11.2-desktop.5
-    Path:     /Users/me/.docker/cli-plugins/docker-buildx
-  compose: Docker Compose (Docker Inc.)
-    Version:  v2.23.0-desktop.1
-    Path:     /Users/me/.docker/cli-plugins/docker-compose
-  dev: Docker Dev Environments (Docker Inc.)
-    Version:  v0.1.0
-    Path:     /Users/me/.docker/cli-plugins/docker-dev
-  extension: Manages Docker extensions (Docker Inc.)
-    Version:  v0.2.20
-    Path:     /Users/me/.docker/cli-plugins/docker-extension
-  init: Creates Docker-related starter files for your project (Docker Inc.)
-    Version:  v0.1.0-beta.9
-    Path:     /Users/me/.docker/cli-plugins/docker-init
-  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
-    Version:  0.6.0
-    Path:     /Users/me/.docker/cli-plugins/docker-sbom
-  scan: Docker Scan (Docker Inc.)
-    Version:  v0.26.0
-    Path:     /Users/me/.docker/cli-plugins/docker-scan
-  scout: Docker Scout (Docker Inc.)
-    Version:  v1.0.9
-    Path:     /Users/me/.docker/cli-plugins/docker-scout
-
-Server:
- Containers: 14
-  Running: 0
-  Paused: 0
-  Stopped: 14
- Images: 9
- Server Version: 24.0.6
- Storage Driver: overlay2
-  Backing Filesystem: extfs
-  Supports d_type: true
-  Using metacopy: false
-  Native Overlay Diff: true
-  userxattr: false
- Logging Driver: json-file
- Cgroup Driver: cgroupfs
- Cgroup Version: 2
- Plugins:
-  Volume: local
-  Network: bridge host ipvlan macvlan null overlay
-  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
- Swarm: inactive
- Runtimes: io.containerd.runc.v2 runc
- Default Runtime: runc
- Init Binary: docker-init
- containerd version: 8165feabfdfe38c65b599c4993d227328c231fca
- runc version: v1.1.8-0-g82f18fe
- init version: de40ad0
- Security Options:
-  seccomp
-   Profile: unconfined
-  cgroupns
- Kernel Version: 6.4.16-linuxkit
- Operating System: Docker Desktop
- OSType: linux
- Architecture: aarch64
- CPUs: 10
- Total Memory: 7.661GiB
- Name: linuxkit-9a0b4d61aa6b
- ID: 601c4efb-57ee-48fc-a551-5f501a24c3cf
- Docker Root Dir: /var/lib/docker
- Debug Mode: false
- HTTP Proxy: http.docker.internal:3128
- HTTPS Proxy: http.docker.internal:3128
- No Proxy: hubproxy.docker.internal
- Experimental: false
- Insecure Registries:
-  hubproxy.docker.internal:5555
-  127.0.0.0/8
- Live Restore Enabled: false
-
-WARNING: daemon is not using the default seccomp profile
-```
 <br>
+
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+    <p>
+    (base) Michaels-MBP:Desktop me$ docker info
+    Client:
+    Version:    24.0.6
+    Context:    desktop-linux
+    Debug Mode: false
+    Plugins:
+      buildx: Docker Buildx (Docker Inc.)
+        Version:  v0.11.2-desktop.5
+        Path:     /Users/me/.docker/cli-plugins/docker-buildx
+      compose: Docker Compose (Docker Inc.)
+        Version:  v2.23.0-desktop.1
+        Path:     /Users/me/.docker/cli-plugins/docker-compose
+      dev: Docker Dev Environments (Docker Inc.)
+        Version:  v0.1.0
+        Path:     /Users/me/.docker/cli-plugins/docker-dev
+      extension: Manages Docker extensions (Docker Inc.)
+        Version:  v0.2.20
+        Path:     /Users/me/.docker/cli-plugins/docker-extension
+      init: Creates Docker-related starter files for your project (Docker Inc.)
+        Version:  v0.1.0-beta.9
+        Path:     /Users/me/.docker/cli-plugins/docker-init
+      sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+        Version:  0.6.0
+        Path:     /Users/me/.docker/cli-plugins/docker-sbom
+      scan: Docker Scan (Docker Inc.)
+        Version:  v0.26.0
+        Path:     /Users/me/.docker/cli-plugins/docker-scan
+      scout: Docker Scout (Docker Inc.)
+        Version:  v1.0.9
+        Path:     /Users/me/.docker/cli-plugins/docker-scout
+
+    Server:
+    Containers: 14
+      Running: 0
+      Paused: 0
+      Stopped: 14
+    Images: 9
+    Server Version: 24.0.6
+    Storage Driver: overlay2
+      Backing Filesystem: extfs
+      Supports d_type: true
+      Using metacopy: false
+      Native Overlay Diff: true
+      userxattr: false
+    Logging Driver: json-file
+    Cgroup Driver: cgroupfs
+    Cgroup Version: 2
+    Plugins:
+      Volume: local
+      Network: bridge host ipvlan macvlan null overlay
+      Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+    Swarm: inactive
+    Runtimes: io.containerd.runc.v2 runc
+    Default Runtime: runc
+    Init Binary: docker-init
+    containerd version: 8165feabfdfe38c65b599c4993d227328c231fca
+    runc version: v1.1.8-0-g82f18fe
+    init version: de40ad0
+    Security Options:
+      seccomp
+      Profile: unconfined
+      cgroupns
+    Kernel Version: 6.4.16-linuxkit
+    Operating System: Docker Desktop
+    OSType: linux
+    Architecture: aarch64
+    CPUs: 10
+    Total Memory: 7.661GiB
+    Name: linuxkit-9a0b4d61aa6b
+    ID: 601c4efb-57ee-48fc-a551-5f501a24c3cf
+    Docker Root Dir: /var/lib/docker
+    Debug Mode: false
+    HTTP Proxy: http.docker.internal:3128
+    HTTPS Proxy: http.docker.internal:3128
+    No Proxy: hubproxy.docker.internal
+    Experimental: false
+    Insecure Registries:
+      hubproxy.docker.internal:5555
+      127.0.0.0/8
+    Live Restore Enabled: false
+
+  WARNING: daemon is not using the default seccomp profile </p>
+</div>
 
 Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.
 
@@ -130,8 +132,6 @@ Among this barrage of information, we can see that docker uses a default amount 
 - Configuration of your Docker installation and specific containers can also be achived via the Docker Desktop GUI
     - see under settings ->  Resources or Advanced
     - find OS specific instructions on the [Docker Website](https://docs.docker.com/desktop/settings/mac/)
-
-
 
 <br>
 
@@ -156,9 +156,9 @@ The docker `ps` command comparatively lists all _running_ `containers`
 
     `docker ps`
 
-This is worth checking, if you notice a drop in performance during computation, can't connect to certain ports when using jupyter notebooks, get a memory related error, etc.
+This is worth checking if you notice a drop in performance during computation, can't connect to certain ports when using jupyter notebooks, get a memory related error, etc.
 
-To get a list of _all_ `containers` use the `-a` flag
+To get a list of _all_ `containers` that have been previously run use the `-a` flag
 
     `docker ps -a`
 
@@ -184,11 +184,9 @@ Docker containers can also be stopped manually using the docker `stop` command:
 
 `docker stop image-id`
 
-
-
 And to delete a given docker container use the `remove` command `rm` and provide a `container-id`
 
-    `docker rm container-id`
+`docker rm container-id`
 
 ```
 (base) Michaels-MBP:Desktop me$ docker rm 92ba07352f3a
@@ -223,20 +221,14 @@ We can further use the associated tag related behavior to "rename" a given docke
 `docker tag old-container-name/container-id:tag new-container-name/container-id:tag`
 
 
-```
-
-Output
-
-```
-
 
 #### Import/Export
 
 Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load
 
-    `docker save -o my_cool_image.tar`
+    `docker save -o name_of_saved_image.tar imagename`
 
-    `docker load --input my_cool_image.tar`
+    `docker load --input name_of_saved_image.tar`
 
 
 
@@ -263,13 +255,35 @@ Basic image commands:
 
 #### Docker Management 101 - exercises
 
-   1. "rename" our Ubuntu container, changing the tag from latest to image_42
+   1. "rename" the Neurodocker container from the previous tutorial, changing the tag from latest to image_42
+
+    <details>
+    <summary>Solution</summary>
+    `docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
+    </details>
 
    2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
+    <details>
+    <summary>Solution</summary>
+    `docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
+    </details>
 
-   3. remove the existing Ubuntu containers
+   3. remove the existing neurodocker containers
+    <details>
+    <summary>Solution</summary>
+    `docker rm container-id`
+    </details>
 
    4. import/load a_container_at_the_end_of_the_universe.tar
+    <details>
+    <summary>Solution</summary>
+    `docker load --input a_container_at_the_end_of_the_universe.tar`
+    </details>
 
    5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
+    <details>
+    <summary>Solution</summary>
+    `docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
+    </details>
+
 

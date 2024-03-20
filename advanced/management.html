@@ -447,9 +447,10 @@ document.write(`
 <section id="learning-objectives">
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>basic docker management</p></li>
-<li><p>docker commands</p></li>
-<li><p>resource management</p></li>
+<li><p>how to manage the access writes of a docker container?</p></li>
+<li><p>how to assign computational resources to a docker container?</p></li>
+<li><p>what are the most common docker commands?</p></li>
+<li><p>how do i delete, rename, save etc. docker images?</p></li>
 </ul>
 </section>
 <section id="requirements">
@@ -469,92 +470,92 @@ as usual, consider the readme and/or docs of a given docker container before usi
 </pre></div>
 </div>
 <p>Which should produce something like the followin output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-(base) Michaels-MBP:Desktop me$ docker info
-Client:
- Version:    24.0.6
- Context:    desktop-linux
- Debug Mode: false
- Plugins:
-  buildx: Docker Buildx (Docker Inc.)
-    Version:  v0.11.2-desktop.5
-    Path:     /Users/me/.docker/cli-plugins/docker-buildx
-  compose: Docker Compose (Docker Inc.)
-    Version:  v2.23.0-desktop.1
-    Path:     /Users/me/.docker/cli-plugins/docker-compose
-  dev: Docker Dev Environments (Docker Inc.)
-    Version:  v0.1.0
-    Path:     /Users/me/.docker/cli-plugins/docker-dev
-  extension: Manages Docker extensions (Docker Inc.)
-    Version:  v0.2.20
-    Path:     /Users/me/.docker/cli-plugins/docker-extension
-  init: Creates Docker-related starter files for your project (Docker Inc.)
-    Version:  v0.1.0-beta.9
-    Path:     /Users/me/.docker/cli-plugins/docker-init
-  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
-    Version:  0.6.0
-    Path:     /Users/me/.docker/cli-plugins/docker-sbom
-  scan: Docker Scan (Docker Inc.)
-    Version:  v0.26.0
-    Path:     /Users/me/.docker/cli-plugins/docker-scan
-  scout: Docker Scout (Docker Inc.)
-    Version:  v1.0.9
-    Path:     /Users/me/.docker/cli-plugins/docker-scout
-
-Server:
- Containers: 14
+<br>
+<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
+    <p>
+    (base) Michaels-MBP:Desktop me$ docker info
+    Client:
+    Version:    24.0.6
+    Context:    desktop-linux
+    Debug Mode: false
+    Plugins:
+      buildx: Docker Buildx (Docker Inc.)
+        Version:  v0.11.2-desktop.5
+        Path:     /Users/me/.docker/cli-plugins/docker-buildx
+      compose: Docker Compose (Docker Inc.)
+        Version:  v2.23.0-desktop.1
+        Path:     /Users/me/.docker/cli-plugins/docker-compose
+      dev: Docker Dev Environments (Docker Inc.)
+        Version:  v0.1.0
+        Path:     /Users/me/.docker/cli-plugins/docker-dev
+      extension: Manages Docker extensions (Docker Inc.)
+        Version:  v0.2.20
+        Path:     /Users/me/.docker/cli-plugins/docker-extension
+      init: Creates Docker-related starter files for your project (Docker Inc.)
+        Version:  v0.1.0-beta.9
+        Path:     /Users/me/.docker/cli-plugins/docker-init
+      sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+        Version:  0.6.0
+        Path:     /Users/me/.docker/cli-plugins/docker-sbom
+      scan: Docker Scan (Docker Inc.)
+        Version:  v0.26.0
+        Path:     /Users/me/.docker/cli-plugins/docker-scan
+      scout: Docker Scout (Docker Inc.)
+        Version:  v1.0.9
+        Path:     /Users/me/.docker/cli-plugins/docker-scout
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Server:
+Containers: 14
   Running: 0
   Paused: 0
   Stopped: 14
- Images: 9
- Server Version: 24.0.6
- Storage Driver: overlay2
+Images: 9
+Server Version: 24.0.6
+Storage Driver: overlay2
   Backing Filesystem: extfs
   Supports d_type: true
   Using metacopy: false
   Native Overlay Diff: true
   userxattr: false
- Logging Driver: json-file
- Cgroup Driver: cgroupfs
- Cgroup Version: 2
- Plugins:
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Cgroup Version: 2
+Plugins:
   Volume: local
   Network: bridge host ipvlan macvlan null overlay
   Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
- Swarm: inactive
- Runtimes: io.containerd.runc.v2 runc
- Default Runtime: runc
- Init Binary: docker-init
- containerd version: 8165feabfdfe38c65b599c4993d227328c231fca
- runc version: v1.1.8-0-g82f18fe
- init version: de40ad0
- Security Options:
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 8165feabfdfe38c65b599c4993d227328c231fca
+runc version: v1.1.8-0-g82f18fe
+init version: de40ad0
+Security Options:
   seccomp
-   Profile: unconfined
+  Profile: unconfined
   cgroupns
- Kernel Version: 6.4.16-linuxkit
- Operating System: Docker Desktop
- OSType: linux
- Architecture: aarch64
- CPUs: 10
- Total Memory: 7.661GiB
- Name: linuxkit-9a0b4d61aa6b
- ID: 601c4efb-57ee-48fc-a551-5f501a24c3cf
- Docker Root Dir: /var/lib/docker
- Debug Mode: false
- HTTP Proxy: http.docker.internal:3128
- HTTPS Proxy: http.docker.internal:3128
- No Proxy: hubproxy.docker.internal
- Experimental: false
- Insecure Registries:
+Kernel Version: 6.4.16-linuxkit
+Operating System: Docker Desktop
+OSType: linux
+Architecture: aarch64
+CPUs: 10
+Total Memory: 7.661GiB
+Name: linuxkit-9a0b4d61aa6b
+ID: 601c4efb-57ee-48fc-a551-5f501a24c3cf
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+HTTP Proxy: http.docker.internal:3128
+HTTPS Proxy: http.docker.internal:3128
+No Proxy: hubproxy.docker.internal
+Experimental: false
+Insecure Registries:
   hubproxy.docker.internal:5555
   127.0.0.0/8
- Live Restore Enabled: false
-
-WARNING: daemon is not using the default seccomp profile
+Live Restore Enabled: false
 </pre></div>
 </div>
-<br>
+<p>WARNING: daemon is not using the default seccomp profile </p></p>
+</div>
 <p>Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.</p>
 <ul>
 <li><p>all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,</p>
@@ -599,8 +600,8 @@ hello-world            latest    ee301c921b8a   9 months ago   9.14kB
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps`
 </pre></div>
 </div>
-<p>This is worth checking, if you notice a drop in performance during computation, can’t connect to certain ports when using jupyter notebooks, get a memory related error, etc.</p>
-<p>To get a list of <em>all</em> <code class="docutils literal notranslate"><span class="pre">containers</span></code> use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag</p>
+<p>This is worth checking if you notice a drop in performance during computation, can’t connect to certain ports when using jupyter notebooks, get a memory related error, etc.</p>
+<p>To get a list of <em>all</em> <code class="docutils literal notranslate"><span class="pre">containers</span></code> that have been previously run use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker ps -a`
 </pre></div>
 </div>
@@ -624,9 +625,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <p>Docker containers can also be stopped manually using the docker <code class="docutils literal notranslate"><span class="pre">stop</span></code> command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">image-id</span></code></p>
 <p>And to delete a given docker container use the <code class="docutils literal notranslate"><span class="pre">remove</span></code> command <code class="docutils literal notranslate"><span class="pre">rm</span></code> and provide a <code class="docutils literal notranslate"><span class="pre">container-id</span></code></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker rm container-id`
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">container-id</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MBP:Desktop me$ docker rm 92ba07352f3a
 92ba07352f3a
 
@@ -651,18 +650,13 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <p><code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">now</span> <span class="pre">our</span> <span class="pre">evergreen:</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">readme</span> <span class="pre">and/or</span> <span class="pre">docs</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">given</span> <span class="pre">docker</span> <span class="pre">container!</span></code></p>
 <p>We can further use the associated tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems with regard to version control using the tag command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">tag</span> <span class="pre">old-container-name/container-id:tag</span> <span class="pre">new-container-name/container-id:tag</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">Output</span>
-
-</pre></div>
-</div>
 </section>
 <section id="import-export">
 <h3>Import/Export<a class="headerlink" href="#import-export" title="Link to this heading">#</a></h3>
 <p>Besides using Docker Hub to share and download docker containers, it’s also possible to export and import them locally using the docker commands save &amp; load</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker save -o my_cool_image.tar`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker save -o name_of_saved_image.tar imagename`
 
-`docker load --input my_cool_image.tar`
+`docker load --input name_of_saved_image.tar`
 </pre></div>
 </div>
 </section>
@@ -689,12 +683,50 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <section id="docker-management-101-exercises">
 <h3>Docker Management 101 - exercises<a class="headerlink" href="#docker-management-101-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>“rename” our Ubuntu container, changing the tag from latest to image_42</p></li>
+<li><p>“rename” the Neurodocker container from the previous tutorial, changing the tag from latest to image_42</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
+&lt;summary&gt;Solution&lt;/summary&gt;
+`docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
+&lt;/details&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li><p>export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop</p></li>
-<li><p>remove the existing Ubuntu containers</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
+&lt;summary&gt;Solution&lt;/summary&gt;
+`docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
+&lt;/details&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>remove the existing neurodocker containers</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
+&lt;summary&gt;Solution&lt;/summary&gt;
+`docker rm container-id`
+&lt;/details&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
 <li><p>import/load a_container_at_the_end_of_the_universe.tar</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
+&lt;summary&gt;Solution&lt;/summary&gt;
+`docker load --input a_container_at_the_end_of_the_universe.tar`
+&lt;/details&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
 <li><p>run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU</p></li>
 </ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;details&gt;
+&lt;summary&gt;Solution&lt;/summary&gt;
+`docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
+&lt;/details&gt;
+</pre></div>
+</div>
 </section>
 </section>
 </section>
