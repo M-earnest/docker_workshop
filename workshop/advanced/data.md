@@ -100,7 +100,7 @@ Now, who remembers the flag we have to use within the `docker run` command to en
 <br>
 
 <details>
-<summary>flag for mounting</summary>
+<summary>Solution</summary>
 
 ...correct, you have to use the `-v` flag within the `docker run` command to specify the mounted directories. This flag can be untilized as follows:
 
