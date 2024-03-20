@@ -436,7 +436,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
 </ul>
@@ -786,37 +785,6 @@ Next we simply use the <code class="docutils literal notranslate"><span class="p
 </li>
 </ol>
 </section>
-<section id="automating-builds-using-github">
-<h2>Automating builds using Github<a class="headerlink" href="#automating-builds-using-github" title="Link to this heading">#</a></h2>
-<p>!Important: It seems to me that you nowadays need a paid Dockerhub subscription of you want to make use of the automated builds (hence we might want to exclude them here)</p>
-<p>there’s an even easier way to integrate Docker in reproducible, in terms of version-controlled, scientific practice.</p>
-<p>We’ll make use of the integrated automatic build function of Docker, which builds and pushes your Docker container directly and automatically from a GitHub repository every time a pull request is processed.</p>
-<p>The respective process is highly customizable so let’s walk through an example.</p>
-<ol class="arabic simple">
-<li><p>Set up
-The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfile:</p>
-<ul class="simple">
-<li><p>create a new Github repository called docker_workshop</p></li>
-<li><p>upload your Dockerfile to this repository</p></li>
-</ul>
-</li>
-<li><p>Specify the automated build process</p></li>
-</ol>
-<p>On Docker Hub, go to the Docker container we’ve uploaded in the previous step and within that, click on builds</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```
-    img
-    ```
-</pre></div>
-</div>
-<p>Next, click on <code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">automated</span> <span class="pre">builds</span></code>. We’re now asked to indicate the <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">repository</span></code> on GitHub and indicate some <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">rules</span></code>, including automated tests, branch to build from, tag that should be applied, etc.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```
-    img
-    ```
-</pre></div>
-</div>
-<p>Now, after clicking on save and build, our Docker container will be build automatically from our corresponding GitHub repository. Depending on the size of your Docker container and the current traffic on Docker Hub, it might take a while</p>
-<p>Every consecutive push or commit to this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.</p>
-</section>
 <section id="docker-containers-creating-and-pushing-a-recap">
 <h2>Docker containers - creating and pushing - a recap<a class="headerlink" href="#docker-containers-creating-and-pushing-a-recap" title="Link to this heading">#</a></h2>
 <ul>
@@ -926,7 +894,6 @@ The setup is simple and straightforward, as we just need to create a new GitHub 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
 </ul>
