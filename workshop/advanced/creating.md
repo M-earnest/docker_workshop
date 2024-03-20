@@ -77,8 +77,7 @@ The WORKDIR instruction sets the working directory for any of the other instruct
 
         `WORKDIR /project`
 
-> [!NOTE]  
-> Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
+**Note** Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
 
 ### 3. RUN - install software, execute commands
 In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers 'pip' and 'apt-get' in the same way we would use them in our bash shell.
@@ -91,8 +90,7 @@ So to install e.g. Python using the Ubuntu baseimage and apt package manager we 
     RUN apt-get update && apt-get install -y python3.10
 ```
 
-> [!NOTE]  
-> You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
+**Note** You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
 
 ### 4. COPY - add files to image
 Using the COPY instruction we can permanently add files from our local system to our Docker Image.
@@ -137,16 +135,21 @@ If you have more complex commands that should initally be run you can further pr
 Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
 
 
-1. Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
+**1. Create the build context**
+
+Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
 
 `mkdir ~/Desktop/my_first_docker && touch ~/Desktop/my_first_docker/Dockerfile`
 
-2. Download the course materials and copy the print_info.py script from the resources folder into `my_first_docker folder`
+**2. Add files to your build context**
+Download the course materials and copy the print_info.py script from the resources folder into `my_first_docker folder`
 
 `cp /resources/README.md /Users/me/Desktop/my_first_docker`
 
 
-3. Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
+**3. Create the Dockerfile**
+
+Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
 
 ```
     # Step 1: Use the newest Ubuntu version as a base image
