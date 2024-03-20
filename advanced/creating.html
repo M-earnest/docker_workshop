@@ -529,10 +529,7 @@ document.write(`
 </ul>
 </li>
 </ul>
-<blockquote>
-<div><p>[!NOTE]<br />
-Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
-</div></blockquote>
+<p><strong>Note</strong> Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
 </section>
 <section id="run-install-software-execute-commands">
 <h2>3. RUN - install software, execute commands<a class="headerlink" href="#run-install-software-execute-commands" title="Link to this heading">#</a></h2>
@@ -542,10 +539,7 @@ Be cautious if you mount a directory from your local machine onto the WORKDIR th
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>[!NOTE]<br />
-You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
-</div></blockquote>
+<p><strong>Note</strong> You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
 </section>
 <section id="copy-add-files-to-image">
 <h2>4. COPY - add files to image<a class="headerlink" href="#copy-add-files-to-image" title="Link to this heading">#</a></h2>
@@ -583,17 +577,14 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 <section id="practical-example">
 <h2>Practical example<a class="headerlink" href="#practical-example" title="Link to this heading">#</a></h2>
 <p>Let’s try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.</p>
-<ol class="arabic simple">
-<li><p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p></li>
-</ol>
+<p><strong>1. Create the build context</strong></p>
+<p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p>
 <p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Desktop/my_first_docker</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/Desktop/my_first_docker/Dockerfile</span></code></p>
-<ol class="arabic simple" start="2">
-<li><p>Download the course materials and copy the print_info.py script from the resources folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code></p></li>
-</ol>
+<p><strong>2. Add files to your build context</strong>
+Download the course materials and copy the print_info.py script from the resources folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/resources/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
-<ol class="arabic simple" start="3">
-<li><p>Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p></li>
-</ol>
+<p><strong>3. Create the Dockerfile</strong></p>
+<p>Open your Dockerfile either with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
     <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
 
