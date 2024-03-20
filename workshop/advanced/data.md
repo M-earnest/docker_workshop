@@ -273,7 +273,7 @@ For our container to run the conversion properly, we need to mount the directory
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 
 ```
-# Output:
+'# Output:'
 Opening raw data file /input/MEG/sample/sample_audvis_raw.fif...
     Read a total of 3 projection items:
         PCA-v1 (1 x 102)  idle
