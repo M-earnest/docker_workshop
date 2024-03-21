@@ -151,7 +151,7 @@ into your terminal and your `userid` should appear.
 ![how to get user id](/static/get_user_id.png)
 
 <br>
-Add practical example here?
+
 
 #### Practical application
 
