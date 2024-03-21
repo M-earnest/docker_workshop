@@ -7,11 +7,10 @@
 
 - Why do we use containers?
 - What are the various types of virtualization based solutions?
-- How to use Docker (maybe call it benefits of using Docker)?
+- How can containers be utilized for neuroscientific applications?
 
 <br>
 
-*formulate objectives as questions or statements, e.g. motivation for virtualization?
 
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
@@ -52,7 +51,7 @@ Amazing, you can relax and let the script do the work as it will just run on you
 
 <br>
 <br>
-...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to reproduce anything. 
+...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to `reproduce` anything. 
 <br>
 <br>
 

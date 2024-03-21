@@ -254,27 +254,40 @@ Basic image commands:
 
 #### Docker Management 101 - exercises
 
-1. "rename" the Neurodocker container from the previous tutorial, changing the tag from latest to image_42
+1. "rename" the neurodebian container from the previous tutorial, changing the tag from nd-non-free to image_42
 
 <details>
 <summary>Solution</summary>
-`docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
+
+```
+docker tag /container-id:latest neurodocker/container-id:image_42
+```
+
 </details>
 
 <br>
 
 2. export/save the newly created container as a_container_at_the_end_of_the_universe.tar to your Desktop
+
 <details>
 <summary>Solution</summary>
-`docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
+
+```
+docker save -o a_container_at_the_end_of_the_universe.tar neurodebian:image42
+```
+
 </details>
 
 <br>
 
-3. remove the existing neurodocker containers
+1. remove the existing neurodocker containers
 <details>
 <summary>Solution</summary>
-`docker rm container-id`
+
+```
+docker rm container-id
+```
+
 </details>
 
 <br>
@@ -282,7 +295,11 @@ Basic image commands:
 4. import/load a_container_at_the_end_of_the_universe.tar
 <details>
 <summary>Solution</summary>
-`docker load --input a_container_at_the_end_of_the_universe.tar`
+
+```
+docker load --input a_container_at_the_end_of_the_universe.tar
+```
+
 </details>
 
 <br>
@@ -290,7 +307,11 @@ Basic image commands:
 5. run the newly loaded container using 2GB of RAM, 3 GB of swap and 1 CPU
 <details>
 <summary>Solution</summary>
-`docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
+
+```
+docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe
+```
+
 </details>
 
 
