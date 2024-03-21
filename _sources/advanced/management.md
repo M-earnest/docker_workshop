@@ -26,7 +26,6 @@ We can get a comprehensive overview of our docker setup and configuration via th
 
 Which should produce something like the followin output:
 
-<br>
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
@@ -151,7 +150,6 @@ ubuntu                 latest    a50ab9f16797   5 days ago     69.2MB
 repronim/neurodocker   latest    1107707d9d51   9 months ago   79.7MB
 hello-world            latest    ee301c921b8a   9 months ago   9.14kB
 ```
-<br>
 <br>
 
 The docker `ps` command comparatively lists all _running_ `containers`
@@ -280,7 +278,7 @@ docker save -o a_container_at_the_end_of_the_universe.tar neurodebian:image42
 
 <br>
 
-1. remove the existing neurodocker containers
+3. remove the existing neurodocker containers
 <details>
 <summary>Solution</summary>
 

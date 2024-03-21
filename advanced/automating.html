@@ -409,6 +409,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-dockerhub-access-token">2. Generate a DockerHub access token</a></li>
@@ -430,11 +433,30 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="automating-container-build-and-maintenance">
 <h1>Automating container build and maintenance<a class="headerlink" href="#automating-container-build-and-maintenance" title="Link to this heading">#</a></h1>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>learn to automatize building and publishing of containers</p></li>
+<li><p>learn how to setup a GitHub workflow and connect to DockerHub</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
+<li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
+<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#intro_to_shell.ipynb"><span class="xref myst">link</span></a> to catch up!)</p></li>
+<li><p><a class="reference external" href="https://github.com">GitHub</a> &amp; <a class="reference external" href="https://hub.docker.com">Dockerhub</a> account</p></li>
+</ul>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>First off, there is a fairly simple way to build a Docker image from your GitHub repositories. Simply provide the URL to your Dockerfile when building, i.e for a <code class="docutils literal notranslate"><span class="pre">directory</span></code> called <code class="docutils literal notranslate"><span class="pre">docker</span></code> in the <code class="docutils literal notranslate"><span class="pre">branch</span></code> <code class="docutils literal notranslate"><span class="pre">container</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">https://github.com/docker/rootfs.git#container:docker</span></code></p>
 <p>Check the <a class="reference external" href="https://docs.docker.com/reference/cli/docker/image/build/#git-repositories">Docker documentation on GitHub repositories for more info</a></p>
 <p>But, if you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. Fortunately, there is a way to automate this process using GitHub, more specifically <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/about-workflows">GitHub Workflows</a>. The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push.</p>
 <p>This will not only make your life easier, but integrate Docker in reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?</p>
+</section>
 <section id="automating-builds-using-github">
 <h2>Automating builds using Github<a class="headerlink" href="#automating-builds-using-github" title="Link to this heading">#</a></h2>
 <p>GitHub workflows allow Users to define processes that automatically run when certain actions (push, pull, commits etc.) are performed on a repository. This has many application such as automatically building apps or e.g. creating and updating this website. We will make use of GitHub workflows to automatically generate and update Docker images and push them to DockerHub. A GitHub workflow is specified in a YAML file (.yml), like the one you’ll find under point <a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/automating.html#setup-the-github-workflow">4.</a>, which will have to be included in the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> directory in a repository.</p>
@@ -676,6 +698,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-builds-using-github">Automating builds using Github</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-dockerhub-access-token">2. Generate a DockerHub access token</a></li>

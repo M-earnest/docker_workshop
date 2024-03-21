@@ -431,8 +431,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-container-virtualization">
 <h1>Introduction - Container &amp; Virtualization<a class="headerlink" href="#introduction-container-virtualization" title="Link to this heading">#</a></h1>
-<br>
-<br>
 <section id="learning-objectives">
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -440,7 +438,6 @@ document.write(`
 <li><p>What are the various types of virtualization based solutions?</p></li>
 <li><p>How can containers be utilized for neuroscientific applications?</p></li>
 </ul>
-<br>
 </section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
@@ -448,38 +445,27 @@ document.write(`
 <li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
 <li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
 </ul>
-<br>
-<br>
-<br>
 </section>
 <section id="motivation-why-do-we-need-containers-virtualization">
 <h2>Motivation - Why do we need containers/virtualization?<a class="headerlink" href="#motivation-why-do-we-need-containers-virtualization" title="Link to this heading">#</a></h2>
-<br>
 <p>Virtualization techniques are means to ensure <code class="docutils literal notranslate"><span class="pre">reproducibility</span></code> of scietific findings/workflows as well as the facilitation of <code class="docutils literal notranslate"><span class="pre">collaborative</span> <span class="pre">research</span></code>.</p>
 <br>
 <section id="the-problem-statement">
 <h3>The problem statement<a class="headerlink" href="#the-problem-statement" title="Link to this heading">#</a></h3>
-<p><em>To motivate why utilizing containerization (or any kind of virtualization techniques for that matter) can be beneficial, let’s imagine the following scenario:</em>
+<p><em>To motivate why utilizing containerization (or any kind of virtualization techniques for that matter) can be beneficial, let’s imagine the following scenario:</em></p>
 <br>
+**Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
+Your colleague tells you to run the script via navigating to the respective folder and type:**
+<br> 
+<p><code class="docutils literal notranslate"><span class="pre">fancy_analysis.py</span></code></p>
 <br>
-<strong>Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
-Your colleague tells you to run the script via navigating to the respective folder and type:</strong>
+<p>Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …</p>
 <br>
-<br>
-<code class="docutils literal notranslate"><span class="pre">fancy_analysis.py</span></code>
-<br>
-<br>
-Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …
-<br>
-<br></p>
 <p><img alt="Thumbs up computer meme" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3FzeHRyOTkzOHF0MHZ5bHVlamRscmxyOTB2bmhia3RxdXc2dTFqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XreQmk7ETCak0/giphy.gif" /></p>
 <br>
-<br>
-...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to `reproduce` anything. 
-<br>
+<p>…Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to <code class="docutils literal notranslate"><span class="pre">reproduce</span></code> anything.</p>
 <br>
 <p><img alt="Evil laugh" src="https://c.tenor.com/oKay8GcV660AAAAC/ted-dancon-evil-laugh.gif" /></p>
-<br>
 <br>
 <p>Why did this happen?!
 <br></p>
@@ -524,13 +510,12 @@ There are <code class="docutils literal notranslate"><span class="pre">Three</sp
 <ul>
 <li><p>Virtual environment keeps dependencies, i.e. specific versions of libraries/apps isolated from the system-wide installation</p></li>
 <li><p>allows one to work with specific versions of libraries or Python itself without affecting other projects</p></li>
-<li><p>limited to isolate python binaries and libraries but not the OS itself
-<br></p></li>
+<li><p>limited to isolate python binaries and libraries but not the OS itself</p></li>
 </ul>
 </li>
 </ul>
-<p>Popular choices for the management and creation of virtual environments are:
-<br></p>
+<br>
+<p>Popular choices for the management and creation of virtual environments are:</p>
 <p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> or <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">venv</span></code></p>
 <details>
 <summary>Conda manual</summary>
