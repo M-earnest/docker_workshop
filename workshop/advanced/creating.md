@@ -16,8 +16,9 @@
 
 ### Docker - there and back again
 
-
 So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we'll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the [dockerfile reference page](https://docs.docker.com/reference/dockerfile/), which is great resource if you're looking for more in-depth explanations for the following lesson.
+
+We will be relying on the `command line` and `bash` from here on out, if this seems like gibberish to you, please go through the [course prerequisites - Introduction to the (unix) command line: bash](https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html).
 
 
 ### Docker containers - the creation
@@ -60,22 +61,28 @@ WORKDIR	Change working directory.
 
 The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a "layer". Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.
 
-We will be relying on the `command line` and `bash` from here on out, if this seems like gibberish to you, please go through the [course prerequisites - Introduction to the (unix) command line: bash](https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html).
-
-Here are the relevant layers we're going to build, i.e how our Dockerfile is going to look like:
+Here are the relevant _layers_ we're going to build, i.e how our Dockerfile is going to look like:
 
 ```
+    # Step 1: Use the newest Ubuntu version as a base image
     FROM ubuntu:latest
+
+    # Step 2: Set the working directory
     WORKDIR /project
+
+    # Step 3: Install Python 3.10, and some Python packages (Scipy, Pandas) via the Ubuntu package manager apt
     RUN apt-get update && \
         apt-get install -y python3.10 python3-pip && \
         pip3 install pandas
 
+    # let's also create  a folder to store our info file in
     RUN mkdir /info
 
+    # Step 4: Copy our Python script and README into the info folder of the image
     COPY print_info.py /info/
     COPY README.md /info/README.md
 
+    # Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file 
     CMD ["cat", "/info/README.md"]
 ```
 
@@ -176,16 +183,25 @@ If you have more complex commands that should initally be run you can further pr
 Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
 
 
-1. Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
+**1. Create the build context**
+
+Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
 
 `mkdir ~/Desktop/my_first_docker && touch ~/Desktop/my_first_docker/Dockerfile`
 
-2. Download the course materials and copy the print_info.py script from the resources folder into `my_first_docker folder`
+**2. Add files to the build context**
 
-`cp /resources/README.md /Users/me/Desktop/my_first_docker`
+Either download the course materials and copy all files from the examples folder into `my_first_docker folder` (README.md, print_info_container.py, print_info_local_system.py). 
+Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.1` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
+
+E.g. using bash:
+
+`cp /build_example/README.md /Users/me/Desktop/my_first_docker`
 
 
-3. Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
+**3. Populate the Dockerfile**
+
+Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
 
 ```
     # Step 1: Use the newest Ubuntu version as a base image
@@ -322,8 +338,12 @@ Resulting in:
 
 ### Virtualizing a workflow
 
-- More complex example of a docker container
-- e.g. create eviornment via conda with specific packages, provide input and output path, do a simple task (e.g. mne report, create BIDS folder structure etc.)
+Of course most workflows will necessary be more complex, let's look at another example.
+
+- live demonstration
+
+-- add !!Dockerfile!!
+
 
 
 ### Neurodocker?
