@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating software containers &#8212; Software containers in neurosciene research</title>
+    <title>Creating software containers &#8212; Docker for neuroscience</title>
   
   
   
@@ -147,7 +147,7 @@
   
   
   
-    <p class="title logo__title">Software containers in neurosciene research</p>
+    <p class="title logo__title">Docker for neuroscience</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -443,9 +443,10 @@ document.write(`
 <section id="learning-objectives">
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>basic docker management</p></li>
-<li><p>docker commands</p></li>
-<li><p>resource management</p></li>
+<li><p>learn the architecture of a docker image</p></li>
+<li><p>learn what a dockerfile and a build context are</p></li>
+<li><p>learn how to build, run and share a docker container</p></li>
+<li><p>learn how to make your (professional life easier) by using <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/examples.html">Neurodocker</a></p></li>
 </ul>
 </section>
 <section id="requirements">
@@ -454,13 +455,13 @@ document.write(`
 <li><p>a working version of <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
 <li><p>a Docker Hub and GitHub account</p></li>
 <li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
-<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#link"><span class="xref myst">link</span></a> to catch up!)</p></li>
+<li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <a class="reference internal" href="#lhttps://m-earnest.github.io/docker_workshop/prerequisites.html"><span class="xref myst">refresher section</span></a> to catch up!)</p></li>
 </ul>
 </section>
 <section id="docker-there-and-back-again">
 <h2>Docker - there and back again<a class="headerlink" href="#docker-there-and-back-again" title="Link to this heading">#</a></h2>
 <p>So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we’ll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">dockerfile reference page</a>, which is great resource if you’re looking for more in-depth explanations for the following lesson.</p>
-<p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
+<p>We will still be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
 </section>
 <section id="docker-containers-the-creation">
 <h2>Docker containers - the creation<a class="headerlink" href="#docker-containers-the-creation" title="Link to this heading">#</a></h2>
@@ -956,7 +957,7 @@ Next we simply use the <code class="docutils literal notranslate"><span class="p
   <div class="footer-item">
     
 <p class="component-author">
-By Peer Herholz
+By Aaron Reer, Peer Herholz, Michael Ernst
 </p>
 
   </div>
@@ -966,7 +967,7 @@ By Peer Herholz
 
   <p class="copyright">
     
-      © Copyright 2018.
+      © Copyright 2024.
       <br/>
     
   </p>
