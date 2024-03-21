@@ -423,7 +423,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrypoint-and-cmd-make-the-image-exectuable">5. Entrypoint and CMD - make the image exectuable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example">Practical example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker-going-further-beyond">Neurodocker - Going further beyond</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
 </ul>
@@ -739,9 +740,9 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 <p>– add !!Dockerfile!!</p>
 </section>
 <section id="neurodocker">
-<h2>Neurodocker?<a class="headerlink" href="#neurodocker" title="Link to this heading">#</a></h2>
+<h2>Neurodocker<a class="headerlink" href="#neurodocker" title="Link to this heading">#</a></h2>
 <p>You might wonder: Isn’t there a sufficient, faster and easier way of composing Dockerfiles?
-Well, say no more and meet <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>, a Docker container that targets the creation of Docker containers - Dockerception.</p>
+Well, say no more and meet <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/installation.html">Neurodocker</a>, a Docker container that targets the creation of Docker containers - Dockerception.</p>
 <p>Even though Neurodocker was designed for (you might’ve guessed it already) Docker containers to utilize in the realm of neuroscience, it’s also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.</p>
 <p>So, let’s see how we can create our Dockerfiles using <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>. At first we have to get the Neurodocker image using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">command</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
@@ -794,6 +795,12 @@ pip_install=&quot;mne&quot; &gt; Dockerfile
 </pre></div>
 </div>
 <p>So using Neurodocker can save you a lot of time and stress. It’s especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.</p>
+</section>
+<section id="neurodocker-going-further-beyond">
+<h2>Neurodocker - Going further beyond<a class="headerlink" href="#neurodocker-going-further-beyond" title="Link to this heading">#</a></h2>
+<p>Check-out the examples on the <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/examples.html">Neurodocker site</a>, to see how to incorporate most neuroscience relevant packages into a Docker container.</p>
+<p>Additionally, you should check-out their <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/cli.html">command-line-interface section</a> to see how to best make use of Neurodocker.</p>
+<p><strong>Note</strong> If your server system doesn’t support docker, Neurodocker also allows for the creation of singularity images using mostly the same syntax as above!</p>
 </section>
 <section id="docker-push">
 <h2>Docker push<a class="headerlink" href="#docker-push" title="Link to this heading">#</a></h2>
@@ -926,7 +933,8 @@ Next we simply use the <code class="docutils literal notranslate"><span class="p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrypoint-and-cmd-make-the-image-exectuable">5. Entrypoint and CMD - make the image exectuable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example">Practical example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtualizing-a-workflow">Virtualizing a workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker">Neurodocker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurodocker-going-further-beyond">Neurodocker - Going further beyond</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-push">Docker push</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containers-creating-and-pushing-a-recap">Docker containers - creating and pushing - a recap</a></li>
 </ul>
