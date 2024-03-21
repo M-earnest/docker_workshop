@@ -1,31 +1,18 @@
 # Introduction - Container & Virtualization
 
-<br>
-<br>
-
 ### Learning objectives
 
 - Why do we use containers?
 - What are the various types of virtualization based solutions?
 - How can containers be utilized for neuroscientific applications?
 
-<br>
-
 
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
 - access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
 
-<br>
-<br>
-
-
-
-<br>
 
 ### Motivation - Why do we need containers/virtualization?
-
-<br>
 
 Virtualization techniques are means to ensure `reproducibility` of scietific findings/workflows as well as the facilitation of `collaborative research`. 
 
@@ -34,30 +21,31 @@ Virtualization techniques are means to ensure `reproducibility` of scietific fin
 #### The problem statement
 
 *To motivate why utilizing containerization (or any kind of virtualization techniques for that matter) can be beneficial, let's imagine the following scenario:*
-<br>
+
 <br>
 **Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
 Your colleague tells you to run the script via navigating to the respective folder and type:**
-<br>
+
 <br> 
+
 `fancy_analysis.py` 
+
 <br>
-<br>
+
 Amazing, you can relax and let the script do the work as it will just run on your data and computational environment …
-<br>
+
 <br>
 
 ![Thumbs up computer meme](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3FzeHRyOTkzOHF0MHZ5bHVlamRscmxyOTB2bmhia3RxdXc2dTFqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XreQmk7ETCak0/giphy.gif)
 
 <br>
-<br>
+
 ...Well, unfortunately the script immediately produces errors or does not work on your data/ in your computational environment, such that you are not able to `reproduce` anything. 
-<br>
+
 <br>
 
 ![Evil laugh](https://c.tenor.com/oKay8GcV660AAAAC/ted-dancon-evil-laugh.gif)
 
-<br>
 <br>
 
 Why did this happen?! 
@@ -106,10 +94,11 @@ There are `Three main types` of `virtualization`, which mainly differ in their l
   - Virtual environment keeps dependencies, i.e. specific versions of libraries/apps isolated from the system-wide installation
   - allows one to work with specific versions of libraries or Python itself without affecting other projects
   - limited to isolate python binaries and libraries but not the OS itself
+
 <br>
 
 Popular choices for the management and creation of virtual environments are:
-<br>
+
 
 `Conda` or `python venv`
 
@@ -196,9 +185,6 @@ Popular choices for the management and creation of virtual environments are:
 - supports existing and traditional HPC resources
 - a user inside a Singularity container is the same user as outside the container
   - but you can use [Vagrant](https://www.vagrantup.com/) to create a container (you have root privileges on your VM!)
-
-
-
 
 
 

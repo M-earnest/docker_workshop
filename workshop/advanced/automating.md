@@ -1,5 +1,18 @@
 # Automating container build and maintenance
 
+### Learning objectives
+
+- learn to automatize building and publishing of containers
+- learn how to setup a GitHub workflow and connect to DockerHub
+
+### Requirements
+- a working version of [Docker](https://docs.docker.com/get-docker/)
+- access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
+- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](intro_to_shell.ipynb) to catch up!)
+- [GitHub](https://github.com) & [Dockerhub](https://hub.docker.com) account
+
+### Motivation
+
 First off, there is a fairly simple way to build a Docker image from your GitHub repositories. Simply provide the URL to your Dockerfile when building, i.e for a `directory` called `docker` in the `branch` `container`.
 
 `docker build https://github.com/docker/rootfs.git#container:docker`

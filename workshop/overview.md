@@ -4,8 +4,6 @@ As mentioned on the [Welcome page](https://m-earnest.github.io/docker_workshop/i
 
 We will try to provide folks with a brief overview of why this is important, central aspects of virtualization, how to work with and manage Docker containers and lastly what a container is made up of, as well as how these are build and published to the web or saved locally.
 
-...
-
 ## The framework and setup
 
 The complete workshop will be provided within this [Jupyter Book](https://jupyterbook.org/intro.html) format you're currently looking at, free for everyone to check and try out, as well as utilize further. 
