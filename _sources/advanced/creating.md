@@ -494,11 +494,5 @@ docker push yourhubusername/container:tag
 
 ```
 
-- the build and push process can be automatized using a combination of Docker Hub and GitHub
-
-
-### Excercise
-
-- ???
-- as this is an interactive session might not be necessary, but for the general audience we could have them go to the whole process for a simple python project?
+- the build and push process can be automatized using a combination of Docker Hub and GitHub. More info in the [Automating software containers](https://m-earnest.github.io/docker_workshop/advanced/automating.html) session.
 
