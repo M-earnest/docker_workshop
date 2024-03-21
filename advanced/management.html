@@ -674,11 +674,13 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 <section id="docker-management-101-exercises">
 <h3>Docker Management 101 - exercises<a class="headerlink" href="#docker-management-101-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>“rename” the Neurodocker container from the previous tutorial, changing the tag from latest to image_42</p></li>
+<li><p>“rename” the neurodebian container from the previous tutorial, changing the tag from nd-non-free to image_42</p></li>
 </ol>
 <details>
 <summary>Solution</summary>
-`docker tag neurodocker/container-id:latest neurodocker/container-id:image_42`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">tag</span> <span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span><span class="n">latest</span> <span class="n">neurodocker</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span><span class="n">image_42</span>
+</pre></div>
+</div>
 </details>
 <br>
 <ol class="arabic simple" start="2">
@@ -686,15 +688,19 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </ol>
 <details>
 <summary>Solution</summary>
-`docker save -o a_container_at_the_end_of_the_universe.tar neurodocker`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">save</span> <span class="o">-</span><span class="n">o</span> <span class="n">a_container_at_the_end_of_the_universe</span><span class="o">.</span><span class="n">tar</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">image42</span>
+</pre></div>
+</div>
 </details>
 <br>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>remove the existing neurodocker containers</p></li>
 </ol>
 <details>
 <summary>Solution</summary>
-`docker rm container-id`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">rm</span> <span class="n">container</span><span class="o">-</span><span class="nb">id</span>
+</pre></div>
+</div>
 </details>
 <br>
 <ol class="arabic simple" start="4">
@@ -702,7 +708,9 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </ol>
 <details>
 <summary>Solution</summary>
-`docker load --input a_container_at_the_end_of_the_universe.tar`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">load</span> <span class="o">--</span><span class="nb">input</span> <span class="n">a_container_at_the_end_of_the_universe</span><span class="o">.</span><span class="n">tar</span>
+</pre></div>
+</div>
 </details>
 <br>
 <ol class="arabic simple" start="5">
@@ -710,7 +718,9 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </ol>
 <details>
 <summary>Solution</summary>
-`docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">2</span><span class="n">gb</span> <span class="o">--</span><span class="n">memory</span><span class="o">-</span><span class="n">swap</span> <span class="mi">3</span><span class="n">gb</span> <span class="o">--</span><span class="n">cpus</span> <span class="mi">1</span> <span class="n">a_container_at_the_end_of_the_universe</span>
+</pre></div>
+</div>
 </details>
 </section>
 </section>
