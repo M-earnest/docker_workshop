@@ -141,9 +141,9 @@ So to install e.g. Python using the Ubuntu baseimage and apt package manager we 
 
 Using the COPY instruction we can permanently add files from our local system to our Docker Image.
 - simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image
-- e.g. if i want to add a script "print_info.py" from the curent working directory into the project folder of the image:
+- e.g. if i want to add a script "print_info_container.py" from the curent working directory into the project folder of the image:
 
-    `COPY print_info.py /project/`
+    `COPY print_info_container.py /project/`
 
 ### 5. Entrypoint and CMD - make the image exectuable
 
@@ -161,15 +161,15 @@ The ENTRYPOINT specifies a command that will always be executed when the contain
 
 Given no further arguments when the container is run (after we've build it, of course), both of these will simply print "Hello World!", but the behavior of the 'CMD' command can be overriden when the container is run with specific instruction, e.g. 'docker run myimage Hello, Docker!' prints "Hello, Docker!" instead of "Hello World!". 
 
-A practical use case can be to combine bothe instructions, so that the entrypoint provides a command that is always exectued, while CMD provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of the script.
+A practical use case can be to combine both instructions, so that the entrypoint provides a command that is always exectued, while CMD provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of the script.
 
-'''
+```
     FROM python:3.10
     ENTRYPOINT ["python"]
     CMD ["script.py"]
-'''
+```
 
-If we now simply run this conatiner using 'docker run myimage' it will try to locate and execute "script.py", if the user instead wants to run his python script called "my_script.py", he can simply add this info to the run instruction, i.e. 'docker run myimage "my_script.py"'.
+If we now simply run this container using 'docker run myimage' it will try to locate and execute "script.py", if the user instead wants to run his python script called "my_script.py", he can simply add this info to the run instruction, i.e. 'docker run myimage python3 my_script.py'.
 
 If you have more complex commands that should initally be run you can further provide bash scripts as your ENTRYPOINT like so:
 
@@ -279,7 +279,9 @@ The most basic way to run a container from the terminal is simply `docker run im
 
 `docker run my_first_docker`
 
-This will result in our defined default behaviour (CMD ["cat", "/info/README.md"]). The output looks like this:
+This will result in our defined default behaviour (CMD ["cat", "/info/README.md"]). As printing an informative READEME is always a great starting point for a reproducible pipeline, we're doing exactly this here. 
+
+The output looks like this:
 
 ```
     (base) Michaels-MBP:my_first_docker me$ docker run my_first_docker
@@ -308,9 +310,9 @@ This will result in our defined default behaviour (CMD ["cat", "/info/README.md"
 
 ```
 
-If Instead we want to run the python script in our containers `info folder` we replace the default command, by including instructions in `docker run ...`, like so: 
+If Instead we want to run the python script in our containers `/info folder` we replace the default command, by including instructions in `docker run ...` substitution the first default argument of our CMD (cat) with `python3` as our executable, like so: 
 
-`docker run my_first_docker python3 /info/print_info.py`
+`docker run my_first_docker python3 /info/print_info_container.py`
 
 ```
     Date: 2024-03-13
@@ -319,7 +321,7 @@ If Instead we want to run the python script in our containers `info folder` we r
 
 No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the `docker run` command by providing a `mount path`, i.e. a pointer for which directories of the host system should be made accessible to the container. Again, we do this by providing a `v -flag` (volume), a local file path and the working directory in our container, separated by `:`. If we want to mount our current working directory (`pwd` in bash) to the `/projects` folder in our container and run a local python script we can do:
 
-`docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py`
+`docker run -v $(pwd):/project my_first_docker python3 print_info_local_systempy`
 
     where:   
         $(pwd) = local machine :
@@ -331,7 +333,7 @@ No if we would want our container to work as a computing enviornment (i.e. to ru
 Resulting in:
 
 ```
-    (base) Michaels-MBP:my_first_docker me$ docker run -v $(pwd):/project my_first_docker python3 print_info_copy.py
+    (base) Michaels-MBP:my_first_docker me$ docker run -v $(pwd):/project my_first_docker python3 print_info_local_system.py
     Date: 2024-03-13
     Welcome to the Docker image for Your Study Title Here (Imported script via CMD). Youll find all relevant information in the README file located in this folder.
 
