@@ -411,7 +411,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-docker-configured">How is docker configured?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-delete-rename-containers">Stop/Delete/Rename Containers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>
@@ -448,10 +448,10 @@ document.write(`
 <li><p>access to a <a class="reference external" href="https://en.wikipedia.org/wiki/Unix_shell">Unix terminal/shell</a></p></li>
 <li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites.html"><em>prerequisites section</em> </a> to catch up!)</p></li>
 </ul>
-<section id="how-s-docker-configured">
-<h3>How’s docker configured?<a class="headerlink" href="#how-s-docker-configured" title="Link to this heading">#</a></h3>
+<section id="how-is-docker-configured">
+<h3>How is docker configured?<a class="headerlink" href="#how-is-docker-configured" title="Link to this heading">#</a></h3>
 <p>The setup and configuration of a given docker installation is rather complex and characterized by a myriad of factors and settings: storage, RAM, swap, CPU, proxy, etc. …</p>
-<p>You should be aware of how the docker installation you’re using is setup and configured at any given time, as otherwise perfectly working docker containers fail to function properly.
+<p>You should be aware of how the docker installation you’re using is setup and configured at any given time, as otherwise perfectly working docker containers may fail to function properly.
 As usual, consider the READNE and/or docs of a given docker container before using it.</p>
 <p>We can get a comprehensive overview of our docker setup and configuration via the docker command:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker info`
@@ -548,7 +548,7 @@ WARNING: daemon is not using the default seccomp profile
 </div>
 <p>Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.</p>
 <ul>
-<li><p>all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,</p>
+<li><p>all of these parameters can be set and configured within the docker run command using the respective flags for a specific container,</p>
 <ul>
 <li><p>e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags –memory RAM in mb or gb, e.g. –memory 4gb</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">--memory</span> <span class="pre">4gb</span> <span class="pre">ubuntu</span></code></p>
@@ -636,12 +636,12 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </div>
 <p>Using the the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> flag when running a container should prevent that a container keeps running in the background after executing the relevant commands or exiting the environment however, some containers may rely on different implementations and keep running in the background.</p>
 <p><code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">now</span> <span class="pre">our</span> <span class="pre">evergreen:</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">readme</span> <span class="pre">and/or</span> <span class="pre">docs</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">given</span> <span class="pre">docker</span> <span class="pre">container!</span></code></p>
-<p>We can further use tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems with regard to version control :</p>
+<p>We can further use tag related behavior to “rename” a given docker container in order to prevent unwanted deletions or problems with regard to version control:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">tag</span> <span class="pre">container-id</span> <span class="pre">new_name:new_tag</span></code></p>
 </section>
 <section id="import-export">
 <h3>Import/Export<a class="headerlink" href="#import-export" title="Link to this heading">#</a></h3>
-<p>Besides using Docker Hub to share and download docker containers, it’s also possible to export and import them locally using the docker commands save &amp; load. This behavior may be prefered for local sharing or if you incorporate data/info that shouldn’t be publicly accessible.</p>
+<p>Besides using Docker Hub to share and download docker containers, it’s also possible to export and import containers locally using the docker commands <code class="docutils literal notranslate"><span class="pre">save</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">load</span></code>. This behavior may be prefered for local sharing or if you incorporate data/info that shouldn’t be publicly accessible.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker save -o name_of_saved_image.tar imagename`
 
 `docker load --input name_of_saved_image.tar`
@@ -789,7 +789,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-s-docker-configured">How’s docker configured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-docker-configured">How is docker configured?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management">Resource management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-delete-rename-containers">Stop/Delete/Rename Containers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-export">Import/Export</a></li>

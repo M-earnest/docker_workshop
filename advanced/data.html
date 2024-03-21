@@ -452,7 +452,7 @@ But how do we get data into our Docker containers? Well, there are two different
 </section>
 <section id="getting-data-into-a-container-permanently">
 <h2>Getting Data into a container permanently<a class="headerlink" href="#getting-data-into-a-container-permanently" title="Link to this heading">#</a></h2>
-<p>Let’s say we want to put a picture of whale in our Docker container, because we’re such docker fans and whales are nothing but awesome, but we’ve learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.</p>
+<p>Let’s say we want to add a picture of a whale into our Docker container, because we’re such docker fans and whales are nothing but awesome, buuut we’ve learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.</p>
 <p>So as we’ve already seen we can use the <code class="docutils literal notranslate"><span class="pre">COPY</span> <span class="pre">instruction</span></code> to add the data (i.e. our .png file) into our Docker container during its build.</p>
 <p>So let’s first build  a new build context + Dockerfile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">mkdir</span> <span class="n">docker_data_container</span>
@@ -515,9 +515,9 @@ root@8e2a056bed3a:/home/images# ls
 </section>
 <section id="mounting-data-inside-and-outside-of-your-container">
 <h2>Mounting data inside and outside of your container<a class="headerlink" href="#mounting-data-inside-and-outside-of-your-container" title="Link to this heading">#</a></h2>
-<p>Well, all of you should have heard about mounting before in our <a class="reference internal" href="#basics/quickstart.md"><span class="xref myst">quickstart</span></a> section. Once again, <strong>mounting</strong> describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
+<p>Well, all of you should have heard plenty about mounting in our <a class="reference internal" href="#basics/quickstart.md"><span class="xref myst">quickstart</span></a> section. Once again, <strong>mounting</strong> describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.</p>
 <br>
-Now, who remembers the flag we have to use within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to enable <strong>mounting</strong> ? …</p>
+Now, who remembers the flag we have to use within the `docker run` command to enable **mounting** ? ...
 <br>
 <details>
 <summary>Solution</summary>
@@ -532,7 +532,6 @@ Now, who remembers the flag we have to use within the <code class="docutils lite
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">v</span> <span class="n">path</span><span class="o">/</span><span class="n">outside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">inside</span><span class="o">/</span><span class="n">container</span><span class="p">:</span><span class="n">ro</span> <span class="n">name_of_image</span>
 </pre></div>
 </div>
-<br>
 <br>
 <p><strong>Note on server system usage:</strong> If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: <code class="docutils literal notranslate"><span class="pre">-u</span></code> which can be utilized within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userid</span><span class="o">&gt;</span> <span class="n">name_of_image</span>
@@ -550,10 +549,10 @@ Well, thats easy! Simply type</p>
 <br>
 <section id="practical-application">
 <h3>Practical application<a class="headerlink" href="#practical-application" title="Link to this heading">#</a></h3>
-<p>The probably most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container.
-<br></p>
+<p>The probably most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container.</p>
+<br>
 <ul class="simple">
-<li><p>better option than permanetly copying data into container since neuroimaging data is often heavy</p></li>
+<li><p>better option than permanetly copying data into container since neuroimaging data is often lagre</p></li>
 <li><p>additionally helpful to create <strong>permanent</strong> outputs written to your <strong>local system</strong> , e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)</p></li>
 </ul>
 <br>

@@ -411,24 +411,23 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-get-docker-to-run">How do we get Docker to run?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-start-docker">How do we start Docker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-it"><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">-it</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-accesss">interactive accesss?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
 </ul>
             </nav>
         </div>
@@ -458,14 +457,8 @@ document.write(`
 <li><p>minimal understanding of BASH, i.e. primarily the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>  and <code class="docutils literal notranslate"><span class="pre">cd</span></code> commands. (Check the <em>refresher section</em> <a class="reference internal" href="#intro_to_shell.ipynb"><span class="xref myst">link</span></a> to catch up!)</p></li>
 </ul>
 </section>
-<section id="outline">
-<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>General Introduction</p></li>
-<li><p>Quickstart</p></li>
-</ol>
-<section id="how-do-we-get-docker-to-run">
-<h3>How do we get Docker to run?<a class="headerlink" href="#how-do-we-get-docker-to-run" title="Link to this heading">#</a></h3>
+<section id="how-do-we-start-docker">
+<h2>How do we start Docker?<a class="headerlink" href="#how-do-we-start-docker" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>start <a class="reference external" href="https://docs.docker.com/desktop/use-desktop/">Docker Desktop</a>, this will start the necessary background process to get things running</p></li>
 <li><p>open a terminal (the Command-line Interface aka the UNIX Shell)</p>
@@ -488,9 +481,9 @@ document.write(`
 </li>
 </ul>
 <section id="getting-started">
-<h4>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h4>
+<h3>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>now if you want to know all the possible commands that you can run, type <code class="docutils literal notranslate"><span class="pre">docker</span></code> and hit enter</p>
+<li><p>now if you want to know all the possible commands that you might want to use, type <code class="docutils literal notranslate"><span class="pre">docker</span></code> and hit enter</p>
 <ul>
 <li><p>you should be presented with the the following docker manual</p></li>
 </ul>
@@ -619,17 +612,17 @@ To generate this message, Docker took the following steps:
 </section>
 </section>
 <section id="the-run-command">
-<h3>The <code class="docutils literal notranslate"><span class="pre">run</span></code> command<a class="headerlink" href="#the-run-command" title="Link to this heading">#</a></h3>
+<h2>The <code class="docutils literal notranslate"><span class="pre">run</span></code> command<a class="headerlink" href="#the-run-command" title="Link to this heading">#</a></h2>
 <p>Next, let’s try to run a container!</p>
-<p>Simply type <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> and hit enter</p>
+<p>Well, we already did. Typing <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> and hitting enter resulted in the following behavior</p>
 <ol class="arabic simple">
-<li><p>tells docker to run or execute the <em>container</em> or <em>image</em> <code class="docutils literal notranslate"><span class="pre">hello-world</span></code></p></li>
+<li><p>tell docker to run or execute the <em>container</em> or <em>image</em> <code class="docutils literal notranslate"><span class="pre">hello-world</span></code></p></li>
 <li><p>if the wanted container is not already on your machine, docker automatically searches for and downloads it</p></li>
 <li><p>docker run then runs or executes the given container doing whatever the container is supposed to do</p></li>
 </ol>
 </section>
 <section id="but-what-is-a-container">
-<h3>But what is a container?<a class="headerlink" href="#but-what-is-a-container" title="Link to this heading">#</a></h3>
+<h2>But what is a container?<a class="headerlink" href="#but-what-is-a-container" title="Link to this heading">#</a></h2>
 <p>A container is simply an <code class="docutils literal notranslate"><span class="pre">active</span></code> or <code class="docutils literal notranslate"><span class="pre">running</span></code> instance of an Docker image.
 And what is an image?</p>
 <ul class="simple">
@@ -638,8 +631,8 @@ And what is an image?</p>
 <p>These lie at the heart of Docker and are what is usually shared to create reusable workflows or apps.</p>
 </section>
 <section id="where-do-docker-containers-come-from">
-<h3>Where do docker containers come from ?<a class="headerlink" href="#where-do-docker-containers-come-from" title="Link to this heading">#</a></h3>
-<p>In most cases, docker containers are stored online on and downloaded from <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>, an extensive online repository, where On folks can upload and store as many docker containers as they want for free, only requirement: a <a class="reference external" href="https://docs.docker.com/docker-id/">Docker ID</a></p>
+<h2>Where do docker containers come from ?<a class="headerlink" href="#where-do-docker-containers-come-from" title="Link to this heading">#</a></h2>
+<p>In most cases, docker containers are stored online on and downloaded from <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>, an extensive online repository, where folks can upload and store as many docker containers as they want for free. Only requirement: a <a class="reference external" href="https://docs.docker.com/docker-id/">Docker ID</a></p>
 <ul class="simple">
 <li><p>your Docker ID is the Username that you choose when signing up for Docker Hub, if you want to connect your local Docker to Docker Hub you can run:
 <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">login</span></code></p>
@@ -659,18 +652,18 @@ Login Succeeded
 
 </pre></div>
 </div>
-<p>Once you’re logged in your build and tagged docker images can be pushed to the docker hub via the command line:
+<p>Once you’re logged in, your built and tagged docker images can be pushed to DockerHub via the command line:
 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">your-cool-image</span></code></p>
 <ul class="simple">
-<li><p>additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (check the automatization lesson for more info)</p></li>
+<li><p>additionally, it is possible to automatically build a container from a GitHub repository after pushing to a respective repository (check the automatization lesson for more info)</p></li>
 </ul>
 </section>
 <section id="docker-commands-101-in-depth">
-<h3>Docker commands 101 - in depth<a class="headerlink" href="#docker-commands-101-in-depth" title="Link to this heading">#</a></h3>
+<h2>Docker commands 101 - in depth<a class="headerlink" href="#docker-commands-101-in-depth" title="Link to this heading">#</a></h2>
 <p>Now let’s further explore docker commands within a typical workflow.</p>
 <p>At first, we want to download a certain docker container to work with, for the sake of simplicity and time we’re going to use the classic Ubuntu container (also alwyas a great way to start, when designing a new container that is dependent on it’s own OS).</p>
 <section id="docker-commands-101-pull">
-<h4>Docker commands 101 - pull<a class="headerlink" href="#docker-commands-101-pull" title="Link to this heading">#</a></h4>
+<h3>Docker commands 101 - pull<a class="headerlink" href="#docker-commands-101-pull" title="Link to this heading">#</a></h3>
 <p>Instead of automatically downloading the container via docker run, we use the respective docker command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">image_name</span></code>, hence</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">default</span> <span class="n">tag</span><span class="p">:</span> <span class="n">latest</span>
@@ -681,12 +674,12 @@ Login Succeeded
   
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Super</span> <span class="pre">important:</span></code> by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Important:</span></code> by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu:20.04</span></code></p>
 </section>
 <section id="docker-commands-101-run">
-<h4>Docker commands 101 - run<a class="headerlink" href="#docker-commands-101-run" title="Link to this heading">#</a></h4>
-<p>Now if we want to work with our newly downloaded docker container, we can simply run/execute it via:</p>
+<h3>Docker commands 101 - run<a class="headerlink" href="#docker-commands-101-run" title="Link to this heading">#</a></h3>
+<p>Now if we want to work with our newly downloaded docker container, we can simply run/execute it as we did before:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span></code></p>
 <p>Which should result in:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
@@ -699,11 +692,13 @@ Login Succeeded
 <li><p>docker used run, nothing happend? all the fuzz for that?</p></li>
 </ul>
 <p>Correct, as each docker container is build for a specific reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.</p>
-<p>The Ubuntu docker container may contain a complete Ubuntu installation, but has not no predefined functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the <code class="docutils literal notranslate"><span class="pre">readme</span></code> or <code class="docutils literal notranslate"><span class="pre">docs</span></code> of a given docker container before using it.</p>
+<p>The Ubuntu docker container may contain a complete Ubuntu installation, but has no predefined functionality/commands that are automatically executed when the container is running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the <code class="docutils literal notranslate"><span class="pre">readme</span></code> or <code class="docutils literal notranslate"><span class="pre">docs</span></code> of a given docker container before using it.</p>
 <p>Let’s say we consulted the Ubuntu container documentation and found out that it is possible to make use of the contained <code class="docutils literal notranslate"><span class="pre">Bash</span> <span class="pre">Shell</span></code> by simply integrating Bash commands into our <code class="docutils literal notranslate"><span class="pre">run</span></code> command. Try the following:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">ubuntu</span> <span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container&quot;</span></code></p>
-<p>Which should give you the output message: <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">container</span></code></p>
-<p>This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:</p>
+<p>This is neat, but cumbersome if we want to use more complex commands.</p>
+</section>
+<section id="run-it">
+<h3><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">-it</span></code><a class="headerlink" href="#run-it" title="Link to this heading">#</a></h3>
 <p>We can utilizes a given docker container in an <em>interactive</em> fashion by including the <code class="docutils literal notranslate"><span class="pre">--it</span></code> flag in the the docker run command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
 <p>Here, we also tell the ubuntu docker container to <code class="docutils literal notranslate"><span class="pre">start/enter</span> <span class="pre">the</span> <span class="pre">bash</span> <span class="pre">shell</span></code>.</p>
@@ -727,12 +722,15 @@ exit
 </pre></div>
 </div>
 <p>Depending on a given container’s architecture and definition, it should automatically be removed from your running instances when exiting.
-However it’s worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).</p>
+However it’s worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance.</p>
 <p>This can easily be done by:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code></p>
 <p>Or by checking under <code class="docutils literal notranslate"><span class="pre">containers</span></code> in the Docker Dekstop GUI.</p>
 <p>In order to ensure that a given docker container is removed from running instances after exiting, the –rm flag can be included in the docker run command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
+</section>
+<section id="interactive-accesss">
+<h3>interactive accesss?<a class="headerlink" href="#interactive-accesss" title="Link to this heading">#</a></h3>
 <p>It’s important to note that unless explicitly specified, creating, modifying and deleting files in a container reuslts in neither permanent nor saved changes, as this is against the encapsulation and reproducibility idea.</p>
 <p>We can verify this by running the following commands in our container:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
@@ -751,13 +749,13 @@ bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys
 
 </pre></div>
 </div>
-<p>Furthermore, we cannot interact with data stored on our host machine, i.e. outside the docker container.</p>
+<p>Furthermore, we can not interact with data stored on our host machine, i.e. outside the docker container.</p>
 <p>In order to address both problems, we need to <code class="docutils literal notranslate"><span class="pre">mount</span></code> our host system to the container.</p>
 </section>
 <section id="docker-commands-101-mount">
-<h4>Docker commands 101 - mount<a class="headerlink" href="#docker-commands-101-mount" title="Link to this heading">#</a></h4>
+<h3>Docker commands 101 - mount<a class="headerlink" href="#docker-commands-101-mount" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Mounting</span></code> describes a mapping from paths outside the docker container to paths inside the docker container.</p>
-<p>This is achieved through the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command and utilized as follows:</p>
+<p>This is achieved through the <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">or</span> <span class="pre">--volume</span></code> flag within the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command and utilized as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">path/outside/container:/path/inside/container</span></code></p>
 <p>So to make our systems /Desktop available inside the docker container as a folder called <code class="docutils literal notranslate"><span class="pre">/data</span></code> within the ubuntu container we run:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">/Users/me/Desktop:/data</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
@@ -785,7 +783,7 @@ docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			`test_object_per
 </pre></div>
 </div>
 <p>Great, at least we created something permanent for once!</p>
-<p>Most of the time, it’s a good idea to indicate absolute paths on the host system. In our example the directory <code class="docutils literal notranslate"><span class="pre">/data</span></code> didn’t exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it’s setup/definition at hand as e.g. within automated functionality a certain directory is expected.</p>
+<p>Most of the time, it’s a good idea to indicate absolute paths on the host system. In our example the directory <code class="docutils literal notranslate"><span class="pre">/data</span></code> didn’t exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it’s setup/definition at hand as e.g. within automated functionality a certain directory is usually expected.</p>
 <p><code class="docutils literal notranslate"><span class="pre">As</span> <span class="pre">per</span> <span class="pre">usual</span></code>: check the readme and/or docs of a given docker container!</p>
 <p>Further, we can mount as many directories and files as we want, indicating each with a -v flag, for example we could map an input and an output directory wrt preprocessing/analyzing data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> 
@@ -818,7 +816,7 @@ docker_mne		sub-01			sub-03			sub-05
 </section>
 </section>
 <section id="docker-commands-101-excerices">
-<h3>Docker commands 101 - excerices<a class="headerlink" href="#docker-commands-101-excerices" title="Link to this heading">#</a></h3>
+<h2>Docker commands 101 - excerices<a class="headerlink" href="#docker-commands-101-excerices" title="Link to this heading">#</a></h2>
 <p>To solidfy what we’ve learned in this session, please try the following excercises:</p>
 <ul class="simple">
 <li><p>pull the neurodebian docker container in its nd-non-free version (tag)</p></li>
@@ -901,29 +899,29 @@ root@e4d716b82877:/input#
 </div>
 </details>
 <ul class="simple">
-<li><p>pull the <code class="docutils literal notranslate"><span class="pre">aaronreer1/get_workshop_data</span></code> docker image in its 0.0.1 version</p></li>
+<li><p>pull the <code class="docutils literal notranslate"><span class="pre">aaronreer1/get_workshop_data</span></code> docker image in its 0.0.2 version</p></li>
 </ul>
 <p>Now, this container will copy all the necessary files for this workshop to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> directory in its file system. You can utilize the containers’ functionality by mounting a directory on your local system, e.g. the <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">home</span></code>, to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> within the container such that the files get copied to your local system upon running the container.</p>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.2
 </pre></div>
 </div>
 </details>
 <ul class="simple">
-<li><p>Run the conatiner and mount a directory on your system, preferably <code class="docutils literal notranslate"><span class="pre">home</span></code>or <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> within the container folder</p></li>
+<li><p>Run the container and mount a directory on your system, preferably <code class="docutils literal notranslate"><span class="pre">home</span></code>or <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> within the container folder</p></li>
 </ul>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.2
 </pre></div>
 </div>
 </details>
 </section>
 <section id="summary-docker-101">
-<h3>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h3>
+<h2>Summary - Docker 101<a class="headerlink" href="#summary-docker-101" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../basics.html"><span class="doc std std-doc">Docker Hub</span></a> – repositories to share Docker images</p></li>
+<li><p><a class="reference external" href="https://hub.docker.com">Docker Hub</a> – repositories to share Docker images</p></li>
 <li><p>basic image usage:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
@@ -940,7 +938,6 @@ root@e4d716b82877:/input#
     <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">host</span><span class="p">:</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">within</span><span class="o">/</span><span class="n">container</span> <span class="n">ubuntu</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1010,24 +1007,23 @@ root@e4d716b82877:/input#
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-get-docker-to-run">How do we get Docker to run?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-start-docker">How do we start Docker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-run-command">The <code class="docutils literal notranslate"><span class="pre">run</span></code> command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-is-a-container">But what is a container?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-docker-containers-come-from">Where do docker containers come from ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-in-depth">Docker commands 101 - in depth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-pull">Docker commands 101 - pull</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-run">Docker commands 101 - run</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-it"><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">-it</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-accesss">interactive accesss?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-mount">Docker commands 101 - mount</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-commands-101-excerices">Docker commands 101 - excerices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-docker-101">Summary - Docker 101</a></li>
 </ul>
   </nav></div>
 

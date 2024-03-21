@@ -12,13 +12,7 @@
 - access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
 - minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](intro_to_shell.ipynb) to catch up!)
 
-
-## Outline
-
-1. General Introduction
-2. Quickstart
-
-### How do we get Docker to run?
+### How do we start Docker?
 
 - start [Docker Desktop](https://docs.docker.com/desktop/use-desktop/), this will start the necessary background process to get things running
 - open a terminal (the Command-line Interface aka the UNIX Shell)
@@ -37,7 +31,7 @@
 
 #### Getting started
 
-- now if you want to know all the possible commands that you can run, type `docker` and hit enter
+- now if you want to know all the possible commands that you might want to use, type `docker` and hit enter
 
     - you should be presented with the the following docker manual
 
@@ -168,14 +162,13 @@ To generate this message, Docker took the following steps:
 ```
 
 
-
 ### The `run` command
 
 Next, let's try to run a container! 
 
-Simply type `docker run hello-world` and hit enter
+Well, we already did. Typing `docker run hello-world` and hitting enter resulted in the following behavior
 
-1. tells docker to run or execute the _container_ or _image_ `hello-world`
+1. tell docker to run or execute the _container_ or _image_ `hello-world`
 2. if the wanted container is not already on your machine, docker automatically searches for and downloads it
 3. docker run then runs or executes the given container doing whatever the container is supposed to do
 
@@ -189,7 +182,7 @@ These lie at the heart of Docker and are what is usually shared to create reusab
 
 ### Where do docker containers come from ?
 
-In most cases, docker containers are stored online on and downloaded from [Docker Hub](https://hub.docker.com/), an extensive online repository, where On folks can upload and store as many docker containers as they want for free, only requirement: a [Docker ID](https://docs.docker.com/docker-id/)
+In most cases, docker containers are stored online on and downloaded from [Docker Hub](https://hub.docker.com/), an extensive online repository, where folks can upload and store as many docker containers as they want for free. Only requirement: a [Docker ID](https://docs.docker.com/docker-id/)
 
 - your Docker ID is the Username that you choose when signing up for Docker Hub, if you want to connect your local Docker to Docker Hub you can run:
   `Docker login`
@@ -208,10 +201,10 @@ Login Succeeded
 
 ```
 
-Once you're logged in your build and tagged docker images can be pushed to the docker hub via the command line:
+Once you're logged in, your built and tagged docker images can be pushed to DockerHub via the command line:
   `docker push your-cool-image`
   
-- additionally, it is possible to automatically build a container from a GitHub repository after pushing commits to a respective repo (check the automatization lesson for more info)
+- additionally, it is possible to automatically build a container from a GitHub repository after pushing to a respective repository (check the automatization lesson for more info)
 
 
 ### Docker commands 101 - in depth
@@ -235,13 +228,13 @@ docker.io/library/ubuntu:latest
   
 ```
 
-`Super important:` by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:
+`Important:` by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:
 
 `docker pull ubuntu:20.04`
 
 #### Docker commands 101 - run
 
-Now if we want to work with our newly downloaded docker container, we can simply run/execute it via:
+Now if we want to work with our newly downloaded docker container, we can simply run/execute it as we did before:
 
 `docker run ubuntu`
 
@@ -258,15 +251,16 @@ Which should result in:
 
 Correct, as each docker container is build for a specific reason and purpose, hence what happens when you run a given docker container depends (more or less) exclusively on its setup and definition.
 
-The Ubuntu docker container may contain a complete Ubuntu installation, but has not no predefined functionality/commands that are automatically executed when running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the `readme` or `docs` of a given docker container before using it.
+The Ubuntu docker container may contain a complete Ubuntu installation, but has no predefined functionality/commands that are automatically executed when the container is running (note: more on that during the afternoon sessions). It is therefore extremely important to consult the `readme` or `docs` of a given docker container before using it.
+
 
 Let's say we consulted the Ubuntu container documentation and found out that it is possible to make use of the contained `Bash Shell` by simply integrating Bash commands into our `run` command. Try the following:
 
   `docker run ubuntu echo "hello from your container"`
 
-Which should give you the output message: `hello from your container`
+This is neat, but cumbersome if we want to use more complex commands. 
 
-This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:
+#### `run -it`
 
 We can utilizes a given docker container in an _interactive_ fashion by including the `--it` flag in the the docker run command:
 
@@ -299,7 +293,7 @@ exit
 ```
 
 Depending on a given container's architecture and definition, it should automatically be removed from your running instances when exiting. 
-However it's worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance (note: more on docker management in the next session).
+However it's worth to ensure that and check which instance are currently running when you notice e.g., a drop in perfomance.
 
 This can easily be done by:
 
@@ -310,6 +304,8 @@ Or by checking under `containers` in the Docker Dekstop GUI.
 In order to ensure that a given docker container is removed from running instances after exiting, the --rm flag can be included in the docker run command:
 
 `docker run -it --rm ubuntu bash`
+
+#### interactive accesss?
 
 It's important to note that unless explicitly specified, creating, modifying and deleting files in a container reuslts in neither permanent nor saved changes, as this is against the encapsulation and reproducibility idea.
 
@@ -332,7 +328,7 @@ bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys
 
 ```
 
-Furthermore, we cannot interact with data stored on our host machine, i.e. outside the docker container.
+Furthermore, we can not interact with data stored on our host machine, i.e. outside the docker container.
 
 In order to address both problems, we need to `mount` our host system to the container.
 
@@ -340,7 +336,7 @@ In order to address both problems, we need to `mount` our host system to the con
 
 `Mounting` describes a mapping from paths outside the docker container to paths inside the docker container.
 
-This is achieved through the `-v` flag within the `docker run` command and utilized as follows: 
+This is achieved through the `-v or --volume` flag within the `docker run` command and utilized as follows: 
 
 `-v path/outside/container:/path/inside/container`
 
@@ -377,7 +373,7 @@ docker_mne		rand			sub-01			sub-02			sub-03			sub-04			sub-05			`test_object_per
 
 Great, at least we created something permanent for once!
 
-Most of the time, it's a good idea to indicate absolute paths on the host system. In our example the directory `/data` didn't exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it's setup/definition at hand as e.g. within automated functionality a certain directory is expected.
+Most of the time, it's a good idea to indicate absolute paths on the host system. In our example the directory `/data` didn't exist in the Ubunutu container before mounting it, hence it was created automatically, however this also depends on the docker container and it's setup/definition at hand as e.g. within automated functionality a certain directory is usually expected.
 
 `As per usual`: check the readme and/or docs of a given docker container!
 
@@ -515,7 +511,7 @@ root@e4d716b82877:/input#
 
 </details>
 
-- pull the `aaronreer1/get_workshop_data` docker image in its 0.0.1 version
+- pull the `aaronreer1/get_workshop_data` docker image in its 0.0.2 version
   
 Now, this container will copy all the necessary files for this workshop to the `/output` directory in its file system. You can utilize the containers' functionality by mounting a directory on your local system, e.g. the `Desktop` or `home`, to the `/output` within the container such that the files get copied to your local system upon running the container.
 
@@ -523,20 +519,20 @@ Now, this container will copy all the necessary files for this workshop to the `
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.1
+aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.2
 ```
 
 </details>
 
 
 
-- Run the conatiner and mount a directory on your system, preferably `home`or `Desktop` to the `/output` within the container folder
+- Run the container and mount a directory on your system, preferably `home`or `Desktop` to the `/output` within the container folder
 
 <details>
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.1
+aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.2
 ```
 
 </details>
@@ -544,7 +540,7 @@ aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/
 
 ### Summary - Docker 101
 
-- [Docker Hub]() -- repositories to share Docker images
+- [Docker Hub](https://hub.docker.com) -- repositories to share Docker images
 
 - basic image usage:
 ```

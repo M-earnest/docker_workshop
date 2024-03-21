@@ -17,16 +17,19 @@ First off, there is a fairly simple way to build a Docker image from your GitHub
 
 `docker build https://github.com/docker/rootfs.git#container:docker`
 
-Check the [Docker documentation on GitHub repositories for more info](https://docs.docker.com/reference/cli/docker/image/build/#git-repositories)
+Check the [Docker documentation on GitHub repositories for more info](https://docs.docker.com/reference/cli/docker/image/build/#git-repositories).
 
-But, if you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. Fortunately, there is a way to automate this process using GitHub, more specifically [GitHub Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows). The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push.
 
-This will not only make your life easier, but integrate Docker in reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?
+Buuuut, if you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. 
+
+Fortunately, there is a way to automate this process using GitHub, more specifically [GitHub Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows). The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push/commit.
+
+This will not only make your life easier, but integrate Docker into reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?
 
 
 ### Automating builds using Github
 
-GitHub workflows allow Users to define processes that automatically run when certain actions (push, pull, commits etc.) are performed on a repository. This has many application such as automatically building apps or e.g. creating and updating this website. We will make use of GitHub workflows to automatically generate and update Docker images and push them to DockerHub. A GitHub workflow is specified in a YAML file (.yml), like the one you'll find under point [4.](https://m-earnest.github.io/docker_workshop/advanced/automating.html#setup-the-github-workflow), which will have to be included in the `.github/workflows` directory in a repository. 
+GitHub workflows allow Users to define processes that automatically run when certain defined actions (push, pull, commits etc.) are performed on a repository. This has many application such as automatically building apps or e.g. creating and updating this website. We will make use of GitHub workflows to automatically generate and update Docker images and push them to DockerHub. A GitHub workflow is specified in a YAML file (.yml), like the one you'll find under point [4.](https://m-earnest.github.io/docker_workshop/advanced/automating.html#setup-the-github-workflow), which will have to be included in the `.github/workflows` directory in a repository. 
 
 Find more info on GitHub workflows in the [official documentation](https://docs.github.com/en/actions/using-workflows).
 
@@ -34,9 +37,9 @@ Find more info on GitHub workflows in the [official documentation](https://docs.
 The setup is simple and straightforward, as we just need to create a new GitHub repository in which we store our Dockerfiles plus all of the files necessary to build your docker image, i.e. we recreate the local build context in a GitHub repository:
 
    - create a new Github repository called docker_workshop (or substitute your project name)
-   - add your Dockerfile and all the neceessary files to build your image to this repository (alternatively download the contents from our [examples folder](https://github.com/M-earnest/docker_workshop/tree/main/workshop/examples) and upload the files to your repository)
+   - add your Dockerfile and all the necessary files to build your image to this repository (alternatively download the contents from our [examples folder](https://github.com/M-earnest/docker_workshop/tree/main/workshop/examples) and upload the files to your repository)
 
-So far, so simple, but to automate the build process we'll need to add a few things to our repository!
+So far, so simple, but to automate the build process we'll need to add a few more things to our repository.
 
 ### 2. Generate a DockerHub access token
 
@@ -48,13 +51,13 @@ Next, we need a Docker access token, this is necessary so that the GitHub workfl
  - under `security` click `create new access token`
      - the name of the access token should ideally also match the name of your Github repository (best practice, not a requirement)
      - grant read, write and delete permissions and click on generate
- - a new dialogue box will pop-up, copy the displayed access token and temporally save it somewhere, as you will not be able to view this token again later
+ - a new dialogue box will pop-up, copy the displayed access token and temporally `save` it somewhere, as you will not be able to view this token again later
 
 ![new_access_token](/static/new_access_token.png)
 
 ### 3. Setup GitHub secrets
 
-For authentification purposes, i.e. to connect our DockerHub and GitHub, we will need to store our newly generated `access token`, as well as our DockerHub `username` using GitHub Secrets. These allow us to store sensitive information (API keys, passwords etc.) necessary to enable automatization without exposing that information to the public. 
+For authentification purposes, i.e. to connect our DockerHub and GitHub, we will need to store our newly generated `access token`, as well as our DockerHub `username` using `GitHub Secrets`. These allow us to store sensitive information (API keys, passwords etc.) necessary to enable automatization without exposing that information to the public. 
 
  - head to your GitHub repository
  - click on `settings` -> `secrets and variables` -> `actions`
@@ -74,9 +77,8 @@ Now it's time to create our GitHub workflow file. For this we will create a `.ym
    - go to your GitHub repo, create a new file called  `.github/workflows/container_build_publish.yml`
 
    - copy and paste the following code into the file
-      - make sure to replace the line under tags `yourhubusername/yourimagename:latest` with your data
+      - make sure to replace the line under tags `yourhubusername/yourreponame:latest` with your data
 
-<br>
 <br>
 
 
@@ -129,7 +131,7 @@ Now it's time to create our GitHub workflow file. For this we will create a `.ym
           context: ./
           # Note: tags has to be all lower-case
           tags: |
-              `yourhubusername/yourimagename:latest` 
+              `yourhubusername/yourreponame:latest` 
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -158,9 +160,9 @@ Now we make sure that the settings of our GitHub repository allow for our workfl
 
 ### 6. Start the actions workflow
 
-Every consecutive push or commit to the main branch of this GitHub repository will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.
+Every consecutive push or commit to the specified branch of this GitHub repository (here `main`) will now trigger a new build, hence your Docker container remains nicely up to date without any additional effort.
 
- - to test if your workflow works we therefore can simply commit or push a change, i.e.
+ - to test if your workflow works we therefore can simply commit or push a change
      - update a file online, e.g. you could add or update the `README` file of your repo
      - push a change from your local machine to your online repo
 
@@ -181,10 +183,9 @@ Every consecutive push or commit to the main branch of this GitHub repository wi
 ![docker_image_uploaded](/static/docker_image_uploaded.png)
 
 
-
 ### 7. Celebrate
 
-![Lord of the rings It's done! Gif](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2d2aXZ2dTlzaHpmdjN5ZjA1NWZtMTFtMXRla2w1Zm90cTA2NTdvMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPf3C7HqqYBVcCk/giphy.gif)
+![Lord of the rings:It's done! Gif](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2d2aXZ2dTlzaHpmdjN5ZjA1NWZtMTFtMXRla2w1Zm90cTA2NTdvMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPf3C7HqqYBVcCk/giphy.gif)
 
 
 

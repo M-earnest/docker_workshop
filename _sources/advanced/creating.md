@@ -35,7 +35,9 @@ At the beginning there was a Dockerfile...
 
 A Dockerfile is, in essence, a machine-readable instruction on how to build a docker iamge. It can be considered as the "source code" of a docker container.
 
-The Dockerfile usually includes a mixture of `bash` commands, that you would also normally use on your machine to e.g. setup a [Conda enviornment]() or to install specific software, and docker specific commands (called instructions). Below you'll find a list of acceptable Docker instructions. If the terminology is confusing or you want to dive deeper into what the different commands are and how they are used check out the [Docker build documentation](https://docs.docker.com/engine/reference/builder/). We'll only make use of a few relevant instructions for this tutorial that we will explain in detail below.
+The Dockerfile usually includes a mixture of `bash commands`, that you would also normally use on your machine to e.g. to setup a [Conda enviornment]() or to install software, and docker specific commands, called `instructions`. Below you'll find a list of acceptable Docker instructions. 
+
+If the terminology is confusing or you want to dive deeper into what the different commands are and how they are used check out the [Docker build documentation](https://docs.docker.com/engine/reference/builder/). We'll only make use of a few relevant instructions for this tutorial that we will explain in detail further below.
 
 ```
 Instruction
@@ -60,7 +62,7 @@ WORKDIR	Change working directory.
 
 ### Building a Dockerfile
 
-The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker image. Each separate instruction is called a "layer". Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.
+The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker image. Each separate instruction is called a `layer`. Layers are executed consecutively from top to bottom, when using the build command to compose an Docker Image.
 
 Here are the relevant _layers_ we're going to build, i.e. how our Dockerfile is going to look like:
 
@@ -71,12 +73,12 @@ Here are the relevant _layers_ we're going to build, i.e. how our Dockerfile is 
     # Step 2: Set the working directory
     WORKDIR /project
 
-    # Step 3: Install Python 3.10, and some Python packages (Scipy, Pandas) via the Ubuntu package manager apt
+    # Step 3: Install Python 3.10, and some Python packages (Pandas) via the Ubuntu package manager apt
     RUN apt-get update && \
         apt-get install -y python3.10 python3-pip && \
         pip3 install pandas
 
-    # let's also create a folder to store our info file in
+    # let's also create a folder to store our files in
     RUN mkdir /info
 
     # Step 4: Copy our Python script and README into the info folder of the image
@@ -103,7 +105,7 @@ It is also possible to use `From` to chain multiple Docker images or more comple
 
 The WORKDIR instruction sets the working directory for any of the other instructions that follow it in the Dockerfile (e.g. RUN, CMD, ENTRYPOINT, COPY, etc.)
 
-- it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host (If the specified directory does not exist on your system, Docker will create it automatically)
+- it further is the directory you will likely mount from your host system for input/output operations, facilitating data exchange between your container and host
     - the only argument we provide is a concise, descriptive name for the folder/folder structure, e.g.
 
         `/project`
@@ -143,7 +145,7 @@ So to install e.g. Python using the Ubuntu baseimage and apt package manager we 
 
 Using the COPY instruction we can permanently add files from our local system to our Docker Image.
 - simply provide the path to the files you want to copy and the directory were they are supposed to be stored in the image
-- e.g. if i want to add a script "print_info_container.py" from the curent working directory into the project folder of the image:
+- e.g. if i want to add a script "print_info_container.py" from the curent working directory of the host machine into the project folder of the image:
 
     `COPY print_info_container.py /project/`
 
@@ -161,9 +163,9 @@ The `ENTRYPOINT` specifies a command that will always be executed when the conta
 
 `CMD ["echo", "Hello World!"]`
 
-Given no further arguments when the container is run (after we've build it, of course), both of these will simply print "Hello World!", but the behavior of the 'CMD' command can be overwritten when the container is run with specific instruction, e.g. 'docker run myimage Hello, Docker!' prints "Hello, Docker!" instead of "Hello World!". 
+Given no further arguments when the container is run (after we've build it, of course), both of these will simply print "Hello World!", but the behavior of the `CMD` instruction can be overwritten when the container is run with specific commands, e.g. `docker run myimage Hello, Docker!` prints "Hello, Docker!" instead of "Hello World!". 
 
-A practical use-case can be to combine both instructions, so that `ENTRYPOINT` provides a command that is always exectued, while `CMD` provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of the script.
+A practical use-case can be to combine both instructions, so that `ENTRYPOINT` provides a command that is always exectued, while `CMD` provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide the command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of a script.
 
 ```
     FROM python:3.10
@@ -171,7 +173,7 @@ A practical use-case can be to combine both instructions, so that `ENTRYPOINT` p
     CMD ["script.py"]
 ```
 
-If we would now run this container using `docker run myimage` it will try to locate and execute "script.py", if the user instead wants to run a different python script called "my_script.py", he can simply add this info to the run command, i.e. `docker run myimage python3 my_script.py`.
+If we would now run this container using `docker run myimage` it will try to locate and execute "script.py", if the user instead wants to run a different python script called "my_script.py", they can simply add this info to the run command, i.e. `docker run myimage python3 my_script.py`.
 
 If you have more complex commands that should initally be run, you can further provide bash scripts as your ENTRYPOINT like so:
 
@@ -183,19 +185,19 @@ If you have more complex commands that should initally be run, you can further p
 
 ### Practical example
 
-Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
+Let's try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters, but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.
 
 
 **1. Create the build context**
 
-Let's create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter 
+Let's create a new directory on our desktops called `my_first_docker` and in it an empty textfile called `Dockerfile`. Open your shell, type the following and hit enter 
 
 `mkdir ~/Desktop/my_first_docker && touch ~/Desktop/my_first_docker/Dockerfile`
 
 **2. Add files to the build context**
 
 Download the course materials and copy all files from the examples folder into `my_first_docker folder` (README.md, print_info_container.py, print_info_local_system.py). 
-Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.1` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
+Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.2` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
 
 E.g. using bash:
 
@@ -204,7 +206,7 @@ E.g. using bash:
 
 **3. Populate the Dockerfile**
 
-Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it
+Open your Dockerfile with a text-editor of your choice (VScode is recommended), copy-paste the following into the file and save it
 
 ```
     # Step 1: Use the newest Ubuntu version as a base image
@@ -323,14 +325,14 @@ If Instead we want to run the python script in our containers `/info folder` we 
 
 No if we would want our container to work as a computing enviornment (i.e. to run python scripts) we simply modify the `docker run` command by providing a `mount path`, i.e. a pointer for which directories of the host system should be made accessible to the container. Again, we do this by providing a `v -flag` (volume), a local file path and the working directory in our container, separated by `:`. If we want to mount our current working directory (`pwd` in bash) to the `/projects` folder in our container and run a local python script we can do:
 
-`docker run -v $(pwd):/project my_first_docker python3 print_info_local_systempy`
+`docker run -v $(pwd):/project my_first_docker python3 print_info_local_system.py`
 
     where:   
         $(pwd) = local machine :
         /project = docker container  
         my_first_docker = imagename 
         python3 = executable 
-        print_info_copy.py = filename
+        print_info_.py = filename
 
 Resulting in:
 
@@ -452,7 +454,7 @@ RUN printf '{ \
 
 COPY ./mne_test.py /home/scripts/
 COPY ./mne_test.sh /home/scripts/
-# Run the script that does produce trhe reports within the container.
+# Run the script that produces the reports within the container.
 # Reports are written to the /output directory 
 CMD [ "bash", "/home/scripts/mne_test.sh" ]
 ```
@@ -539,7 +541,7 @@ pip_install="mne" > Dockerfile
 
 So using Neurodocker can save you a lot of time and stress. It's especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.
 
-**NOTE!** When building Dockerfiles created with Neurodocker on an M1 or M2 Mac you might run into issues. These can usually be resolved by providing an architecture flag to your build command, e.g. `--platform linux/x86_64`.
+**NOTE!** When building Dockerfiles created with Neurodocker on an M1 or M2 Mac you might run into issues. These can usually be resolved by providing an architecture flag to your build command, e.g. `--platform linux/x86_64`. Searching for the specific warning should provide the necessary infos for specific cases.
 
 ### Neurodocker - Going further beyond
 
@@ -558,9 +560,9 @@ But our preferred solution should be to make use of this thing called "internet"
 
 This is again rather straightforward and can be achieved in a few simple steps. 
 
-1. Create and login to your Docker Hub account
+1. Create and login to your DockerHub account
 
-Before you can push an image, you need to log in to Docker Hub. Simply create an account online, run  `docker login` from your command line and enter your Docker Hub username and password.
+Before you can push an image, you need to login to DockerHub. Simply create an account online, run  `docker login` from your command line and enter your Docker Hub username and password.
 
 2. Tag your image
 
@@ -576,12 +578,11 @@ Where `image-id` is the name provided when building your image, `username` is yo
 ```
 
 3. Docker push
-Next we simply use the `docker push` command to send our freshly tagged Docker container to Docker Hub, e.g.
+Next we simply use the `docker push` command to send our freshly tagged Docker image to DockerHub, e.g.
 
 ```
-    docker push yourhubusername/container:tag
+    docker push yourhubusername/container_name:tag
 ```
-
 
 
 ### Docker containers - creating and pushing - a recap
