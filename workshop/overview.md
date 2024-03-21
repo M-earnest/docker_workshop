@@ -1,10 +1,24 @@
 # Workshop overview
 
-As mentioned on the [Welcome page](https://peerherholz.github.io/workshop_weizmann/index.html), this workshop will be focused on how to utilize `python` to conduct `neuroimaging analyses`. In general, the idea is to do a split between first, basics in `data handling` via `nibabel` & `nilearn`, as well as `analyses workflows` via `nipype` and second, more advanced and specialized analyses (e.g. functional connectivity & statistical analyses via `nilearn`). Regarding the first, we will try to provide folks with a brief overview of central aspects and important issues and concerning the second, evaluate a versatile set of `analysis approaches`.  We will further explain both aspects, as well as the `setup`, etc. below. For a precise outline of this workshop, please consult the respective [page](https://peerherholz.github.io/workshop_weizmann/outline.html). 
+As mentioned on the [Welcome page](https://m-earnest.github.io/docker_workshop/index.html), this workshop will be focused on how to utilize the `Docker` framework to produce and share reproducible, light-weight workflows to facilitate good scientific practice.
+
+We will try to provide folks with a brief overview of why does this is important, central aspects of virtualization, how to work with and manage Docker containers and lastly what a container is made out of, as well as how these are build and published to the web or saved locally.
+
+...
 
 ## The framework and setup
 
-The entire workshop will be conducted via the [Jupyter ecosystem](https://jupyter.org/), utilizing the [python programming language](https://www.python.org/) for all examples in both sessions. All materials will be provided within the [Jupyter Book](https://jupyterbook.org/intro.html) format you're currently look, free for everyone to check and try out, as well as utilize further. To help folks that don't have any experience with these resources, we compiled a set of tutorials that participants can go through within the [prerequisite section](https://peerherholz.github.io/docker_workshop/prerequisites.html). While this won't be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop. Each of these tutorials, as well as "main" materials will be in [jupyter notebooks](https://jupyter.org/) and contain a mixture of explanations and code and presented as a "slide show" during the workshop. They can be just viewed, or either run interactively via cloud instances (via [mybinder](https://mybinder.org/)) or locally. Depending on a given participant's computational resources and infrastructure, we provide multiple ways to participate in the workshop as outlined in the [Setup for the workshop](https://peerherholz.github.io/docker_workshop/setup.html) section.    
+The entire workshop will be conducted via the 
+
+The complete workshop will be provided within this [Jupyter Book](https://jupyterbook.org/intro.html) format you're currently looking at, free for everyone to check and try out, as well as utilize further. 
+
+To fully participate in the workshop you'll need a `Bash shell`, here usually referred to as `terminal` and a working `Docker` installation, as outlined in the [Setup for the workshop](https://peerherholz.github.io/docker_workshop/setup.html) section. To help folks that don't have any experience with these resources, we compiled a set of tutorials that participants can go through within the [prerequisite section](https://m-earnest.github.io/docker_workshop/advanced/automating.html). While this won't be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop. 
+
+
+For some sessiosn we will additionally use some files we provide, you can either get them by downloading the [workshop GitHub repository]() or by running the following code in you termina (we'll also discuss what these commands do in the introdcutory session, no worries):
+
+`docker pull aaronreer1/get_workshop_materials:0.0.1`
+`docker run -v $(pwd):/output aaronreer1/get_workshop_materials:0.0.1`
 
 
 ## Software containers - Basics
@@ -20,3 +34,48 @@ The second session will build upon the things learned during the first and will 
 ![logo](https://media4.giphy.com/media/3orif0rjs49gsPWg1y/giphy.gif?cid=ecf05e47driaof19nl7irhimygzitnzv7ce6vkl6hua50hg5&rid=giphy.gif&ct=g)\
 <sub><sup><sub><sup>https://media4.giphy.com/media/3orif0rjs49gsPWg1y/giphy.gif?cid=ecf05e47driaof19nl7irhimygzitnzv7ce6vkl6hua50hg5&rid=giphy.gif&ct=g
 </sup></sub></sup></sub>
+
+## The details
+
+
+# Software containers in neuroscience research
+  
+
+You can checkout the respective sections:
+
+* [An overview](overview.md)
+
+   What's this workshop about and how is it organized?
+
+* [Setup](https://m-earnest.github.io/docker_workshop/setup.html)
+
+   What software do you need and how to get it!
+
+* [General outline](https://m-earnest.github.io/docker_workshop/outline.html)
+
+   Our rough timetable and a short orientation!
+
+* [Prerequisites](https://m-earnest.github.io/docker_workshop/prerequisites.html)
+
+   All things gotta start somewhere and using software containers in neuroscience research are of course no exceptions to that, especially since a certain amount of digital literacy, programming, etc. is required. 
+   Here, we gathered some resources folks can check out in preparation for the course or just for fun.
+
+* [Introdcution - Software containers and Virtualization](https://m-earnest.github.io/docker_workshop/basics/introduction.html)
+
+
+* [Quickstarting your container expertise](https://m-earnest.github.io/docker_workshop/basics/quickstart.html)
+
+* [Management of software containers](https://m-earnest.github.io/docker_workshop/advanced/management.html)
+
+* [Creating software containers](https://m-earnest.github.io/docker_workshop/advanced/management.html)
+
+* [Software containers & data](https://m-earnest.github.io/docker_workshop/advanced/data.html)
+
+* [Creating your own software container](https://m-earnest.github.io/docker_workshop/advanced/creating_your_own.html)
+
+* [Automating software containers](https://m-earnest.github.io/docker_workshop/advanced/automating.html)
+
+* [Code of Conduct](https://m-earnest.github.io/docker_workshop/CoC.html)
+
+   Necessities for creating an open, fair, safe and inclusive learning
+   experience. Please go thorugh this before the workshop and adhere to general professional standards!
