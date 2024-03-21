@@ -1,6 +1,12 @@
 # Automating software containers
 
-If you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. Fortunately, there is a way to automate this process using GitHub, more specifically [GitHub Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows). The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push.
+First off, there is a fairly simple way to build a Docker image from your GitHub repositories. Simply provide the URL to your Dockerfile when building, i.e for a `directory` called `docker` in the `branch` `container`.
+
+`docker build https://github.com/docker/rootfs.git#container:docker`
+
+Check the [Docker documentation on GitHub repositories for more info](https://docs.docker.com/reference/cli/docker/image/build/#git-repositories)
+
+But, if you have an project that is in development or you created a programm that will be maintained for the forseeable future, it can beconme tedious to constantly re-build your Docker Containers locally. Fortunately, there is a way to automate this process using GitHub, more specifically [GitHub Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows). The following is going to discuss how to setup a project repository, how to add the relevant workflow and how to update your container with a simple push.
 
 This will not only make your life easier, but integrate Docker in reproducible, in terms of version-controlled, scientific practice. The actual goal of this workshop, no?
 
