@@ -695,7 +695,8 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </ol>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">rm</span> <span class="n">container</span><span class="o">-</span><span class="nb">id</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">rmi</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span>
+<span class="n">docker</span> <span class="n">rmi</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">image42</span>
 </pre></div>
 </div>
 </details>
@@ -715,7 +716,7 @@ eba0b7f9580e   hello-world                   &quot;/hello&quot;                 
 </ol>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">2</span><span class="n">gb</span> <span class="o">--</span><span class="n">memory</span><span class="o">-</span><span class="n">swap</span> <span class="mi">3</span><span class="n">gb</span> <span class="o">--</span><span class="n">cpus</span> <span class="mi">1</span> <span class="n">a_container_at_the_end_of_the_universe</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">2</span><span class="n">gb</span> <span class="o">--</span><span class="n">memory</span><span class="o">-</span><span class="n">swap</span> <span class="mi">3</span><span class="n">gb</span> <span class="o">--</span><span class="n">cpus</span> <span class="mi">1</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">image42</span>
 </pre></div>
 </div>
 </details>
