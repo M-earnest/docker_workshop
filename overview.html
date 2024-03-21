@@ -174,6 +174,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="dei.html">Diversity, Equity and Inclusion</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Workshop overview</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup for the workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outline.html">Outline</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -409,10 +410,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Workshop overview</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-framework-and-setup">The framework and setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-basics">Software containers - Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-advanced-aspects">Software containers - Advanced aspects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-details">The details</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-in-neuroscience-research">Software containers in neuroscience research</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -425,10 +432,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="workshop-overview">
 <h1>Workshop overview<a class="headerlink" href="#workshop-overview" title="Link to this heading">#</a></h1>
-<p>As mentioned on the <a class="reference external" href="https://peerherholz.github.io/workshop_weizmann/index.html">Welcome page</a>, this workshop will be focused on how to utilize <code class="docutils literal notranslate"><span class="pre">python</span></code> to conduct <code class="docutils literal notranslate"><span class="pre">neuroimaging</span> <span class="pre">analyses</span></code>. In general, the idea is to do a split between first, basics in <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">handling</span></code> via <code class="docutils literal notranslate"><span class="pre">nibabel</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">nilearn</span></code>, as well as <code class="docutils literal notranslate"><span class="pre">analyses</span> <span class="pre">workflows</span></code> via <code class="docutils literal notranslate"><span class="pre">nipype</span></code> and second, more advanced and specialized analyses (e.g. functional connectivity &amp; statistical analyses via <code class="docutils literal notranslate"><span class="pre">nilearn</span></code>). Regarding the first, we will try to provide folks with a brief overview of central aspects and important issues and concerning the second, evaluate a versatile set of <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">approaches</span></code>.  We will further explain both aspects, as well as the <code class="docutils literal notranslate"><span class="pre">setup</span></code>, etc. below. For a precise outline of this workshop, please consult the respective <a class="reference external" href="https://peerherholz.github.io/workshop_weizmann/outline.html">page</a>.</p>
+<p>As mentioned on the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/index.html">Welcome page</a>, this workshop will be focused on how to utilize the <code class="docutils literal notranslate"><span class="pre">Docker</span></code> framework to produce and share reproducible, light-weight workflows to facilitate good scientific practice.</p>
+<p>We will try to provide folks with a brief overview of why does this is important, central aspects of virtualization, how to work with and manage Docker containers and lastly what a container is made out of, as well as how these are build and published to the web or saved locally.</p>
+<p>…</p>
 <section id="the-framework-and-setup">
 <h2>The framework and setup<a class="headerlink" href="#the-framework-and-setup" title="Link to this heading">#</a></h2>
-<p>The entire workshop will be conducted via the <a class="reference external" href="https://jupyter.org/">Jupyter ecosystem</a>, utilizing the <a class="reference external" href="https://www.python.org/">python programming language</a> for all examples in both sessions. All materials will be provided within the <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a> format you’re currently look, free for everyone to check and try out, as well as utilize further. To help folks that don’t have any experience with these resources, we compiled a set of tutorials that participants can go through within the <a class="reference external" href="https://peerherholz.github.io/docker_workshop/prerequisites.html">prerequisite section</a>. While this won’t be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop. Each of these tutorials, as well as “main” materials will be in <a class="reference external" href="https://jupyter.org/">jupyter notebooks</a> and contain a mixture of explanations and code and presented as a “slide show” during the workshop. They can be just viewed, or either run interactively via cloud instances (via <a class="reference external" href="https://mybinder.org/">mybinder</a>) or locally. Depending on a given participant’s computational resources and infrastructure, we provide multiple ways to participate in the workshop as outlined in the <a class="reference external" href="https://peerherholz.github.io/docker_workshop/setup.html">Setup for the workshop</a> section.</p>
+<p>The entire workshop will be conducted via the</p>
+<p>The complete workshop will be provided within this <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a> format you’re currently looking at, free for everyone to check and try out, as well as utilize further.</p>
+<p>To fully participate in the workshop you’ll need a <code class="docutils literal notranslate"><span class="pre">Bash</span> <span class="pre">shell</span></code>, here usually referred to as <code class="docutils literal notranslate"><span class="pre">terminal</span></code> and a working <code class="docutils literal notranslate"><span class="pre">Docker</span></code> installation, as outlined in the <a class="reference external" href="https://peerherholz.github.io/docker_workshop/setup.html">Setup for the workshop</a> section. To help folks that don’t have any experience with these resources, we compiled a set of tutorials that participants can go through within the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/automating.html">prerequisite section</a>. While this won’t be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop.</p>
+<p>For some sessiosn we will additionally use some files we provide, you can either get them by downloading the <a class="reference internal" href="#"><span class="xref myst">workshop GitHub repository</span></a> or by running the following code in you termina (we’ll also discuss what these commands do in the introdcutory session, no worries):</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">aaronreer1/get_workshop_materials:0.0.1</span></code>
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">$(pwd):/output</span> <span class="pre">aaronreer1/get_workshop_materials:0.0.1</span></code></p>
 </section>
 <section id="software-containers-basics">
 <h2>Software containers - Basics<a class="headerlink" href="#software-containers-basics" title="Link to this heading">#</a></h2>
@@ -444,6 +458,39 @@ document.write(`
 <sub><sup><sub><sup><a class="reference external" href="https://media4.giphy.com/media/3orif0rjs49gsPWg1y/giphy.gif?cid=ecf05e47driaof19nl7irhimygzitnzv7ce6vkl6hua50hg5&amp;amp;rid=giphy.gif&amp;amp;ct=g">https://media4.giphy.com/media/3orif0rjs49gsPWg1y/giphy.gif?cid=ecf05e47driaof19nl7irhimygzitnzv7ce6vkl6hua50hg5&amp;rid=giphy.gif&amp;ct=g</a>
 </sup></sub></sup></sub></p>
 </section>
+<section id="the-details">
+<h2>The details<a class="headerlink" href="#the-details" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="software-containers-in-neuroscience-research">
+<h1>Software containers in neuroscience research<a class="headerlink" href="#software-containers-in-neuroscience-research" title="Link to this heading">#</a></h1>
+<p>You can checkout the respective sections:</p>
+<ul>
+<li><p><a class="reference internal" href="#"><span class="std std-doc">An overview</span></a></p>
+<p>What’s this workshop about and how is it organized?</p>
+</li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/setup.html">Setup</a></p>
+<p>What software do you need and how to get it!</p>
+</li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/outline.html">General outline</a></p>
+<p>Our rough timetable and a short orientation!</p>
+</li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites.html">Prerequisites</a></p>
+<p>All things gotta start somewhere and using software containers in neuroscience research are of course no exceptions to that, especially since a certain amount of digital literacy, programming, etc. is required.
+Here, we gathered some resources folks can check out in preparation for the course or just for fun.</p>
+</li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/introduction.html">Introdcution - Software containers and Virtualization</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/quickstart.html">Quickstarting your container expertise</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/management.html">Management of software containers</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/management.html">Creating software containers</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/data.html">Software containers &amp; data</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/creating_your_own.html">Creating your own software container</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/advanced/automating.html">Automating software containers</a></p></li>
+<li><p><a class="reference external" href="https://m-earnest.github.io/docker_workshop/CoC.html">Code of Conduct</a></p>
+<p>Necessities for creating an open, fair, safe and inclusive learning
+experience. Please go thorugh this before the workshop and adhere to general professional standards!</p>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -510,10 +557,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Workshop overview</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-framework-and-setup">The framework and setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-basics">Software containers - Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-advanced-aspects">Software containers - Advanced aspects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-details">The details</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-in-neuroscience-research">Software containers in neuroscience research</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

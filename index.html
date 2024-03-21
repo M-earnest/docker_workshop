@@ -175,6 +175,7 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="dei.html">Diversity, Equity and Inclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Workshop overview</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup for the workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outline.html">Outline</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -411,8 +412,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-in-neuroscience-research">Software containers in neuroscience research</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#i-ve-got-a-question">I’ve got a question!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reach-the-content-creators">How to reach the content creators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
 </li>
@@ -434,8 +435,7 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="welcome">
 <h1>Welcome!<a class="headerlink" href="#welcome" title="Link to this heading">#</a></h1>
 <p>Hello everyone and welcome to the “Software containers in neuroscience research” workshop conducted at INSERT_INSTITUTE_LOCATION_HERE, we’re glad to see you here!</p>
-<p>Within these pages, we provide information on how to follow the workshop, as well as respective materials. This <a class="reference external" href="https://jupyterbook.org/intro.html">jupyter book</a> will include the used slides and code in a way that they can be explored in an interactive manner. You can navigate through the respective sections via the TOC on the left side and within sections via the TOC on the right side. The three symbols in the top allow to enable full screen mode, link to the underlying <a class="reference external" href="https://github.com/PeerHerholz/docker_workshop">Github repository</a> and allow you to download the contents as a pdf or jupyter notebook respectively. Some sections will additionally have a little rocket in that row which will allow you to interactively rerun certain analyses via cloud computing. Additionally, we support public reviews and comments through an <a class="reference external" href="https://web.hypothes.is/">hypothes.is plugin</a> with which you can interact on the right side. All of this awesomeness (talking about the infrastructure and resource) is possible through the dedicated and second to none work of the <a class="reference external" href="https://jupyter.org/community">Jupyter community</a>, specifically, the <a class="reference external" href="https://executablebooks.org/en/latest/">Executable/Jupyter Book</a>.</p>
-<p>Here we would also extend special thanks to <a class="reference external" href="https://peerherholz.github.io/">Dr. Peer Herholz</a> for the general idea and his central contributions to this workshop!</p>
+<p>Within these pages, we provide information on how to follow the workshop, as well as respective materials. This <a class="reference external" href="https://jupyterbook.org/intro.html">jupyter book</a> will include the all materials, data and code. You can navigate through the respective sections via the TOC on the left side and within sections via the TOC on the right side. The three symbols in the top allow to enable full screen mode, link to the underlying <a class="reference external" href="https://github.com/M-earnest/docker_workshop">Github repository</a> and allow you to download the contents as a pdf or markdown file respectively. Additionally, we support public reviews and comments through the <a class="reference external" href="https://web.hypothes.is/">hypothes.is plugin</a> with which you can interact on the right side. All of this awesomeness (talking about the infrastructure and resource) is possible through the dedicated and second to none work of the <a class="reference external" href="https://jupyter.org/community">Jupyter community</a>, specifically, the <a class="reference external" href="https://executablebooks.org/en/latest/">Executable/Jupyter Book</a>. Head to the (overview page](<a class="reference external" href="https://m-earnest.github.io/docker_workshop/overview.html">https://m-earnest.github.io/docker_workshop/overview.html</a>) to get a feel for what and how we will go through this workshop.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition warning">
@@ -445,47 +445,44 @@ Please visit this page again in the next few weeks for further information.</p>
 </div>
 </aside>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="software-containers-in-neuroscience-research">
-<h1>Software containers in neuroscience research<a class="headerlink" href="#software-containers-in-neuroscience-research" title="Link to this heading">#</a></h1>
-<p>You can checkout the respective sections:</p>
-<ul>
-<li><p><a class="reference internal" href="overview.html"><span class="std std-doc">An overview</span></a></p>
-<p>What’s this workshop about and how is it organized?</p>
-</li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Setup</span></a></p>
-<p>How are things implemented and supposed to work?</p>
-</li>
-<li><p><a class="reference internal" href="outline.html"><span class="std std-doc">General outline</span></a></p>
-<p>What are the specific topics and aspects taught?</p>
-</li>
-<li><p><a class="reference internal" href="prerequisites.html"><span class="std std-doc">Prerequisites</span></a></p>
-<p>All things gotta start somewhere and using software containers in neuroscience research are of course no exceptions to that, especially since a certain amount of digital literacy, programming, etc. is required.
-Here, we gathered some resources folks can check out in preparation for the course or just for fun.</p>
-</li>
-<li><p><a class="reference internal" href="#introduction.md"><span class="xref myst">Software containers - a super short introduction</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Installation &amp; Trouble shooting</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Quickstarting your container expertise</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Management of software containers</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Creating software containers</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Software containers &amp; data</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Automating software containers</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Creating your own software container</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="xref myst">Code of Conduct</span></a></p>
-<p>Necessities for creating an open, fair, safe and inclusive learning
-experience.</p>
-</li>
-</ul>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="i-ve-got-a-question">
 <h1>I’ve got a question!<a class="headerlink" href="#i-ve-got-a-question" title="Link to this heading">#</a></h1>
 <p>In case you have any questions or difficulties going through the workshop, please don’t hesitate a single second to get in touch with
 us. A great way to do this is to
 <a class="reference external" href="https://github.com/M-earnest/docker_workshop/issue">open an issue</a> on the
 <a class="reference external" href="https://github.com/M-earnest/docker_workshop">GitHub site of the Workshop</a> (also possible via the GitHub button at the top of the pages).
-We would also highly appreciate and value every feedback or idea or you
-might have (via <a class="reference external" href="https://github.com/M-earnest/docker_workshop">issues</a> or <a class="reference external" href="https://web.hypothes.is/">hypothes.is annotation feature</a> on the right).</p>
+We would also highly appreciate and value every feedback or idea or you might have!</p>
+<section id="how-to-reach-the-content-creators">
+<h2>How to reach the content creators<a class="headerlink" href="#how-to-reach-the-content-creators" title="Link to this heading">#</a></h2>
+<p align="center"><iframe src="https://giphy.com/embed/U6GunJi6B1o7ecMfKc" width="240" height="240" frameBorder="0" vspace="0" class="giphy-embed" allowFullScreen style="overflow-y: hidden;"></iframe></p><p align="center"><a href="https://giphy.com/gifs/justviralnet-funny-mistake-spelling-U6GunJi6B1o7ecMfKc"><small>via GIPHY</small></a></p></p>
+<p>The contact information of the instructors are as follows:</p>
+<p><a class="reference external" href="https://github.com/M-earnest">Michael Ernst</a></p>
+<ul class="simple">
+<li><p>Office hours: upon request</p></li>
+<li><p>E-mail: <code class="docutils literal notranslate"><span class="pre">ernst&#64;psych.uni-frankfurt.de</span></code></p></li>
+<li><p>preferred mode of contact: via  e-mail</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">How to address one another?</p>
+<p>He/Him. When contacting me, please refrain from using honoraries and formal language, “Michael” or “you” is fine as long as the content is respectful, fair and constructive (I aim for the same when I reply).
+However, please let me know if you have a preferred way of interacting with other folks, including how you would liked to be addressed, your pronouns and the level of formality.</p>
+</div>
+<p><a class="reference external" href="https://github.com/AaronReer">Aaron Reer</a></p>
+<ul class="simple">
+<li><p>Office hours: upon request</p></li>
+<li><p>E-mail: <code class="docutils literal notranslate"><span class="pre">aaron.reer&#64;uol.de</span></code></p></li>
+<li><p>preferred mode of contact: via  e-mail</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">How to address one another?</p>
+<p>He/Him. When contacting me, please refrain from using honoraries and formal language, “Michael” or “you” is fine as long as the content is respectful, fair and constructive (I aim for the same when I reply).
+However, please let me know if you have a preferred way of interacting with other folks, including how you would liked to be addressed, your pronouns and the level of formality.</p>
+</div>
+<p>Or simply ask to join the <code class="docutils literal notranslate"><span class="pre">Workshop</span> <span class="pre">Discord</span> <span class="pre">server</span></code> via this <a class="reference external" href="https://discord.gg/ehN5haXS">invite link</a>.</p>
+</section>
 <section id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>Here we would also extend special thanks to <a class="reference external" href="https://peerherholz.github.io/">Dr. Peer Herholz</a> for the general idea and his central contributions to this workshop!</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -547,8 +544,8 @@ might have (via <a class="reference external" href="https://github.com/M-earnest
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome!</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#software-containers-in-neuroscience-research">Software containers in neuroscience research</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#i-ve-got-a-question">I’ve got a question!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reach-the-content-creators">How to reach the content creators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
 </li>

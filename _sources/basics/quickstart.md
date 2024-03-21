@@ -145,7 +145,7 @@
   </p>
 </div>
 
-You can test if your Docker installation was successful by running:
+To test if your Docker installation is fully functional try running:
 
   `docker run hello-world`
 
