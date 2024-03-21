@@ -2,20 +2,20 @@
 
 As mentioned on the [Welcome page](https://m-earnest.github.io/docker_workshop/index.html), this workshop will be focused on how to utilize the `Docker` framework to produce and share reproducible, light-weight workflows to facilitate good scientific practice.
 
-We will try to provide folks with a brief overview of why does this is important, central aspects of virtualization, how to work with and manage Docker containers and lastly what a container is made out of, as well as how these are build and published to the web or saved locally.
+We will try to provide folks with a brief overview of why this is important, central aspects of virtualization, how to work with and manage Docker containers and lastly what a container is made up of, as well as how these are build and published to the web or saved locally.
 
 ...
 
 ## The framework and setup
 
-The entire workshop will be conducted via the 
-
 The complete workshop will be provided within this [Jupyter Book](https://jupyterbook.org/intro.html) format you're currently looking at, free for everyone to check and try out, as well as utilize further. 
 
-To fully participate in the workshop you'll need a `Bash shell`, here usually referred to as `terminal` and a working `Docker` installation, as outlined in the [Setup for the workshop](https://peerherholz.github.io/docker_workshop/setup.html) section. To help folks that don't have any experience with these resources, we compiled a set of tutorials that participants can go through within the [prerequisite section](https://m-earnest.github.io/docker_workshop/advanced/automating.html). While this won't be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop. 
+To fully participate in the workshop you'll need a `Bash shell`, here usually referred to as `terminal` and a working `Docker` installation, as outlined in the [Setup for the workshop](https://peerherholz.github.io/docker_workshop/setup.html) section. 
+
+To help folks that don't have any experience with these resources, we compiled a set of tutorials that participants can go through within the [prerequisite section](https://m-earnest.github.io/docker_workshop/advanced/automating.html). While this won't be enough to go past basic skills, we still hope it will be useful to familiarize yourself with core aspects that will help during the workshop. 
 
 
-For some sessiosn we will additionally use some files we provide, you can either get them by downloading the [workshop GitHub repository]() or by running the following code in you termina (we'll also discuss what these commands do in the introdcutory session, no worries):
+For some sessions we will additionally make use of some files we provide, you can either get them by downloading the [workshop GitHub repository](https://github.com/M-earnest/docker_workshop) or by running the following code in you termina (we'll also discuss what these commands do in the introdcutory session, no worries):
 
 `docker pull aaronreer1/get_workshop_materials:0.0.1`
 `docker run -v $(pwd):/output aaronreer1/get_workshop_materials:0.0.1`

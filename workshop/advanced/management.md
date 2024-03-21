@@ -10,15 +10,15 @@
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
 - access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
-- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](link) to catch up!)
+- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the [_prerequisites section_ ](https://m-earnest.github.io/docker_workshop/prerequisites.html) to catch up!)
 
 
 #### How's docker configured?
 
 The setup and configuration of a given docker installation is rather complex and characterized by a myriad of factors and settings: storage, RAM, swap, CPU, proxy, etc. ...
     
-You should be aware of how the docker installation you're using is setup and configured at any given time, as otherwise perfectly working docker containers fail to function properly
-as usual, consider the readme and/or docs of a given docker container before using it
+You should be aware of how the docker installation you're using is setup and configured at any given time, as otherwise perfectly working docker containers fail to function properly.
+As usual, consider the READNE and/or docs of a given docker container before using it.
 
 We can get a comprehensive overview of our docker setup and configuration via the docker command:
 
@@ -123,11 +123,11 @@ Among this barrage of information, we can see that docker uses a default amount 
 
       `docker run -it --rm --memory 4gb ubuntu`
 
-- set swap using --memory-swap in mb ir gb, e.g. --memory-swap 5gb
+- set swap using --memory-swap in mb or gb, e.g. --memory-swap 5gb
 
     `docker run -it --rm --memory 4gb --memory-swap 5gb ubuntu`
 
-- set CPUs using --cpus CPUs as int, e.g. --cpus 2
+- set CPUs using --cpus, e.g. --cpus 2
 
     `docker run -it --rm --memory 4gb --memory-swap 5gb --cpus 2 ubuntu`
 
@@ -215,7 +215,6 @@ eba0b7f9580e   hello-world                   "/hello"                 4 weeks ag
 Using the the `--rm` flag when running a container should prevent that a container keeps running in the background after executing the relevant commands or exiting the environment however, some containers may rely on different implementations and keep running in the background.
 
 `By now our evergreen: check the readme and/or docs of a given docker container!`
-
 
 We can further use tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control :
 
