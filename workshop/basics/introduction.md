@@ -191,4 +191,6 @@ Popular choices for the management and creation of virtual environments are:
 
 Interesting tutorials and blog posts:
 
-- collect new ressoruces here !!!!!!
+- [Docker tutorial -getting started with containers](https://www.keycdn.com/blog/docker-tutorial)
+- [Docker cheatcheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
+- [100 best docker tutorials](https://www.aquasec.com/cloud-native-academy/docker-container/100-best-docker-tutorials/)
