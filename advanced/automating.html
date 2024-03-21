@@ -535,10 +535,12 @@ document.write(`
      - name: Login to Github Packages
          uses: docker/login-action@v2
          with:
+         registry: ghcr.io
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
+
      
-     - name: Build image and push to Docker Hub and GitHub Container Registry
+     - name: Build image and push to Docker Hub
          uses: docker/build-push-action@v2
          with:
          # relative path to the place where source code with Dockerfile is located
