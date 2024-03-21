@@ -17,7 +17,7 @@
 
 ### Docker - there and back again
 
-So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we'll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the [dockerfile reference page](https://docs.docker.com/reference/dockerfile/), which is great resource if you're looking for more in-depth explanations for the following lesson.
+So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we'll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the [dockerfile reference page](https://docs.docker.com/reference/dockerfile/), which is a great resource if you're looking for more in-depth explanations for the following session.
 
 We will still be relying on the `command line` and `bash` from here on out, if this seems like gibberish to you, please go through the [course prerequisites - Introduction to the (unix) command line: bash](https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html).
 
@@ -35,7 +35,7 @@ At the beginning there was a Dockerfile...
 
 A Dockerfile is, in essence, a machine-readable instruction on how to build a docker iamge. It can be considered as the "source code" of a docker container.
 
-The Dockerfile usually includes a mixture of `bash` commands, that you would also normally use on your machine to e.g. setup a [Conda enviornment]() or to install specific software, and docker specific commands (called instructions). Below you'll find a list of acceptable Docker instructions are, if the terminology is condusing or you want to dive deeper into what the different commands are and how they are used check out the [Docker build documentation](https://docs.docker.com/engine/reference/builder/). We'll only make use of a few relevant commands for this tutorial that we will explain in detail below.
+The Dockerfile usually includes a mixture of `bash` commands, that you would also normally use on your machine to e.g. setup a [Conda enviornment]() or to install specific software, and docker specific commands (called instructions). Below you'll find a list of acceptable Docker instructions. If the terminology is confusing or you want to dive deeper into what the different commands are and how they are used check out the [Docker build documentation](https://docs.docker.com/engine/reference/builder/). We'll only make use of a few relevant instructions for this tutorial that we will explain in detail below.
 
 ```
 Instruction
@@ -60,9 +60,9 @@ WORKDIR	Change working directory.
 
 ### Building a Dockerfile
 
-The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a "layer". Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.
+The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker image. Each separate instruction is called a "layer". Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.
 
-Here are the relevant _layers_ we're going to build, i.e how our Dockerfile is going to look like:
+Here are the relevant _layers_ we're going to build, i.e. how our Dockerfile is going to look like:
 
 ```
     # Step 1: Use the newest Ubuntu version as a base image
@@ -76,11 +76,11 @@ Here are the relevant _layers_ we're going to build, i.e how our Dockerfile is g
         apt-get install -y python3.10 python3-pip && \
         pip3 install pandas
 
-    # let's also create  a folder to store our info file in
+    # let's also create a folder to store our info file in
     RUN mkdir /info
 
     # Step 4: Copy our Python script and README into the info folder of the image
-    COPY print_info.py /info/
+    COPY print_info_container.py /info/
     COPY README.md /info/README.md
 
     # Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file 
@@ -93,9 +93,9 @@ So, let's explain this step-by-step and bring it all together with a practical e
 
 `FROM ubuntu:latest`
 
-The "From" command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the "base" or "baseimage" of a container. At times we will also use the 'From' command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the 'from' command points to, e.g when calling 'FROM continuumio/miniconda3', the minconda3 image will have a specific OS defined.
+The `FROM` instruction defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the "base" or "baseimage" of a container. At times we will also use `FROM` to call specific packages or environment managers, such as Conda. In this case a specific OS  will already be defined in the respective image that the `FROM` instruction points to, e.g when calling `FROM continuumio/miniconda3`, the minconda3 image will have a specific OS defined.
 
-It is also possible to use the 'From' command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds [here](https://docs.docker.com/build/building/multi-stage/). 
+It is also possible to use `From` to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds [here](https://docs.docker.com/build/building/multi-stage/). 
 
 ### 2. WORKDIR - working directory
 
@@ -124,7 +124,7 @@ In the installation instructions, we want to provide information on what softwar
 
 For this we'll make use of the `RUN` instruction, which will execute any specified command to create a new layer.
 
-So to install e.g. Python using the Ubuntu baseimage and apt package manager we would write:
+So to install e.g. Python using the Ubuntu baseimage and apt package manager we write:
 
 ```
     RUN apt-get update && apt-get install -y python3.10
@@ -151,19 +151,19 @@ Using the COPY instruction we can permanently add files from our local system to
 
 `CMD ["cat", "/info/README.md"]`
 
-To make a docker image executable you'll need to include either an 'ENTRYPOINT', an 'CMD' or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container. 
+To make a docker image executable you'll need to include either an `ENTRYPOINT`, an `CMD` or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container. 
 
-The ENTRYPOINT specifies a command that will always be executed when the container starts (i.e. this should be the "main" command), while CMD defines the default arguments of the container, e.g.
+The `ENTRYPOINT` specifies a command that will always be executed when the container starts (i.e. this should be the "main" command), while `CMD` defines the default arguments of the container, e.g.
 
-`ENTRYPOINT ["echo", "Hello, World!"]`
+`ENTRYPOINT ["echo", "Hello World!"]`
 
     or 
 
-`CMD ["echo", "Hello, World!"]`
+`CMD ["echo", "Hello World!"]`
 
-Given no further arguments when the container is run (after we've build it, of course), both of these will simply print "Hello World!", but the behavior of the 'CMD' command can be overriden when the container is run with specific instruction, e.g. 'docker run myimage Hello, Docker!' prints "Hello, Docker!" instead of "Hello World!". 
+Given no further arguments when the container is run (after we've build it, of course), both of these will simply print "Hello World!", but the behavior of the 'CMD' command can be overwritten when the container is run with specific instruction, e.g. 'docker run myimage Hello, Docker!' prints "Hello, Docker!" instead of "Hello World!". 
 
-A practical use case can be to combine both instructions, so that the entrypoint provides a command that is always exectued, while CMD provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of the script.
+A practical use-case can be to combine both instructions, so that `ENTRYPOINT` provides a command that is always exectued, while `CMD` provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument "python" as our ENTRYPOINT and use CMD to specify a default name of the script.
 
 ```
     FROM python:3.10
@@ -171,9 +171,9 @@ A practical use case can be to combine both instructions, so that the entrypoint
     CMD ["script.py"]
 ```
 
-If we now simply run this container using 'docker run myimage' it will try to locate and execute "script.py", if the user instead wants to run his python script called "my_script.py", he can simply add this info to the run instruction, i.e. 'docker run myimage python3 my_script.py'.
+If we would now run this container using `docker run myimage` it will try to locate and execute "script.py", if the user instead wants to run a different python script called "my_script.py", he can simply add this info to the run command, i.e. `docker run myimage python3 my_script.py`.
 
-If you have more complex commands that should initally be run you can further provide bash scripts as your ENTRYPOINT like so:
+If you have more complex commands that should initally be run, you can further provide bash scripts as your ENTRYPOINT like so:
 
 ```
     COPY ./docker-entrypoint.sh /
@@ -194,7 +194,7 @@ Let's create a new directory on our desktops called my_first_docker and in it an
 
 **2. Add files to the build context**
 
-Either download the course materials and copy all files from the examples folder into `my_first_docker folder` (README.md, print_info_container.py, print_info_local_system.py). 
+Download the course materials and copy all files from the examples folder into `my_first_docker folder` (README.md, print_info_container.py, print_info_local_system.py). 
 Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.1` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
 
 E.g. using bash:
@@ -231,7 +231,7 @@ Open your Dockerfile with a text-editor of your choice (again VScode is recommen
 
 **4. Docker build**
 
-Now that we've composed our Dockerfile, we can build our image via the 'docker build' command in the terminal. 
+Now that we've composed our Dockerfile, we can build our image via the `docker build` command in the terminal. 
 
 For this we provide a name for our image via the `-t flag` and specify the path to our Dockerfile, resulting in e.g (given we're in the my_first_docker folder).:
 
@@ -312,7 +312,7 @@ The output looks like this:
 
 ```
 
-If Instead we want to run the python script in our containers `/info folder` we replace the default command, by including instructions in `docker run ...` substitution the first default argument of our CMD (cat) with `python3` as our executable, like so: 
+If Instead we want to run the python script in our containers `/info folder` we replace the default command, by including instructions in `docker run ...` substituting the first default argument of our CMD with `python3` as our executable, like so: 
 
 `docker run my_first_docker python3 /info/print_info_container.py`
 
@@ -343,12 +343,11 @@ Resulting in:
 
 ### Virtualizing a workflow
 
-Of course most workflows will necessary be more complex, let's look at another example.
+Of course most workflows will necessarily be more complex, so let's look at another example.
 
 - live demonstration
 
 -- add !!Dockerfile!!
-
 
 
 ### Neurodocker
@@ -389,9 +388,7 @@ aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker 
 ```
 
 
-
 Next, we specify all the Linux packages that we want to have installed in our image:
-
 
 
 ```
@@ -434,9 +431,9 @@ So using Neurodocker can save you a lot of time and stress. It's especially grea
 
 ### Neurodocker - Going further beyond
 
-Check-out the examples on the [Neurodocker site](https://www.repronim.org/neurodocker/user_guide/examples.html), to see how to incorporate most neuroscience relevant packages into a Docker container. 
+Check out the examples on the [Neurodocker site](https://www.repronim.org/neurodocker/user_guide/examples.html), to see how to incorporate most neuroscience relevant packages into a Docker container. 
 
-Additionally, you should check-out their [command-line-interface section](https://www.repronim.org/neurodocker/user_guide/cli.html) to see how to best make use of Neurodocker. 
+Additionally, you should check out their [command-line-interface section](https://www.repronim.org/neurodocker/user_guide/cli.html) to see how to best make use of Neurodocker. 
 
 **Note** If your server system doesn't support docker, Neurodocker also allows for the creation of singularity images using mostly the same syntax as above!
 

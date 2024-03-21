@@ -460,7 +460,7 @@ document.write(`
 </section>
 <section id="docker-there-and-back-again">
 <h2>Docker - there and back again<a class="headerlink" href="#docker-there-and-back-again" title="Link to this heading">#</a></h2>
-<p>So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we’ll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">dockerfile reference page</a>, which is great resource if you’re looking for more in-depth explanations for the following lesson.</p>
+<p>So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we’ll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">dockerfile reference page</a>, which is a great resource if you’re looking for more in-depth explanations for the following session.</p>
 <p>We will still be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
 </section>
 <section id="docker-containers-the-creation">
@@ -475,7 +475,7 @@ document.write(`
 <h2>Dockerfiles<a class="headerlink" href="#dockerfiles" title="Link to this heading">#</a></h2>
 <p>At the beginning there was a Dockerfile…</p>
 <p>A Dockerfile is, in essence, a machine-readable instruction on how to build a docker iamge. It can be considered as the “source code” of a docker container.</p>
-<p>The Dockerfile usually includes a mixture of <code class="docutils literal notranslate"><span class="pre">bash</span></code> commands, that you would also normally use on your machine to e.g. setup a <a class="reference internal" href="../advanced.html"><span class="doc std std-doc">Conda enviornment</span></a> or to install specific software, and docker specific commands (called instructions). Below you’ll find a list of acceptable Docker instructions are, if the terminology is condusing or you want to dive deeper into what the different commands are and how they are used check out the <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Docker build documentation</a>. We’ll only make use of a few relevant commands for this tutorial that we will explain in detail below.</p>
+<p>The Dockerfile usually includes a mixture of <code class="docutils literal notranslate"><span class="pre">bash</span></code> commands, that you would also normally use on your machine to e.g. setup a <a class="reference internal" href="../advanced.html"><span class="doc std std-doc">Conda enviornment</span></a> or to install specific software, and docker specific commands (called instructions). Below you’ll find a list of acceptable Docker instructions. If the terminology is confusing or you want to dive deeper into what the different commands are and how they are used check out the <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Docker build documentation</a>. We’ll only make use of a few relevant instructions for this tutorial that we will explain in detail below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Instruction</span>
 
 <span class="n">ADD</span> <span class="o">-</span> <span class="n">Add</span> <span class="n">local</span> <span class="ow">or</span> <span class="n">remote</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span><span class="o">.</span>
@@ -499,8 +499,8 @@ document.write(`
 </section>
 <section id="building-a-dockerfile">
 <h2>Building a Dockerfile<a class="headerlink" href="#building-a-dockerfile" title="Link to this heading">#</a></h2>
-<p>The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a “layer”. Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.</p>
-<p>Here are the relevant <em>layers</em> we’re going to build, i.e how our Dockerfile is going to look like:</p>
+<p>The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker image. Each separate instruction is called a “layer”. Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.</p>
+<p>Here are the relevant <em>layers</em> we’re going to build, i.e. how our Dockerfile is going to look like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
     <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
 
@@ -512,11 +512,11 @@ document.write(`
         <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">&amp;&amp;</span> \
         <span class="n">pip3</span> <span class="n">install</span> <span class="n">pandas</span>
 
-    <span class="c1"># let&#39;s also create  a folder to store our info file in</span>
+    <span class="c1"># let&#39;s also create a folder to store our info file in</span>
     <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">info</span>
 
     <span class="c1"># Step 4: Copy our Python script and README into the info folder of the image</span>
-    <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
+    <span class="n">COPY</span> <span class="n">print_info_container</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
     <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
 
     <span class="c1"># Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file </span>
@@ -528,8 +528,8 @@ document.write(`
 <section id="from-baseimage">
 <h2>1. FROM - Baseimage<a class="headerlink" href="#from-baseimage" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">ubuntu:latest</span></code></p>
-<p>The “From” command defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the “base” or “baseimage” of a container. At times we will also use the ‘From’ command to call specific packages or environment managers, such as Conda. In this, case a specific OS  will be defined in the respective image that the ‘from’ command points to, e.g when calling ‘FROM continuumio/miniconda3’, the minconda3 image will have a specific OS defined.</p>
-<p>It is also possible to use the ‘From’ command to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds <a class="reference external" href="https://docs.docker.com/build/building/multi-stage/">here</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FROM</span></code> instruction defines the OS architecture that your image is supposed to use, e.g. Ubuntu 20.04. This will be referred to as the “base” or “baseimage” of a container. At times we will also use <code class="docutils literal notranslate"><span class="pre">FROM</span></code> to call specific packages or environment managers, such as Conda. In this case a specific OS  will already be defined in the respective image that the <code class="docutils literal notranslate"><span class="pre">FROM</span></code> instruction points to, e.g when calling <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">continuumio/miniconda3</span></code>, the minconda3 image will have a specific OS defined.</p>
+<p>It is also possible to use <code class="docutils literal notranslate"><span class="pre">From</span></code> to chain multiple Docker images or more complex building steps together, for our purposes this is rarely necessary. You can find more info on Multi-stage builds <a class="reference external" href="https://docs.docker.com/build/building/multi-stage/">here</a>.</p>
 </section>
 <section id="workdir-working-directory">
 <h2>2. WORKDIR - working directory<a class="headerlink" href="#workdir-working-directory" title="Link to this heading">#</a></h2>
@@ -557,7 +557,7 @@ document.write(`
 </div>
 <p>In the installation instructions, we want to provide information on what software/packages we want to install to run our workflow. Using the Ubuntu baseimage we can make use of the standard package managers ‘pip’ and ‘apt-get’ in the same way we would use them in our bash shell.</p>
 <p>For this we’ll make use of the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> instruction, which will execute any specified command to create a new layer.</p>
-<p>So to install e.g. Python using the Ubuntu baseimage and apt package manager we would write:</p>
+<p>So to install e.g. Python using the Ubuntu baseimage and apt package manager we write:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span>
 </pre></div>
 </div>
@@ -581,22 +581,22 @@ document.write(`
 <section id="entrypoint-and-cmd-make-the-image-exectuable">
 <h2>5. Entrypoint and CMD - make the image exectuable<a class="headerlink" href="#entrypoint-and-cmd-make-the-image-exectuable" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">CMD</span> <span class="pre">[&quot;cat&quot;,</span> <span class="pre">&quot;/info/README.md&quot;]</span></code></p>
-<p>To make a docker image executable you’ll need to include either an ‘ENTRYPOINT’, an ‘CMD’ or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container.</p>
-<p>The ENTRYPOINT specifies a command that will always be executed when the container starts (i.e. this should be the “main” command), while CMD defines the default arguments of the container, e.g.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span> <span class="pre">[&quot;echo&quot;,</span> <span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;]</span></code></p>
+<p>To make a docker image executable you’ll need to include either an <code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code>, an <code class="docutils literal notranslate"><span class="pre">CMD</span></code> or a mixture of both instructions. These specify what should happen when a container starts, and what arguments can be passed to modify the behaviour of the container.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code> specifies a command that will always be executed when the container starts (i.e. this should be the “main” command), while <code class="docutils literal notranslate"><span class="pre">CMD</span></code> defines the default arguments of the container, e.g.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span> <span class="pre">[&quot;echo&quot;,</span> <span class="pre">&quot;Hello</span> <span class="pre">World!&quot;]</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>or 
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">CMD</span> <span class="pre">[&quot;echo&quot;,</span> <span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;]</span></code></p>
-<p>Given no further arguments when the container is run (after we’ve build it, of course), both of these will simply print “Hello World!”, but the behavior of the ‘CMD’ command can be overriden when the container is run with specific instruction, e.g. ‘docker run myimage Hello, Docker!’ prints “Hello, Docker!” instead of “Hello World!”.</p>
-<p>A practical use case can be to combine both instructions, so that the entrypoint provides a command that is always exectued, while CMD provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument “python” as our ENTRYPOINT and use CMD to specify a default name of the script.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CMD</span> <span class="pre">[&quot;echo&quot;,</span> <span class="pre">&quot;Hello</span> <span class="pre">World!&quot;]</span></code></p>
+<p>Given no further arguments when the container is run (after we’ve build it, of course), both of these will simply print “Hello World!”, but the behavior of the ‘CMD’ command can be overwritten when the container is run with specific instruction, e.g. ‘docker run myimage Hello, Docker!’ prints “Hello, Docker!” instead of “Hello World!”.</p>
+<p>A practical use-case can be to combine both instructions, so that <code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code> provides a command that is always exectued, while <code class="docutils literal notranslate"><span class="pre">CMD</span></code> provides arguments that the user might want to exchange, e.g. if we want our container to execute a python script, we simply provide command line argument “python” as our ENTRYPOINT and use CMD to specify a default name of the script.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mf">3.10</span>
     <span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]</span>
     <span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;script.py&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>If we now simply run this container using ‘docker run myimage’ it will try to locate and execute “<a class="reference external" href="http://script.py">script.py</a>”, if the user instead wants to run his python script called “my_script.py”, he can simply add this info to the run instruction, i.e. ‘docker run myimage python3 my_script.py’.</p>
-<p>If you have more complex commands that should initally be run you can further provide bash scripts as your ENTRYPOINT like so:</p>
+<p>If we would now run this container using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">myimage</span></code> it will try to locate and execute “<a class="reference external" href="http://script.py">script.py</a>”, if the user instead wants to run a different python script called “my_script.py”, he can simply add this info to the run command, i.e. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">myimage</span> <span class="pre">python3</span> <span class="pre">my_script.py</span></code>.</p>
+<p>If you have more complex commands that should initally be run, you can further provide bash scripts as your ENTRYPOINT like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span>
     <span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;/docker-entrypoint.sh&quot;</span><span class="p">]</span>
 </pre></div>
@@ -609,7 +609,7 @@ document.write(`
 <p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p>
 <p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Desktop/my_first_docker</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/Desktop/my_first_docker/Dockerfile</span></code></p>
 <p><strong>2. Add files to the build context</strong></p>
-<p>Either download the course materials and copy all files from the examples folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code> (<a class="reference external" href="http://README.md">README.md</a>, print_info_container.py, print_info_local_system.py).
+<p>Download the course materials and copy all files from the examples folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code> (<a class="reference external" href="http://README.md">README.md</a>, print_info_container.py, print_info_local_system.py).
 Otherwise you’ll find the necessary files under <code class="docutils literal notranslate"><span class="pre">/docker_workshop_oldenburg/build_example/</span></code>, if you’ve pulled and ran the <code class="docutils literal notranslate"><span class="pre">get_workshop_materials:0.0.1</span></code> container from the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/quickstart.html">quickstart session</a>.</p>
 <p>E.g. using bash:</p>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/build_example/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
@@ -638,7 +638,7 @@ Otherwise you’ll find the necessary files under <code class="docutils literal 
 </pre></div>
 </div>
 <p><strong>4. Docker build</strong></p>
-<p>Now that we’ve composed our Dockerfile, we can build our image via the ‘docker build’ command in the terminal.</p>
+<p>Now that we’ve composed our Dockerfile, we can build our image via the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> command in the terminal.</p>
 <p>For this we provide a name for our image via the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">flag</span></code> and specify the path to our Dockerfile, resulting in e.g (given we’re in the my_first_docker folder).:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker build -t myfirstdocker .`
 </pre></div>
@@ -709,7 +709,7 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 
 </pre></div>
 </div>
-<p>If Instead we want to run the python script in our containers <code class="docutils literal notranslate"><span class="pre">/info</span> <span class="pre">folder</span></code> we replace the default command, by including instructions in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code> substitution the first default argument of our CMD (cat) with <code class="docutils literal notranslate"><span class="pre">python3</span></code> as our executable, like so:</p>
+<p>If Instead we want to run the python script in our containers <code class="docutils literal notranslate"><span class="pre">/info</span> <span class="pre">folder</span></code> we replace the default command, by including instructions in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code> substituting the first default argument of our CMD with <code class="docutils literal notranslate"><span class="pre">python3</span></code> as our executable, like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">my_first_docker</span> <span class="pre">python3</span> <span class="pre">/info/print_info_container.py</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">13</span>
     <span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">image</span> <span class="k">for</span> <span class="n">Your</span> <span class="n">Study</span> <span class="n">Title</span> <span class="n">Here</span><span class="o">.</span> <span class="n">Youll</span> <span class="n">find</span> <span class="nb">all</span> <span class="n">relevant</span> <span class="n">information</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">README</span> <span class="n">file</span> <span class="n">located</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">folder</span><span class="o">.</span>
@@ -735,7 +735,7 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 </section>
 <section id="virtualizing-a-workflow">
 <h2>Virtualizing a workflow<a class="headerlink" href="#virtualizing-a-workflow" title="Link to this heading">#</a></h2>
-<p>Of course most workflows will necessary be more complex, let’s look at another example.</p>
+<p>Of course most workflows will necessarily be more complex, so let’s look at another example.</p>
 <ul class="simple">
 <li><p>live demonstration</p></li>
 </ul>
@@ -800,8 +800,8 @@ pip_install=&quot;mne&quot; &gt; Dockerfile
 </section>
 <section id="neurodocker-going-further-beyond">
 <h2>Neurodocker - Going further beyond<a class="headerlink" href="#neurodocker-going-further-beyond" title="Link to this heading">#</a></h2>
-<p>Check-out the examples on the <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/examples.html">Neurodocker site</a>, to see how to incorporate most neuroscience relevant packages into a Docker container.</p>
-<p>Additionally, you should check-out their <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/cli.html">command-line-interface section</a> to see how to best make use of Neurodocker.</p>
+<p>Check out the examples on the <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/examples.html">Neurodocker site</a>, to see how to incorporate most neuroscience relevant packages into a Docker container.</p>
+<p>Additionally, you should check out their <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/cli.html">command-line-interface section</a> to see how to best make use of Neurodocker.</p>
 <p><strong>Note</strong> If your server system doesn’t support docker, Neurodocker also allows for the creation of singularity images using mostly the same syntax as above!</p>
 </section>
 <section id="docker-push">

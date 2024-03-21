@@ -9,7 +9,13 @@ Hello everyone and welcome to the "Software containers in neuroscience research"
 
 Within these pages, we provide information on how to follow the workshop, as well as respective materials. This [jupyter book](https://jupyterbook.org/intro.html) will include the all materials, data and code. You can navigate through the respective sections via the TOC on the left side and within sections via the TOC on the right side. The three symbols in the top allow enabling full screen mode, link to the underlying [Github repository](https://github.com/M-earnest/docker_workshop) and allow you to download the contents as a pdf or markdown file respectively. Additionally, we support public reviews and comments through the [hypothes.is plugin](https://web.hypothes.is/) with which you can interact on the right side. All of this awesomeness (talking about the infrastructure and resource) is possible through the dedicated and second to none work of the [Jupyter community](https://jupyter.org/community), specifically, the [Executable/Jupyter Book](https://executablebooks.org/en/latest/). Head to the [overview page](https://m-earnest.github.io/docker_workshop/overview.html) to get a feel for what and how we will go through this workshop.
 
+# Why are we here?
 
+To adress systemic issues in the experimental sciences, escpecially related to reproducibility and to facilitate the implementation of maximum [FAIR-ness](https://www.go-fair.org/fair-principles/) in the community.
+
+We believe that `Docker` can be an essential tool in this tranformative process, adressing mainly the points of `Interoperability` and `Reusability`, but in combination with `DockerHub` and `GitHub` also beneftiting the factors `Findability` and `Accessibility` of our work.
+
+So here we are.
 
 ````{margin}
 ```{warning}
