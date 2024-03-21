@@ -189,7 +189,7 @@
 
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/introduction.html">Introduction - Container &amp; Virtualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/quickstart.html">Quickstarting your container expertise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="management.html">Management of software containers</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating software containers</a></li>
@@ -459,6 +459,7 @@ document.write(`
 <section id="docker-there-and-back-again">
 <h2>Docker - there and back again<a class="headerlink" href="#docker-there-and-back-again" title="Link to this heading">#</a></h2>
 <p>So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we’ll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">dockerfile reference page</a>, which is great resource if you’re looking for more in-depth explanations for the following lesson.</p>
+<p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
 </section>
 <section id="docker-containers-the-creation">
 <h2>Docker containers - the creation<a class="headerlink" href="#docker-containers-the-creation" title="Link to this heading">#</a></h2>
@@ -497,19 +498,26 @@ document.write(`
 <section id="building-a-dockerfile">
 <h2>Building a Dockerfile<a class="headerlink" href="#building-a-dockerfile" title="Link to this heading">#</a></h2>
 <p>The following will be a step-by-step guide on how to create a Dockerfile and how to populate our file with the necessary instructions to build a Docker container. Each separate instruction is called a “layer”. Layers are executed consecutively from to to bottom, when using the build command to compose an Docker Image.</p>
-<p>We will be relying on the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">bash</span></code> from here on out, if this seems like gibberish to you, please go through the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html">course prerequisites - Introduction to the (unix) command line: bash</a>.</p>
-<p>Here are the relevant layers we’re going to build, i.e how our Dockerfile is going to look like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+<p>Here are the relevant <em>layers</em> we’re going to build, i.e how our Dockerfile is going to look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
+    <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+
+    <span class="c1"># Step 2: Set the working directory</span>
     <span class="n">WORKDIR</span> <span class="o">/</span><span class="n">project</span>
+
+    <span class="c1"># Step 3: Install Python 3.10, and some Python packages (Scipy, Pandas) via the Ubuntu package manager apt</span>
     <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> \
         <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">&amp;&amp;</span> \
         <span class="n">pip3</span> <span class="n">install</span> <span class="n">pandas</span>
 
+    <span class="c1"># let&#39;s also create  a folder to store our info file in</span>
     <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">info</span>
 
+    <span class="c1"># Step 4: Copy our Python script and README into the info folder of the image</span>
     <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
     <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
 
+    <span class="c1"># Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file </span>
     <span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;/info/README.md&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -594,17 +602,16 @@ CMD [”<a class="reference external" href="http://script.py">script.py</a>”]
 <section id="practical-example">
 <h2>Practical example<a class="headerlink" href="#practical-example" title="Link to this heading">#</a></h2>
 <p>Let’s try this all together! The following docker image will simply print some info about the files in the image if using the deafult parameters but can additionaly function as a computing environment (Ubuntu, Python3.10) when our deafult commands are replaced.</p>
-<ol class="arabic simple">
-<li><p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p></li>
-</ol>
+<p><strong>1. Create the build context</strong></p>
+<p>Let’s create a new directory on our desktops called my_first_docker and in it an empty textfile called Dockerfile. Open your shell, type the following and hit enter</p>
 <p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Desktop/my_first_docker</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/Desktop/my_first_docker/Dockerfile</span></code></p>
-<ol class="arabic simple" start="2">
-<li><p>Download the course materials and copy the print_info.py script from the resources folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code></p></li>
-</ol>
-<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/resources/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
-<ol class="arabic simple" start="3">
-<li><p>Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p></li>
-</ol>
+<p><strong>2. Add files to the build context</strong></p>
+<p>Either download the course materials and copy all files from the examples folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code> (<a class="reference external" href="http://README.md">README.md</a>, print_info_container.py, print_info_local_system.py).
+Otherwise you’ll find the necessary files under <code class="docutils literal notranslate"><span class="pre">/docker_workshop_oldenburg/build_example/</span></code>, if you’ve pulled and ran the <code class="docutils literal notranslate"><span class="pre">get_workshop_materials:0.0.1</span></code> container from the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/quickstart.html">quickstart session</a>.</p>
+<p>E.g. using bash:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/build_example/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
+<p><strong>3. Populate the Dockerfile</strong></p>
+<p>Open your Dockerfile with a text-editor of your choice (again VScode is recommended) and copy-paste the following into the file and save it</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
     <span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
 
@@ -724,10 +731,11 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 </section>
 <section id="virtualizing-a-workflow">
 <h2>Virtualizing a workflow<a class="headerlink" href="#virtualizing-a-workflow" title="Link to this heading">#</a></h2>
+<p>Of course most workflows will necessary be more complex, let’s look at another example.</p>
 <ul class="simple">
-<li><p>More complex example of a docker container</p></li>
-<li><p>e.g. create eviornment via conda with specific packages, provide input and output path, do a simple task (e.g. mne report, create BIDS folder structure etc.)</p></li>
+<li><p>live demonstration</p></li>
 </ul>
+<p>– add !!Dockerfile!!</p>
 </section>
 <section id="neurodocker">
 <h2>Neurodocker?<a class="headerlink" href="#neurodocker" title="Link to this heading">#</a></h2>

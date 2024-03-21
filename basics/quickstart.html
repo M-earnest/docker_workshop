@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Management of software containers" href="../advanced/management.html" />
-    <link rel="prev" title="A super short introduction - Container &amp; Virtualization" href="introduction.html" />
+    <link rel="prev" title="Introduction - Container &amp; Virtualization" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,7 @@
 
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">A super short introduction - Container &amp; Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction - Container &amp; Virtualization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quickstarting your container expertise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/management.html">Management of software containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/creating.html">Creating software containers</a></li>
@@ -498,122 +498,123 @@ document.write(`
 </ul>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker</p>
-<p>Usage:  docker [OPTIONS] COMMAND</p>
-<p>A self-sufficient runtime for containers</p>
-<p>Common Commands:
-run         Create and run a new container from an image
-exec        Execute a command in a running container
-ps          List containers
-build       Build an image from a Dockerfile
-pull        Download an image from a registry
-push        Upload an image to a registry
-images      List images
-login       Log in to a registry
-logout      Log out from a registry
-search      Search Docker Hub for images
-version     Show the Docker version information
-info        Display system-wide information</p>
-<p>Management Commands:
-builder     Manage builds
-checkpoint  Manage checkpoints
-container   Manage containers
-context     Manage contexts
-image       Manage images
-manifest    Manage Docker image manifests and manifest lists
-network     Manage networks
-plugin      Manage plugins
-system      Manage Docker
-trust       Manage trust on Docker images
-volume      Manage volumes</p>
-<p>Swarm Commands:
-config      Manage Swarm configs
-node        Manage Swarm nodes
-secret      Manage Swarm secrets
-service     Manage Swarm services
-stack       Manage Swarm stacks
-swarm       Manage Swarm</p>
-<p>Commands:
-attach      Attach local standard input, output, and error streams to a running container
-commit      Create a new image from a container’s changes
-cp          Copy files/folders between a container and the local filesystem
-create      Create a new container
-diff        Inspect changes to files or directories on a container’s filesystem
-events      Get real time events from the server
-export      Export a container’s filesystem as a tar archive
-history     Show the history of an image
-import      Import the contents from a tarball to create a filesystem image
-inspect     Return low-level information on Docker objects
-kill        Kill one or more running containers
-load        Load an image from a tar archive or STDIN
-logs        Fetch the logs of a container
-pause       Pause all processes within one or more containers
-port        List port mappings or a specific mapping for the container
-rename      Rename a container
-restart     Restart one or more containers
-rm          Remove one or more containers
-rmi         Remove one or more images
-save        Save one or more images to a tar archive (streamed to STDOUT by default)
-start       Start one or more stopped containers
-stats       Display a live stream of container(s) resource usage statistics
-stop        Stop one or more running containers
-tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-top         Display the running processes of a container
-unpause     Unpause all processes within one or more containers
-update      Update configuration of one or more containers
-wait        Block until one or more containers stop, then print their exit codes</p>
-<p>Invalid Plugins:
-buildx      failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-buildx: no such file or directory
-compose     failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-compose: no such file or directory
-dev         failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-dev: no such file or directory
-extension   failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-extension: no such file or directory
-init        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-init: no such file or directory
-sbom        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-sbom: no such file or directory
-scan        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scan: no such file or directory
-scout       failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scout: no such file or directory</p>
-<p>Global Options:
-–config string      Location of client config files (default “/Users/me/.docker”)
--c, –context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with “docker context use”)
--D, –debug              Enable debug mode
--H, –host list          Daemon socket to connect to
--l, –log-level string   Set the logging level (“debug”, “info”, “warn”, “error”, “fatal”) (default “info”)
-–tls                Use TLS; implied by –tlsverify
-–tlscacert string   Trust certs signed only by this CA (default “/Users/me/.docker/ca.pem”)
-–tlscert string     Path to TLS certificate file (default “/Users/me/.docker/cert.pem”)
-–tlskey string      Path to TLS key file (default “/Users/me/.docker/key.pem”)
-–tlsverify          Use TLS and verify the remote
--v, –version            Print version information and quit</p>
-<p>Run ‘docker COMMAND –help’ for more information on a command.</p>
-<p>For more help on how to use Docker, head to <a class="reference external" href="https://docs.docker.com/go/guides/">https://docs.docker.com/go/guides/</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-You can test if your Docker installation was successful by running:
+      (base) Michaels-MacBook-Pro:~ me$ docker
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Usage:  docker [OPTIONS] COMMAND
 
-  `docker run hello-world`
+  A self-sufficient runtime for containers
 
-If you get the following output you&#39;re good to go:
+  Common Commands:
+    run         Create and run a new container from an image
+    exec        Execute a command in a running container
+    ps          List containers
+    build       Build an image from a Dockerfile
+    pull        Download an image from a registry
+    push        Upload an image to a registry
+    images      List images
+    login       Log in to a registry
+    logout      Log out from a registry
+    search      Search Docker Hub for images
+    version     Show the Docker version information
+    info        Display system-wide information
 
+  Management Commands:
+    builder     Manage builds
+    checkpoint  Manage checkpoints
+    container   Manage containers
+    context     Manage contexts
+    image       Manage images
+    manifest    Manage Docker image manifests and manifest lists
+    network     Manage networks
+    plugin      Manage plugins
+    system      Manage Docker
+    trust       Manage trust on Docker images
+    volume      Manage volumes
+
+  Swarm Commands:
+    config      Manage Swarm configs
+    node        Manage Swarm nodes
+    secret      Manage Swarm secrets
+    service     Manage Swarm services
+    stack       Manage Swarm stacks
+    swarm       Manage Swarm
+
+  Commands:
+    attach      Attach local standard input, output, and error streams to a running container
+    commit      Create a new image from a container&#39;s changes
+    cp          Copy files/folders between a container and the local filesystem
+    create      Create a new container
+    diff        Inspect changes to files or directories on a container&#39;s filesystem
+    events      Get real time events from the server
+    export      Export a container&#39;s filesystem as a tar archive
+    history     Show the history of an image
+    import      Import the contents from a tarball to create a filesystem image
+    inspect     Return low-level information on Docker objects
+    kill        Kill one or more running containers
+    load        Load an image from a tar archive or STDIN
+    logs        Fetch the logs of a container
+    pause       Pause all processes within one or more containers
+    port        List port mappings or a specific mapping for the container
+    rename      Rename a container
+    restart     Restart one or more containers
+    rm          Remove one or more containers
+    rmi         Remove one or more images
+    save        Save one or more images to a tar archive (streamed to STDOUT by default)
+    start       Start one or more stopped containers
+    stats       Display a live stream of container(s) resource usage statistics
+    stop        Stop one or more running containers
+    tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+    top         Display the running processes of a container
+    unpause     Unpause all processes within one or more containers
+    update      Update configuration of one or more containers
+    wait        Block until one or more containers stop, then print their exit codes
+
+  Invalid Plugins:
+    buildx      failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-buildx: no such file or directory
+    compose     failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-compose: no such file or directory
+    dev         failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-dev: no such file or directory
+    extension   failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-extension: no such file or directory
+    init        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-init: no such file or directory
+    sbom        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-sbom: no such file or directory
+    scan        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scan: no such file or directory
+    scout       failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scout: no such file or directory
+
+  Global Options:
+        --config string      Location of client config files (default &quot;/Users/me/.docker&quot;)
+    -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with &quot;docker context use&quot;)
+    -D, --debug              Enable debug mode
+    -H, --host list          Daemon socket to connect to
+    -l, --log-level string   Set the logging level (&quot;debug&quot;, &quot;info&quot;, &quot;warn&quot;, &quot;error&quot;, &quot;fatal&quot;) (default &quot;info&quot;)
+        --tls                Use TLS; implied by --tlsverify
+        --tlscacert string   Trust certs signed only by this CA (default &quot;/Users/me/.docker/ca.pem&quot;)
+        --tlscert string     Path to TLS certificate file (default &quot;/Users/me/.docker/cert.pem&quot;)
+        --tlskey string      Path to TLS key file (default &quot;/Users/me/.docker/key.pem&quot;)
+        --tlsverify          Use TLS and verify the remote
+    -v, --version            Print version information and quit
+
+  Run &#39;docker COMMAND --help&#39; for more information on a command.
+
+  For more help on how to use Docker, head to https://docs.docker.com/go/guides/
 </pre></div>
 </div>
-<p>(base) Michaels-MacBook-Pro:~ me$ docker run hello-world</p>
-<p>Hello from Docker!
-This message shows that your installation appears to be working correctly.</p>
-<p>To generate this message, Docker took the following steps:</p>
-<ol class="arabic simple">
-<li><p>The Docker client contacted the Docker daemon.</p></li>
-<li><p>The Docker daemon pulled the “hello-world” image from the Docker Hub.
-(arm64v8)</p></li>
-<li><p>The Docker daemon created a new container from that image which runs the
-executable that produces the output you are currently reading.</p></li>
-<li><p>The Docker daemon streamed that output to the Docker client, which sent it
-to your terminal.</p></li>
-</ol>
-<p>To try something more ambitious, you can run an Ubuntu container with:
-$ docker run -it ubuntu bash</p>
-<p>Share images, automate workflows, and more with a free Docker ID:
-<a class="reference external" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<p>For more examples and ideas, visit:
-<a class="reference external" href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a></p>
   </p>
+</div>
+<p>You can test if your Docker installation was successful by running:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
+<p>If you get the following output you’re good to go:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) Michaels-MacBook-Pro:~ me$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+</pre></div>
 </div>
 </section>
 </section>
@@ -680,11 +681,8 @@ Login Succeeded
   
 </pre></div>
 </div>
-<p>As you can see, we downloaded all <em>layers</em> that are needed to build the classic Ubuntu docker container, with the message Status:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloaded</span> <span class="n">newer</span> <span class="n">image</span> <span class="k">for</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
-</pre></div>
-</div>
-<p>Super important: by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Super</span> <span class="pre">important:</span></code> by default, docker pull always searches and downloads the container that is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code>, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu:20.04</span></code></p>
 </section>
 <section id="docker-commands-101-run">
 <h4>Docker commands 101 - run<a class="headerlink" href="#docker-commands-101-run" title="Link to this heading">#</a></h4>
@@ -708,7 +706,7 @@ Login Succeeded
 <p>This is neat, but cumbersome if we want to use more complex commands. After consulting the documentation again we try the following command to give us a bit more flexibility:</p>
 <p>We can utilizes a given docker container in an <em>interactive</em> fashion by including the <code class="docutils literal notranslate"><span class="pre">--it</span></code> flag in the the docker run command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">ubuntu</span> <span class="pre">bash</span></code></p>
-<p>Here, we also tell the ubuntu docker container to start/enter the bash shell.</p>
+<p>Here, we also tell the ubuntu docker container to <code class="docutils literal notranslate"><span class="pre">start/enter</span> <span class="pre">the</span> <span class="pre">bash</span> <span class="pre">shell</span></code>.</p>
 <p>Now we can explore the interactive Ubuntu environment, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 (base) Michaels-MacBook-Pro:~ me$ docker run -it ubuntu bash
@@ -721,7 +719,7 @@ root@806c74068242:/#
 </pre></div>
 </div>
 <p>As we can see the container is in fact simulating a complete Ubuntu file system.</p>
-<p>Inside the ubuntu docker container we can utilize the functionality of the ubuntu OS and we exit the container by typing <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<p>Inside the ubuntu docker container we can utilize the usual functionalities of the ubuntu OS. We exit the container by typing <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@806c74068242:/# exit
 exit
 (base) Michaels-MacBook-Pro:~ me$ 
@@ -816,7 +814,7 @@ docker_mne		sub-01			sub-03			sub-05
 
 </pre></div>
 </div>
-<p>!Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.</p>
+<p>Check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.</p>
 </section>
 </section>
 <section id="docker-commands-101-excerices">
@@ -982,7 +980,7 @@ root@e4d716b82877:/input#
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">A super short introduction - Container &amp; Virtualization</p>
+        <p class="prev-next-title">Introduction - Container &amp; Virtualization</p>
       </div>
     </a>
     <a class="right-next"

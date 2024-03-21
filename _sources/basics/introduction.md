@@ -1,4 +1,4 @@
-# A super short introduction - Container & Virtualization
+# Introduction - Container & Virtualization
 
 <br>
 <br>

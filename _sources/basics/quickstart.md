@@ -43,106 +43,107 @@
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
+      (base) Michaels-MacBook-Pro:~ me$ docker
 
-(base) Michaels-MacBook-Pro:~ me$ docker
+      Usage:  docker [OPTIONS] COMMAND
 
-Usage:  docker [OPTIONS] COMMAND
+      A self-sufficient runtime for containers
 
-A self-sufficient runtime for containers
+      Common Commands:
+        run         Create and run a new container from an image
+        exec        Execute a command in a running container
+        ps          List containers
+        build       Build an image from a Dockerfile
+        pull        Download an image from a registry
+        push        Upload an image to a registry
+        images      List images
+        login       Log in to a registry
+        logout      Log out from a registry
+        search      Search Docker Hub for images
+        version     Show the Docker version information
+        info        Display system-wide information
 
-Common Commands:
-  run         Create and run a new container from an image
-  exec        Execute a command in a running container
-  ps          List containers
-  build       Build an image from a Dockerfile
-  pull        Download an image from a registry
-  push        Upload an image to a registry
-  images      List images
-  login       Log in to a registry
-  logout      Log out from a registry
-  search      Search Docker Hub for images
-  version     Show the Docker version information
-  info        Display system-wide information
+      Management Commands:
+        builder     Manage builds
+        checkpoint  Manage checkpoints
+        container   Manage containers
+        context     Manage contexts
+        image       Manage images
+        manifest    Manage Docker image manifests and manifest lists
+        network     Manage networks
+        plugin      Manage plugins
+        system      Manage Docker
+        trust       Manage trust on Docker images
+        volume      Manage volumes
 
-Management Commands:
-  builder     Manage builds
-  checkpoint  Manage checkpoints
-  container   Manage containers
-  context     Manage contexts
-  image       Manage images
-  manifest    Manage Docker image manifests and manifest lists
-  network     Manage networks
-  plugin      Manage plugins
-  system      Manage Docker
-  trust       Manage trust on Docker images
-  volume      Manage volumes
+      Swarm Commands:
+        config      Manage Swarm configs
+        node        Manage Swarm nodes
+        secret      Manage Swarm secrets
+        service     Manage Swarm services
+        stack       Manage Swarm stacks
+        swarm       Manage Swarm
 
-Swarm Commands:
-  config      Manage Swarm configs
-  node        Manage Swarm nodes
-  secret      Manage Swarm secrets
-  service     Manage Swarm services
-  stack       Manage Swarm stacks
-  swarm       Manage Swarm
+      Commands:
+        attach      Attach local standard input, output, and error streams to a running container
+        commit      Create a new image from a container's changes
+        cp          Copy files/folders between a container and the local filesystem
+        create      Create a new container
+        diff        Inspect changes to files or directories on a container's filesystem
+        events      Get real time events from the server
+        export      Export a container's filesystem as a tar archive
+        history     Show the history of an image
+        import      Import the contents from a tarball to create a filesystem image
+        inspect     Return low-level information on Docker objects
+        kill        Kill one or more running containers
+        load        Load an image from a tar archive or STDIN
+        logs        Fetch the logs of a container
+        pause       Pause all processes within one or more containers
+        port        List port mappings or a specific mapping for the container
+        rename      Rename a container
+        restart     Restart one or more containers
+        rm          Remove one or more containers
+        rmi         Remove one or more images
+        save        Save one or more images to a tar archive (streamed to STDOUT by default)
+        start       Start one or more stopped containers
+        stats       Display a live stream of container(s) resource usage statistics
+        stop        Stop one or more running containers
+        tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+        top         Display the running processes of a container
+        unpause     Unpause all processes within one or more containers
+        update      Update configuration of one or more containers
+        wait        Block until one or more containers stop, then print their exit codes
 
-Commands:
-  attach      Attach local standard input, output, and error streams to a running container
-  commit      Create a new image from a container's changes
-  cp          Copy files/folders between a container and the local filesystem
-  create      Create a new container
-  diff        Inspect changes to files or directories on a container's filesystem
-  events      Get real time events from the server
-  export      Export a container's filesystem as a tar archive
-  history     Show the history of an image
-  import      Import the contents from a tarball to create a filesystem image
-  inspect     Return low-level information on Docker objects
-  kill        Kill one or more running containers
-  load        Load an image from a tar archive or STDIN
-  logs        Fetch the logs of a container
-  pause       Pause all processes within one or more containers
-  port        List port mappings or a specific mapping for the container
-  rename      Rename a container
-  restart     Restart one or more containers
-  rm          Remove one or more containers
-  rmi         Remove one or more images
-  save        Save one or more images to a tar archive (streamed to STDOUT by default)
-  start       Start one or more stopped containers
-  stats       Display a live stream of container(s) resource usage statistics
-  stop        Stop one or more running containers
-  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-  top         Display the running processes of a container
-  unpause     Unpause all processes within one or more containers
-  update      Update configuration of one or more containers
-  wait        Block until one or more containers stop, then print their exit codes
+      Invalid Plugins:
+        buildx      failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-buildx: no such file or directory
+        compose     failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-compose: no such file or directory
+        dev         failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-dev: no such file or directory
+        extension   failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-extension: no such file or directory
+        init        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-init: no such file or directory
+        sbom        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-sbom: no such file or directory
+        scan        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scan: no such file or directory
+        scout       failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scout: no such file or directory
 
-Invalid Plugins:
-  buildx      failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-buildx: no such file or directory
-  compose     failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-compose: no such file or directory
-  dev         failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-dev: no such file or directory
-  extension   failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-extension: no such file or directory
-  init        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-init: no such file or directory
-  sbom        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-sbom: no such file or directory
-  scan        failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scan: no such file or directory
-  scout       failed to fetch metadata: fork/exec /Users/me/.docker/cli-plugins/docker-scout: no such file or directory
+      Global Options:
+            --config string      Location of client config files (default "/Users/me/.docker")
+        -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use")
+        -D, --debug              Enable debug mode
+        -H, --host list          Daemon socket to connect to
+        -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+            --tls                Use TLS; implied by --tlsverify
+            --tlscacert string   Trust certs signed only by this CA (default "/Users/me/.docker/ca.pem")
+            --tlscert string     Path to TLS certificate file (default "/Users/me/.docker/cert.pem")
+            --tlskey string      Path to TLS key file (default "/Users/me/.docker/key.pem")
+            --tlsverify          Use TLS and verify the remote
+        -v, --version            Print version information and quit
 
-Global Options:
-      --config string      Location of client config files (default "/Users/me/.docker")
-  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use")
-  -D, --debug              Enable debug mode
-  -H, --host list          Daemon socket to connect to
-  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
-      --tls                Use TLS; implied by --tlsverify
-      --tlscacert string   Trust certs signed only by this CA (default "/Users/me/.docker/ca.pem")
-      --tlscert string     Path to TLS certificate file (default "/Users/me/.docker/cert.pem")
-      --tlskey string      Path to TLS key file (default "/Users/me/.docker/key.pem")
-      --tlsverify          Use TLS and verify the remote
-  -v, --version            Print version information and quit
+      Run 'docker COMMAND --help' for more information on a command.
 
-Run 'docker COMMAND --help' for more information on a command.
+      For more help on how to use Docker, head to https://docs.docker.com/go/guides/
 
-For more help on how to use Docker, head to https://docs.docker.com/go/guides/
 
-```
+  </p>
+</div>
 
 You can test if your Docker installation was successful by running:
 
@@ -150,7 +151,7 @@ You can test if your Docker installation was successful by running:
 
 If you get the following output you're good to go:
 
-````
+```
 (base) Michaels-MacBook-Pro:~ me$ docker run hello-world
 
 Hello from Docker!
@@ -164,18 +165,8 @@ To generate this message, Docker took the following steps:
     executable that produces the output you are currently reading.
  4. The Docker daemon streamed that output to the Docker client, which sent it
     to your terminal.
+```
 
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-
-  </p>
-</div>
 
 
 ### The `run` command
@@ -244,13 +235,9 @@ docker.io/library/ubuntu:latest
   
 ```
 
-As you can see, we downloaded all _layers_ that are needed to build the classic Ubuntu docker container, with the message Status: 
+`Super important:` by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag like so:
 
-```
-Downloaded newer image for ubuntu:latest
-```
-
-Super important: by default, docker pull always searches and downloads the container that is tagged with `latest`, hence if you want to have a certain version (e.g., an older release or developer) it is necessary to indicate the respective tag:
+`docker pull ubuntu:20.04`
 
 #### Docker commands 101 - run
 
@@ -285,7 +272,7 @@ We can utilizes a given docker container in an _interactive_ fashion by includin
 
 `docker run -it ubuntu bash`
 
-Here, we also tell the ubuntu docker container to start/enter the bash shell.
+Here, we also tell the ubuntu docker container to `start/enter the bash shell`.
 
 Now we can explore the interactive Ubuntu environment, e.g.:
 
@@ -302,7 +289,7 @@ root@806c74068242:/#
 
 As we can see the container is in fact simulating a complete Ubuntu file system.
 
-Inside the ubuntu docker container we can utilize the functionality of the ubuntu OS and we exit the container by typing `exit`
+Inside the ubuntu docker container we can utilize the usual functionalities of the ubuntu OS. We exit the container by typing `exit`
 
 ```
 root@806c74068242:/# exit
@@ -426,7 +413,7 @@ docker_mne		sub-01			sub-03			sub-05
 
 ```
 
-!Again, check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.
+Check the readme and/or docs of the docker container at hand if some paths and/or files are expected and if the paths are generated automatically.
 
 
 ### Docker commands 101 - excerices
