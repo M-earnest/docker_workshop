@@ -108,7 +108,7 @@ The WORKDIR instruction sets the working directory for any of the other instruct
 
         `/project`
 
-**note** Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
+**Note:** Be cautious if you mount a directory from your local machine onto the WORKDIR. The originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you'll store you scripts and use the WORKDIR as the input/output directory for your data.
 
 ### 3. RUN - install software, execute commands
 
@@ -130,12 +130,14 @@ So to install e.g. Python using the Ubuntu baseimage and apt package manager we 
     RUN apt-get update && apt-get install -y python3.10
 ```
 
-**note** You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
+**Important**: RUN is a build command, if you want to execute certain scripts/code when a container is run refere to point 5.
+
+**Note**: You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info [here](https://docs.docker.com/develop/develop-images/instructions/#apt-get))
 
 ### 4. COPY - add files to image
 
 ```
-    COPY print_info.py /info/
+    COPY print_info_container.py /info/
     COPY README.md /info/README.md
 ```
 
@@ -250,9 +252,9 @@ For this we provide a name for our image via the `-t flag` and specify the path 
     => => transferring context: 138B					                                                      0.0s
     => CACHED [2/4] WORKDIR /project  				                                                          0.0s
     => [3/4] RUN apt-get update &&     apt-get install -y python3.10 python3-pip && pip3 install pandas    1483.5s
-    => [4/4] COPY print_info.py  /project/ 			                                                          0.0s
+    => [4/4] COPY print_info_container.py  /project/ 			                                                          0.0s
     => [4/6] RUN mkdir /info                                                                                  0.1s
-    => [5/6] COPY print_info.py /info/                                                                        0.0s
+    => [5/6] COPY print_info_container.py /info/                                                                        0.0s
     => [6/6] COPY README.md /info/README.md                                                                   0.0s
     => exporting to image						                                                              1.2s
     => => exporting layers						                                                              1.2s
@@ -288,7 +290,7 @@ The output looks like this:
     # EEG Demographics Dataset
 
     ## Author
-    - Name: M. Ernst
+    - Name: Author
     - Date: 2024-03-09
     - Location: Frankfurt am Main, Germany
 
@@ -306,7 +308,7 @@ The output looks like this:
 
     ## Citing This Work
     If you use this dataset in your research, please cite it as follows:
-    Ernst, M. (2024). Study Title. Frankfurt am Main, Germany. ORCID-ID
+    Lastname, F. (2024). Study Title. Frankfurt am Main, Germany. ORCID-ID
 
 ```
 
