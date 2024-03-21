@@ -38,10 +38,7 @@ The second session will build upon the things learned during the first and will 
 ## The details
 
 
-# Software containers in neuroscience research
-  
-
-You can checkout the respective sections:
+You can check out the respective sections:
 
 * [An overview](overview.md)
 
@@ -62,7 +59,6 @@ You can checkout the respective sections:
 
 * [Introdcution - Software containers and Virtualization](https://m-earnest.github.io/docker_workshop/basics/introduction.html)
 
-
 * [Quickstarting your container expertise](https://m-earnest.github.io/docker_workshop/basics/quickstart.html)
 
 * [Management of software containers](https://m-earnest.github.io/docker_workshop/advanced/management.html)
@@ -73,7 +69,7 @@ You can checkout the respective sections:
 
 * [Creating your own software container](https://m-earnest.github.io/docker_workshop/advanced/creating_your_own.html)
 
-* [Automating software containers](https://m-earnest.github.io/docker_workshop/advanced/automating.html)
+* [Automating container build and maintenance](https://m-earnest.github.io/docker_workshop/advanced/automating.html)
 
 * [Code of Conduct](https://m-earnest.github.io/docker_workshop/CoC.html)
 

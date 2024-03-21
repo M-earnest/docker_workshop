@@ -218,7 +218,7 @@ Using the the `--rm` flag when running a container should prevent that a contain
 
 We can further use tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control :
 
-`docker tag old-container-name/container-id:tag new-container-name/container-id:tag`
+`docker tag container-id new_name:new_tag`
 
 
 #### Import/Export
@@ -260,7 +260,7 @@ Basic image commands:
 <summary>Solution</summary>
 
 ```
-docker tag /container-id:latest neurodocker/container-id:image_42
+docker tag container-id neurodebian:image_42
 ```
 
 </details>
