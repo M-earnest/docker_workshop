@@ -347,10 +347,10 @@ Of course most workflows will necessary be more complex, let's look at another e
 
 
 
-### Neurodocker?
+### Neurodocker
 
 You might wonder: Isn't there a sufficient, faster and easier way of composing Dockerfiles?
-Well, say no more and meet `Neurodocker`, a Docker container that targets the creation of Docker containers - Dockerception.
+Well, say no more and meet [Neurodocker](https://www.repronim.org/neurodocker/user_guide/installation.html), a Docker container that targets the creation of Docker containers - Dockerception.
 
 Even though Neurodocker was designed for (you might've guessed it already) Docker containers to utilize in the realm of neuroscience, it's also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.
 
@@ -434,11 +434,15 @@ conda_install="python=3.11 numpy pandas" \
 pip_install="mne" > Dockerfile
 ```
 
-
-
-
 So using Neurodocker can save you a lot of time and stress. It's especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.
 
+### Neurodocker - Going further beyond
+
+Check-out the examples on the [Neurodocker site](https://www.repronim.org/neurodocker/user_guide/examples.html), to see how to incorporate most neuroscience relevant packages into a Docker container. 
+
+Additionally, you should check-out their [command-line-interface section](https://www.repronim.org/neurodocker/user_guide/cli.html) to see how to best make use of Neurodocker. 
+
+**Note** If your server system doesn't support docker, Neurodocker also allows for the creation of singularity images using mostly the same syntax as above!
 
 ### Docker push
 
