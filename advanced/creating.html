@@ -761,7 +761,7 @@ Status: Downloaded newer image for repronim/neurodocker:0.9.5
 docker.io/repronim/neurodocker:0.9.5
 </pre></div>
 </div>
-<p>All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use <code class="docutils literal notranslate"><span class="pre">neurodebian:bullseye</span></code> as a base and apt as package manager:</p>
+<p>All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use <code class="docutils literal notranslate"><span class="pre">ubuntu:latest</span></code> as a base and apt as package manager:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
 --pkg-manager apt \
