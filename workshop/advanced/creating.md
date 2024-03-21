@@ -377,7 +377,7 @@ docker.io/repronim/neurodocker:0.9.5
 ```
 
 
-All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use `neurodebian:bullseye` as a base and apt as package manager:
+All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use `ubuntu:latest` as a base and apt as package manager:
 
 
 ```

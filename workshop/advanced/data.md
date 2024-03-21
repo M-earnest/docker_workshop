@@ -133,7 +133,7 @@ docker run -v path/outside/container:/path/inside/container:ro name_of_image
 <br>
 <br>
 
-**Note:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: `-u` which can be utilized within the `docker run` command as follows: 
+**Note on server system usage:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: `-u` which can be utilized within the `docker run` command as follows: 
 ```
 docker run -u <userid> name_of_image
 ```
