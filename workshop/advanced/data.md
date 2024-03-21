@@ -22,7 +22,7 @@ In the following sections, we will go over both ways of getting data inside your
 
 ### Getting Data into a container permanently
 
-Let's say we want to put a picture of whale in our Docker container, because we're such docker fans and whales are nothing but awesome, but we've learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.
+Let's say we want to add a picture of a whale into our Docker container, because we're such docker fans and whales are nothing but awesome, buuut we've learned that the state of a given container cannot be permanently changed from the mounting part of this workshop.
 
 So as we've already seen we can use the `COPY instruction` to add the data (i.e. our .png file) into our Docker container during its build.
 
@@ -104,7 +104,8 @@ Rebuild and checking the outcome, everything worked like a charm!
 
 ### Mounting data inside and outside of your container
 
-Well, all of you should have heard about mounting before in our [quickstart](basics/quickstart.md) section. Once again, **mounting** describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
+Well, all of you should have heard plenty about mounting in our [quickstart](basics/quickstart.md) section. Once again, **mounting** describes a mapping from paths outside the container (e.g. your local machine or online data repositories) to paths inside the container.
+
 <br>
 Now, who remembers the flag we have to use within the `docker run` command to enable **mounting** ? ...
 
@@ -131,7 +132,6 @@ docker run -v path/outside/container:/path/inside/container:ro name_of_image
 ``` 
 
 <br>
-<br>
 
 **Note on server system usage:** If you use a mounted directory to store output, produced inside your container, on your local filesystem, make sure that you have administrator rights on your own machine to access/modify the output. Since the container writes the output as a administrator, you will not be able to access/modify your data if you dont have superuser rights, e.g. when working on a compute server. One way to avoid this issue, is the user flag: `-u` which can be utilized within the `docker run` command as follows: 
 ```
@@ -156,8 +156,10 @@ Add practical example here?
 #### Practical application
 
 The probably most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container. 
+
 <br>
-- better option than permanetly copying data into container since neuroimaging data is often heavy
+
+- better option than permanetly copying data into container since neuroimaging data is often lagre
 - additionally helpful to create **permanent** outputs written to your **local system** , e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)
   
 <br>

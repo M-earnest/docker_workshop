@@ -13,11 +13,11 @@
 - minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the [_prerequisites section_ ](https://m-earnest.github.io/docker_workshop/prerequisites.html) to catch up!)
 
 
-#### How's docker configured?
+#### How is docker configured?
 
 The setup and configuration of a given docker installation is rather complex and characterized by a myriad of factors and settings: storage, RAM, swap, CPU, proxy, etc. ...
     
-You should be aware of how the docker installation you're using is setup and configured at any given time, as otherwise perfectly working docker containers fail to function properly.
+You should be aware of how the docker installation you're using is setup and configured at any given time, as otherwise perfectly working docker containers may fail to function properly.
 As usual, consider the READNE and/or docs of a given docker container before using it.
 
 We can get a comprehensive overview of our docker setup and configuration via the docker command:
@@ -117,7 +117,7 @@ Which should produce something like the followin output:
 
 Among this barrage of information, we can see that docker uses a default amount of RAM, CPUs, etc.
 
-- all of these parameters can be set and configured within the docker run command and the respective flags for a specific container,
+- all of these parameters can be set and configured within the docker run command using the respective flags for a specific container,
   - e.g. we can set the RAM  afforded to our previously pulled Ubuntu Container by using the following flags --memory RAM in mb or gb, e.g. --memory 4gb
 
       `docker run -it --rm --memory 4gb ubuntu`
@@ -214,14 +214,14 @@ Using the the `--rm` flag when running a container should prevent that a contain
 
 `By now our evergreen: check the readme and/or docs of a given docker container!`
 
-We can further use tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control :
+We can further use tag related behavior to "rename" a given docker container in order to prevent unwanted deletions or problems with regard to version control:
 
 `docker tag container-id new_name:new_tag`
 
 
 #### Import/Export
 
-Besides using Docker Hub to share and download docker containers, it's also possible to export and import them locally using the docker commands save & load. This behavior may be prefered for local sharing or if you incorporate data/info that shouldn't be publicly accessible.
+Besides using Docker Hub to share and download docker containers, it's also possible to export and import containers locally using the docker commands `save` & `load`. This behavior may be prefered for local sharing or if you incorporate data/info that shouldn't be publicly accessible.
 
     `docker save -o name_of_saved_image.tar imagename`
 
