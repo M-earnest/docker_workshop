@@ -781,7 +781,7 @@ docker.io/repronim/neurodocker:0.9.5
 --base-image ubuntu:latest \
 --pkg-manager apt \
 --install git nano \
---miniconda version=latest env_name=myenvironmentname \
+--miniconda version=latest env_name=myenvironmentname env_exists=false \
 conda_install=&quot;python=3.11 numpy pandas&quot; \
 pip_install=&quot;mne&quot;
 </pre></div>
