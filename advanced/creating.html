@@ -544,7 +544,7 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><strong>note</strong> Be cautious if you mount a directory from your local machine onto the WORKDIR the originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
+<p><strong>Note:</strong> Be cautious if you mount a directory from your local machine onto the WORKDIR. The originally contained files cannot be accessed anymore as they will be replaced with the contents of your local directory. To circumvent this you can set the WORKDIR multiple times in a script or e.g. simply create a folder strcuture where you’ll store you scripts and use the WORKDIR as the input/output directory for your data.</p>
 </section>
 <section id="run-install-software-execute-commands">
 <h2>3. RUN - install software, execute commands<a class="headerlink" href="#run-install-software-execute-commands" title="Link to this heading">#</a></h2>
@@ -561,11 +561,12 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.10</span>
 </pre></div>
 </div>
-<p><strong>note</strong> You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
+<p><strong>Important</strong>: RUN is a build command, if you want to execute certain scripts/code when a container is run refere to point 5.</p>
+<p><strong>Note</strong>: You should always combine RUN apt-get update with apt-get install in the same statement, as otherwise you may run into cache issues (more info <a class="reference external" href="https://docs.docker.com/develop/develop-images/instructions/#apt-get">here</a>)</p>
 </section>
 <section id="copy-add-files-to-image">
 <h2>4. COPY - add files to image<a class="headerlink" href="#copy-add-files-to-image" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">COPY</span> <span class="n">print_info_container</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
     <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
 </pre></div>
 </div>
@@ -656,9 +657,9 @@ Otherwise you’ll find the necessary files under <code class="docutils literal 
 =&gt; =&gt; transferring context: 138B					                                                      0.0s
 =&gt; CACHED [2/4] WORKDIR /project  				                                                          0.0s
 =&gt; [3/4] RUN apt-get update &amp;&amp;     apt-get install -y python3.10 python3-pip &amp;&amp; pip3 install pandas    1483.5s
-=&gt; [4/4] COPY print_info.py  /project/ 			                                                          0.0s
+=&gt; [4/4] COPY print_info_container.py  /project/ 			                                                          0.0s
 =&gt; [4/6] RUN mkdir /info                                                                                  0.1s
-=&gt; [5/6] COPY print_info.py /info/                                                                        0.0s
+=&gt; [5/6] COPY print_info_container.py /info/                                                                        0.0s
 =&gt; [6/6] COPY README.md /info/README.md                                                                   0.0s
 =&gt; exporting to image						                                                              1.2s
 =&gt; =&gt; exporting layers						                                                              1.2s
@@ -686,7 +687,7 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
     # EEG Demographics Dataset
 
     ## Author
-    - Name: M. Ernst
+    - Name: Author
     - Date: 2024-03-09
     - Location: Frankfurt am Main, Germany
 
@@ -704,7 +705,7 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 
     ## Citing This Work
     If you use this dataset in your research, please cite it as follows:
-    Ernst, M. (2024). Study Title. Frankfurt am Main, Germany. ORCID-ID
+    Lastname, F. (2024). Study Title. Frankfurt am Main, Germany. ORCID-ID
 
 </pre></div>
 </div>
