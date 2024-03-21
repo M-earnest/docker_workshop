@@ -2,15 +2,16 @@
 
 ### Learning objectives
 
-- basic docker management
-- docker commands
-- resource management
+- learn the architecture of a docker image
+- learn what a dockerfile and a build context are
+- learn how to build, run and share a docker container
+- learn how to make your (professional life easier) by using [Neurodocker](https://www.repronim.org/neurodocker/user_guide/examples.html)
 
 ### Requirements
 - a working version of [Docker](https://docs.docker.com/get-docker/)
 - a Docker Hub and GitHub account
 - access to a [Unix terminal/shell](https://en.wikipedia.org/wiki/Unix_shell)
-- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the _refresher section_ [link](link) to catch up!)
+- minimal understanding of BASH, i.e. primarily the `pwd`, `ls`  and `cd` commands. (Check the [refresher section](lhttps://m-earnest.github.io/docker_workshop/prerequisites.html) to catch up!)
 
 
 
@@ -18,7 +19,7 @@
 
 So far, we (hopefully) got to know how docker works, how containers can be downloaded, used and managed. Next, we'll learn how to create docker containers for our own work, including all the necessary dependencies to make your workflow truly reproducible. As a heads-up, most of the infos here are distilled from the [dockerfile reference page](https://docs.docker.com/reference/dockerfile/), which is great resource if you're looking for more in-depth explanations for the following lesson.
 
-We will be relying on the `command line` and `bash` from here on out, if this seems like gibberish to you, please go through the [course prerequisites - Introduction to the (unix) command line: bash](https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html).
+We will still be relying on the `command line` and `bash` from here on out, if this seems like gibberish to you, please go through the [course prerequisites - Introduction to the (unix) command line: bash](https://m-earnest.github.io/docker_workshop/prerequisites/intro_to_shell.html).
 
 
 ### Docker containers - the creation
