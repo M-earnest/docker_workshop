@@ -560,39 +560,24 @@ Add practical example here?
 <li><p>additionally helpful to create <strong>permanent</strong> outputs written to your <strong>local system</strong> , e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)</p></li>
 </ul>
 <br>
-<p>For demonstration purposes we have created an image that can be utilized to convert the <code class="docutils literal notranslate"><span class="pre">MNE-sample-dataset</span></code>, a test dataset provided by the <a class="reference external" href="https://mne.tools/stable/index.html">MNE community</a>. MNE is a tool for MEEG data processing and visualisation.</p>
-<p>We have stored the <code class="docutils literal notranslate"><span class="pre">MNE-sample-dataset</span></code> in the following location <code class="docutils literal notranslate"><span class="pre">~/data</span></code>. Let’s check if its stored where its supposed to be:</p>
+<p>For demonstration purposes we have created an image that can be utilized to convert the <code class="docutils literal notranslate"><span class="pre">MNE-sample-dataset</span></code>, a test dataset provided by the <a class="reference external" href="https://mne.tools/stable/index.html">MNE community</a>, into the <a class="reference external" href="https://bids.neuroimaging.io/">BIDS</a> format, a standardized way of organizing your neuroimaging data. MNE is an open-source tool for MEEG data processing and visualisation.</p>
+<p>You can find the dataset in the <code class="docutils literal notranslate"><span class="pre">~/docker_workshop_oldenburg</span></code> directory on your local machine. Let’s check if its stored where its supposed to be:</p>
 <br>
 <p><img alt="mounted directory before docker run" src="../_images/mounted_directory_before_docker_run.png" /></p>
-<br>
-<p>For our container to run the conversion properly, we need to mount the directory from our local system, which containing our data to the <code class="docutils literal notranslate"><span class="pre">/input</span></code> directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder of the container:</p>
-<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-    # Step 1: Use the newest Ubuntu version as a base image
-    &lt;span style=&quot;color:blue&quot;&gt;# test1&lt;/span&gt;
-    FROM ubuntu:latest
-
-    # Step 2: Set the working directory
-    WORKDIR /project
-
-    # Step 3: Install Python 3.10, and some Python packages (Scipy, Pandas) via the Ubuntu package manager apt
-    RUN apt-get update &amp;&amp; \
-        apt-get install -y python3.10 python3-pip &amp;&amp; \
-        pip3 install pandas
-
-    # let&#39;s also create  a folder to store our info file in
-    RUN mkdir /info
-
-    # Step 4: Copy our Python script and README into the info folder of the image
-    COPY print_info.py /info/
-    COPY README.md /info/README.md
-
-    # Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file 
-    CMD [&quot;cat&quot;, &quot;/info/README.md&quot;]
-```
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~/docker_workshop_oldenburg$ ls
+MNE-sample-data
 </pre></div>
 </div>
+<br>
+<p>For our container to run the conversion properly, we need to mount the directory from our local system, containing our data to the <code class="docutils literal notranslate"><span class="pre">/input</span></code> directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder of the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> \
+<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">aaronreer</span><span class="o">/</span><span class="n">docker_workshop_oldenburg</span><span class="o">/</span><span class="n">MNE</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nb">input</span><span class="o">/</span> \
+<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">aaronreer</span><span class="o">/</span><span class="n">docker_workshop_oldenburg</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">output</span> <span class="n">aaronreer1</span><span class="o">/</span> \
+<span class="n">mne_conversion</span><span class="p">:</span><span class="n">firsttry</span>
+</pre></div>
 </div>
+<details>
+<summary>Solution</summary>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    # Output:
     &lt;span style=&quot;color:blue&quot;&gt;# test1 :&lt;/span&gt;
@@ -687,6 +672,7 @@ Add practical example here?
 </pre></div>
 </div>
 </div>
+</details>
 <br>
 <p>When checking our filesystem using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command we can observe that a new directory called <code class="docutils literal notranslate"><span class="pre">MNE-sample-data-bids1</span></code> has appeared.</p>
 <br>

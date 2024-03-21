@@ -162,46 +162,33 @@ The probabaly most common use-case for mounts in the domain of neuroscientific r
   
 <br>
 
-For demonstration purposes we have created an image that can be utilized to convert the `MNE-sample-dataset`, a test dataset provided by the [MNE community](https://mne.tools/stable/index.html). MNE is a tool for MEEG data processing and visualisation.
+For demonstration purposes we have created an image that can be utilized to convert the `MNE-sample-dataset`, a test dataset provided by the [MNE community](https://mne.tools/stable/index.html), into the [BIDS](https://bids.neuroimaging.io/) format, a standardized way of organizing your neuroimaging data. MNE is an open-source tool for MEEG data processing and visualisation.
 
-We have stored the `MNE-sample-dataset` in the following location `~/data`. Let's check if its stored where its supposed to be:
+You can find the dataset in the `~/docker_workshop_oldenburg` directory on your local machine. Let's check if its stored where its supposed to be:
 
 <br>
 
 ![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
 
+```
+aaronreer@FK6P-1158240:~/docker_workshop_oldenburg$ ls
+MNE-sample-data
+```
+
 <br>
 
-For our container to run the conversion properly, we need to mount the directory from our local system, which containing our data to the `/input` directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the `output` folder of the container:
+For our container to run the conversion properly, we need to mount the directory from our local system, containing our data to the `/input` directory of the container. Further, we need to mount the directory to which we want to container to write our BIDS converted data to the `output` folder of the container:
+
+```
+docker run \
+-v /home/aaronreer/docker_workshop_oldenburg/MNE-sample-data/:/input/ \
+-v /home/aaronreer/docker_workshop_oldenburg/:/output aaronreer1/ \
+mne_conversion:firsttry
+```
 
 
-<div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
-
-    ```
-        # Step 1: Use the newest Ubuntu version as a base image
-        <span style="color:blue"># test1</span>
-        FROM ubuntu:latest
-
-        # Step 2: Set the working directory
-        WORKDIR /project
-
-        # Step 3: Install Python 3.10, and some Python packages (Scipy, Pandas) via the Ubuntu package manager apt
-        RUN apt-get update && \
-            apt-get install -y python3.10 python3-pip && \
-            pip3 install pandas
-
-        # let's also create  a folder to store our info file in
-        RUN mkdir /info
-
-        # Step 4: Copy our Python script and README into the info folder of the image
-        COPY print_info.py /info/
-        COPY README.md /info/README.md
-
-        # Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file 
-        CMD ["cat", "/info/README.md"]
-    ```
-
-</div>
+<details>
+<summary>Solution</summary>
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 
@@ -299,6 +286,8 @@ For our container to run the conversion properly, we need to mount the directory
 ```
 
 </div>
+
+</details>
 
 <br>
 
