@@ -155,7 +155,7 @@ Add practical example here?
 
 #### Practical application
 
-The probabaly most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container. 
+The probably most common use-case for mounts in the domain of neuroscientific research is the transfer of research data into and outside of the container. 
 <br>
 - better option than permanetly copying data into container since neuroimaging data is often heavy
 - additionally helpful to create **permanent** outputs written to your **local system** , e.g. results of analysis (remember every file thats created inside a container is removed upon shutting down the container)
@@ -297,10 +297,7 @@ When checking our filesystem using the `ls` command we can observe that a new di
 
 ![mounted directory after docker run](/static/mounted_directory_after_docker_run.png)
 
-### Input/Output - administrator rights
 
-- notes re folder structures here
-- input
 
 
 ### Docker & data - discussion
