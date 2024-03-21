@@ -174,7 +174,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../dei.html">Diversity, Equity and Inclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Workshop overview</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup for the workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../outline.html">Outline</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -196,7 +195,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating software containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Software containers &amp; data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="creating_your_own.html">Creating your own software container</a></li>
-<li class="toctree-l1"><a class="reference internal" href="automating.html">Automating software containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="automating.html">Automating container build and maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
 </ul>
 
@@ -797,6 +796,7 @@ pip_install=&quot;mne&quot; &gt; Dockerfile
 </pre></div>
 </div>
 <p>So using Neurodocker can save you a lot of time and stress. It’s especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.</p>
+<p><strong>NOTE!</strong> When building Dockerfiles created with Neurodocker on an M1 or M2 Mac you might run into issues. These can usually be resolved by providing an architecture flag to your build command, e.g. <code class="docutils literal notranslate"><span class="pre">--platform</span> <span class="pre">linux/x86_64</span></code>.</p>
 </section>
 <section id="neurodocker-going-further-beyond">
 <h2>Neurodocker - Going further beyond<a class="headerlink" href="#neurodocker-going-further-beyond" title="Link to this heading">#</a></h2>

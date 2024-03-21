@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Automating software containers &#8212; Docker for neuroscience</title>
+    <title>Automating container build and maintenance &#8212; Docker for neuroscience</title>
   
   
   
@@ -174,7 +174,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../dei.html">Diversity, Equity and Inclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Workshop overview</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup for the workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../outline.html">Outline</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../prerequisites.html">Course prerequisites</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -196,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="creating.html">Creating software containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Software containers &amp; data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="creating_your_own.html">Creating your own software container</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Automating software containers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Automating container build and maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CoC.html">Code of Conduct</a></li>
 </ul>
 
@@ -400,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Automating software containers</h1>
+    <h1>Automating container build and maintenance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -429,8 +428,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="automating-software-containers">
-<h1>Automating software containers<a class="headerlink" href="#automating-software-containers" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="automating-container-build-and-maintenance">
+<h1>Automating container build and maintenance<a class="headerlink" href="#automating-container-build-and-maintenance" title="Link to this heading">#</a></h1>
 <p>First off, there is a fairly simple way to build a Docker image from your GitHub repositories. Simply provide the URL to your Dockerfile when building, i.e for a <code class="docutils literal notranslate"><span class="pre">directory</span></code> called <code class="docutils literal notranslate"><span class="pre">docker</span></code> in the <code class="docutils literal notranslate"><span class="pre">branch</span></code> <code class="docutils literal notranslate"><span class="pre">container</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">https://github.com/docker/rootfs.git#container:docker</span></code></p>
 <p>Check the <a class="reference external" href="https://docs.docker.com/reference/cli/docker/image/build/#git-repositories">Docker documentation on GitHub repositories for more info</a></p>

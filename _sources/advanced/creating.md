@@ -429,6 +429,8 @@ pip_install="mne" > Dockerfile
 
 So using Neurodocker can save you a lot of time and stress. It's especially great to set up the basics of your Docker container, so one approach to create a Docker container for your workflow may be to do the basics with Neurodocker and fine-tune to your needs manually.
 
+**NOTE!** When building Dockerfiles created with Neurodocker on an M1 or M2 Mac you might run into issues. These can usually be resolved by providing an architecture flag to your build command, e.g. `--platform linux/x86_64`.
+
 ### Neurodocker - Going further beyond
 
 Check out the examples on the [Neurodocker site](https://www.repronim.org/neurodocker/user_guide/examples.html), to see how to incorporate most neuroscience relevant packages into a Docker container. 

@@ -1,4 +1,4 @@
-# Automating software containers
+# Automating container build and maintenance
 
 First off, there is a fairly simple way to build a Docker image from your GitHub repositories. Simply provide the URL to your Dockerfile when building, i.e for a `directory` called `docker` in the `branch` `container`.
 
