@@ -297,10 +297,7 @@ When checking our filesystem using the `ls` command we can observe that a new di
 
 ![mounted directory after docker run](/static/mounted_directory_after_docker_run.png)
 
-### Input/Output - administrator rights
 
-- notes re folder structures here
-- input
 
 
 ### Docker & data - discussion
