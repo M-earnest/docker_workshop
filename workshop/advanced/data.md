@@ -188,7 +188,7 @@ mne_conversion:firsttry
 
 
 <details>
-<summary>Solution</summary>
+<summary>Output</summary>
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
 

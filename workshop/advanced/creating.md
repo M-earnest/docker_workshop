@@ -357,7 +357,6 @@ Even though Neurodocker was designed for (you might've guessed it already) Docke
 So, let's see how we can create our Dockerfiles using `Neurodocker`. At first we have to get the Neurodocker image using the `docker pull command`
 
 
-![pull Neurodocker image](/static/Neurodocker_pull_image.png)
 
 ```
 aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
@@ -378,8 +377,6 @@ docker.io/repronim/neurodocker:0.9.5
 All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use `neurodebian:bullseye` as a base and apt as package manager:
 
 
-![Neurodocker: select base-image and package manager](/static/Neurodocker_generate_docker_base.png)
-
 ```
 aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
@@ -391,8 +388,6 @@ aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker 
 
 Next, we specify all the Linux packages that we want to have installed in our image:
 
-
-![Neurodocker: Linux installations ](/static/Neurodocker_generate_docker_linux_installations.png)
 
 
 ```
@@ -407,8 +402,6 @@ Now, we are only missing the python part...
 
 
 
-![Neurodocker: setting up python](/static/Neurodocker_generate_docker_python.png)
-
 ```
 aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
@@ -419,10 +412,9 @@ conda_install="python=3.11 numpy pandas" \
 pip_install="mne"
 ```
 
-Great! We have all the information that we need. Hence, let's run the `Neurodocker` container parsing the output to a file called 'Dockerfile'. We can do so using the `>-operator` :
+Great! We have all the information that we need. Hence, let's run the `Neurodocker` container parsing the output to a file called 'Dockerfile'. We can do so using the `>` operator :
 
 
-![Neurodocker: run container and parse output to Dockerfile](/static/Neurodocker_generate_docker_python_toDockerfile.png)
 
 ```
 aaronreer@FK6P-1158240:~/data$ docker run repronim/neurodocker:0.9.5 generate docker \
