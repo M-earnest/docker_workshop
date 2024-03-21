@@ -283,7 +283,8 @@ docker save -o a_container_at_the_end_of_the_universe.tar neurodebian:image42
 <summary>Solution</summary>
 
 ```
-docker rm container-id
+docker rmi neurodebian:nd-non-free
+docker rmi neurodebian:image42
 ```
 
 </details>
@@ -307,7 +308,7 @@ docker load --input a_container_at_the_end_of_the_universe.tar
 <summary>Solution</summary>
 
 ```
-docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 a_container_at_the_end_of_the_universe
+docker run -it --rm --memory 2gb --memory-swap 3gb --cpus 1 neurodebian:image42
 ```
 
 </details>
