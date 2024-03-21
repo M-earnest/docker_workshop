@@ -69,13 +69,6 @@ The [Women in Neuroscience Repository](https://www.winrepo.org/) aims to "identi
 
 <iframe width="560" height="315" src="https://www.winrepo.org/ " title="winrepo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Queer in Neuro
-
-The [Queer in Neuro](https://queerinneuro.com/) initiative is currently under development but exciting things will happen soon. Make sure to check their [<img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Twitter_Logo_as_of_2021.svg/1920px-Twitter_Logo_as_of_2021.svg.png" width="20" height="15">](https://twitter.com/QueerInNeuro).
-
-
-<iframe width="560" height="315" src="https://queerinneuro.com/ " title="queerinneuro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ### Queer Engineer International
 
 [Queer Engineer Internation](https://www.queerengineer.org/) is an initiative "to build resources and authentic community at the intersection of LGBTQIA+ and STEM".
