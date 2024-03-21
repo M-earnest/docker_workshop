@@ -23,6 +23,7 @@ Virtualization techniques are means to ensure `reproducibility` of scietific fin
 *To motivate why utilizing containerization (or any kind of virtualization techniques for that matter) can be beneficial, let's imagine the following scenario:*
 
 <br>
+
 **Your PI tasks you to do a couple of analyses for a new project. Lucky enough, you learn that one of your colleagues did run comparable analyses in the past and is so nice to share it with you. Even better: everything is assembled in one handy script called fancy_analyzes.py.
 Your colleague tells you to run the script via navigating to the respective folder and type:**
 
@@ -190,4 +191,6 @@ Popular choices for the management and creation of virtual environments are:
 
 Interesting tutorials and blog posts:
 
-- collect new ressoruces here !!!!!!
+- [Docker tutorial -getting started with containers](https://www.keycdn.com/blog/docker-tutorial)
+- [Docker cheatcheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
+- [100 best docker tutorials](https://www.aquasec.com/cloud-native-academy/docker-container/100-best-docker-tutorials/)
