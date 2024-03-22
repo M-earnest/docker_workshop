@@ -511,7 +511,7 @@ root@e4d716b82877:/input#
 
 </details>
 
-- pull the `aaronreer1/get_workshop_data` docker image in its 0.0.2 version
+- pull the `aaronreer1/get_workshop_data` docker image in its 0.0.3 version
   
 Now, this container will copy all the necessary files for this workshop to the `/output` directory in its file system. You can utilize the containers' functionality by mounting a directory on your local system, e.g. the `Desktop` or `home`, to the `/output` within the container such that the files get copied to your local system upon running the container.
 
@@ -519,7 +519,7 @@ Now, this container will copy all the necessary files for this workshop to the `
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.2
+aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.3
 ```
 
 </details>
@@ -532,7 +532,7 @@ aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_data:0.0.2
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.2
+aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_data:0.0.3
 ```
 
 </details>
