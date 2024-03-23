@@ -5,7 +5,7 @@
 
 - get local data into containers
 - get online data into containers
-- learn different ways of getting data into containers (e.g. store them in container or mount them into container during runtime)
+- bind mount input/output directories to a container during runtime
 
 ### Motivation
 
@@ -14,7 +14,7 @@ But how do we get data into our Docker containers? Well, there are two different
 
 1. One can either copy the data inside the container during its build. This way the respective data is permanently stored inside our image. As mentioned above, this functionality can come in handy if you want to provide tutorials or user-manuals to the end-user of your container or some test data to make sure the containers behaviour matches the expected behaviour.
 
-2. However, sometimes it is required to get data into our container in a more generic way during runtime, e.g. if we have set-up an automated analysis workflow within our container and want the user to provide their own data, such that the analysis can be run on that data inside the container. To achieve this, we can **mount** a directory from our local computer to a directory within the container. This way we can give the container access to specific directories on our local computer, e.g. to load data from our machine into the container. Since mounting is a bidirectional process we can also allow the container to write outputs to sepcific directories on our local machine.
+2. However, sometimes it is required to get data into our container during runtime, e.g. if we have set-up an automated analysis workflow within our container and want the user to provide their own data, such that the analysis can be run on that data inside the container. To achieve this, we can **mount** a directory from our local computer to a directory within the container. This way we can give the container access to specific directories on our local computer, e.g. to load data from our machine into the container. Since mounting is a bidirectional process we can also allow the container to write outputs to sepcific directories on our local machine.
 <br>
 
 In the following sections, we will go over both ways of getting data inside your conatiner and provide some practical examples.

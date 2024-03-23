@@ -197,12 +197,13 @@ Let's create a new directory on our desktops called `my_first_docker` and in it 
 **2. Add files to the build context**
 
 Download the course materials and copy all files from the examples folder into `my_first_docker folder` (README.md, print_info_container.py, print_info_local_system.py). 
-Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.2` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
+Otherwise you'll find the necessary files under `/docker_workshop_oldenburg/build_example/`, if you've pulled and ran the `get_workshop_materials:0.0.3` container from the [quickstart session](https://m-earnest.github.io/docker_workshop/basics/quickstart.html).
 
 E.g. using bash:
 
-`cp /build_example/README.md /Users/me/Desktop/my_first_docker`
+`cp /build_example/README.md /Users/username/Desktop/my_first_docker`
 
+**Note:** Replace /Users/username/Desktop/my_first_docker with the path to the Desktop on your machine, you can find this path using the following commands in your terminal `pwd` (get the name of the current working directory), `ls` (list files and directories) and `cd` (change directory). The path structure may differ depending on your operating system, i.e on Linux based systems: `/home/username/Desktop`; on Windows using WSL: `/mnt/c/Users/<username>/Desktop`.
 
 **3. Populate the Dockerfile**
 
@@ -224,7 +225,7 @@ Open your Dockerfile with a text-editor of your choice (VScode is recommended), 
     RUN mkdir /info
 
     # Step 4: Copy our Python script and README into the info folder of the image
-    COPY print_info.py /info/
+    COPY print_info_container.py /info/
     COPY README.md /info/README.md
 
     # Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file 
@@ -237,7 +238,7 @@ Now that we've composed our Dockerfile, we can build our image via the `docker b
 
 For this we provide a name for our image via the `-t flag` and specify the path to our Dockerfile, resulting in e.g (given we're in the my_first_docker folder).:
 
-    `docker build -t myfirstdocker .`
+    `docker build -t my_first_docker .`
 
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
   <p>
@@ -574,7 +575,7 @@ After building our image, we need to `tag` it, in order to make it identifiable 
 Where `image-id` is the name provided when building your image, `username` is your Docker Hub username, `repository` is the repository or folder on your Docker Hub where your container is supposed to be stored and `tag` is of course the specific version name. So this could look like
 
 ```
-    docker tag myworkflowimage mernst/workflow:latest
+    docker tag 36207dff9e03 mearnst/myworkflowimage:latest
 ```
 
 3. Docker push
@@ -592,7 +593,7 @@ Next we simply use the `docker push` command to send our freshly tagged Docker i
 - using docker build, the Docker container is created following the information in the Dockerfile
     
 ```
-docker build -t myfirstdocker path/to/directory/containing/Dockerfile
+docker build -t my_first_docker path/to/directory/containing/Dockerfile
 ```
 
 - once build, the Docker container should be tagged and subsequently pushed to Docker Hub
