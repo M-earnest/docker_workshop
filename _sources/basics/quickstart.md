@@ -448,7 +448,7 @@ a6023d7647e9: Downloading  7.988MB/12.62MB
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash
+docker run -it -v /home/username/Desktop:/data neurodebian:nd-non-free bash
 
 #You should end up seeing the 'terminal' of your container, the command line or bash shell.
 
@@ -513,6 +513,8 @@ root@e4d716b82877:/input#
 
 </details>
 
+<br>
+
 - pull the `aaronreer1/get_workshop_materials` docker image in its 0.0.3 version
   
 Now, this container will copy all the necessary files for this workshop to the `/output` directory in its file system. You can utilize the containers' functionality by mounting a directory on your local system, e.g. the `Desktop` or `home`, to the `/output` within the container such that the files get copied to your local system upon running the container.
@@ -521,11 +523,12 @@ Now, this container will copy all the necessary files for this workshop to the `
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_materials:0.0.3
+docker pull aaronreer1/get_workshop_materials:0.0.3
 ```
 
 </details>
 
+<br>
 
 
 - Run the container and mount a directory on your system, preferably `home`or `Desktop` to the `/output` within the container folder
@@ -534,7 +537,7 @@ aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_materials:0.0.3
 <summary>Solution</summary>
 
 ```
-aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_materials:0.0.3
+docker run -v path/on/your/machine:/output aaronreer1/get_workshop_materials:0.0.3
 ```
 
 </details>

@@ -844,11 +844,11 @@ docker_mne		sub-01			sub-03			sub-05
 </ul>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -it -v /home/aaronreer/:/data neurodebian:nd-non-free bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">Desktop</span><span class="p">:</span><span class="o">/</span><span class="n">data</span> <span class="n">neurodebian</span><span class="p">:</span><span class="n">nd</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">free</span> <span class="n">bash</span>
 
-#You should end up seeing the &#39;terminal&#39; of your container, the command line or bash shell.
+<span class="c1">#You should end up seeing the &#39;terminal&#39; of your container, the command line or bash shell.</span>
 
-root@46d4421e9ae1:/# 
+<span class="n">root</span><span class="o">@</span><span class="mi">46</span><span class="n">d4421e9ae1</span><span class="p">:</span><span class="o">/</span><span class="c1"># </span>
 </pre></div>
 </div>
 </details> 
@@ -899,22 +899,24 @@ root@e4d716b82877:/input#
 </pre></div>
 </div>
 </details>
+<br>
 <ul class="simple">
 <li><p>pull the <code class="docutils literal notranslate"><span class="pre">aaronreer1/get_workshop_materials</span></code> docker image in its 0.0.3 version</p></li>
 </ul>
 <p>Now, this container will copy all the necessary files for this workshop to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> directory in its file system. You can utilize the containers’ functionality by mounting a directory on your local system, e.g. the <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">home</span></code>, to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> within the container such that the files get copied to your local system upon running the container.</p>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker pull aaronreer1/get_workshop_materials:0.0.3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">aaronreer1</span><span class="o">/</span><span class="n">get_workshop_materials</span><span class="p">:</span><span class="mf">0.0.3</span>
 </pre></div>
 </div>
 </details>
+<br>
 <ul class="simple">
 <li><p>Run the container and mount a directory on your system, preferably <code class="docutils literal notranslate"><span class="pre">home</span></code>or <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> to the <code class="docutils literal notranslate"><span class="pre">/output</span></code> within the container folder</p></li>
 </ul>
 <details>
 <summary>Solution</summary>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run -v path/on/your/machine:/output aaronreer1/get_workshop_materials:0.0.3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">v</span> <span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">machine</span><span class="p">:</span><span class="o">/</span><span class="n">output</span> <span class="n">aaronreer1</span><span class="o">/</span><span class="n">get_workshop_materials</span><span class="p">:</span><span class="mf">0.0.3</span>
 </pre></div>
 </div>
 </details>
