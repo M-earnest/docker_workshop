@@ -610,9 +610,10 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Desktop/my_first_docker</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/Desktop/my_first_docker/Dockerfile</span></code></p>
 <p><strong>2. Add files to the build context</strong></p>
 <p>Download the course materials and copy all files from the examples folder into <code class="docutils literal notranslate"><span class="pre">my_first_docker</span> <span class="pre">folder</span></code> (<a class="reference external" href="http://README.md">README.md</a>, print_info_container.py, print_info_local_system.py).
-Otherwise you’ll find the necessary files under <code class="docutils literal notranslate"><span class="pre">/docker_workshop_oldenburg/build_example/</span></code>, if you’ve pulled and ran the <code class="docutils literal notranslate"><span class="pre">get_workshop_materials:0.0.2</span></code> container from the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/quickstart.html">quickstart session</a>.</p>
+Otherwise you’ll find the necessary files under <code class="docutils literal notranslate"><span class="pre">/docker_workshop_oldenburg/build_example/</span></code>, if you’ve pulled and ran the <code class="docutils literal notranslate"><span class="pre">get_workshop_materials:0.0.3</span></code> container from the <a class="reference external" href="https://m-earnest.github.io/docker_workshop/basics/quickstart.html">quickstart session</a>.</p>
 <p>E.g. using bash:</p>
-<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/build_example/README.md</span> <span class="pre">/Users/me/Desktop/my_first_docker</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/build_example/README.md</span> <span class="pre">/Users/username/Desktop/my_first_docker</span></code></p>
+<p><strong>Note:</strong> Replace /Users/username/Desktop/my_first_docker with the path to the Desktop on your machine, you can find this path using the following commands in your terminal <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (get the name of the current working directory), <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list files and directories) and <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory). The path structure may differ depending on your operating system, i.e on Linux based systems: <code class="docutils literal notranslate"><span class="pre">/home/username/Desktop</span></code>; on Windows using WSL: <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/&lt;username&gt;/Desktop</span></code>.</p>
 <p><strong>3. Populate the Dockerfile</strong></p>
 <p>Open your Dockerfile with a text-editor of your choice (VScode is recommended), copy-paste the following into the file and save it</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Step 1: Use the newest Ubuntu version as a base image</span>
@@ -630,7 +631,7 @@ Otherwise you’ll find the necessary files under <code class="docutils literal 
     <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">info</span>
 
     <span class="c1"># Step 4: Copy our Python script and README into the info folder of the image</span>
-    <span class="n">COPY</span> <span class="n">print_info</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
+    <span class="n">COPY</span> <span class="n">print_info_container</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span>
     <span class="n">COPY</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
 
     <span class="c1"># Step 5: Specify the default command when the image is run, e.g. to print the contents of the readme file </span>
@@ -640,7 +641,7 @@ Otherwise you’ll find the necessary files under <code class="docutils literal 
 <p><strong>4. Docker build</strong></p>
 <p>Now that we’ve composed our Dockerfile, we can build our image via the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> command in the terminal.</p>
 <p>For this we provide a name for our image via the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">flag</span></code> and specify the path to our Dockerfile, resulting in e.g (given we’re in the my_first_docker folder).:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker build -t myfirstdocker .`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`docker build -t my_first_docker .`
 </pre></div>
 </div>
 <div style="overflow-y: scroll; height: 200px; border: 1px solid #cccccc; padding: 5px; margin-bottom: 20px;">
@@ -931,7 +932,7 @@ But our preferred solution should be to make use of this thing called “interne
 </pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">image-id</span></code> is the name provided when building your image, <code class="docutils literal notranslate"><span class="pre">username</span></code> is your Docker Hub username, <code class="docutils literal notranslate"><span class="pre">repository</span></code> is the repository or folder on your Docker Hub where your container is supposed to be stored and <code class="docutils literal notranslate"><span class="pre">tag</span></code> is of course the specific version name. So this could look like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">docker</span> <span class="n">tag</span> <span class="n">myworkflowimage</span> <span class="n">mernst</span><span class="o">/</span><span class="n">workflow</span><span class="p">:</span><span class="n">latest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">docker</span> <span class="n">tag</span> <span class="mi">36207</span><span class="n">dff9e03</span> <span class="n">mearnst</span><span class="o">/</span><span class="n">myworkflowimage</span><span class="p">:</span><span class="n">latest</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -949,7 +950,7 @@ Next we simply use the <code class="docutils literal notranslate"><span class="p
 <li><p>Dockerfiles can either be created completely manually or supported by neurodocker</p></li>
 <li><p>using docker build, the Docker container is created following the information in the Dockerfile</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">myfirstdocker</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">containing</span><span class="o">/</span><span class="n">Dockerfile</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">my_first_docker</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">containing</span><span class="o">/</span><span class="n">Dockerfile</span>
 </pre></div>
 </div>
 <ul class="simple">

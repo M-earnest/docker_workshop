@@ -344,6 +344,8 @@ So to make our systems /Desktop available inside the docker container as a folde
 
 `docker run -it --rm -v /Users/me/Desktop:/data ubuntu bash`
 
+**Note:** Replace /Users/username/Desktop/my_first_docker with the path to the Desktop on your machine, you can find this path using the following commands in your terminal `pwd` (get the name of the current working directory), `ls` (list files and directories) and `cd` (change directory). The path structure may differ depending on your operating system, i.e on Linux based systems: `/home/username/Desktop`; on Windows using WSL: `/mnt/c/Users/<username>/Desktop`.
+
 Which gives us:
 
 ```
