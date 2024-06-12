@@ -1,11 +1,11 @@
 <img src="https://github.com/PeerHerholz/docker_workshop/workshop/static/workshop_logo.png" alt="workshop logo" width="300" style="margin:0 0 0 0"/>
 
-[![GitHub size](https://github-size-badge.herokuapp.com/peerherholz/workshop_weizmann.svg)](https://github.com/peerherholz/workshop_weizmann/archive/main.zip)
-[![License](https://img.shields.io/github/license/peerherholz/workshop_weizmann)](https://github.com/PeerHerholz/workshop_weizmann)
+[![GitHub size](https://github-size-badge.herokuapp.com/peerherholz/workshop_weizmann.svg)]( https://github.com/M-earnest/docker_workshop) https://github.com/M-earnest/docker_workshop
+[![License](https://img.shields.io/github/license/peerherholz/workshop_weizmann)](https://github.com/M-earnest/docker_workshop/blob/main/LICENSE)
 
 # Welcome!
 
-Hello everyone and welcome to the "Software containers in neuroscience" workshop conducted at and sponsored by the Carl von Ossietzky Universität Oldenburg, we're glad to see you here!
+Hello everyone and welcome to the "Software containers in neuroscience" workshop conducted at and sponsored by the Goethe University Frankfurt, we're glad to see you here!
 
 Within these pages, we provide information on how to follow the workshop, as well as respective materials. This [jupyter book](https://jupyterbook.org/intro.html) will include the all materials, data and code. You can navigate through the respective sections via the TOC on the left side and within sections via the TOC on the right side. The three symbols in the top allow enabling full screen mode, link to the underlying [Github repository](https://github.com/M-earnest/docker_workshop) and allow you to download the contents as a pdf or markdown file respectively. Additionally, we support public reviews and comments through the [hypothes.is plugin](https://web.hypothes.is/) with which you can interact on the right side. All of this awesomeness (talking about the infrastructure and resource) is possible through the dedicated and second to none work of the [Jupyter community](https://jupyter.org/community), specifically, the [Executable/Jupyter Book](https://executablebooks.org/en/latest/). Head to the [overview page](https://m-earnest.github.io/docker_workshop/overview.html) to get a feel for what and how we will go through this workshop.
 

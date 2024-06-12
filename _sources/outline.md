@@ -8,16 +8,16 @@ Our **very optimistic** schedule looks as follows (all times in IST):
 
 | Time slot         | Topic | 
 |--------------|:-----:|
-| 9 AM - 9:30 AM |  [Welcome and introduction]() |
-| 9:30 AM - 10 AM |  [Installation & Trouble shooting](https://m-earnest.github.io/docker_workshop/setup.html) | 
-| 10 AM - 10:30 PM | [Introduction - Software containers and virtualization](https://m-earnest.github.io/docker_workshop/basics/introduction.html) |
-| 10:30 AM - 11:00 AM | [Quickstarting your software container expertise (Part1)](https://m-earnest.github.io/docker_workshop/basics/quickstart.html) |
-| 11:00 AM - 11:15 AM | [Coffee break]() |
-| 11:15 AM - 12:15 PM | [Quickstarting your software container expertise (Part2)](https://m-earnest.github.io/docker_workshop/basics/quickstart.html) |
-| 12:15 PM - 1 PM | [Management of software containers](https://m-earnest.github.io/docker_workshop/advanced/management.html) |
+| 10:00 - 10:30 |  [Welcome and introduction]() |
+| 10:30 - 11:00 |  [Installation & Trouble shooting](https://m-earnest.github.io/docker_workshop/setup.html) | 
+| 11:00 - 11:30 | [Introduction - Software containers and virtualization](https://m-earnest.github.io/docker_workshop/basics/introduction.html) |
+| 11:30 - 11:45 | [Coffee break]() |
+| 11:45 - 13:00 | [Quickstarting your software container expertise ](https://m-earnest.github.io/docker_workshop/basics/quickstart.html) |
 |  |  |
-| 1 PM - 2 PM |  [Lunch break]() |
+| 13:00 - 14:00 |  [Lunch break]() |
 |  |  |
-| 2 PM - 3:30 PM |  [Creating software containers](https://m-earnest.github.io/docker_workshop/advanced/creating.html) |
-| 3:30 AM - 4 PM |  [Software containers & data](https://m-earnest.github.io/docker_workshop/advanced/data.html) |
-| 4 PM - 5 PM |  [Creating your own software container](https://m-earnest.github.io/docker_workshop/advanced/creating_your_own.html) |
+| 14:00 - 15:00 | [Management of software containers](https://m-earnest.github.io/docker_workshop/advanced/management.html) |
+| 15:00 - 16:00 |  [Creating software containers](https://m-earnest.github.io/docker_workshop/advanced/creating.html) |
+| 16:00 - 16:15 | [Coffee break]() |
+| 16:15 - 17:00 |  [Software containers & data](https://m-earnest.github.io/docker_workshop/advanced/data.html) |
+| 17:00 - 18:00 |  [Creating your own software container](https://m-earnest.github.io/docker_workshop/advanced/creating_your_own.html) |
