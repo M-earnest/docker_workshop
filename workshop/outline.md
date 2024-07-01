@@ -2,7 +2,7 @@
 
 The [overview](https://m-earnest.github.io/docker_workshop/overview.html) already specified it, but just to be sure: the workshop will be split into two distinct parts. While the first half (and few hours) will consist of going through `basics of software containers`, the second half will entail more `advanced and specialized aspects` within which folks will also evaluate the discussed topics. As mentioned before, these resources will contain all materials utilized in the workshop. Should time permit we will also go over how to [automatize the publishing of Docker containers](https://m-earnest.github.io/docker_workshop/advanced/automating.html) in the last session, otherwise please go to the materials by yourself and contact the speakers via `Discord` or `E-mail`.
 
-In general, we will aim for 4 h per session. 
+**Where**: Seminarhaus Campus Westend, Westend-Nord, Frankfurt am Main; Room SH 4.101 (10-14); Room SH 4.104 (14-18)
 
 Our **very optimistic** schedule looks as follows (all times in IST): 
 
