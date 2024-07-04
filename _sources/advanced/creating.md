@@ -475,7 +475,7 @@ So, let's see how we can create our Dockerfiles using `Neurodocker`. At first we
 
 
 ```
-aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
+docker pull repronim/neurodocker:0.9.5
 0.9.5: Pulling from repronim/neurodocker
 8a49fdb3b6a5: Already exists
 0357922e53aa: Already exists
@@ -494,7 +494,7 @@ All we have to do now is run Neurodocker, providing the necessay input arguments
 
 
 ```
-aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
+docker run repronim/neurodocker:0.9.5 generate docker \
 --base-image ubuntu:latest \
 --pkg-manager apt \
 

@@ -859,24 +859,24 @@ View a summary of image vulnerabilities and recommendations → docker scout qui
 Well, say no more and meet <a class="reference external" href="https://www.repronim.org/neurodocker/user_guide/installation.html">Neurodocker</a>, a Docker container that targets the creation of Docker containers - Dockerception.</p>
 <p>Even though Neurodocker was designed for (you might’ve guessed it already) Docker containers to utilize in the realm of neuroscience, it’s also a very handy tool for any other research field, as especially the basic setup is done very quickly and hassle-free.</p>
 <p>So, let’s see how we can create our Dockerfiles using <code class="docutils literal notranslate"><span class="pre">Neurodocker</span></code>. At first we have to get the Neurodocker image using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">command</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker pull repronim/neurodocker:0.9.5
-0.9.5: Pulling from repronim/neurodocker
-8a49fdb3b6a5: Already exists
-0357922e53aa: Already exists
-9a0b2b81bdd7: Already exists
-1bed10bb162b: Already exists
-61479f8dd1a7: Already exists
-5fca58cb4537: Already exists
-76b5b227fa86: Already exists
-Digest: sha256:3d4ae0b3e6f0767ad2ea3dc401b4a011c354a682eb9db4a9c18bcee2cbd7cddb
-Status: Downloaded newer image for repronim/neurodocker:0.9.5
-docker.io/repronim/neurodocker:0.9.5
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">repronim</span><span class="o">/</span><span class="n">neurodocker</span><span class="p">:</span><span class="mf">0.9.5</span>
+<span class="mf">0.9.5</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">repronim</span><span class="o">/</span><span class="n">neurodocker</span>
+<span class="mi">8</span><span class="n">a49fdb3b6a5</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mf">0357922e53</span><span class="n">aa</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mi">9</span><span class="n">a0b2b81bdd7</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mi">1</span><span class="n">bed10bb162b</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mi">61479</span><span class="n">f8dd1a7</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mi">5</span><span class="n">fca58cb4537</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="mi">76</span><span class="n">b5b227fa86</span><span class="p">:</span> <span class="n">Already</span> <span class="n">exists</span>
+<span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">3</span><span class="n">d4ae0b3e6f0767ad2ea3dc401b4a011c354a682eb9db4a9c18bcee2cbd7cddb</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Downloaded</span> <span class="n">newer</span> <span class="n">image</span> <span class="k">for</span> <span class="n">repronim</span><span class="o">/</span><span class="n">neurodocker</span><span class="p">:</span><span class="mf">0.9.5</span>
+<span class="n">docker</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">repronim</span><span class="o">/</span><span class="n">neurodocker</span><span class="p">:</span><span class="mf">0.9.5</span>
 </pre></div>
 </div>
 <p>All we have to do now is run Neurodocker, providing the necessay input arguments beginning with stating that we want to create a Docker container and that we want to use <code class="docutils literal notranslate"><span class="pre">ubuntu:latest</span></code> as a base and apt as package manager:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aaronreer@FK6P-1158240:~$ docker run repronim/neurodocker:0.9.5 generate docker \
---base-image ubuntu:latest \
---pkg-manager apt \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">repronim</span><span class="o">/</span><span class="n">neurodocker</span><span class="p">:</span><span class="mf">0.9.5</span> <span class="n">generate</span> <span class="n">docker</span> \
+<span class="o">--</span><span class="n">base</span><span class="o">-</span><span class="n">image</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span> \
+<span class="o">--</span><span class="n">pkg</span><span class="o">-</span><span class="n">manager</span> <span class="n">apt</span> \
 
 </pre></div>
 </div>

@@ -148,7 +148,7 @@ id -u <yourusername>
 into your terminal and your `userid` should appear.
 <br>
 
-![how to get user id](/static/get_user_id.png)
+
 
 <br>
 
@@ -297,7 +297,12 @@ When checking our filesystem using the `ls` command we can observe that a new di
 
 <br>
 
-![mounted directory after docker run](/static/mounted_directory_after_docker_run.png)
+
+```
+aaronreer@FK6P-1158240:~/docker_workshop_oldenburg$ ls
+MNE-sample-data  MNE-sample-data-bids1
+```
+
 
 
 
