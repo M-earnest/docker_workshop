@@ -170,7 +170,7 @@ You can find the dataset in the `~/docker_workshop_oldenburg` directory on your 
 
 <br>
 
-![mounted directory before docker run](/static/mounted_directory_before_docker_run.png)
+
 
 ```
 aaronreer@FK6P-1158240:~/docker_workshop_oldenburg$ ls
